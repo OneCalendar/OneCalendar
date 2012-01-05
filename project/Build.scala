@@ -8,7 +8,7 @@ object ApplicationBuild extends Build {
     val appVersion      = "1.0"
 
     val appDependencies = Seq(
-      // Add your project dependencies here,
+      "org.scalatest" %% "scalatest" % "test"
     )
 
     val main = PlayProject(appName, appVersion, appDependencies).settings(defaultScalaSettings:_*).settings(
