@@ -1,0 +1,227 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+METHOD:PUBLISH
+CALSCALE:GREGORIAN
+PRODID:iCalendar-Ruby
+BEGIN:VEVENT
+LOCATION:La Cantine par Silicon Sentier
+SEQUENCE:0
+URL:http://lacantine.org/events/reunion-d-etude-sur-le-projet-soho-de-la-vi
+ lle-de-paris
+CLASS:PUBLIC
+DTEND:20120109T200000 +0000
+DTSTART:20120109T170000 +0000
+UID:http://lacantine.org/events/reunion-d-etude-sur-le-projet-soho-de-la-vi
+ lle-de-paris
+DTSTAMP:20120105T194533
+DESCRIPTION:La Ville de Paris a pour projet de construire et de louer des l
+ ocaux de \ntype « SOHO » (Small Office – Home Office)\, c’est-à-dire
+  des lots de \nbureau avec un logement séparé\, de plusieurs surfaces\, i
+ nférieures à 75 \nm² (tant pour le bureau que le logement).\nle but de l
+ a réunion est de recueillir le point de vue des entrepreneurs\n sur les ca
+ ractéristiques de ces locaux (techniques\, équipements\, \nmatériaux\, a
+ ménagement…) les plus adaptées à leur activité
+SUMMARY:Réunion d’étude sur le projet « SOHO »  de la Ville de Paris
+LAST-MODIFIED:20111213T145522 +0100
+CREATED:20111205T114821 +0100
+END:VEVENT
+BEGIN:VEVENT
+LOCATION:La Cantine par Silicon Sentier
+SEQUENCE:0
+URL:http://lacantine.org/events/les-ateliers-startup-3-le-droit-et-la-creat
+ ion-d-entreprise
+CLASS:PUBLIC
+DTEND:20120110T190000 +0000
+DTSTART:20120110T160000 +0000
+UID:http://lacantine.org/events/les-ateliers-startup-3-le-droit-et-la-creat
+ ion-d-entreprise
+DTSTAMP:20120105T194533
+DESCRIPTION:Les Ateliers StartUP par ConnectingStartups.com Le droit et la 
+ création d'entrepriseAtelier sera animé par Maître Coline Vuillermet avo
+ cate au barreau de Paris spécialisée en droit des affaires. 
+SUMMARY:Les ateliers StartUP #3 : Le droit et la création d'entreprise
+LAST-MODIFIED:20111222T103743 +0100
+CREATED:20111222T103743 +0100
+END:VEVENT
+BEGIN:VEVENT
+COMMENT:Merci de vous inscrire sur le site web de La Cantine
+LOCATION:La Cantine par Silicon Sentier
+SEQUENCE:0
+URL:http://lacantine.org/events/cleantuesday-ecologie-industrielle
+CLASS:PUBLIC
+DTEND:20120110T210000 +0000
+DTSTART:20120110T173000 +0000
+UID:http://lacantine.org/events/cleantuesday-ecologie-industrielle
+DTSTAMP:20120105T194533
+DESCRIPTION:Pour son retour à Paris en 2012 Cleantuesday abordera pour la 
+  \npremière fois un thème d'ingénierie système avec l'écologie industr
+ ielle\nL’Ecologie Industrielle (EI)\, s’inspire du fonctionnement des \
+ nécosystèmes naturels\, pour proposer une évolution globale et durable d
+ u \nsystème industriel actuel. Son objectif est un usage optimal et durabl
+ e \ndes ressources englobant l’ensemble des activités économiques\, \ns
+ ’appuyant sur une gestion innovante des flux de matières\, d’eau\, \nd
+ ’énergies\, d’informations et de déchets.
+SUMMARY:Cleantuesday Ecologie Industrielle
+LAST-MODIFIED:20120103T114506 +0100
+CREATED:20120103T114443 +0100
+END:VEVENT
+BEGIN:VEVENT
+COMMENT:Merci de vous inscrire sur le site web de La Cantine
+LOCATION:La Cantine par Silicon Sentier
+SEQUENCE:0
+URL:http://lacantine.org/events/hackthepress-2-special-data-journalisme
+CLASS:PUBLIC
+DTEND:20120111T210000 +0000
+DTSTART:20120111T080000 +0000
+UID:http://lacantine.org/events/hackthepress-2-special-data-journalisme
+DTSTAMP:20120105T194533
+DESCRIPTION:Le 11 janvier\, La Cantine devient une rédaction augmentée.\n
+SUMMARY:#HackThePress 2 : la battle de data-journalisme
+LAST-MODIFIED:20120102T114445 +0100
+CREATED:20111221T160434 +0100
+END:VEVENT
+BEGIN:VEVENT
+LOCATION:La Cantine par Silicon Sentier
+SEQUENCE:0
+URL:http://lacantine.org/events/mobile-monday-52-nfc
+CLASS:PUBLIC
+DTEND:20120116T210000 +0000
+DTSTART:20120116T174500 +0000
+UID:http://lacantine.org/events/mobile-monday-52-nfc
+DTSTAMP:20120105T194533
+DESCRIPTION:Le programme est en cours de finalisation mais vous pouvez vous
+  inscrire dès aujourd'hui.\n>>>Pour vous inscrire\, cliquez ici
+SUMMARY:Mobile Monday#52  : "NFC" 
+LAST-MODIFIED:20120103T120550 +0100
+CREATED:20120103T120550 +0100
+END:VEVENT
+BEGIN:VEVENT
+LOCATION:La Cantine par Silicon Sentier
+SEQUENCE:0
+URL:http://lacantine.org/events/nsfo-comment-l-augmenter-sans-tout-revoluti
+ onner
+CLASS:PUBLIC
+DTEND:20120118T203000 +0000
+DTSTART:20120118T183000 +0000
+UID:http://lacantine.org/events/nsfo-comment-l-augmenter-sans-tout-revoluti
+ onner
+DTSTAMP:20120105T194533
+DESCRIPTION:Découvrez comment vous pouvez améliorer la conversion de votr
+ e site tout en échappant aux contraintes de la vraie vie (disponibilité d
+ es équipes\, processus de décisions\, contraintes techniques…) ?
+SUMMARY:Transfo : comment l'augmenter sans tout révolutionner ?
+LAST-MODIFIED:20120104T192232 +0100
+CREATED:20120104T185203 +0100
+END:VEVENT
+BEGIN:VEVENT
+COMMENT:Merci de vous inscrire sur le site web de La Cantine
+LOCATION:La Cantine par Silicon Sentier
+SEQUENCE:0
+URL:http://lacantine.org/events/spamm-vernissage-i-r-l-du-super-art-modern-
+ musem-2
+CLASS:PUBLIC
+DTEND:20120119T220000 +0000
+DTSTART:20120119T160000 +0000
+UID:http://lacantine.org/events/spamm-vernissage-i-r-l-du-super-art-modern-
+ musem-2
+DTSTAMP:20120105T194533
+DESCRIPTION:Après une inauguration réussie en ligne\, le SPAMM ( SuPer Ar
+ t Modern Museum - Musée des Arts Super Modernes ) ouvre ses portes dans le
+  réel! Venez le 19 janvier à La Cantine de 19H à 23H pour visitez\, déc
+ ouvrir les oeuvres\, assister à un débat sur le futur des musées et renc
+ ontrer les artistes. 
+SUMMARY:SPAMM : Vernissage I.R.L du SuPer Art Modern Museum + débat 
+LAST-MODIFIED:20120105T163341 +0100
+CREATED:20111215T153019 +0100
+END:VEVENT
+BEGIN:VEVENT
+COMMENT:Merci de vous inscrire sur le site web de La Cantine
+LOCATION:La Cantine par Silicon Sentier
+SEQUENCE:0
+URL:http://lacantine.org/events/futur-transhumaniste-paradis-ou-enfer
+CLASS:PUBLIC
+DTEND:20120122T193000 +0000
+DTSTART:20120122T083000 +0000
+UID:http://lacantine.org/events/futur-transhumaniste-paradis-ou-enfer
+DTSTAMP:20120105T194533
+DESCRIPTION:Dans un hypothétique avenir transhumaniste où les technologie
+ s prendraient une place prédominante dans les sociétés humaines\, quels 
+ sont les risques pour l'écosystème et la continuité de l'espèce humaine
+  ? Y a t-il un risque de techno-apocalypse ? Quelles menaces pourraient ém
+ erger\, ou émergent déjà\, de la convergence NBIC ? Et enfin\, quelles 
+ solutions de prévention pouvons-nous envisager en amont pour éviter\, sin
+ on  réduire\, ces menaces? \nOrganisé par l'Association Française Tran
+ shumaniste:Technoprog! et Silicon Maniacs.
+SUMMARY:Futur Transhumaniste : Paradis ou enfer ?
+LAST-MODIFIED:20120105T151145 +0100
+CREATED:20111223T142217 +0100
+END:VEVENT
+BEGIN:VEVENT
+COMMENT:Merci de vous inscrire sur le site web de La Cantine
+LOCATION:La Cantine par Silicon Sentier
+SEQUENCE:0
+URL:http://lacantine.org/events/la-communaute-ent-libre-lilie-se-reunit-a-l
+ a-cantine
+CLASS:PUBLIC
+DTEND:20120124T120000 +0000
+DTSTART:20120124T083000 +0000
+UID:http://lacantine.org/events/la-communaute-ent-libre-lilie-se-reunit-a-l
+ a-cantine
+DTSTAMP:20120105T194533
+DESCRIPTION:« L'espace numérique de travail(ENT) des établissements scol
+ aires open-source\, offre un accès en ligne sécurisé à tout ce qui fait
+  la vie quotidienne d'un lycée pour communiquer\, coopérer\, suivre le tr
+ avail scolaire et la scolarité. Plusieurs collectivités se sont déjà s
+ aisies de cet outil. On peut citer Lilie pour les lycées d’Île-de-Franc
+ e\, Celia pour les collèges de Seine-Saint-Denis\, Elie pour le Limousin e
+ t la Creuse\, la région Rhône-Alpes\, la Picardie et l’Essonne notammen
+ t. Afin de continuer à mutualiser ces efforts et ces réflexions\, nous v
+ ous invitons à participer au deuxième rassemblement des acteurs de l’EN
+ T Open Source. Collectivités territoriales\, éditeurs\, contributeurs\, u
+ tilisateurs intéressés\, nous vous attendons le 24 Janvier prochain de 9h
+ 30 à 13h à la Cantine. »
+SUMMARY:« La communauté ENT Libre Lilie se réunit à la Cantine »
+LAST-MODIFIED:20111220T161611 +0100
+CREATED:20111220T145311 +0100
+END:VEVENT
+BEGIN:VEVENT
+LOCATION:La Cantine par Silicon Sentier
+SEQUENCE:0
+URL:http://lacantine.org/events/arparis-3
+CLASS:PUBLIC
+DTEND:20120127T210000 +0000
+DTSTART:20120127T180000 +0000
+UID:http://lacantine.org/events/arparis-3
+DTSTAMP:20120105T194533
+DESCRIPTION:ARparis est\n un événement régulier axé autour de la réali
+ té augmentée. Notre mission\n avec ces évènements est de réunir l’é
+ cosystème RA\, en créant un lieu de\n networking pour les professionnels 
+ et les passionnés de la réalité  \naugmentée\, en permettant à des en
+ treprises innovantes de présenter leurs\n  projets\, en organisant des se
+ ssions de développement RA ou encore en \ndiscutant du futur de la réalit
+ é augmentée et de son impact dans notre \navenir.
+SUMMARY:ARparis #3
+LAST-MODIFIED:20120104T103354 +0100
+CREATED:20120104T103354 +0100
+END:VEVENT
+BEGIN:VEVENT
+COMMENT:Merci de vous inscrire sur le site web de La Cantine
+LOCATION:La Cantine par Silicon Sentier
+SEQUENCE:0
+URL:http://lacantine.org/events/option-libre-du-bon-usage-des-licences-libr
+ es-par-benjamin-jean-avec-des-acteurs-de-la-creation-et-l-innovation
+CLASS:PUBLIC
+DTEND:20120130T203000 +0000
+DTSTART:20120130T174500 +0000
+UID:http://lacantine.org/events/option-libre-du-bon-usage-des-licences-libr
+ es-par-benjamin-jean-avec-des-acteurs-de-la-creation-et-l-innovation
+DTSTAMP:20120105T194533
+DESCRIPTION:En partant d'une approche juridique\, Benjamin Jean s'est inter
+ rogé sur mécanismes des nouveaux modèles d'organisation\, de développem
+ ent et d'innovations collectives et participatives.
+SUMMARY:Option Libre : du bon usage des licences libres... par Benjamin Jea
+ n\, avec des acteurs de la création et l'innovation.
+LAST-MODIFIED:20120104T011822 +0100
+CREATED:20120103T211142 +0100
+END:VEVENT
+END:VCALENDAR
