@@ -1,8 +1,8 @@
-package controllers
+package service
 
 import models.Event
 
-object PersistController {
+object PersistService {
   def persist(events:List[Event]) {
 
   }
