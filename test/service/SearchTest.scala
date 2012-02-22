@@ -6,7 +6,7 @@ import org.joda.time.DateTime
 import org.scalatest._
 
 
-object SearchTest extends FunSuite
+class SearchTest extends FunSuite
   with ShouldMatchers
   with BeforeAndAfter
   with MustMatchers {
