@@ -26,7 +26,7 @@ class ICalBuilder {
 
         vevent.getProperties.add( new Summary( event.title ) )
         vevent.getProperties.add( new Description( event.description ) )
-        vevent.getProperties.add( new Location( event.place ) )
+        vevent.getProperties.add( new Location( event.location ) )
 
         vevent
     }

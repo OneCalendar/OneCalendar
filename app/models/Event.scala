@@ -5,7 +5,7 @@ import org.joda.time.DateTime
 case class Event( title: String,
                   begin: DateTime,
                   end: DateTime,
-                  place: String = "",
+                  location: String = "",
                   description: String = "",
                   tags: List[String] = Nil
 )
