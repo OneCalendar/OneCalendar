@@ -23,7 +23,9 @@ with BeforeAndAfter {
 
     test("ical should be a valid iCal") {
         //println("ical: " + ical)
-        ical should include ("BEGIN:VCALENDAR")
+        ical should startWith ("BEGIN:VCALENDAR")
+        ical should include ("VERSION:2.0")
+        ical should include ("PRODID:")
     }
 
     test("ical should have all events") {
@@ -47,7 +49,7 @@ with BeforeAndAfter {
         event should include ( "DTEND:20100101T140000" )
         event should include ( "DESCRIPTION:super java conf" )
         event should include ( "LOCATION:place1" )
+        event should include ( "UID:" )
     }
-
 
 }

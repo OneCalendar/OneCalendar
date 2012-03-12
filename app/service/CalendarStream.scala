@@ -57,17 +57,17 @@ class CalendarStream {
     
     val stub: Event = new EventBuilder()
         .title( "Seren, la serialisation sous steroides !" )
-        .begin( new DateTime( "20120419T11:30:00Z" ) )
-        .end( new DateTime( "2012-04-19T11:45:00Z" ) )
+        .begin( new DateTime( 2010, 01, 01, 12, 0, 0 ) )
+        .end( new DateTime( 2010, 01, 01, 14, 0, 0 ) )
         .location( "Salle E. Fitzgerald & L. Armstrong" )
-        .description( "Speaker(s) : Olivier Croisier\\n" +
-        "\\n" +
+        .description( "Speaker(s) : Olivier Croisier\n" +
+        "\n" +
         "Le mécanisme de sérialisation" +
         " de Java est flexible et puissant, mais ses performances peuvent être consi" +
-        " dérablement améliorées en appliquant certaines astuces.\\n" +
+        " dérablement améliorées en appliquant certaines astuces.\n" +
         "En instrumentant v" +
         " os classes au chargement, la librairie Seren vous permet de bénéficier imm" +
-        " édiatement de ces optimisations, de manière totalement transparente pour votre code.\\n" +
+        " édiatement de ces optimisations, de manière totalement transparente pour votre code.\n" +
         "Aucun compilateur n'a été blessé pendant le développement de ce" +
         " tte librairie (ou presque)." )
         .toEvent

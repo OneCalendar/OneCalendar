@@ -41,6 +41,7 @@ class EventBuilder {
 
     def description( description: String ): EventBuilder = {
         this.description = description
+        println(description)
         this
     }
 
