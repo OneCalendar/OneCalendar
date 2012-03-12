@@ -1,0 +1,56 @@
+section {
+    width: 500px;
+    margin: auto;
+    margin-top: 300px;
+
+    font-family: ubuntu;
+    font-size: 15px;
+}
+
+section > h3 {
+    text-align: center;
+}
+
+section > h2 {
+    margin: 0;
+}
+
+section > h4 {
+    margin-top: 0;
+}
+
+#suggest {
+    width: 452px;
+    height: 30px;
+
+    margin: auto;
+
+    border: 1px medium #f0ffff;
+    border-radius: 2px;
+
+    padding-left: 10px;
+}
+
+#suggest:focus {
+}
+
+#suggest + ul {
+    list-style: none;
+
+    width: 462px;
+
+    border: 1px solid grey;
+    border-top: none;
+    border-radius: 2px;
+
+    padding: 0;
+    margin: 0;
+}
+
+#suggest + ul > li {
+    padding-left: 10px;
+}
+
+#suggest + ul > li:hover {
+    background-color: grey;
+}
