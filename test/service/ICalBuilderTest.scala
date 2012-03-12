@@ -5,6 +5,7 @@ import org.joda.time.DateTime
 import org.scalatest._
 import models.Event
 import scala.util.matching.Regex
+import models.builder.EventBuilder
 
 class ICalBuilderTest extends FunSuite
 with ShouldMatchers
@@ -14,15 +15,31 @@ with BeforeAndAfter {
 
     before {
         val events: List[Event] = List(
-            Event("Event1", new DateTime(), new DateTime(), "place1", "super java conf", List("java") ),
-            Event("Event2", new DateTime(), new DateTime(), "place2", "super scala conf", List("scala") )
+            new EventBuilder()
+                .uid( "0" )
+                .title( "Event1" )
+                .begin( new DateTime() )
+                .end( new DateTime() )
+                .location( "place1" )
+                .description( "super java conf" )
+                .tags( List("java") )
+                .toEvent,
+
+            new EventBuilder()
+                .uid( "1" )
+                .title( "Event2" )
+                .begin( new DateTime() )
+                .end( new DateTime() )
+                .location( "place2" )
+                .description( "super scala conf" )
+                .tags( List("scala") )
+                .toEvent
         )
 
         ical = new ICalBuilder().buildCalendar(events)
     }
 
     test("ical should be a valid iCal") {
-        //println("ical: " + ical)
         ical should startWith ("BEGIN:VCALENDAR")
         ical should include ("VERSION:2.0")
         ical should include ("PRODID:")
@@ -35,21 +52,22 @@ with BeforeAndAfter {
     
     test("event should have all properties") {
         val event = new ICalBuilder().buildCalendar(
-            List( Event(
-                "Event1",
-                new DateTime( 2010, 01, 01, 12, 0, 0 ),
-                new DateTime( 2010, 01, 01, 14, 0, 0 ),
-                "place1",
-                "super java conf",
-                List( "java" )
-            ))
+            List( new EventBuilder()
+                .uid( "0" )
+                .title( "Event1" )
+                .begin( new DateTime( 2010, 01, 01, 12, 0, 0 ) )
+                .end( new DateTime( 2010, 01, 01, 14, 0, 0 ) )
+                .location( "place1" )
+                .description( "super java conf" )
+                .tags( List("java") )
+                .toEvent
+            )
         )
 
         event should include ( "DTSTART:20100101T120000" )
         event should include ( "DTEND:20100101T140000" )
         event should include ( "DESCRIPTION:super java conf" )
         event should include ( "LOCATION:place1" )
-        event should include ( "UID:" )
+        event should include ( "UID:0" )
     }
-
 }

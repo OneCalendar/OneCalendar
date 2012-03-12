@@ -29,7 +29,7 @@ class ICalBuilder {
     private def buildVEvent( event: Event ): VEvent = {
         val vevent: VEvent = new VEvent
 
-        vevent.getProperties.add( new Uid(ID + String.valueOf(event.hashCode())))
+        vevent.getProperties.add( new Uid( event.uid ) )
 
         vevent.getProperties.add( new DtStart( new DateTime( event.begin.toDate ) ) )
         vevent.getProperties.add( new DtEnd( new DateTime( event.end.toDate ) ) )
