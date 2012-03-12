@@ -11,7 +11,7 @@ object Application extends Controller {
     Ok(views.html.index())
   }
 
-  def getFlux = Action {
+  def flux = Action {
     Ok(new CalendarStream().fetch).as("text/calendar")
   }
 
