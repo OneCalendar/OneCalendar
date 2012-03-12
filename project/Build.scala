@@ -13,11 +13,12 @@ object ApplicationBuild extends Build {
         "org.scalatest" %% "scalatest" % "1.7.1" % "test",
         "org.joda" % "joda-convert" % "1.2",
         "org.jongo" % "jongo" % "0.1-SNAPSHOT" changing(),
-        "org.mongodb" % "mongo-java-driver" % "2.6.5"
+        "org.mongodb" % "mongo-java-driver" % "2.6.5",
+        "org.easytesting" % "fest-util" % "1.1.6"
     )
 
     val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA).settings(
-        // Add your own project settings here
+        testOptions in Test := Nil  //to run scalatest in play2 console arghhhh!!!
     )
 
 }
