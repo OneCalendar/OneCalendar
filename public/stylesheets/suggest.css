@@ -19,6 +19,14 @@ section > h4 {
     margin-top: 0;
 }
 
+#googleCal {
+    background-image:url(http://www.google.com/calendar/images/ext/gc_button6_fr.gif);
+    border: 0;
+    width: 114px;
+    height: 36px;
+    display:block;
+}
+
 #suggest {
     width: 452px;
     height: 30px;
