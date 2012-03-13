@@ -10,6 +10,7 @@ import models.Event
 
 class EventBuilder {
 
+    private var uid: String = _
     private var title: String = _
     private var begin: DateTime = _
     private var end: DateTime = _
@@ -17,8 +18,13 @@ class EventBuilder {
     private var description: String = _
     private var tags: List[String] = _
     
-    def toEvent: Event = Event( title, begin, end, location, description, tags )
-    
+    def toEvent: Event = Event( uid, title, begin, end, location, description, tags )
+
+    def uid( uid: String ): EventBuilder = {
+        this.uid = uid
+        this
+    }
+
     def title( title: String ): EventBuilder = {
         this.title = title
         this
