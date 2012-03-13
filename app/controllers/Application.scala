@@ -16,10 +16,6 @@ object Application extends Controller {
         Ok(views.html.index())
     }
 
-    def flux = Action {
-        renderEvents(new CalendarStream().stubEvents)
-    }
-
     def findByTags( keyWords: String ) = Action {
         val tags: List[String] = keyWords.split(" ").toList
         renderEvents( EventDao.findByTag( tags ) )
