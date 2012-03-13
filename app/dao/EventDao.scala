@@ -35,6 +35,13 @@ object EventDao extends MongoConfigurationInjection with CollectionsUtils {
         dbCursortoEvents(cursor)
     }
 
+
+    def findByTag()(implicit dbConfig: MongoConfiguration): List[Event] = {
+        val cursor: DBCursor = getEventsCollection(dbConfig.dbName).find()
+
+        dbCursortoEvents(cursor)
+    }
+
     def getEventsCollection(dbName: String): DBCollection = {
         val db: DB = getDatabase(dbName)
         db.getCollection("events")

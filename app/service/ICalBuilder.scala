@@ -10,42 +10,44 @@ import java.io.{Writer, StringWriter}
 class ICalBuilder {
     val ID: String = "-//OneCalendarToMeetThemAll//FR"
 
-    def buildCalendar( events: List[Event] ): String = {
+    def buildCalendar(events: List[Event]): String = {
         val componentList: ComponentList = new ComponentList()
 
-        events.map( event => componentList.add( buildVEvent(event) ) )
+        events.map(event => componentList.add(buildVEvent(event)))
 
-        val calendar: Calendar = buildCalendar( componentList )
+        val calendar: Calendar = buildCalendar(componentList)
 
-        serializeCalendar( calendar )
+        serializeCalendar(calendar)
     }
 
-    private def buildVEvent( event: Event ): VEvent = {
+    private def buildVEvent(event: Event): VEvent = {
         val vevent: VEvent = new VEvent
 
-        vevent.getProperties.add( new Uid( event.uid ) )
+        vevent.getProperties.add(new Uid(event.uid))
 
-        vevent.getProperties.add( new DtStart( new DateTime( event.begin.toDate ) ) )
-        vevent.getProperties.add( new DtEnd( new DateTime( event.end.toDate ) ) )
+        vevent.getProperties.add(new DtStart(new DateTime(event.begin.toDate)))
+        vevent.getProperties.add(new DtEnd(new DateTime(event.end.toDate)))
 
-        vevent.getProperties.add( new Summary( event.title ) )
-        vevent.getProperties.add( new Description( event.description ) )
-        vevent.getProperties.add( new Location( event.location ) )
+        vevent.getProperties.add(new Summary(event.title))
+        vevent.getProperties.add(new Description(event.description))
+        vevent.getProperties.add(new Location(event.location))
 
         vevent
     }
 
-    private def buildCalendar( componentList: ComponentList ): Calendar = {
-        val calendar: Calendar = new Calendar( componentList )
-        calendar.getProperties.add( Version.VERSION_2_0 );
-        calendar.getProperties.add( new ProdId( ID ) );
-        calendar.getProperties.add( CalScale.GREGORIAN );
+    private def buildCalendar(componentList: ComponentList): Calendar = {
+        val calendar: Calendar = new Calendar(componentList)
+        calendar.getProperties.add(Version.VERSION_2_0);
+        calendar.getProperties.add(new ProdId(ID));
+        calendar.getProperties.add(CalScale.GREGORIAN);
+        calendar.getProperties.add(new XProperty("X-WR-CALNAME", "OneCalendar"))
+        calendar.getProperties.add(new XProperty("X-WR-CALDESC", "My Calendar to Meet them All"))
         calendar
     }
 
     private def serializeCalendar(calendar: Calendar): String = {
         val writer: Writer = new StringWriter()
-        new CalendarOutputter().output( calendar, writer )
+        new CalendarOutputter().output(calendar, writer)
         writer.toString
     }
 }
