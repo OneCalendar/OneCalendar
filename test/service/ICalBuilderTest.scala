@@ -4,7 +4,6 @@ import org.scalatest.matchers._
 import org.joda.time.DateTime
 import org.scalatest._
 import models.Event
-import scala.util.matching.Regex
 import models.builder.EventBuilder
 
 class ICalBuilderTest extends FunSuite
