@@ -16,13 +16,14 @@ object Application extends Controller {
         renderEvents(new CalendarStream().stubEvents)
     }
 
-    def searchFlux(search: String) = Action {
+    def searchFlux( search: String ) = Action {
         val tags: List[String] = search.split(" ").toList
-        renderEvents(new CalendarStream().search(tags))
+        //EventDao.find(tags) with ProdParameterMongoInjection
+        renderEvents( new CalendarStream().search( tags ) )
     }
 
-    private def renderEvents(events: List[ Event ] ) = {
-        Ok(calendarService.buildCalendar(events)).as("text/calendar")
+    private def renderEvents( events: List[ Event ] ) = {
+        Ok( calendarService.buildCalendar( events ) ).as( "text/calendar" )
     }
 
 }

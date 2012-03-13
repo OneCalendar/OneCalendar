@@ -1,5 +1,6 @@
 package dao
 
+import configuration.injection.MongoConfiguration
 import models.Event
 import org.joda.time.DateTime
 import collection.immutable.List
@@ -14,6 +15,8 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
      * RUNNING MONGO SERVER BEFORE in target directory -
      * mongod --dbpath data/ --fork --logpath data/mongodb.log
      */
+
+    implicit val mongoConfigurationTesting = MongoConfiguration( "test" )
 
     val db: DB = {
         val mongo: Mongo = new Mongo()
@@ -61,12 +64,12 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
 
     test( "should find event by tag 'devoxx'" ) {
         initData
-        EventDao.findByTag( List( "devoxx" ), "test" ) should be ( List( eventDevoxx ) )
+        EventDao.findByTag( List( "devoxx" ) ) should be ( List( eventDevoxx ) )
     }
     
     test( "should find events by tags 'devoxx' or 'java' " ) {
         initData
-        EventDao.findByTag( List( "devoxx", "java" ), "test" ) should be ( List( eventDevoxx, eventJava ) )
+        EventDao.findByTag( List( "devoxx", "java" ) ) should be ( List( eventDevoxx, eventJava ) )
     }
 
     val eventDevoxx: Event = new EventBuilder()

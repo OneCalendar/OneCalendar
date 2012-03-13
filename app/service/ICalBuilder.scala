@@ -13,10 +13,7 @@ class ICalBuilder {
     def buildCalendar( events: List[Event] ): String = {
         val componentList: ComponentList = new ComponentList()
 
-        events.map(
-            event =>
-                componentList.add( buildVEvent(event) )
-        )
+        events.map( event => componentList.add( buildVEvent(event) ) )
 
         val calendar: Calendar = buildCalendar( componentList )
 

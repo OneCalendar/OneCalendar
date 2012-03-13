@@ -1,15 +1,37 @@
 package dao
 
+import configuration.injection.{MongoConfiguration, MongoConfigurationInjection}
 import models.Event
 import collection.JavaConversions
 import org.joda.time.DateTime
 import com.mongodb._
 import fr.scala.util.collection.CollectionsUtils
-import java.util.{ArrayList, Arrays}
+import java.util.ArrayList
 
-object EventDao extends CollectionsUtils {
+object EventDao extends MongoConfigurationInjection with CollectionsUtils {
 
     val mongo: Mongo = new Mongo()
+
+    def saveEvent(dbName: String, event: Event) {
+        val bObject: BasicDBObject = fromEvent2DBObject(event)
+
+        getEventsCollection(dbName).save(bObject)
+
+    }
+
+    def findByTag( tags: List[String] )( implicit dbConfig: MongoConfiguration ): List[Event] = {
+        val eventCollection: DBCollection = getEventsCollection( dbConfig.dbName )
+        //db.events.find({"tags" : "java"})
+
+        val javaTags: java.util.List[ String ] = toArrayList( tags )
+
+        val query: DBObject = new QueryBuilder().put( "tags" ).in( javaTags ).get
+        //println("TEST QUERY: " + query.toString)    //TODO use logback play logger
+
+        val cursor: DBCursor = eventCollection.find( query )
+
+        dbCursortoEvents( cursor )
+    }
 
     def getEventsCollection(dbName: String): DBCollection = {
         val db: DB = getDatabase(dbName)
@@ -37,28 +59,7 @@ object EventDao extends CollectionsUtils {
         )
         event
     }
-
-    def saveEvent(dbName: String, event: Event) {
-        val bObject: BasicDBObject = fromEvent2DBObject(event)
-
-        getEventsCollection(dbName).save(bObject)
-
-    }
-
-    def findByTag( tags: List[String], dbName: String ): List[Event] = {
-        val eventCollection: DBCollection = getEventsCollection( dbName )
-        //db.events.find({"tags" : "java"})
-
-        val javaTags: java.util.List[ String ] = toArrayList( tags )
-
-        val query: DBObject = new QueryBuilder().put( "tags" ).in( javaTags ).get
-        println("TEST QUERY: " + query.toString)    //TODO use logback play logger
-
-        val cursor: DBCursor = eventCollection.find( query )
-
-        dbCursortoEvents( cursor )
-    }
-
+    
     private def fromEvent2DBObject( event: Event ): BasicDBObject = {
         val bObject: BasicDBObject = new BasicDBObject()
         bObject.put("uid", event.uid)
