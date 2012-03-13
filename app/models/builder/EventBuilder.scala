@@ -3,11 +3,6 @@ package models.builder
 import org.joda.time.DateTime
 import models.Event
 
-/**
- * User: ugo
- * Date: 12/03/12
- */
-
 class EventBuilder {
 
     private var uid: String = _

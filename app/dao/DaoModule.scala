@@ -4,12 +4,6 @@ import models.Event
 import collection.JavaConversions
 import org.joda.time.DateTime
 import com.mongodb._
-import java.util.Map
-
-/**
- * User: amira
- * Date: 09/03/12
- */
 
 object DaoModule {
 
@@ -24,19 +18,6 @@ object DaoModule {
         val db: DB = mongo.getDB(dbname)
         db.requestStart()
         db
-    }
-
-
-    def fromEvent2DBObject(event: Event): BasicDBObject = {
-        val bObject: BasicDBObject = new BasicDBObject()
-        bObject.put("uid", event.uid)
-        bObject.put("title", event.title)
-        bObject.put("begin", event.begin.toDate.getTime)
-        bObject.put("end", event.end.toDate.getTime)
-        bObject.put("location", event.location)
-        bObject.put("description", event.description)
-        bObject.put("tags", JavaConversions.asJavaCollection(event.tags))
-        bObject
     }
 
     def fromDbObject2Event(one: DBObject): Event = {
@@ -60,5 +41,17 @@ object DaoModule {
 
         getEventsCollection(dbName).save(bObject)
 
+    }
+
+    private def fromEvent2DBObject( event: Event ): BasicDBObject = {
+        val bObject: BasicDBObject = new BasicDBObject()
+        bObject.put("uid", event.uid)
+        bObject.put("title", event.title)
+        bObject.put("begin", event.begin.toDate.getTime)
+        bObject.put("end", event.end.toDate.getTime)
+        bObject.put("location", event.location)
+        bObject.put("description", event.description)
+        bObject.put("tags", JavaConversions.asJavaCollection(event.tags))
+        bObject
     }
 }
