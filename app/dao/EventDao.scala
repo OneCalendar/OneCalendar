@@ -23,8 +23,8 @@ object EventDao extends CollectionsUtils {
 
     def fromDbObject2Event(one: DBObject): Event = {
         val tags: BasicDBList = one.toMap.get("tags").asInstanceOf[BasicDBList]
-        // TODO collection doesn't automatically map
-        val scalaTags = tags.toArray.toList.map(_.asInstanceOf[String])
+        val scalaTags: List[String] = tags.toArray.toList.map(_.asInstanceOf[String])
+
         val event: Event = new Event(
             one.toMap.get("uid").asInstanceOf[String],
             one.toMap.get("title").asInstanceOf[String],
