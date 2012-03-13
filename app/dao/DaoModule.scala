@@ -1,7 +1,8 @@
 package dao
 
 import com.mongodb.{Mongo, DB}
-import org.jongo.Jongo
+import org.jongo.{MongoCollection, Jongo}
+import models.Event
 
 /**
  * User: amira
@@ -10,14 +11,22 @@ import org.jongo.Jongo
 
 object DaoModule {
 
-    def getDatabase(dbname: String): DB = {
-        startDB(dbname).getDatabase
-    }
+  var mongo: Mongo  = new Mongo()
 
-    def startDB(dbname: String): Jongo = {
-        val mongo: Mongo = new Mongo()
-        val db: DB = mongo.getDB(dbname)
-        val jongo: Jongo = new Jongo(db)
-        jongo;
-    }
+  def getEventsCollection(dbName :String): MongoCollection = {
+    val db : DB = getDatabase(dbName)
+    new Jongo(db).getCollection("events")
+   }
+
+   def getDatabase(dbname: String): DB = {
+    mongo.getDB(dbname)
+  }
+
+  def stopConnection(){
+     mongo.close()
+   }
+
+  def saveEvent (dbName :String, event :Event) {
+    getEventsCollection(dbName).save(event)
+  }
 }
