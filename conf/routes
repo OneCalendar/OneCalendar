@@ -5,7 +5,7 @@
 # Home page
 GET     /                           controllers.Application.index
 GET     /ics                        controllers.Application.flux
-GET     /search/*keyWords           controllers.Application.findByTags(keyWords)
+GET     /events/*keyWords           controllers.Application.findByTags(keyWords)
 
 # Hacking application to load DevoxxCalendar from google agenda
 GET     /loadDevoxxCalendar         controllers.Application.loadDevoxxCalendar
