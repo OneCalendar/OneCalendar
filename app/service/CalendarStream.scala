@@ -57,8 +57,8 @@ class CalendarStream {
     
     val stub: Event = new EventBuilder()
         .title( "Seren, la serialisation sous steroides !" )
-        .begin( new DateTime( 2010, 01, 01, 12, 0, 0 ) )
-        .end( new DateTime( 2010, 01, 01, 14, 0, 0 ) )
+        .begin( new DateTime)
+        .end( new DateTime().plusHours(2) )
         .location( "Salle E. Fitzgerald & L. Armstrong" )
         .description( "Speaker(s) : Olivier Croisier\n" +
         "\n" +
