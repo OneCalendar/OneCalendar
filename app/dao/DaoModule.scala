@@ -13,7 +13,7 @@ import java.util.Map
 
 object DaoModule {
 
-    var mongo: Mongo = new Mongo()
+    val mongo: Mongo = new Mongo()
 
     def getEventsCollection(dbName: String): DBCollection = {
         val db: DB = getDatabase(dbName)
