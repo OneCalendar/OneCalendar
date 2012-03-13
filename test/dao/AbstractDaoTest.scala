@@ -17,22 +17,22 @@ class AbstractDaoTest extends FunSuite with BeforeAndAfterAll with ShouldMatcher
 
     def ensureDbPathDoesNotExists(): File = {
         var dbPath: File = new File("target/data")
-        if ( dbPath.exists() ) {
+        if (dbPath.exists()) {
             Files.delete(dbPath)
             dbPath.exists() should be(false)
         }
         dbPath
     }
 
-    def startMongoDbAsDaemon(): ArrayList[ String ] = {
+    def startMongoDbAsDaemon(): ArrayList[String] = {
         var processBuilder: ProcessBuilder = new ProcessBuilder("mongod", "--dbpath", "data/", "--fork", "--logpath", "data/mongodb.log")
         processBuilder.directory(new File("target"))
         processBuilder.redirectErrorStream(true)
         var pwd: Process = processBuilder.start()
         var outputReader: BufferedReader = new BufferedReader(new InputStreamReader(pwd.getInputStream()))
         var output: String = outputReader.readLine()
-        val lines: ArrayList[ String ] = new ArrayList()
-        while ( output != null ) {
+        val lines: ArrayList[String] = new ArrayList()
+        while (output != null) {
             lines.add(output)
             output = outputReader.readLine()
         }
@@ -44,7 +44,7 @@ class AbstractDaoTest extends FunSuite with BeforeAndAfterAll with ShouldMatcher
     def ConnectionToMongodbIsPossible() {
         var server: Mongo = null
         try {
-            while ( server == null ) {
+            while (server == null) {
                 Thread.sleep(250);
                 server = new MongoURI("mongodb://127.0.0.1").connect()
             }
@@ -57,7 +57,7 @@ class AbstractDaoTest extends FunSuite with BeforeAndAfterAll with ShouldMatcher
     override def beforeAll() {
         var dbPath: File = ensureDbPathDoesNotExists()
         dbPath.mkdir() should be(true)
-        var lines: ArrayList[ String ] = startMongoDbAsDaemon()
+        var lines: ArrayList[String] = startMongoDbAsDaemon()
         lines.get(0) should startWith("forked process: ")
         lines.get(1) should startWith("all output going to: ")
         lines.get(1) should endWith("data/mongodb.log")
