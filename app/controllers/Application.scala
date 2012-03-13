@@ -1,19 +1,28 @@
 package controllers
 
-import play.api._
 import play.api.mvc._
 import service.{CalendarStream, ICalBuilder}
+import models.Event
 
 object Application extends Controller {
 
-  val calendarService: ICalBuilder = new ICalBuilder()
+    val calendarService: ICalBuilder = new ICalBuilder()
 
-  def index = Action {
-    Ok( views.html.index() )
-  }
+    def index = Action {
+        Ok(views.html.index())
+    }
 
-  def flux = Action {
-    Ok( calendarService.buildCalendar( new CalendarStream().stubEvents ) ).as( "text/calendar" )
-  }
+    def flux = Action {
+        renderEvents(new CalendarStream().stubEvents)
+    }
+
+    def searchFlux(search: String) = Action {
+        val tags: List[String] = search.split(" ").toList
+        renderEvents(new CalendarStream().search(tags))
+    }
+
+    private def renderEvents(events: List[ Event ] ) = {
+        Ok(calendarService.buildCalendar(events)).as("text/calendar")
+    }
 
 }

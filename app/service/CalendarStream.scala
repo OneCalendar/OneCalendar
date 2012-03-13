@@ -50,6 +50,14 @@ class CalendarStream {
             "END:VEVENT\n" +
             "END:VCALENDAR"
     }
+    
+    def search(tags: List[String]) : List[ Event ]  = {
+        if (tags.contains("java")) {
+            stubEvents
+        } else {
+            null
+        }
+    }
 
     def stubEvents: List[ Event ] = {
         List( stub )
