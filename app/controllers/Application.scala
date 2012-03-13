@@ -3,8 +3,12 @@ package controllers
 import play.api.mvc._
 import service.{CalendarStream, ICalBuilder}
 import models.Event
+import dao.configuration.injection.MongoConfiguration
+import dao.EventDao
 
 object Application extends Controller {
+
+    implicit val mongoConfigProd: MongoConfiguration = MongoConfiguration( "OneCalendar" )
 
     val calendarService: ICalBuilder = new ICalBuilder()
 
@@ -16,10 +20,9 @@ object Application extends Controller {
         renderEvents(new CalendarStream().stubEvents)
     }
 
-    def searchFlux( search: String ) = Action {
-        val tags: List[String] = search.split(" ").toList
-        //EventDao.find(tags) with ProdParameterMongoInjection
-        renderEvents( new CalendarStream().search( tags ) )
+    def findByTags( keyWords: String ) = Action {
+        val tags: List[String] = keyWords.split(" ").toList
+        renderEvents( EventDao.findByTag( tags ) )
     }
 
     private def renderEvents( events: List[ Event ] ) = {

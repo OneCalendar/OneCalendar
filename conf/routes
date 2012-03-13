@@ -5,7 +5,7 @@
 # Home page
 GET     /                           controllers.Application.index
 GET     /ics                        controllers.Application.flux
-GET     /ics/*search                controllers.Application.searchFlux(search)
+GET     /search/*keyWords                controllers.Application.findByTags(keyWords)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
