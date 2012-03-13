@@ -12,23 +12,27 @@ object EventDao extends MongoConfigurationInjection with CollectionsUtils {
 
     val mongo: Mongo = new Mongo()
 
-    def saveEvent( event: Event )( implicit dbConfig: MongoConfiguration ) {
-        val bObject: BasicDBObject = fromEvent2DBObject( event )
-        getEventsCollection( dbConfig.dbName ).save( bObject )
+    def deleteAll()(implicit dbConfig: MongoConfiguration) {
+        getEventsCollection(dbConfig.dbName).drop()
     }
 
-    def findByTag( tags: List[String] )( implicit dbConfig: MongoConfiguration ): List[Event] = {
-        val eventCollection: DBCollection = getEventsCollection( dbConfig.dbName )
+    def saveEvent(event: Event)(implicit dbConfig: MongoConfiguration) {
+        val bObject: BasicDBObject = fromEvent2DBObject(event)
+        getEventsCollection(dbConfig.dbName).save(bObject)
+    }
+
+    def findByTag(tags: List[String])(implicit dbConfig: MongoConfiguration): List[Event] = {
+        val eventCollection: DBCollection = getEventsCollection(dbConfig.dbName)
         //db.events.find({"tags" : "java"})
 
-        val javaTags: java.util.List[ String ] = toArrayList( tags )
+        val javaTags: java.util.List[String] = toArrayList(tags)
 
-        val query: DBObject = new QueryBuilder().put( "tags" ).in( javaTags ).get
+        val query: DBObject = new QueryBuilder().put("tags").in(javaTags).get
         //println("TEST QUERY: " + query.toString)    //TODO use logback play logger
 
-        val cursor: DBCursor = eventCollection.find( query )
+        val cursor: DBCursor = eventCollection.find(query)
 
-        dbCursortoEvents( cursor )
+        dbCursortoEvents(cursor)
     }
 
     def getEventsCollection(dbName: String): DBCollection = {
@@ -57,8 +61,8 @@ object EventDao extends MongoConfigurationInjection with CollectionsUtils {
         )
         event
     }
-    
-    private def fromEvent2DBObject( event: Event ): BasicDBObject = {
+
+    private def fromEvent2DBObject(event: Event): BasicDBObject = {
         val bObject: BasicDBObject = new BasicDBObject()
         bObject.put("uid", event.uid)
         bObject.put("title", event.title)
@@ -70,17 +74,17 @@ object EventDao extends MongoConfigurationInjection with CollectionsUtils {
         bObject
     }
 
-    private def toArrayList( tags: List[String] ): java.util.List[String] = {
-        val javaTags: java.util.List[ String ] = new ArrayList[ String ]()
-        tags.foreach( tag => javaTags.add(tag) )
+    private def toArrayList(tags: List[String]): java.util.List[String] = {
+        val javaTags: java.util.List[String] = new ArrayList[String]()
+        tags.foreach(tag => javaTags.add(tag))
 
         javaTags
     }
 
-    private def dbCursortoEvents( cursor: DBCursor ): List[ Event ] = {
-        var events: List[ Event ] = List() //TODO refacotr to use immutable list in val
+    private def dbCursortoEvents(cursor: DBCursor): List[Event] = {
+        var events: List[Event] = List() //TODO refacotr to use immutable list in val
 
-        while ( cursor.hasNext ) {
+        while (cursor.hasNext) {
             val dbObject: DBObject = cursor.next
             val event: Event = fromDbObject2Event(dbObject)
             events = events :+ event

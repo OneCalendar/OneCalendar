@@ -13,6 +13,7 @@ class LoadICalStream {
     def parseLoad(url: String )
                  ( implicit dbConfig: MongoConfiguration = MongoConfiguration( "OneCalendar" ) ) {
 
+        EventDao.deleteAll()
         val urlCal = new URL(url)
         val builder = new CalendarBuilder();
         val cal = builder.build(urlCal.openStream());
