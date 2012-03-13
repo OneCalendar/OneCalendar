@@ -14,7 +14,7 @@ import models.builder.EventBuilder
  * Date: 09/03/12
  */
 
-class DaoModuleTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
+class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
 
     /**
      * RUNNING MONGO SERVER BEFORE in target directory -
@@ -37,12 +37,12 @@ class DaoModuleTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     }
     
     test("connecting to mongodb test") {
-        val db: DB = DaoModule.getDatabase("test")
+        val db: DB = EventDao.getDatabase("test")
         db.getName should be("test")
     }
 
     test("getting events collection") {
-        val eventsCollection: DBCollection = DaoModule.getEventsCollection("test")
+        val eventsCollection: DBCollection = EventDao.getEventsCollection("test")
         eventsCollection.getName should be("events")
     }
 
@@ -56,12 +56,12 @@ class DaoModuleTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
             .location("")
             .tags(List("java", "devoxx"))
         .toEvent
-        DaoModule.saveEvent("test", event)
+        EventDao.saveEvent("test", event)
 
-        val eventsCollection: DBCollection = DaoModule.getEventsCollection("test")
+        val eventsCollection: DBCollection = EventDao.getEventsCollection("test")
         eventsCollection.count should be (1)
 
         val one: DBObject = eventsCollection.findOne()
-        DaoModule.fromDbObject2Event(one) should be(event)
+        EventDao.fromDbObject2Event(one) should be(event)
     }
 }

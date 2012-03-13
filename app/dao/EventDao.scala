@@ -5,7 +5,7 @@ import collection.JavaConversions
 import org.joda.time.DateTime
 import com.mongodb._
 
-object DaoModule {
+object EventDao {
 
     val mongo: Mongo = new Mongo()
 
