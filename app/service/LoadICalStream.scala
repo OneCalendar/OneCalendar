@@ -7,14 +7,6 @@ import models.Event
 import org.joda.time.DateTime
 import dao.EventDao
 
-/**
- * Created by IntelliJ IDEA.
- * User: amira
- * Date: 13/03/12
- * Time: 13:58
- * To change this template use File | Settings | File Templates.
- */
-
 class LoadICalStream {
 
     def parseLoad(url: String, dbName: String="oneCalendar" ) {
