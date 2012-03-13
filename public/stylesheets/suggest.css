@@ -1,7 +1,7 @@
 section {
     width: 500px;
     margin: auto;
-    margin-top: 300px;
+    margin-top: 180px;
 
     font-family: ubuntu;
     font-size: 15px;
@@ -68,7 +68,7 @@ section > h4 {
             *********************************/
 
 section#devoxx {
-    margin-top: 100px;
+    margin-top: 200px;
 }
 
 section#devoxx fieldset {
@@ -85,8 +85,8 @@ section#devoxx fieldset > legend {
 
 section#devoxx a {
     float: left;
-    margin-right: 6%;
-    margin-left: 8%;
+    margin-right: 5%;
+    margin-left: 6%;
 }
 
 a#devoxxUrl {
@@ -94,6 +94,13 @@ a#devoxxUrl {
     border: 0;
     width: 90px;
     height: 90px;
+}
+
+a#devoxxWebCal {
+    background-image:url(/assets/images/webcal.gif);
+    border: 0;
+    width: 88px;
+    height: 37px;
 }
 
 .clear {
