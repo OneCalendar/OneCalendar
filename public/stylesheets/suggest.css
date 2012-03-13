@@ -62,3 +62,40 @@ section > h4 {
 #suggest + ul > li:hover {
     background-color: grey;
 }
+
+            /********************************
+            *         DEVOXX
+            *********************************/
+
+section#devoxx {
+    margin-top: 100px;
+}
+
+section#devoxx fieldset {
+    width: 88%;
+}
+
+section#devoxx fieldset > legend {
+    background-image:url(http://www.devoxx.com/download/attachments/5342010/Logo-Devoxx-France-seul.png?version=1&modificationDate=1320431916000);
+    border: 0;
+    width: 222px;
+    height: 92px;
+    margin-bottom: 5%;
+}
+
+section#devoxx a {
+    float: left;
+    margin-right: 6%;
+    margin-left: 8%;
+}
+
+a#devoxxUrl {
+    background-image:url(/assets/images/ical_35p.png);
+    border: 0;
+    width: 90px;
+    height: 90px;
+}
+
+.clear {
+    clear: both;
+}

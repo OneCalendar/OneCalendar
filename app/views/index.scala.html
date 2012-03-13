@@ -12,10 +12,18 @@
     <section>
         <h2>One Calendar !</h2><h4>to meet them all</h4>
         <input type="text" id="suggest" value="" />
-        <a href="/ics" alt="flux devoxx">Devoxx</a>
     </section>
 
-    <a id="googleCal" href="http://www.google.com/calendar/render?cid=https%3A%2F%2Fwww.google.com%2Fcalendar%2Fical%2Fu74tb1k9n53bnc5qsg3694p2l4%2540group.calendar.google.com%2Fpublic%2Fbasic.ics" target="_blank"/>
-    <a id="webcal" href="webcal://localhost:9000/events/devoxx">webcal</a>
+    <section id="devoxx">
+        <fieldset>
+            <legend></legend>
+            <a href="/events/devoxx" alt="flux devoxx" id="devoxxUrl"></a>
+            <a id="googleCal"
+               href="http://www.google.com/calendar/render?cid=https%3A%2F%2Fwww.google.com%2Fcalendar%2Fical%2Fu74tb1k9n53bnc5qsg3694p2l4%2540group.calendar.google.com%2Fpublic%2Fbasic.ics"
+               target="_blank"/>
+            <a id="webcal" href="webcal://localhost:9000/events/devoxx">webcal</a>
+        </fieldset>
+    </section>
+    <div class="clear"></div>
 </body>
 </html>
