@@ -6,6 +6,7 @@ import collection.immutable.List
 import com.mongodb._
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.{BeforeAndAfter, FunSuite}
+import models.builder.EventBuilder
 
 
 /**
@@ -46,18 +47,21 @@ class DaoModuleTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     }
 
     test("saving a new event") {
-        val event: Event =
-            new Event("1", "BOF",
-                new DateTime(2012, 04, 19, 0, 0, 0, 0),
-                new DateTime(2012, 04, 19, 0, 0, 0, 0), "", "", List("java", "devoxx"))
+        val event: Event = new EventBuilder()
+            .uid("1")
+            .title("BOF")
+            .begin(new DateTime(2012, 04, 19, 0, 0, 0, 0))
+            .end(new DateTime(2012, 04, 19, 0, 0, 0, 0))
+            .description("")
+            .location("")
+            .tags(List("java", "devoxx"))
+        .toEvent
         DaoModule.saveEvent("test", event)
 
         val eventsCollection: DBCollection = DaoModule.getEventsCollection("test")
-        val savedEvent = eventsCollection.count()
-        savedEvent should be (1)
+        eventsCollection.count should be (1)
 
         val one: DBObject = eventsCollection.findOne()
-
         DaoModule.fromDbObject2Event(one) should be(event)
     }
 }
