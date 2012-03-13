@@ -61,21 +61,32 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
 
     test( "should find event by tag 'devoxx'" ) {
         initData
-
-        EventDao.findByTag("devoxx", "test") should be (List(event))
+        EventDao.findByTag( List( "devoxx" ), "test" ) should be ( List( eventDevoxx ) )
+    }
+    
+    test( "should find events by tags 'devoxx' or 'java' " ) {
+        initData
+        EventDao.findByTag( List( "devoxx", "java" ), "test" ) should be ( List( eventDevoxx, eventJava ) )
     }
 
-    val event: Event = new EventBuilder()
+    val eventDevoxx: Event = new EventBuilder()
         .uid("1")
         .title("BOF")
         .begin(new DateTime(2012, 04, 19, 0, 0, 0, 0))
         .end(new DateTime(2012, 04, 19, 0, 0, 0, 0))
-        .description("")
-        .location("")
-        .tags(List("java", "devoxx"))
+        .tags(List("devoxx"))
+        .toEvent
+
+    val eventJava: Event = new EventBuilder()
+        .uid("2")
+        .title("BOF")
+        .begin(new DateTime(2012, 04, 19, 0, 0, 0, 0))
+        .end(new DateTime(2012, 04, 19, 0, 0, 0, 0))
+        .tags(List("java"))
         .toEvent
 
     private def initData {
-        EventDao.saveEvent("test", event)
+        EventDao.saveEvent( "test", eventDevoxx )
+        EventDao.saveEvent( "test", eventJava )
     }
 }

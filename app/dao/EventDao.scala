@@ -5,6 +5,7 @@ import collection.JavaConversions
 import org.joda.time.DateTime
 import com.mongodb._
 import fr.scala.util.collection.CollectionsUtils
+import java.util.{ArrayList, Arrays}
 
 object EventDao extends CollectionsUtils {
 
@@ -44,24 +45,18 @@ object EventDao extends CollectionsUtils {
 
     }
 
-    def findByTag(tag: String, dbName: String): List[Event] = {
-        val eventCollection: DBCollection = getEventsCollection(dbName)
+    def findByTag( tags: List[String], dbName: String ): List[Event] = {
+        val eventCollection: DBCollection = getEventsCollection( dbName )
         //db.events.find({"tags" : "java"})
-        
-        val query: DBObject = new QueryBuilder().put( "tags" ).is( tag ).get
+
+        val javaTags: java.util.List[ String ] = toArrayList( tags )
+
+        val query: DBObject = new QueryBuilder().put( "tags" ).in( javaTags ).get
         println("TEST QUERY: " + query.toString)    //TODO use logback play logger
 
         val cursor: DBCursor = eventCollection.find( query )
 
-        var events: List[Event] = List()
-
-        while( cursor.hasNext ) {
-            val dbObject: DBObject = cursor.next
-            val event: Event = fromDbObject2Event( dbObject )
-            events = events :+ event
-        }
-        
-        events
+        dbCursortoEvents( cursor )
     }
 
     private def fromEvent2DBObject( event: Event ): BasicDBObject = {
@@ -74,5 +69,24 @@ object EventDao extends CollectionsUtils {
         bObject.put("description", event.description)
         bObject.put("tags", JavaConversions.asJavaCollection(event.tags))
         bObject
+    }
+
+    private def toArrayList( tags: List[String] ): java.util.List[String] = {
+        val javaTags: java.util.List[ String ] = new ArrayList[ String ]()
+        tags.foreach( tag => javaTags.add(tag) )
+
+        javaTags
+    }
+
+    private def dbCursortoEvents( cursor: DBCursor ): List[ Event ] = {
+        var events: List[ Event ] = List() //TODO refacotr to use immutable list in val
+
+        while ( cursor.hasNext ) {
+            val dbObject: DBObject = cursor.next
+            val event: Event = fromDbObject2Event(dbObject)
+            events = events :+ event
+        }
+
+        events
     }
 }
