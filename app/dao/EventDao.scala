@@ -4,8 +4,9 @@ import models.Event
 import collection.JavaConversions
 import org.joda.time.DateTime
 import com.mongodb._
+import fr.scala.util.collection.CollectionsUtils
 
-object EventDao {
+object EventDao extends CollectionsUtils {
 
     val mongo: Mongo = new Mongo()
 
@@ -41,6 +42,26 @@ object EventDao {
 
         getEventsCollection(dbName).save(bObject)
 
+    }
+
+    def findByTag(tag: String, dbName: String): List[Event] = {
+        val eventCollection: DBCollection = getEventsCollection(dbName)
+        //db.events.find({"tags" : "java"})
+        
+        val query: DBObject = new QueryBuilder().put( "tags" ).is( tag ).get
+        println("TEST QUERY: " + query.toString)    //TODO use logback play logger
+
+        val cursor: DBCursor = eventCollection.find( query )
+
+        var events: List[Event] = List()
+
+        while( cursor.hasNext ) {
+            val dbObject: DBObject = cursor.next
+            val event: Event = fromDbObject2Event( dbObject )
+            events = events :+ event
+        }
+        
+        events
     }
 
     private def fromEvent2DBObject( event: Event ): BasicDBObject = {

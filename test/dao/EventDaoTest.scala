@@ -8,12 +8,6 @@ import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.{BeforeAndAfter, FunSuite}
 import models.builder.EventBuilder
 
-
-/**
- * User: amira
- * Date: 09/03/12
- */
-
 class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
 
     /**
@@ -63,5 +57,25 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
 
         val one: DBObject = eventsCollection.findOne()
         EventDao.fromDbObject2Event(one) should be(event)
+    }
+
+    test( "should find event by tag 'devoxx'" ) {
+        initData
+
+        EventDao.findByTag("devoxx", "test") should be (List(event))
+    }
+
+    val event: Event = new EventBuilder()
+        .uid("1")
+        .title("BOF")
+        .begin(new DateTime(2012, 04, 19, 0, 0, 0, 0))
+        .end(new DateTime(2012, 04, 19, 0, 0, 0, 0))
+        .description("")
+        .location("")
+        .tags(List("java", "devoxx"))
+        .toEvent
+
+    private def initData {
+        EventDao.saveEvent("test", event)
     }
 }
