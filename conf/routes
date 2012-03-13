@@ -5,7 +5,10 @@
 # Home page
 GET     /                           controllers.Application.index
 GET     /ics                        controllers.Application.flux
-GET     /search/*keyWords                controllers.Application.findByTags(keyWords)
+GET     /search/*keyWords           controllers.Application.findByTags(keyWords)
+
+# Hacking application to load DevoxxCalendar from google agenda
+GET     /loadDevoxxCalendar         controllers.Application.loadDevoxxCalendar
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
