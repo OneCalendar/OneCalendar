@@ -5,7 +5,7 @@ import net.fortuna.ical4j.data.CalendarBuilder
 import net.fortuna.ical4j.model.{Component, ComponentList}
 import models.Event
 import org.joda.time.DateTime
-import dao.DaoModule
+import dao.EventDao
 
 /**
  * Created by IntelliJ IDEA.
@@ -37,7 +37,7 @@ class LoadICalStream {
                 List("devoxx", "java"))
 
 
-            DaoModule.saveEvent(dbName, oneEvent)
+            EventDao.saveEvent(dbName, oneEvent)
 
         })
     }
