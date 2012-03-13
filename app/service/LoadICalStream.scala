@@ -6,10 +6,13 @@ import net.fortuna.ical4j.model.{Component, ComponentList}
 import models.Event
 import org.joda.time.DateTime
 import dao.EventDao
+import dao.configuration.injection.MongoConfiguration
 
 class LoadICalStream {
 
-    def parseLoad(url: String, dbName: String="oneCalendar" ) {
+    def parseLoad(url: String )
+                 ( implicit dbConfig: MongoConfiguration = MongoConfiguration( "OneCalendar" ) ) {
+
         val urlCal = new URL(url)
         val builder = new CalendarBuilder();
         val cal = builder.build(urlCal.openStream());
@@ -20,6 +23,7 @@ class LoadICalStream {
             import net.fortuna.ical4j.model.component._
 
             val event: VEvent = arg.asInstanceOf[VEvent]
+
             val oneEvent: Event = new Event(event.getUid.getValue,
                 event.getSummary.getValue,
                 new DateTime(event.getStartDate.getDate),
@@ -29,8 +33,7 @@ class LoadICalStream {
                 List("devoxx", "java"))
 
 
-            EventDao.saveEvent(dbName, oneEvent)
-
+            EventDao.saveEvent(oneEvent)
         })
     }
 

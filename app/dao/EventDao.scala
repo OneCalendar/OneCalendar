@@ -12,11 +12,9 @@ object EventDao extends MongoConfigurationInjection with CollectionsUtils {
 
     val mongo: Mongo = new Mongo()
 
-    def saveEvent(dbName: String, event: Event) {
-        val bObject: BasicDBObject = fromEvent2DBObject(event)
-
-        getEventsCollection(dbName).save(bObject)
-
+    def saveEvent( event: Event )( implicit dbConfig: MongoConfiguration ) {
+        val bObject: BasicDBObject = fromEvent2DBObject( event )
+        getEventsCollection( dbConfig.dbName ).save( bObject )
     }
 
     def findByTag( tags: List[String] )( implicit dbConfig: MongoConfiguration ): List[Event] = {

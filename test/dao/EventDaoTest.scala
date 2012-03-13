@@ -53,7 +53,8 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
             .location("")
             .tags(List("java", "devoxx"))
         .toEvent
-        EventDao.saveEvent("test", event)
+
+        EventDao.saveEvent( event )
 
         val eventsCollection: DBCollection = EventDao.getEventsCollection("test")
         eventsCollection.count should be (1)
@@ -89,7 +90,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
         .toEvent
 
     private def initData {
-        EventDao.saveEvent( "test", eventDevoxx )
-        EventDao.saveEvent( "test", eventJava )
+        EventDao.saveEvent( eventDevoxx )
+        EventDao.saveEvent( eventJava )
     }
 }
