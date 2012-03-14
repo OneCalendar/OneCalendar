@@ -103,10 +103,10 @@ a.gcal {
 }
 
 a.webcal {
-    background-image:url(/assets/images/webcal.gif);
+    background-image:url(/assets/images/iCal_Icon.jpeg);
     border: 0;
-    width: 88px;
-    height: 37px;
+    width: 48px;
+    height: 48px;
 }
 
 
