@@ -89,10 +89,10 @@ section > h4 {
 }
 
 a.ical {
-    background-image:url(/assets/images/ical_35p.png);
+    background-image:url(/assets/images/text.png);
     border: 0;
-    width: 90px;
-    height: 90px;
+    width: 48px;
+    height: 48px;
 }
 
 a.gcal {
