@@ -79,8 +79,18 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     }
 
     test("should find everything") {
-        initData4
-        EventDao.findByTag() should have size 4
+        (1 to 50).foreach(
+            id => EventDao.saveEvent(
+                    new EventBuilder()
+                        .uid(id.toString)
+                        .title(id.toString)
+                        .begin(new DateTime)
+                        .end(new DateTime)
+                        .tags(List())
+                    .toEvent
+                )
+        )
+        EventDao.findByTag() should have size 50
     }
 
     val eventDevoxx: Event = new EventBuilder()
