@@ -34,5 +34,4 @@ object Application extends Controller {
             case _ => Ok( calendarService.buildCalendar( events ) ).as( "text/calendar" )
         }
     }
-
 }
