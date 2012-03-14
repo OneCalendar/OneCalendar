@@ -25,26 +25,21 @@
       $('#suggest').blur();
       return expect($('#suggest + ul').length).toEqual(0);
     });
-    it("5. should display links when user click on event", function() {
+    return it("5. should display links when user click on event", function() {
       var expectedGoogleCalendarLinkPrefix, expectedGoogleCalendarLinkSuffix, expectedWebcalLinkPrefix, expectedWebcalLinkSuffix;
-      setFixtures('<input type="text" id="suggest" value="a" />\n<div id="temp"></div>\n<div id="subscription"></div>');
+      setFixtures('<input type="text" id="suggest" value="a" />\n<div id="temp"></div>\n<div id="subscription" style="display:none;">\n  <a class="ical"></a>\n  <a class="gcal"></a>\n  <a class="webcal"></a>\n</div>');
       SUGGEST.displaySubscription();
       $("#temp").click();
       expectedGoogleCalendarLinkPrefix = "http://www.google.com/calendar/render?cid=";
       expectedGoogleCalendarLinkSuffix = "%2Fevents%2Fa";
       expectedWebcalLinkPrefix = "webcal://";
       expectedWebcalLinkSuffix = "/events/a";
-      expect($('#subscription > a')).toHaveAttr('href', '/events/a');
-      expect($('#subscription > a + a').attr('href')).toContain(expectedGoogleCalendarLinkPrefix);
-      expect($('#subscription > a + a').attr('href')).toContain(expectedGoogleCalendarLinkSuffix);
-      expect($('#subscription > a + a + a').attr('href')).toContain(expectedWebcalLinkPrefix);
-      return expect($('#subscription > a + a + a').attr('href')).toContain(expectedWebcalLinkSuffix);
-    });
-    return it("6 should display links only once", function() {
-      setFixtures('<input type="text" id="suggest" value="a" />\n<div id="temp"></div>\n<div id="subscription"></div>');
-      SUGGEST.displaySubscription();
-      $("#temp").click().click();
-      return expect($('#subscription a').size()).toEqual(3);
+      expect($('#subscription').css('display')).toEqual('block');
+      expect($('#subscription a.ical')).toHaveAttr('href', '/events/a');
+      expect($('#subscription a.gcal').attr('href')).toContain(expectedGoogleCalendarLinkPrefix);
+      expect($('#subscription a.gcal').attr('href')).toContain(expectedGoogleCalendarLinkSuffix);
+      expect($('#subscription a.webcal').attr('href')).toContain(expectedWebcalLinkPrefix);
+      return expect($('#subscription a.webcal').attr('href')).toContain(expectedWebcalLinkSuffix);
     });
   });
 

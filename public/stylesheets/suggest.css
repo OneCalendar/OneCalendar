@@ -1,10 +1,12 @@
 section {
-    width: 700px;
+    width: 500px;
     margin: auto;
-    margin-top: 180px;
-
     font-family: ubuntu;
     font-size: 15px;
+}
+
+section#search {
+    margin-top: 180px;
 }
 
 section > h3 {
@@ -17,14 +19,6 @@ section > h2 {
 
 section > h4 {
     margin-top: 0;
-}
-
-#googleCal {
-    background-image:url(http://www.google.com/calendar/images/ext/gc_button6_fr.gif);
-    border: 0;
-    width: 114px;
-    height: 36px;
-    display:block;
 }
 
 #suggest {
@@ -67,6 +61,55 @@ section > h4 {
     float: right;
 }
 
+.clear {
+    clear: both;
+}
+
+                        /*********************
+                        *           SUBSCRIPTION
+                        **********************/
+
+#subscription {
+    margin-top: 50px;
+    display: none;
+}
+
+#subscription fieldset {
+    width: 88%;
+}
+
+#subscription fieldset > legend {
+    font-size: 1.5em;
+}
+
+#subscription a {
+    float: left;
+    margin-right: 5%;
+    margin-left: 6%;
+}
+
+a.ical {
+    background-image:url(/assets/images/ical_35p.png);
+    border: 0;
+    width: 90px;
+    height: 90px;
+}
+
+a.gcal {
+    background-image:url(http://www.google.com/calendar/images/ext/gc_button6_fr.gif);
+    border: 0;
+    width: 114px;
+    height: 36px;
+}
+
+a.webcal {
+    background-image:url(/assets/images/webcal.gif);
+    border: 0;
+    width: 88px;
+    height: 37px;
+}
+
+
             /********************************
             *         DEVOXX
             *********************************/
@@ -91,22 +134,4 @@ section#devoxx a {
     float: left;
     margin-right: 5%;
     margin-left: 6%;
-}
-
-a#devoxxUrl {
-    background-image:url(/assets/images/ical_35p.png);
-    border: 0;
-    width: 90px;
-    height: 90px;
-}
-
-a#devoxxWebCal {
-    background-image:url(/assets/images/webcal.gif);
-    border: 0;
-    width: 88px;
-    height: 37px;
-}
-
-.clear {
-    clear: both;
 }

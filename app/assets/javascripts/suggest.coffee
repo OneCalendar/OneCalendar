@@ -13,12 +13,13 @@
 
   displaySubscription : ->
     $('#temp').click ->
-
-      $('#subscription a').remove()
       googleCalendarLinkPrefix = "http://www.google.com/calendar/render?cid="
       googleCalendarLinkSuffix = "%2Fevents%2F#{$('#suggest').val()}"
 
       userSearch = $('#suggest').val()
-      $('#subscription').append "<a href='/events/#{userSearch}'>a</a>
-      <a href='#{googleCalendarLinkPrefix + googleCalendarLinkSuffix}'>b</a>
-      <a href='webcal://...../events/a'>c</a>"
+
+      $('#subscription a.ical').attr('href', "/events/#{userSearch}")
+      $('#subscription a.gcal').attr('href', googleCalendarLinkPrefix + googleCalendarLinkSuffix)
+      $('#subscription a.webcal').attr('href', "webcal://...../events/#{userSearch}")
+
+      $('#subscription').show()

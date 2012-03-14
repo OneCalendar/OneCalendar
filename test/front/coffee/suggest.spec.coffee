@@ -36,7 +36,11 @@ describe 'google suggest like', ->
     setFixtures '''
       <input type="text" id="suggest" value="a" />
       <div id="temp"></div>
-      <div id="subscription"></div>
+      <div id="subscription" style="display:none;">
+        <a class="ical"></a>
+        <a class="gcal"></a>
+        <a class="webcal"></a>
+      </div>
     '''
 
     SUGGEST.displaySubscription()
@@ -47,21 +51,9 @@ describe 'google suggest like', ->
     expectedWebcalLinkPrefix = "webcal://"
     expectedWebcalLinkSuffix = "/events/a"
 
-    expect( $('#subscription > a') ).toHaveAttr('href', '/events/a')
-    expect( $('#subscription > a + a').attr('href') ).toContain(expectedGoogleCalendarLinkPrefix)
-    expect( $('#subscription > a + a').attr('href') ).toContain( expectedGoogleCalendarLinkSuffix )
-    expect( $('#subscription > a + a + a').attr('href') ).toContain( expectedWebcalLinkPrefix )
-    expect( $('#subscription > a + a + a').attr('href') ).toContain( expectedWebcalLinkSuffix )
-
-  it "6 should display links only once", ->
-    setFixtures '''
-        <input type="text" id="suggest" value="a" />
-        <div id="temp"></div>
-        <div id="subscription"></div>
-      '''
-
-    SUGGEST.displaySubscription()
-    $("#temp").click().click()
-
-    expect( $('#subscription a').size() ).toEqual(3)
-
+    expect( $('#subscription').css('display') ).toEqual('block')
+    expect( $('#subscription a.ical') ).toHaveAttr('href', '/events/a')
+    expect( $('#subscription a.gcal').attr('href') ).toContain(expectedGoogleCalendarLinkPrefix)
+    expect( $('#subscription a.gcal').attr('href') ).toContain( expectedGoogleCalendarLinkSuffix )
+    expect( $('#subscription a.webcal').attr('href') ).toContain( expectedWebcalLinkPrefix )
+    expect( $('#subscription a.webcal').attr('href') ).toContain( expectedWebcalLinkSuffix )
