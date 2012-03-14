@@ -11,7 +11,6 @@ object ApplicationBuild extends Build {
 
     val appDependencies = Seq(
         "org.scalatest" %% "scalatest" % "1.7.1" % "test",
-        "org.joda" % "joda-convert" % "1.2",
         "org.mongodb" % "mongo-java-driver" % "2.6.5",
         "org.easytesting" % "fest-util" % "1.1.6",
         "org.mnode.ical4j" % "ical4j" % "1.0.3"
