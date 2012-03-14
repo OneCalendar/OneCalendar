@@ -27,8 +27,41 @@ describe 'google suggest like', ->
       <ul><li>a</li></ul>
     '''
 
-
     SUGGEST.deleteSuggest()
     $('#suggest').blur()
 
     expect( $('#suggest + ul').length ).toEqual( 0 )
+
+  it "5. should display links when user click on event", ->
+    setFixtures '''
+      <input type="text" id="suggest" value="a" />
+      <div id="temp"></div>
+      <div id="subscription"></div>
+    '''
+
+    SUGGEST.displaySubscription()
+    $("#temp").click()
+
+    expectedGoogleCalendarLinkPrefix = "http://www.google.com/calendar/render?cid="
+    expectedGoogleCalendarLinkSuffix = "%2Fevents%2Fa"
+    expectedWebcalLinkPrefix = "webcal://"
+    expectedWebcalLinkSuffix = "/events/a"
+
+    expect( $('#subscription > a') ).toHaveAttr('href', '/events/a')
+    expect( $('#subscription > a + a').attr('href') ).toContain(expectedGoogleCalendarLinkPrefix)
+    expect( $('#subscription > a + a').attr('href') ).toContain( expectedGoogleCalendarLinkSuffix )
+    expect( $('#subscription > a + a + a').attr('href') ).toContain( expectedWebcalLinkPrefix )
+    expect( $('#subscription > a + a + a').attr('href') ).toContain( expectedWebcalLinkSuffix )
+
+  it "6 should display links only once", ->
+    setFixtures '''
+        <input type="text" id="suggest" value="a" />
+        <div id="temp"></div>
+        <div id="subscription"></div>
+      '''
+
+    SUGGEST.displaySubscription()
+    $("#temp").click().click()
+
+    expect( $('#subscription a').size() ).toEqual(3)
+

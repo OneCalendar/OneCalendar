@@ -1,5 +1,5 @@
 section {
-    width: 500px;
+    width: 700px;
     margin: auto;
     margin-top: 180px;
 
@@ -42,7 +42,7 @@ section > h4 {
 #suggest:focus {
 }
 
-#suggest + ul {
+#suggest ~ ul {
     list-style: none;
 
     width: 462px;
@@ -55,12 +55,16 @@ section > h4 {
     margin: 0;
 }
 
-#suggest + ul > li {
+#suggest ~ ul > li {
     padding-left: 10px;
 }
 
-#suggest + ul > li:hover {
+#suggest ~ ul > li:hover {
     background-color: grey;
+}
+
+#temp {
+    float: right;
 }
 
             /********************************

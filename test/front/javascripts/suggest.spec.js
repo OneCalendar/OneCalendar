@@ -19,11 +19,32 @@
       $('#suggest').keyup();
       return expect('<li>a</li><li>a</li>').toEqual($('#suggest + ul').html());
     });
-    return it('4. should delete ul element when marvelous input loose focus', function() {
+    it('4. should delete ul element when marvelous input loose focus', function() {
       setFixtures('<input type="text" id="suggest" value="a" />\n<ul><li>a</li></ul>');
       SUGGEST.deleteSuggest();
       $('#suggest').blur();
       return expect($('#suggest + ul').length).toEqual(0);
+    });
+    it("5. should display links when user click on event", function() {
+      var expectedGoogleCalendarLinkPrefix, expectedGoogleCalendarLinkSuffix, expectedWebcalLinkPrefix, expectedWebcalLinkSuffix;
+      setFixtures('<input type="text" id="suggest" value="a" />\n<div id="temp"></div>\n<div id="subscription"></div>');
+      SUGGEST.displaySubscription();
+      $("#temp").click();
+      expectedGoogleCalendarLinkPrefix = "http://www.google.com/calendar/render?cid=";
+      expectedGoogleCalendarLinkSuffix = "%2Fevents%2Fa";
+      expectedWebcalLinkPrefix = "webcal://";
+      expectedWebcalLinkSuffix = "/events/a";
+      expect($('#subscription > a')).toHaveAttr('href', '/events/a');
+      expect($('#subscription > a + a').attr('href')).toContain(expectedGoogleCalendarLinkPrefix);
+      expect($('#subscription > a + a').attr('href')).toContain(expectedGoogleCalendarLinkSuffix);
+      expect($('#subscription > a + a + a').attr('href')).toContain(expectedWebcalLinkPrefix);
+      return expect($('#subscription > a + a + a').attr('href')).toContain(expectedWebcalLinkSuffix);
+    });
+    return it("6 should display links only once", function() {
+      setFixtures('<input type="text" id="suggest" value="a" />\n<div id="temp"></div>\n<div id="subscription"></div>');
+      SUGGEST.displaySubscription();
+      $("#temp").click().click();
+      return expect($('#subscription a').size()).toEqual(3);
     });
   });
 

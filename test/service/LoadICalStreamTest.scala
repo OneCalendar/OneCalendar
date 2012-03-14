@@ -30,7 +30,5 @@ class LoadICalStreamTest extends FunSuite with ShouldMatchers with BeforeAndAfte
         iCalService.parseLoad( url )
         var count: Int = EventDao.findAll().size
         count should be > 50
-        count should be < 60
-
     }
 }
