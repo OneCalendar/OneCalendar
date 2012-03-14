@@ -4,7 +4,7 @@ import play.api.mvc._
 import models._
 import dao.configuration.injection.MongoConfiguration
 import dao.EventDao
-import service.{LoadICalStream, CalendarStream, ICalBuilder}
+import service.{LoadICalStream, ICalBuilder}
 
 object Application extends Controller {
 
@@ -24,7 +24,7 @@ object Application extends Controller {
     def loadDevoxxCalendar = Action {
         val url: String = "https://www.google.com/calendar/ical/u74tb1k9n53bnc5qsg3694p2l4%40group.calendar.google.com/public/basic.ics"
         val iCalService: LoadICalStream = new LoadICalStream()
-        iCalService.parseLoad(url)
+        iCalService.parseLoad(url, "DEVOXX")
         Ok("base " + mongoConfigProd.dbName + " loaded with devoxx Calendar")
     }
     

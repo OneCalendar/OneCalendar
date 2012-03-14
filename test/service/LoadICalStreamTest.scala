@@ -5,6 +5,7 @@ import dao.EventDao
 import com.mongodb.{Mongo, DB}
 import org.scalatest.{BeforeAndAfter, FunSuite}
 import dao.configuration.injection.MongoConfiguration
+import models.Event
 
 class LoadICalStreamTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
 
@@ -28,10 +29,13 @@ class LoadICalStreamTest extends FunSuite with ShouldMatchers with BeforeAndAfte
         val url : String = "https://www.google.com/calendar/ical/u74tb1k9n53bnc5qsg3694p2l4%40group.calendar.google.com/public/basic.ics"
         val iCalService : LoadICalStream = new LoadICalStream()
         iCalService.parseLoad( url, "DEVOXX" )
-        var count: Int = EventDao.findAll().size
+
+        val events: List[Event] = EventDao.findAll()
+        val count: Int = events.size
 
         count should be > 50
         count should be < 100
+        events.head.tags should contain ("DEVOXX")
     }
     
     test("should remove tags from event description"){
@@ -51,5 +55,4 @@ class LoadICalStreamTest extends FunSuite with ShouldMatchers with BeforeAndAfte
         tags(0) should be ("TOTO")
         tags(1) should be ("TITI")
     }
-
 }
