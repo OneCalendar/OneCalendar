@@ -7,10 +7,31 @@ import models.Event
 import org.joda.time.DateTime
 import dao.EventDao
 import dao.configuration.injection.MongoConfiguration
+import java.util.StringTokenizer
+
+//import util.matching.Regex
 
 class LoadICalStream {
 
-    def parseLoad(url: String )
+    def getDescriptionWithoutTags(s: String):String = {
+        val description : String = s.replaceAll("#[a-zA-Z1-9]+","")
+        description.trim()
+    }
+
+    def getTagsFromDescription(s: String): scala.List[String] = {
+        var tags : List[String]= List()
+        val tokenizer: StringTokenizer = new StringTokenizer(s)
+        while (tokenizer.hasMoreTokens()) {
+            var token : String = tokenizer.nextToken()
+            if(token.matches("#[a-zA-Z1-9]+")){
+                tags=tags:+(token.replace("#","").trim().toUpperCase())
+            }
+
+        }
+        tags
+    }
+
+    def parseLoad(url: String, eventName: String ="" )
                  ( implicit dbConfig: MongoConfiguration = MongoConfiguration( "OneCalendar" ) ) {
 
         EventDao.deleteAll()
@@ -24,14 +45,14 @@ class LoadICalStream {
             import net.fortuna.ical4j.model.component._
 
             val event: VEvent = arg.asInstanceOf[VEvent]
-
+            
             val oneEvent: Event = new Event(event.getUid.getValue,
                 event.getSummary.getValue,
                 new DateTime(event.getStartDate.getDate),
                 new DateTime(event.getEndDate.getDate),
                 event.getLocation.getValue,
-                event.getDescription.getValue,
-                List("devoxx", "java"))
+                getDescriptionWithoutTags(event.getDescription.getValue),
+                getTagsFromDescription(event.getDescription.getValue))
 
 
             EventDao.saveEvent(oneEvent)

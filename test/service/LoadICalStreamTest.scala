@@ -27,8 +27,33 @@ class LoadICalStreamTest extends FunSuite with ShouldMatchers with BeforeAndAfte
     test("should parse iCal stream") {
         val url : String = "https://www.google.com/calendar/ical/u74tb1k9n53bnc5qsg3694p2l4%40group.calendar.google.com/public/basic.ics"
         val iCalService : LoadICalStream = new LoadICalStream()
-        iCalService.parseLoad( url )
+        iCalService.parseLoad( url, "DEVOXX" )
         var count: Int = EventDao.findAll().size
+
         count should be > 50
+        count should be < 100
     }
+    
+    test("should remove tags from event description"){
+        val iCalService : LoadICalStream = new LoadICalStream()
+
+        val description_with_one_tag : String = iCalService.getDescriptionWithoutTags("bla bla bla bla bla #toto")
+        val description_with_many_tags : String = iCalService.getDescriptionWithoutTags("bla bla bla bla bla #toto #titi #tata")
+        val description_whithout_tags : String = iCalService.getDescriptionWithoutTags("bla bla bla bla bla")
+
+        description_with_one_tag should be ("bla bla bla bla bla")
+        description_with_many_tags should be ("bla bla bla bla bla")
+        description_whithout_tags should be ("bla bla bla bla bla")
+    }
+    
+    test("should get tags from description"){
+        val iCalService : LoadICalStream = new LoadICalStream()
+        
+        val tags : List[String] = iCalService.getTagsFromDescription("bla bla bla #Toto #tiTI")
+
+        tags.size should  be (2)
+        tags(0) should be ("TOTO")
+        tags(1) should be ("TITI")
+    }
+
 }
