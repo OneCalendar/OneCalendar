@@ -1,7 +1,14 @@
+@font-face {
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Ubuntu"), url("http://themes.googleusercontent.com/static/fonts/ubuntu/v4/VeuwHt-_EDaMbc2iV8rWdvesZW2xOQ-xsNqO47m55DA.woff") format("woff");
+}
+
 section {
     width: 500px;
     margin: auto;
-    font-family: ubuntu;
+    font-family: 'Ubuntu';
     font-size: 15px;
 }
 
@@ -22,7 +29,7 @@ section > h4 {
 }
 
 #suggest {
-    width: 452px;
+    width: 350px;
     height: 30px;
 
     margin: auto;
@@ -34,6 +41,11 @@ section > h4 {
 }
 
 #suggest:focus {
+}
+
+.center {
+    margin: auto;
+    width: 80%
 }
 
 #suggest ~ ul {
@@ -59,15 +71,16 @@ section > h4 {
 
 #temp {
     float: right;
+    margin-top: 7px;
 }
 
 .clear {
     clear: both;
 }
 
-                        /*********************
-                        *           SUBSCRIPTION
-                        **********************/
+/*********************
+*           SUBSCRIPTION
+**********************/
 
 #subscription {
     margin-top: 50px;
@@ -89,30 +102,29 @@ section > h4 {
 }
 
 a.ical {
-    background-image:url(/assets/images/text.png);
+    background-image: url(/assets/images/text.png);
     border: 0;
     width: 48px;
     height: 48px;
 }
 
 a.gcal {
-    background-image:url(http://www.google.com/calendar/images/ext/gc_button6_fr.gif);
+    background-image: url(http://www.google.com/calendar/images/ext/gc_button6_fr.gif);
     border: 0;
     width: 114px;
     height: 36px;
 }
 
 a.webcal {
-    background-image:url(/assets/images/iCal_Icon.jpeg);
+    background-image: url(/assets/images/iCal_Icon.jpeg);
     border: 0;
     width: 48px;
     height: 48px;
 }
 
-
-            /********************************
-            *         DEVOXX
-            *********************************/
+/********************************
+*         DEVOXX
+*********************************/
 
 section#devoxx {
     margin-top: 200px;
@@ -123,7 +135,7 @@ section#devoxx fieldset {
 }
 
 section#devoxx fieldset > legend {
-    background-image:url(http://www.devoxx.com/download/attachments/5342010/Logo-Devoxx-France-seul.png?version=1&modificationDate=1320431916000);
+    background-image: url(http://www.devoxx.com/download/attachments/5342010/Logo-Devoxx-France-seul.png?version=1&modificationDate=1320431916000);
     border: 0;
     width: 222px;
     height: 92px;
