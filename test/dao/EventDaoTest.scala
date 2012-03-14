@@ -61,7 +61,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
 
     test("should find 3 first events by tags 'devoxx' or 'java' ") {
         initData4
-        EventDao.findPreviewByTag(List("devoxx", "java", "other")) should have size 3
+        EventDao.findPreviewByTag(List("devoxx", "java", "other")).events should have size 3
     }
 
     test("should find everything") {

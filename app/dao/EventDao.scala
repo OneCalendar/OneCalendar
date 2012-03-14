@@ -1,7 +1,7 @@
 package dao
 
 import configuration.injection.{MongoConfiguration, MongoConfigurationInjection}
-import models.Event
+import models._
 import collection.JavaConversions
 import org.joda.time.DateTime
 import com.mongodb._
@@ -36,12 +36,15 @@ object EventDao extends MongoConfigurationInjection {
 
     val PREVIEW_SIZE = 3
 
-    def findPreviewByTag(tags: List[String])(implicit dbConfig: MongoConfiguration): List[Event] = {
+    def findPreviewByTag(tags: List[String])(implicit dbConfig: MongoConfiguration): SearchPreview = {
         val eventCollection: DBCollection = getEventsCollection(dbConfig.dbName)
         val javaTags: java.util.List[String] = toArrayList(tags)
         val query: DBObject = new QueryBuilder().put("tags").in(javaTags).get
+        val count = eventCollection.count(query)
         val cursor: DBCursor = eventCollection.find(query).limit(PREVIEW_SIZE)
-        dbCursorToEvents(cursor)
+        val events: List[Event] = dbCursorToEvents(cursor)
+
+        SearchPreview(count, events)
     }
 
     def findAll()(implicit dbConfig: MongoConfiguration): List[Event] = {

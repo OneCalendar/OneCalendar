@@ -1,6 +1,7 @@
-@(events : List[Event]){
+@(searchPreview : SearchPreview){
+"size":"@searchPreview.size",
 "eventList": [
-  @events.map { event => {"event":{
+  @searchPreview.events.map { event => {"event":{
      "date":"@event.begin",
      "title":"@event.title",
      "location":"@event.location"

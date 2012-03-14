@@ -1,7 +1,7 @@
 package controllers
 
 import play.api.mvc._
-import models.Event
+import models._
 import dao.configuration.injection.MongoConfiguration
 import dao.EventDao
 import service.{LoadICalStream, CalendarStream, ICalBuilder}
@@ -30,7 +30,7 @@ object Application extends Controller {
     
     def findPreviewByTags(keyWords: String) = Action {
         val tags: List[String] = keyWords.split(" ").toList
-        val previewEvents: List[Event] = EventDao.findPreviewByTag(tags)      //TODO limit 3
+        val previewEvents: SearchPreview = EventDao.findPreviewByTag(tags)
         Ok(views.txt.preview(previewEvents))
     }
 
