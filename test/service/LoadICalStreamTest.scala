@@ -37,13 +37,9 @@ class LoadICalStreamTest extends FunSuite with ShouldMatchers with BeforeAndAfte
     test("should remove tags from event description"){
         val iCalService : LoadICalStream = new LoadICalStream()
 
-        val description_with_one_tag : String = iCalService.getDescriptionWithoutTags("bla bla bla bla bla #toto")
-        val description_with_many_tags : String = iCalService.getDescriptionWithoutTags("bla bla bla bla bla #toto #titi #tata")
-        val description_whithout_tags : String = iCalService.getDescriptionWithoutTags("bla bla bla bla bla")
-
-        description_with_one_tag should be ("bla bla bla bla bla")
-        description_with_many_tags should be ("bla bla bla bla bla")
-        description_whithout_tags should be ("bla bla bla bla bla")
+        iCalService.getDescriptionWithoutTags("bla bla bla bla bla #toto") should be ("bla bla bla bla bla")
+        iCalService.getDescriptionWithoutTags("bla bla bla bla bla #toto #titi #tata") should be ("bla bla bla bla bla")
+        iCalService.getDescriptionWithoutTags("bla bla bla bla bla") should be ("bla bla bla bla bla")
     }
     
     test("should get tags from description"){

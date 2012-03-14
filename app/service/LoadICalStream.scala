@@ -12,9 +12,12 @@ import java.util.StringTokenizer
 //import util.matching.Regex
 
 class LoadICalStream {
+    
+    val TAG_PATTERN : String = "#[a-zA-Z1-9]+"
+    val DB_NAME : String = "OneCalendar"
 
     def getDescriptionWithoutTags(s: String):String = {
-        val description : String = s.replaceAll("#[a-zA-Z1-9]+","")
+        val description : String = s.replaceAll(TAG_PATTERN,"")
         description.trim()
     }
 
@@ -23,7 +26,7 @@ class LoadICalStream {
         val tokenizer: StringTokenizer = new StringTokenizer(s)
         while (tokenizer.hasMoreTokens()) {
             var token : String = tokenizer.nextToken()
-            if(token.matches("#[a-zA-Z1-9]+")){
+            if(token.matches(TAG_PATTERN)){
                 tags=tags:+(token.replace("#","").trim().toUpperCase())
             }
 
@@ -32,7 +35,7 @@ class LoadICalStream {
     }
 
     def parseLoad(url: String, eventName: String ="" )
-                 ( implicit dbConfig: MongoConfiguration = MongoConfiguration( "OneCalendar" ) ) {
+                 ( implicit dbConfig: MongoConfiguration = MongoConfiguration( DB_NAME ) ) {
 
         EventDao.deleteAll()
         val urlCal = new URL(url)
