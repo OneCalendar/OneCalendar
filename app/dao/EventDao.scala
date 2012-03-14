@@ -5,10 +5,9 @@ import models.Event
 import collection.JavaConversions
 import org.joda.time.DateTime
 import com.mongodb._
-import fr.scala.util.collection.CollectionsUtils
 import java.util.ArrayList
 
-object EventDao extends MongoConfigurationInjection with CollectionsUtils {
+object EventDao extends MongoConfigurationInjection {
 
     val mongo: Mongo = new Mongo()
 
@@ -32,36 +31,37 @@ object EventDao extends MongoConfigurationInjection with CollectionsUtils {
 
         val cursor: DBCursor = eventCollection.find(query)
 
-        dbCursortoEvents(cursor)
+        dbCursorToEvents(cursor)
     }
+
+    val PREVIEW_SIZE = 3
 
     def findPreviewByTag(tags: List[String])(implicit dbConfig: MongoConfiguration): List[Event] = {
         val eventCollection: DBCollection = getEventsCollection(dbConfig.dbName)
         val javaTags: java.util.List[String] = toArrayList(tags)
         val query: DBObject = new QueryBuilder().put("tags").in(javaTags).get
-        val cursor: DBCursor = eventCollection.find(query)
-        getPreview(cursor)
+        val cursor: DBCursor = eventCollection.find(query).limit(PREVIEW_SIZE)
+        dbCursorToEvents(cursor)
     }
 
-
-    def findByTag()(implicit dbConfig: MongoConfiguration): List[Event] = {
+    def findAll()(implicit dbConfig: MongoConfiguration): List[Event] = {
         val cursor: DBCursor = getEventsCollection(dbConfig.dbName).find()
 
-        dbCursortoEvents(cursor)
+        dbCursorToEvents(cursor)
     }
 
-    def getEventsCollection(dbName: String): DBCollection = {
+    private def getEventsCollection(dbName: String): DBCollection = {
         val db: DB = getDatabase(dbName)
         db.getCollection("events")
     }
 
-    def getDatabase(dbname: String): DB = {
+    private def getDatabase(dbname: String): DB = {
         val db: DB = mongo.getDB(dbname)
         db.requestStart()
         db
     }
 
-    def fromDbObject2Event(one: DBObject): Event = {
+    private def fromDbObject2Event(one: DBObject): Event = {
         val tags: BasicDBList = one.toMap.get("tags").asInstanceOf[BasicDBList]
         val scalaTags: List[String] = tags.toArray.toList.map(_.asInstanceOf[String])
 
@@ -96,7 +96,7 @@ object EventDao extends MongoConfigurationInjection with CollectionsUtils {
         javaTags
     }
 
-    private def dbCursortoEvents(cursor: DBCursor): List[Event] = {
+    private def dbCursorToEvents(cursor: DBCursor): List[Event] = {
         var events: List[Event] = List() //TODO refacotr to use immutable list in val
 
         while (cursor.hasNext) {
@@ -108,13 +108,4 @@ object EventDao extends MongoConfigurationInjection with CollectionsUtils {
         events
     }
 
-    private def getPreview(cursor: DBCursor): List[Event] = {
-        var events: List[Event] = List()
-        while (cursor.hasNext && events.size < 3) {
-            val dbObject: DBObject = cursor.next
-            val event: Event = fromDbObject2Event(dbObject)
-            events = events :+ event
-        }
-        events
-    }
 }

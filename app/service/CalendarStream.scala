@@ -9,7 +9,7 @@ class CalendarStream {
         if (tags.size > 0) {
             dao.EventDao.findByTag(tags)
         } else {
-            dao.EventDao.findByTag()
+            dao.EventDao.findAll()
         }
     }
 }

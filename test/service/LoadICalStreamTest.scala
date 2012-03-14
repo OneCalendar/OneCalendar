@@ -28,8 +28,9 @@ class LoadICalStreamTest extends FunSuite with ShouldMatchers with BeforeAndAfte
         val url : String = "https://www.google.com/calendar/ical/u74tb1k9n53bnc5qsg3694p2l4%40group.calendar.google.com/public/basic.ics"
         val iCalService : LoadICalStream = new LoadICalStream()
         iCalService.parseLoad( url )
-        var count: Int = EventDao.getEventsCollection("test").count.toInt
+        var count: Int = EventDao.findAll().size
         count should be > 50
         count should be < 60
+
     }
 }

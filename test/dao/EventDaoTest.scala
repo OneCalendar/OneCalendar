@@ -33,16 +33,6 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
         db.requestDone
     }
 
-    test("connecting to mongodb test") {
-        val db: DB = EventDao.getDatabase("test")
-        db.getName should be("test")
-    }
-
-    test("getting events collection") {
-        val eventsCollection: DBCollection = EventDao.getEventsCollection("test")
-        eventsCollection.getName should be("events")
-    }
-
     test("saving a new event") {
         val event: Event = new EventBuilder()
             .uid("1")
@@ -56,11 +46,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
 
         EventDao.saveEvent(event)
 
-        val eventsCollection: DBCollection = EventDao.getEventsCollection("test")
-        eventsCollection.count should be(1)
-
-        val one: DBObject = eventsCollection.findOne()
-        EventDao.fromDbObject2Event(one) should be(event)
+        EventDao.findAll should be (List(event))
     }
 
     test("should find event by tag 'devoxx'") {
@@ -90,7 +76,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
                     .toEvent
                 )
         )
-        EventDao.findByTag() should have size 50
+        EventDao.findAll() should have size 50
     }
 
     val eventDevoxx: Event = new EventBuilder()
