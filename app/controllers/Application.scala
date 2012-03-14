@@ -27,6 +27,12 @@ object Application extends Controller {
         iCalService.parseLoad(url)
         Ok("base " + mongoConfigProd.dbName + " loaded with devoxx Calendar")
     }
+    
+    def findPreviewByTags(keyWords: String) = Action {
+        val tags: List[String] = keyWords.split(" ").toList
+        val previewEvents: List[Event] = EventDao.findPreviewByTag(tags)      //TODO limit 3
+        Ok(views.txt.preview(previewEvents))
+    }
 
     private def renderEvents( events: List[ Event ] ) = {
         events match {

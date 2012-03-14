@@ -35,6 +35,14 @@ object EventDao extends MongoConfigurationInjection with CollectionsUtils {
         dbCursortoEvents(cursor)
     }
 
+    def findPreviewByTag(tags: List[String])(implicit dbConfig: MongoConfiguration): List[Event] = {
+        val eventCollection: DBCollection = getEventsCollection(dbConfig.dbName)
+        val javaTags: java.util.List[String] = toArrayList(tags)
+        val query: DBObject = new QueryBuilder().put("tags").in(javaTags).get
+        val cursor: DBCursor = eventCollection.find(query)
+        getPreview(cursor)
+    }
+
 
     def findByTag()(implicit dbConfig: MongoConfiguration): List[Event] = {
         val cursor: DBCursor = getEventsCollection(dbConfig.dbName).find()
@@ -97,6 +105,16 @@ object EventDao extends MongoConfigurationInjection with CollectionsUtils {
             events = events :+ event
         }
 
+        events
+    }
+
+    private def getPreview(cursor: DBCursor): List[Event] = {
+        var events: List[Event] = List()
+        while (cursor.hasNext && events.size < 3) {
+            val dbObject: DBObject = cursor.next
+            val event: Event = fromDbObject2Event(dbObject)
+            events = events :+ event
+        }
         events
     }
 }

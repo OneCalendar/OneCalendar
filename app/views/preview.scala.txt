@@ -1,0 +1,10 @@
+@(events : List[Event]){
+"eventList": [
+  @events.map { event => {"event":{
+     "date":"@event.begin",
+     "title":"@event.title",
+     "location":"@event.location"
+  }}
+  }
+]
+}
