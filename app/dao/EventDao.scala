@@ -9,7 +9,8 @@ import java.util.ArrayList
 
 object EventDao extends MongoConfigurationInjection {
 
-    val mongo: Mongo = new Mongo()
+    private val PREVIEW_SIZE = 3
+    private val mongo: Mongo = new Mongo()
 
     def deleteAll()(implicit dbConfig: MongoConfiguration) {
         getEventsCollection(dbConfig.dbName).drop()
@@ -33,8 +34,6 @@ object EventDao extends MongoConfigurationInjection {
 
         dbCursorToEvents(cursor)
     }
-
-    val PREVIEW_SIZE = 3
 
     def findPreviewByTag(tags: List[String])(implicit dbConfig: MongoConfiguration): SearchPreview = {
         val eventCollection: DBCollection = getEventsCollection(dbConfig.dbName)
