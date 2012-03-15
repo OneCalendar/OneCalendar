@@ -94,13 +94,13 @@ object EventDao extends MongoConfigurationInjection {
 
     private def toArrayList(tags: List[String]): java.util.List[String] = {
         val javaTags: java.util.List[String] = new ArrayList[String]()
-        tags.foreach(tag => javaTags.add(tag))
+        tags.foreach(tag => javaTags.add(tag.toUpperCase))
 
         javaTags
     }
 
     private def dbCursorToEvents(cursor: DBCursor): List[Event] = {
-        var events: List[Event] = List() //TODO refacotr to use immutable list in val
+        var events: List[Event] = List() //TODO refactor to use immutable list in val
 
         while (cursor.hasNext) {
             val dbObject: DBObject = cursor.next

@@ -41,7 +41,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
             .end(new DateTime(2012, 04, 19, 0, 0, 0, 0))
             .description("")
             .location("")
-            .tags(List("java", "devoxx"))
+            .tags(List("JAVA", "DEVOXX"))
             .toEvent
 
         EventDao.saveEvent(event)
@@ -84,7 +84,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
         .title("BOF")
         .begin(new DateTime(2012, 04, 19, 0, 0, 0, 0))
         .end(new DateTime(2012, 04, 19, 0, 0, 0, 0))
-        .tags(List("devoxx"))
+        .tags(List("DEVOXX"))
         .toEvent
 
     val eventJava: Event = new EventBuilder()
@@ -92,7 +92,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
         .title("BOF")
         .begin(new DateTime(2012, 04, 19, 0, 0, 0, 0))
         .end(new DateTime(2012, 04, 19, 0, 0, 0, 0))
-        .tags(List("java"))
+        .tags(List("JAVA"))
         .toEvent
 
     val eventOther: Event = new EventBuilder()
@@ -100,7 +100,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
         .title("BOF")
         .begin(new DateTime(2012, 04, 19, 0, 0, 0, 0))
         .end(new DateTime(2012, 04, 19, 0, 0, 0, 0))
-        .tags(List("other"))
+        .tags(List("OTHER"))
         .toEvent
 
     val event4: Event = new EventBuilder()
@@ -108,7 +108,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
         .title("BOF")
         .begin(new DateTime(2012, 04, 19, 0, 0, 0, 0))
         .end(new DateTime(2012, 04, 19, 0, 0, 0, 0))
-        .tags(List("4", "other"))
+        .tags(List("4", "OTHER"))
         .toEvent
 
     private def initData {
