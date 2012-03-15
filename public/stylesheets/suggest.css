@@ -6,33 +6,55 @@
 }
 
 section {
-    width: 500px;
+    width: 580px;
     margin: auto;
     font-family: 'Ubuntu';
     font-size: 15px;
 }
 
-section#search {
-    margin-top: 180px;
-}
-
-section > h3 {
-    text-align: center;
-}
-
-section > h2 {
+h2 {
     margin: 0;
 }
 
-section > h4 {
+h4 {
     margin-top: 0;
+    margin-left: 9%;
+}
+
+#title {
+    margin-top: 30px;
+}
+
+/************************
+*       SEARCH
+*************************/
+
+#search {
+    margin-top: 50px;
+}
+
+#temp {
+    float: right;
+
+    border: 0;
+
+    width: 48px;
+    height: 46px;
+
+    background-color: #498AF3;
+    background-image: url(/assets/images/search-transparent.png);
+
+    border-radius: 2px;
 }
 
 #suggest {
-    width: 350px;
-    height: 30px;
+    width: 480px;
+    height: 41px;
+
+    font-size: 1.1em;
 
     margin: auto;
+    margin-right: 10px;
 
     border: 1px medium #f0ffff;
     border-radius: 2px;
@@ -69,17 +91,12 @@ section > h4 {
     background-color: grey;
 }
 
-#temp {
-    float: right;
-    margin-top: 7px;
-}
-
 .clear {
     clear: both;
 }
 
 /*********************
-*           SUBSCRIPTION
+*     SUBSCRIPTION
 **********************/
 
 #subscription {
@@ -88,7 +105,7 @@ section > h4 {
 }
 
 #subscription fieldset {
-    width: 88%;
+    width: 470px;
 }
 
 #subscription fieldset > legend {
@@ -101,33 +118,13 @@ section > h4 {
     margin-left: 6%;
 }
 
-a.ical {
-    background-image: url(/assets/images/text.png);
-    border: 0;
-    width: 48px;
-    height: 48px;
-}
-
-a.gcal {
-    background-image: url(http://www.google.com/calendar/images/ext/gc_button6_fr.gif);
-    border: 0;
-    width: 114px;
-    height: 36px;
-}
-
-a.webcal {
-    background-image: url(/assets/images/iCal_Icon.jpeg);
-    border: 0;
-    width: 48px;
-    height: 48px;
-}
-
 /********************************
 *         DEVOXX
 *********************************/
 
 section#devoxx {
-    margin-top: 200px;
+    width: 480px;
+    margin: 0 0 0 67%;
 }
 
 section#devoxx fieldset {

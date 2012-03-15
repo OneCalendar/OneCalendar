@@ -9,35 +9,51 @@
     <script src='@routes.Assets.at("javascripts/loader.js")' type="text/javascript"></script>
 </head>
 <body>
-<section id="search">
-    <h2>One Calendar !</h2><h4>to meet them all</h4>
-    <button id="temp">Constuire les liens</button>
-    <input type="text" id="suggest" value=""
-           placeholder="Saisissez vos mots clef pour obtenir votre agenda personnalisé"/>
-</section>
-<section id="subscription">
-    <fieldset>
-        <legend>s'abonner</legend>
-        <div class="center">
-            <a class="ical" alt="flux devoxx" href="#"></a>
-            <a class="gcal"></a>
-            <a class="webcal"></a>
-        </div>
-    </fieldset>
-</section>
-<div class="clear"></div>
+
 <section id="devoxx">
     <fieldset>
         <legend></legend>
         <div class="center">
-            <a class="ical" href="/events/devoxx" alt="flux devoxx"></a>
-            <a class="gcal"
-               href="http://www.google.com/calendar/render?cid=https%3A%2F%2Fwww.google.com%2Fcalendar%2Fical%2Fu74tb1k9n53bnc5qsg3694p2l4%2540group.calendar.google.com%2Fpublic%2Fbasic.ics"
-               target="_blank"/>
-            <a class="webcal" href="webcal://localhost:9000/events/devoxx"></a>
+            <a href="/events/devoxx">
+                <img alt="devoxx texte" title="devoxx texte" src="/assets/images/text.png" />
+            </a>
+            <a href="http://www.google.com/calendar/render?cid=https%3A%2F%2Fwww.google.com%2Fcalendar%2Fical%2Fu74tb1k9n53bnc5qsg3694p2l4%2540group.calendar.google.com%2Fpublic%2Fbasic.ics"
+               target="_blank">
+                <img alt="devoxx google agenda" title="devoxx google agenda" src="http://www.google.com/calendar/images/ext/gc_button6_fr.gif" />
+            </a>
+            <a href="webcal://localhost:9000/events/devoxx">
+                <img alt="devoxx ical apple" title="devoxx ical apple" src="/assets/images/iCal_Icon.jpeg" />
+            </a>
         </div>
     </fieldset>
 </section>
 <div class="clear"></div>
+
+<section id="title">
+    <h2>One Calendar !</h2><h4>to meet them all</h4>
+</section>
+
+<section id="search">
+    <div id="temp"></div>
+    <input type="text" id="suggest" value=""
+           placeholder="Saisissez vos mots clefs pour obtenir votre agenda personnalisé"/>
+</section>
+<div class="clear"></div>
+
+<section id="subscription">
+    <fieldset>
+        <legend>s'abonner</legend>
+        <div class="center">
+            <a class="ical" alt="flux devoxx"><img alt="flux texte" title="flux texte" src="/assets/images/text.png" /></a>
+            <a class="gcal">
+                <img alt="flux google agenda" title="flux google agenda"
+                     src="http://www.google.com/calendar/images/ext/gc_button6_fr.gif" />
+            </a>
+            <a class="webcal"><img alt="flux ical apple" title="flux ical apple" src="/assets/images/iCal_Icon.jpeg" /></a>
+        </div>
+    </fieldset>
+</section>
+<div class="clear"></div>
+
 </body>
 </html>
