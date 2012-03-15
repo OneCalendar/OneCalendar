@@ -47,13 +47,27 @@ describe 'google suggest like', ->
     $("#temp").click()
 
     expectedGoogleCalendarLinkPrefix = "http://www.google.com/calendar/render?cid="
-    expectedGoogleCalendarLinkSuffix = "%2Fevents%2Fa"
+    expectedGoogleCalendarLinkSuffix = "%2Fevents%2FA"
     expectedWebcalLinkPrefix = "webcal://"
-    expectedWebcalLinkSuffix = "/events/a"
+    expectedWebcalLinkSuffix = "/events/A"
 
     expect( $('#subscription').css('display') ).toEqual('block')
-    expect( $('#subscription a.ical') ).toHaveAttr('href', '/events/a')
+    expect( $('#subscription a.ical') ).toHaveAttr('href', '/events/A')
     expect( $('#subscription a.gcal').attr('href') ).toContain(expectedGoogleCalendarLinkPrefix)
     expect( $('#subscription a.gcal').attr('href') ).toContain( expectedGoogleCalendarLinkSuffix )
     expect( $('#subscription a.webcal').attr('href') ).toContain( expectedWebcalLinkPrefix )
     expect( $('#subscription a.webcal').attr('href') ).toContain( expectedWebcalLinkSuffix )
+
+  it "6. should add devoxx url in link for devoxx section", ->
+    setFixtures '''
+      <div id="devoxx">
+        <a class="ical"></a>
+        <a class="gcal"></a>
+        <a class="webcal"></a>
+      </div>
+    '''
+
+    SUGGEST.loadUrlDevoxxSection()
+
+    expect( $("#devoxx a.gcal").attr("href") ).toContain('%2Fevents%2FDEVOXX')
+    expect( $("#devoxx a.webcal").attr("href") ).toContain('/events/DEVOXX')
