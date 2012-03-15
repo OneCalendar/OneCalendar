@@ -32,7 +32,7 @@ describe 'google suggest like', ->
 
     expect( $('#suggest + ul').length ).toEqual( 0 )
 
-  it "5. should display links when user click on event", ->
+  it "5. should display links when user click on search button", ->
     setFixtures '''
       <input type="text" id="suggest" value="a" />
       <div id="temp"></div>
@@ -58,7 +58,23 @@ describe 'google suggest like', ->
     expect( $('#subscription a.webcal').attr('href') ).toContain( expectedWebcalLinkPrefix )
     expect( $('#subscription a.webcal').attr('href') ).toContain( expectedWebcalLinkSuffix )
 
-  it "6. should add devoxx url in link for devoxx section", ->
+  it "6. if user don't write search should not display links when click on search button", ->
+    setFixtures '''
+          <input type="text" id="suggest" value="" />
+          <div id="temp"></div>
+          <div id="subscription" style="display:none;">
+            <a class="ical"></a>
+            <a class="gcal"></a>
+            <a class="webcal"></a>
+          </div>
+        '''
+
+    SUGGEST.displaySubscription()
+    $("#temp").click()
+
+    expect( $('#subscription').css('display') ).toEqual('none')
+
+  it "7. should add devoxx url in link for devoxx section", ->
     setFixtures '''
       <div id="devoxx">
         <a class="ical"></a>

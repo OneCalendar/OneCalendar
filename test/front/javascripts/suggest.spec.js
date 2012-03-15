@@ -25,7 +25,7 @@
       $('#suggest').blur();
       return expect($('#suggest + ul').length).toEqual(0);
     });
-    it("5. should display links when user click on event", function() {
+    it("5. should display links when user click on search button", function() {
       var expectedGoogleCalendarLinkPrefix, expectedGoogleCalendarLinkSuffix, expectedWebcalLinkPrefix, expectedWebcalLinkSuffix;
       setFixtures('<input type="text" id="suggest" value="a" />\n<div id="temp"></div>\n<div id="subscription" style="display:none;">\n  <a class="ical"></a>\n  <a class="gcal"></a>\n  <a class="webcal"></a>\n</div>');
       SUGGEST.displaySubscription();
@@ -41,7 +41,13 @@
       expect($('#subscription a.webcal').attr('href')).toContain(expectedWebcalLinkPrefix);
       return expect($('#subscription a.webcal').attr('href')).toContain(expectedWebcalLinkSuffix);
     });
-    return it("6. should add devoxx url in link for devoxx section", function() {
+    it("6. if user don't write search should not display links when click on search button", function() {
+      setFixtures('<input type="text" id="suggest" value="" />\n<div id="temp"></div>\n<div id="subscription" style="display:none;">\n  <a class="ical"></a>\n  <a class="gcal"></a>\n  <a class="webcal"></a>\n</div>');
+      SUGGEST.displaySubscription();
+      $("#temp").click();
+      return expect($('#subscription').css('display')).toEqual('none');
+    });
+    return it("7. should add devoxx url in link for devoxx section", function() {
       setFixtures('<div id="devoxx">\n  <a class="ical"></a>\n  <a class="gcal"></a>\n  <a class="webcal"></a>\n</div>');
       SUGGEST.loadUrlDevoxxSection();
       expect($("#devoxx a.gcal").attr("href")).toContain('%2Fevents%2FDEVOXX');
