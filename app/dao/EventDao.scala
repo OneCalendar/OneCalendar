@@ -1,13 +1,13 @@
 package dao
 
-import configuration.injection.{MongoConfiguration, MongoConfigurationInjection}
+import configuration.injection.MongoConfiguration
 import models._
 import collection.JavaConversions
 import org.joda.time.DateTime
 import com.mongodb._
 import java.util.ArrayList
 
-object EventDao extends MongoConfigurationInjection {
+object EventDao {
 
     private val PREVIEW_SIZE = 3
     private val mongo: Mongo = new Mongo()
@@ -109,5 +109,4 @@ object EventDao extends MongoConfigurationInjection {
 
         events
     }
-
 }

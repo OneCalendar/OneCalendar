@@ -9,8 +9,6 @@ import dao.EventDao
 import dao.configuration.injection.MongoConfiguration
 import java.util.StringTokenizer
 
-//import util.matching.Regex
-
 class LoadICalStream {
     
     val TAG_PATTERN : String = "#[a-zA-Z1-9]+"
