@@ -25,11 +25,10 @@
       $('#suggest').blur();
       return expect($('#suggest + ul').length).toEqual(0);
     });
-    it("5. should display links when user click on search button", function() {
+    it("5. should display links when user write search word", function() {
       var expectedGoogleCalendarLinkPrefix, expectedGoogleCalendarLinkSuffix, expectedWebcalLinkPrefix, expectedWebcalLinkSuffix;
       setFixtures('<input type="text" id="suggest" value="a" />\n<div id="temp"></div>\n<div id="subscription" style="display:none;">\n  <a class="ical"></a>\n  <a class="gcal"></a>\n  <a class="webcal"></a>\n</div>');
-      SUGGEST.displaySubscription();
-      $("#temp").click();
+      SUGGEST.displaySubscription('A');
       expectedGoogleCalendarLinkPrefix = "http://www.google.com/calendar/render?cid=";
       expectedGoogleCalendarLinkSuffix = "%2Fevents%2FA";
       expectedWebcalLinkPrefix = "webcal://";
@@ -41,17 +40,109 @@
       expect($('#subscription a.webcal').attr('href')).toContain(expectedWebcalLinkPrefix);
       return expect($('#subscription a.webcal').attr('href')).toContain(expectedWebcalLinkSuffix);
     });
-    it("6. if user don't write search should not display links when click on search button", function() {
+    it("6. if user don't write search should not display links", function() {
       setFixtures('<input type="text" id="suggest" value="" />\n<div id="temp"></div>\n<div id="subscription" style="display:none;">\n  <a class="ical"></a>\n  <a class="gcal"></a>\n  <a class="webcal"></a>\n</div>');
-      SUGGEST.displaySubscription();
-      $("#temp").click();
+      SUGGEST.displaySubscription('');
       return expect($('#subscription').css('display')).toEqual('none');
     });
-    return it("7. should add devoxx url in link for devoxx section", function() {
+    it("7. should add devoxx url in link for devoxx section", function() {
       setFixtures('<div id="devoxx">\n  <a class="ical"></a>\n  <a class="gcal"></a>\n  <a class="webcal"></a>\n</div>');
       SUGGEST.loadUrlDevoxxSection();
       expect($("#devoxx a.gcal").attr("href")).toContain('%2Fevents%2FDEVOXX');
       return expect($("#devoxx a.webcal").attr("href")).toContain('/events/DEVOXX');
+    });
+    it("8. should call rest controller to retrieve preview result when user click on search", function() {
+      var callbackData, urlServer;
+      setFixtures('<input type="text" id="suggest" value="a" />\n<div id="temp"></div>\n<div id="subscription">\n  <a class="ical"></a>\n  <a class="gcal"></a>\n  <a class="webcal"></a>\n</div>');
+      urlServer = 'http://serveur';
+      callbackData = {
+        "key": "value"
+      };
+      SUGGEST.retrievePreviewResults({
+        url: urlServer
+      });
+      spyOn(SUGGEST, 'displaySubscription').andCallThrough;
+      spyOn(SUGGEST, 'displayPreviewResult').andCallThrough;
+      spyOn($, 'ajax').andCallFake(function(params) {
+        return params.success(function() {
+          return callbackData;
+        });
+      });
+      $("#temp").click();
+      expect($.ajax).toHaveBeenCalled();
+      expect(SUGGEST.displayPreviewResult).toHaveBeenCalled();
+      return expect(SUGGEST.displaySubscription).toHaveBeenCalledWith('A');
+    });
+    it("9. should call displayNoResult method when callback is error", function() {
+      var callbackData, urlServer;
+      setFixtures('<input type="text" id="suggest" value="a" />\n<div id="temp"></div>\n<div id="subscription">\n  <a class="ical"></a>\n  <a class="gcal"></a>\n  <a class="webcal"></a>\n</div>');
+      urlServer = 'http://serveur';
+      callbackData = {
+        "key": "value"
+      };
+      SUGGEST.retrievePreviewResults({
+        url: urlServer
+      });
+      spyOn(SUGGEST, 'displayNoResult').andCallThrough;
+      spyOn($, 'ajax').andCallFake(function(params) {
+        return params.error(function() {
+          return "";
+        });
+      });
+      $("#temp").click();
+      expect($.ajax).toHaveBeenCalled();
+      return expect(SUGGEST.displayNoResult).toHaveBeenCalledWith('A');
+    });
+    it("10. should display preview", function() {
+      var callbackResponse, previewElement;
+      setFixtures('<div id="subscription"">\n  <p id="resultSize"></p>\n  <p class="preview"></p>\n  <p class="preview"></p>\n  <p class="preview"></p>\n  <a class="ical"></a>\n  <a class="gcal"></a>\n  <a class="webcal"></a>\n</div>');
+      callbackResponse = {
+        "size": "5",
+        "eventList": [
+          {
+            "event": {
+              "date": "2012-04-19T15:35:00.000+02:00",
+              "title": "title 1",
+              "location": "location 1"
+            }
+          }, {
+            "event": {
+              "date": "2012-04-19T15:35:00.000+02:00",
+              "title": "title 2",
+              "location": "location 2"
+            }
+          }, {
+            "event": {
+              "date": "2012-04-19T15:35:00.000+02:00",
+              "title": "title 3",
+              "location": "location 3"
+            }
+          }
+        ]
+      };
+      SUGGEST.displayPreviewResult(callbackResponse);
+      expect($('#resultSize')).toHaveText("nombre d'évènement(s) trouvé(s): 5");
+      previewElement = $('#subscription .preview');
+      expect($(previewElement[0]).text()).toContain("title 1");
+      expect($(previewElement[0]).text()).toContain("2012-04-19T15:35:00.000+02:00");
+      expect($(previewElement[0]).text()).toContain("location 1");
+      expect($(previewElement[1]).text()).toContain("title 2");
+      expect($(previewElement[1]).text()).toContain("2012-04-19T15:35:00.000+02:00");
+      expect($(previewElement[1]).text()).toContain("location 2");
+      expect($(previewElement[2]).text()).toContain("title 3");
+      expect($(previewElement[2]).text()).toContain("2012-04-19T15:35:00.000+02:00");
+      return expect($(previewElement[2]).text()).toContain("location 3");
+    });
+    it("11. should display fail", function() {
+      setFixtures('<div style="display:none;" id="callbackNoResult"></div>');
+      SUGGEST.displayNoResult("toto");
+      expect($('#callbackNoResult').css('display')).toEqual('block');
+      return expect($('#callbackNoResult')).toHaveText("Le mot clé toto ne donne aucun résultat dans la base OneCalendar");
+    });
+    return it("12. should hide subscription div", function() {
+      setFixtures('<div id="subscription"></div>');
+      SUGGEST.displayNoResult("toto");
+      return expect($('#subscription').css('display')).toEqual('none');
     });
   });
 
