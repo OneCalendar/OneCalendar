@@ -95,7 +95,7 @@
     });
     it("10. should display preview", function() {
       var callbackResponse, previewElement;
-      setFixtures('<div id="subscription"">\n  <p id="resultSize"></p>\n  <p class="preview"></p>\n  <p class="preview"></p>\n  <p class="preview"></p>\n  <a class="ical"></a>\n  <a class="gcal"></a>\n  <a class="webcal"></a>\n</div>');
+      setFixtures('<div id="subscription"">\n  <p id="resultSize"></p>\n  <p class="preview"></p>\n  <p class="preview"></p>\n  <p class="preview"></p>\n  <a class="ical"></a>\n  <a class="gcal"></a>\n  <a class="webcal"></a>\n</div>\n<div id="callbackNoResult"></div>');
       callbackResponse = {
         "size": "5",
         "eventList": [
@@ -122,6 +122,7 @@
       };
       SUGGEST.displayPreviewResult(callbackResponse);
       expect($('#resultSize')).toHaveText("nombre d'évènement(s) trouvé(s): 5");
+      expect($('#callbackNoResult').css('display')).toEqual('none');
       previewElement = $('#subscription .preview');
       expect($(previewElement[0]).text()).toContain("title 1");
       expect($(previewElement[0]).text()).toContain("2012-04-19T15:35:00.000+02:00");

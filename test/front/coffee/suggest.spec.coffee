@@ -149,7 +149,8 @@ describe 'google suggest like', ->
             <a class="gcal"></a>
             <a class="webcal"></a>
           </div>
-        '''
+          <div id="callbackNoResult"></div>
+      '''
 
     callbackResponse = {
     "size":"5",
@@ -174,7 +175,9 @@ describe 'google suggest like', ->
 
     SUGGEST.displayPreviewResult callbackResponse
 
-    expect($('#resultSize')).toHaveText("nombre d'évènement(s) trouvé(s): 5")
+    expect( $('#resultSize') ).toHaveText( "nombre d'évènement(s) trouvé(s): 5" )
+
+    expect( $('#callbackNoResult').css('display') ).toEqual('none')
 
     previewElement = $( '#subscription .preview' )
 

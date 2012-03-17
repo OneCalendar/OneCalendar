@@ -27,6 +27,8 @@
         $('#subscription').show()
 
   displayPreviewResult : (data) ->
+     $( "#callbackNoResult" ).hide()
+
      $("#resultSize").text("nombre d'évènement(s) trouvé(s): #{data.size}")
 
      previewElement = $('#subscription .preview')
