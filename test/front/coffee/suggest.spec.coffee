@@ -136,7 +136,7 @@ describe 'google suggest like', ->
     $("#temp").click()
 
     expect($.ajax).toHaveBeenCalled()
-    expect(SUGGEST.displayNoResult).toHaveBeenCalledWith('A')
+    expect(SUGGEST.displayNoResult).toHaveBeenCalledWith('a')
 
   it "10. should display preview", ->
     setFixtures '''

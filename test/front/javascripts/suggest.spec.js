@@ -91,7 +91,7 @@
       });
       $("#temp").click();
       expect($.ajax).toHaveBeenCalled();
-      return expect(SUGGEST.displayNoResult).toHaveBeenCalledWith('A');
+      return expect(SUGGEST.displayNoResult).toHaveBeenCalledWith('a');
     });
     it("10. should display preview", function() {
       var callbackResponse, previewElement;

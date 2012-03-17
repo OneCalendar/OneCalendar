@@ -67,6 +67,6 @@
             SUGGEST.displayPreviewResult data
             SUGGEST.displaySubscription userSearch
           error: (data) ->
-            SUGGEST.displayNoResult(userSearch)
+            SUGGEST.displayNoResult $('#suggest').val()
         }
       )
