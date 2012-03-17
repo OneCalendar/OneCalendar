@@ -60,15 +60,19 @@
     $("#temp").click ->
       userSearch = $('#suggest').val().toUpperCase()
 
-      $.ajax(
-        {
-          type: 'GET'
-          url: "#{url}/preview/#{userSearch}",
-          dataType: "json"
-          success: (data) ->
-            SUGGEST.displayPreviewResult data
-            SUGGEST.displaySubscription userSearch
-          error: (data) ->
-            SUGGEST.displayNoResult $('#suggest').val()
-        }
-      )
+      if userSearch != ""
+        $.ajax(
+          {
+            type: 'GET'
+            url: "#{url}/preview/#{userSearch}",
+            dataType: "json"
+            success: (data) ->
+              SUGGEST.displayPreviewResult data
+              SUGGEST.displaySubscription userSearch
+            error: (data) ->
+              SUGGEST.displayNoResult $('#suggest').val()
+          }
+        )
+      else
+        $( "#subscription" ).hide()
+        $( "#callbackNoResult" ).hide()

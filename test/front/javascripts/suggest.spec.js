@@ -140,10 +140,19 @@
       expect($('#callbackNoResult').css('display')).toEqual('block');
       return expect($('#callbackNoResult')).toHaveText("Le mot clé toto ne donne aucun résultat dans la base OneCalendar");
     });
-    return it("12. should hide subscription div", function() {
+    it("12. should hide subscription div", function() {
       setFixtures('<div id="subscription"></div>');
       SUGGEST.displayNoResult("toto");
       return expect($('#subscription').css('display')).toEqual('none');
+    });
+    return it("13. should hide subscription & callbackNoResult div if user dont write anything when he click", function() {
+      setFixtures('<input type="text" id="suggest" value="" />\n<div id="temp"></div>\n<div id="subscription">\n  <a class="ical"></a>\n  <a class="gcal"></a>\n  <a class="webcal"></a>\n</div>\n<div id="callbackNoResult"></div>');
+      SUGGEST.retrievePreviewResults({
+        url: ""
+      });
+      $("#temp").click();
+      expect($("#subscription").css('display')).toEqual("none");
+      return expect($("#callbackNoResult").css('display')).toEqual("none");
     });
   });
 

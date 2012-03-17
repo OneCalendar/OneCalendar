@@ -206,3 +206,21 @@ describe 'google suggest like', ->
 
     SUGGEST.displayNoResult "toto"
     expect( $('#subscription').css('display') ).toEqual('none')
+
+  it "13. should hide subscription & callbackNoResult div if user dont write anything when he click", ->
+    setFixtures '''
+                <input type="text" id="suggest" value="" />
+                <div id="temp"></div>
+                <div id="subscription">
+                  <a class="ical"></a>
+                  <a class="gcal"></a>
+                  <a class="webcal"></a>
+                </div>
+                <div id="callbackNoResult"></div>
+            '''
+    SUGGEST.retrievePreviewResults url: ""
+
+    $("#temp").click()
+
+    expect( $( "#subscription" ).css( 'display' ) ).toEqual( "none" )
+    expect( $( "#callbackNoResult" ).css( 'display' ) ).toEqual( "none" )
