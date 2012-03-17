@@ -121,6 +121,15 @@ h4 {
     margin-left: 6%;
 }
 
+#callbackNoResult {
+    margin-top: 10px;
+    color: red;
+}
+
+.preview {
+    font-size: 0.9em;
+}
+
 /********************************
 *         DEVOXX
 *********************************/
