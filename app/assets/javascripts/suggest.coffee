@@ -37,13 +37,13 @@
      eventSecond = events[1].event
      eventThird = events[2].event
 
-     $( previewElement[0] ).text( "#{eventFirst.title} # #{eventFirst.date} # #{eventFirst.location}" )
-     $( previewElement[1] ).text( "#{eventSecond.title} # #{eventSecond.date} # #{eventSecond.location}" )
-     $( previewElement[2] ).text( "#{eventThird.title} # #{eventThird.date} # #{eventThird.location}" )
+     $( previewElement[0] ).html( "<b>#{eventFirst.title}</b> <br/> #{eventFirst.date} <br/> #{eventFirst.location}" )
+     $( previewElement[1] ).html( "<b>#{eventSecond.title}</b> <br/> #{eventSecond.date} <br/> #{eventSecond.location}" )
+     $( previewElement[2] ).html( "<b>#{eventThird.title}</b> <br/> #{eventThird.date} <br/> #{eventThird.location}" )
 
   displayNoResult : (searchWord) ->
     $( '#subscription' ).hide()
-    $( '#callbackNoResult' ).text( "Le mot clé #{searchWord} ne donne aucun résultat dans la base OneCalendar" )
+    $( '#callbackNoResult' ).text( "Le mot clé '#{searchWord}' ne donne aucun résultat dans la base OneCalendar" )
     $( '#callbackNoResult' ).show()
 
   loadUrlDevoxxSection : ->

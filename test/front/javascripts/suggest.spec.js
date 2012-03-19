@@ -138,7 +138,7 @@
       setFixtures('<div style="display:none;" id="callbackNoResult"></div>');
       SUGGEST.displayNoResult("toto");
       expect($('#callbackNoResult').css('display')).toEqual('block');
-      return expect($('#callbackNoResult')).toHaveText("Le mot clé toto ne donne aucun résultat dans la base OneCalendar");
+      return expect($('#callbackNoResult')).toHaveText("Le mot clé 'toto' ne donne aucun résultat dans la base OneCalendar");
     });
     it("12. should hide subscription div", function() {
       setFixtures('<div id="subscription"></div>');

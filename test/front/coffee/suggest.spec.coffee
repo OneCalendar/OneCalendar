@@ -199,7 +199,7 @@ describe 'google suggest like', ->
     SUGGEST.displayNoResult "toto"
 
     expect( $('#callbackNoResult').css('display') ).toEqual('block')
-    expect( $('#callbackNoResult') ).toHaveText( "Le mot clé toto ne donne aucun résultat dans la base OneCalendar" )
+    expect( $('#callbackNoResult') ).toHaveText( "Le mot clé 'toto' ne donne aucun résultat dans la base OneCalendar" )
 
   it "12. should hide subscription div", ->
     setFixtures '<div id="subscription"></div>'
