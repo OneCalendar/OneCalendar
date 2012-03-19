@@ -58,7 +58,14 @@ h4 {
     margin: auto;
     margin-right: 10px;
 
-    border: 1px medium #f0ffff;
+    border-color: #F2F1F0;
+    border-style: solid;
+
+    border-top-width: 2px;
+    border-left-width: 2px;
+    border-top-color: grey;
+    border-left-color: grey;
+
     border-radius: 2px;
 
     padding-left: 10px;
