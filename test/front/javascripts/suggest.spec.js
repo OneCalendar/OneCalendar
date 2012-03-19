@@ -125,13 +125,13 @@
       expect($('#callbackNoResult').css('display')).toEqual('none');
       previewElement = $('#subscription .preview');
       expect($(previewElement[0]).text()).toContain("title 1");
-      expect($(previewElement[0]).text()).toContain("2012-04-19T15:35:00.000+02:00");
+      expect($(previewElement[0]).text()).toContain("19 04 2012 - 15:35 - GMT+02");
       expect($(previewElement[0]).text()).toContain("location 1");
       expect($(previewElement[1]).text()).toContain("title 2");
-      expect($(previewElement[1]).text()).toContain("2012-04-19T15:35:00.000+02:00");
+      expect($(previewElement[1]).text()).toContain("19 04 2012 - 15:35 - GMT+02");
       expect($(previewElement[1]).text()).toContain("location 2");
       expect($(previewElement[2]).text()).toContain("title 3");
-      expect($(previewElement[2]).text()).toContain("2012-04-19T15:35:00.000+02:00");
+      expect($(previewElement[2]).text()).toContain("19 04 2012 - 15:35 - GMT+02");
       return expect($(previewElement[2]).text()).toContain("location 3");
     });
     it("11. should display fail", function() {
@@ -145,7 +145,7 @@
       SUGGEST.displayNoResult("toto");
       return expect($('#subscription').css('display')).toEqual('none');
     });
-    return it("13. should hide subscription & callbackNoResult div if user dont write anything when he click", function() {
+    it("13. should hide subscription & callbackNoResult div if user dont write anything when he click", function() {
       setFixtures('<input type="text" id="suggest" value="" />\n<div id="temp"></div>\n<div id="subscription">\n  <a class="ical"></a>\n  <a class="gcal"></a>\n  <a class="webcal"></a>\n</div>\n<div id="callbackNoResult"></div>');
       SUGGEST.retrievePreviewResults({
         url: ""
@@ -153,6 +153,9 @@
       $("#temp").click();
       expect($("#subscription").css('display')).toEqual("none");
       return expect($("#callbackNoResult").css('display')).toEqual("none");
+    });
+    return it("14. shoud format icalendar date format", function() {
+      return expect(SUGGEST.formatIcalDate("2012-04-19T14:30:00.000+02:00")).toEqual("19 04 2012 - 14:30 - GMT+02");
     });
   });
 

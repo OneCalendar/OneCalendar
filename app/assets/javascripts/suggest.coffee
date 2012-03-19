@@ -29,7 +29,7 @@
   displayPreviewResult : (data) ->
      $( "#callbackNoResult" ).hide()
 
-     $("#resultSize").text("nombre d'évènement(s) trouvé(s): #{data.size}")
+     $("#resultSize").html("<b>nombre d'évènement(s) trouvé(s):</b> #{data.size}")
 
      previewElement = $('#subscription .preview')
      events = data.eventList
@@ -37,9 +37,21 @@
      eventSecond = events[1].event
      eventThird = events[2].event
 
-     $( previewElement[0] ).html( "<b>#{eventFirst.title}</b> <br/> #{eventFirst.date} <br/> #{eventFirst.location}" )
-     $( previewElement[1] ).html( "<b>#{eventSecond.title}</b> <br/> #{eventSecond.date} <br/> #{eventSecond.location}" )
-     $( previewElement[2] ).html( "<b>#{eventThird.title}</b> <br/> #{eventThird.date} <br/> #{eventThird.location}" )
+     $( previewElement[0] ).html( "
+                                <b>#{eventFirst.title}</b> <br/>
+                                #{SUGGEST.formatIcalDate eventFirst.date} <br/>
+                                #{eventFirst.location}
+                                " )
+     $( previewElement[1] ).html( "
+                                <b>#{eventSecond.title}</b> <br/>
+                                #{SUGGEST.formatIcalDate eventSecond.date} <br/>
+                                #{eventSecond.location}
+                                " )
+     $( previewElement[2] ).html(
+                                "<b>#{eventThird.title}</b> <br/>
+                                #{ SUGGEST.formatIcalDate eventThird.date} <br/>
+                                #{eventThird.location}
+                                " )
 
   displayNoResult : (searchWord) ->
     $( '#subscription' ).hide()
@@ -76,3 +88,11 @@
       else
         $( "#subscription" ).hide()
         $( "#callbackNoResult" ).hide()
+
+  formatIcalDate: (date) ->
+    dateT = date .split "T"
+    dateDay = dateT[0].split "-"
+    dateHour = dateT[1].split ":"
+    dateGmt = dateT[1].split("+")[1].split(":")[0]
+
+    "#{dateDay[2]} #{dateDay[1]} #{dateDay[0]} - #{dateHour[0]}:#{dateHour[1]} - GMT+#{dateGmt}"

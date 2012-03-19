@@ -121,13 +121,17 @@ h4 {
     margin-left: 6%;
 }
 
-#callbackNoResult {
-    margin-top: 10px;
-    color: red;
+#resultSize {
+    font-size: 0.9em;
 }
 
 .preview {
     font-size: 0.9em;
+}
+
+#callbackNoResult {
+    margin-top: 10px;
+    color: red;
 }
 
 /********************************
