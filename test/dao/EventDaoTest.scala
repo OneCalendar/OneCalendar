@@ -12,11 +12,43 @@ import models.builder.EventBuilder
 class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
 
     /**
-     * RUNNING MONGO SERVER BEFORE in target directory -
+     * RUNNING MONGO SERVER BEFORE -
      * mongod --dbpath data/ --fork --logpath data/mongodb.log
      */
 
     implicit val mongoConfigurationTesting = MongoConfiguration("test")
+
+    val eventDevoxx: Event = new EventBuilder()
+        .uid("1")
+        .title("BOF")
+        .begin(new DateTime(2012, 04, 19, 0, 0, 0, 0))
+        .end(new DateTime(2012, 04, 19, 0, 0, 0, 0))
+        .tags(List("DEVOXX"))
+        .toEvent
+
+    val eventJava: Event = new EventBuilder()
+        .uid("2")
+        .title("BOF")
+        .begin(new DateTime(2012, 04, 19, 0, 0, 0, 0))
+        .end(new DateTime(2012, 04, 19, 0, 0, 0, 0))
+        .tags(List("JAVA"))
+        .toEvent
+
+    val eventOther: Event = new EventBuilder()
+        .uid("3")
+        .title("BOF")
+        .begin(new DateTime(2012, 04, 19, 0, 0, 0, 0))
+        .end(new DateTime(2012, 04, 19, 0, 0, 0, 0))
+        .tags(List("OTHER"))
+        .toEvent
+
+    val event4: Event = new EventBuilder()
+        .uid("4")
+        .title("BOF")
+        .begin(new DateTime(2012, 04, 19, 0, 0, 0, 0))
+        .end(new DateTime(2012, 04, 19, 0, 0, 0, 0))
+        .tags(List("4", "OTHER"))
+        .toEvent
 
     val db: DB = {
         val mongo: Mongo = new Mongo()
@@ -59,9 +91,10 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
         EventDao.findByTag(List("devoxx", "java")) should be(List(eventDevoxx, eventJava))
     }
 
-    test("should find 3 first events by tags 'devoxx' or 'java' ") {
-        initData4
+    test("should find 3 first events by tags 'devoxx', 'java' or other ") {
+        initFourData
         EventDao.findPreviewByTag(List("devoxx", "java", "other")).events should have size 3
+        EventDao.findPreviewByTag(List("devoxx", "java", "other")).events should be ( List(eventDevoxx, eventJava, eventOther ) )
     }
 
     test("should find everything") {
@@ -79,44 +112,12 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
         EventDao.findAll() should have size 50
     }
 
-    val eventDevoxx: Event = new EventBuilder()
-        .uid("1")
-        .title("BOF")
-        .begin(new DateTime(2012, 04, 19, 0, 0, 0, 0))
-        .end(new DateTime(2012, 04, 19, 0, 0, 0, 0))
-        .tags(List("DEVOXX"))
-        .toEvent
-
-    val eventJava: Event = new EventBuilder()
-        .uid("2")
-        .title("BOF")
-        .begin(new DateTime(2012, 04, 19, 0, 0, 0, 0))
-        .end(new DateTime(2012, 04, 19, 0, 0, 0, 0))
-        .tags(List("JAVA"))
-        .toEvent
-
-    val eventOther: Event = new EventBuilder()
-        .uid("3")
-        .title("BOF")
-        .begin(new DateTime(2012, 04, 19, 0, 0, 0, 0))
-        .end(new DateTime(2012, 04, 19, 0, 0, 0, 0))
-        .tags(List("OTHER"))
-        .toEvent
-
-    val event4: Event = new EventBuilder()
-        .uid("4")
-        .title("BOF")
-        .begin(new DateTime(2012, 04, 19, 0, 0, 0, 0))
-        .end(new DateTime(2012, 04, 19, 0, 0, 0, 0))
-        .tags(List("4", "OTHER"))
-        .toEvent
-
     private def initData {
         EventDao.saveEvent(eventDevoxx)
         EventDao.saveEvent(eventJava)
     }
 
-    private def initData4 {
+    private def initFourData {
         EventDao.saveEvent(eventDevoxx)
         EventDao.saveEvent(eventJava)
         EventDao.saveEvent(eventOther)
