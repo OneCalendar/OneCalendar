@@ -169,3 +169,23 @@ section#devoxx a {
     margin-right: 5%;
     margin-left: 6%;
 }
+
+/**************************************
+*             FOOTER
+***************************************/
+
+#footer {
+    width: 100%;
+    position:fixed;
+    bottom: 0;
+    text-align: right;
+}
+
+#footer a {
+    text-decoration: none;
+    color: black;
+    padding-right: 3%;
+    padding-bottom: 10px;
+    font-size: 0.7em;
+    display: inline-block;
+}

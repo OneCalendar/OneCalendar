@@ -35,6 +35,10 @@ object Application extends Controller {
         Ok("base " + mongoConfigProd.dbName + " loaded with devoxx Calendar")
     }
 
+    def about = Action {
+        Ok( views.html.about() )
+    }
+
     private def renderEvents( events: List[ Event ] ) = {
         events match {
             case Nil => NotFound("Aucun évènement pour la recherche")

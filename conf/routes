@@ -7,6 +7,9 @@ GET     /                           controllers.Application.index
 GET     /events/*keyWords           controllers.Application.findByTags(keyWords)
 GET     /preview/*keyWords          controllers.Application.findPreviewByTags(keyWords)
 
+# About
+GET     /about                      controllers.Application.about
+
 # Hacking application to load DevoxxCalendar from google agenda
 GET     /loadDevoxxCalendar         controllers.Application.loadDevoxxCalendar
 
