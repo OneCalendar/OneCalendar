@@ -6,9 +6,10 @@ import collection.JavaConversions
 import org.joda.time.DateTime
 import com.mongodb._
 import java.util.ArrayList
+import play.api.Logger
 
 object EventDao {
-
+    private val log = Logger( "EventDao" )
     private val PREVIEW_SIZE = 3
     private val mongo: Mongo = new Mongo()
 
@@ -22,17 +23,12 @@ object EventDao {
     }
 
     def findByTag(tags: List[String])(implicit dbConfig: MongoConfiguration): List[Event] = {
-        val eventCollection: DBCollection = getEventsCollection(dbConfig.dbName)
-        //db.events.find({"tags" : "java"})
-
         val javaTags: java.util.List[String] = toArrayList(tags)
 
         val query: DBObject = new QueryBuilder().put("tags").in(javaTags).get
-        //println("TEST QUERY: " + query.toString)    //TODO use logback play logger
+        log.debug( "query find by tag %s".format( query.toString ) )
 
-        val cursor: DBCursor = eventCollection.find(query)
-
-        dbCursorToEvents(cursor)
+        dbCursorToEvents( getEventsCollection( dbConfig.dbName ).find( query ) )
     }
 
     def findPreviewByTag(tags: List[String])(implicit dbConfig: MongoConfiguration): SearchPreview = {
