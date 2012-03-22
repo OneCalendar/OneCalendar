@@ -183,6 +183,31 @@ section#devoxx a {
     margin-left: 6%;
 }
 
+#cloudtags {
+    font-family: 'ubuntu';
+    margin: 10px auto;
+    width: 580px;
+    position: relative;
+}
+
+#cloudtags .legend {
+    padding-left: 40px;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+#cloudtags .clickTag {
+    cursor: pointer;
+}
+
+.elipse {
+    width: 30px;
+    height: 20px;
+    position: relative;
+    float: right;
+    cursor: pointer;
+}
 /**************************************
 *             FOOTER
 ***************************************/
