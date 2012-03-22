@@ -25,6 +25,19 @@ h4 {
 #title {
     color: grey;
     margin-top: 30px;
+    opacity: 0.6;
+}
+
+#beta {
+    font-size: 4.1em;
+    color: #498AF3;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    left: 38%;
+    top: 24%;
+    opacity: 0.5;
+    position: fixed;
 }
 
 /************************
@@ -176,7 +189,7 @@ section#devoxx a {
 
 #footer {
     width: 100%;
-    position:fixed;
+    position: fixed;
     bottom: 0;
     text-align: right;
 }
