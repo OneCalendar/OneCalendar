@@ -6,6 +6,7 @@ import dao.configuration.injection.MongoConfiguration
 import dao.EventDao
 import service.{LoadICalStream, ICalBuilder}
 import play.api.libs.json._
+import java.util.Date
 
 object Application extends Controller {
 
@@ -23,6 +24,7 @@ object Application extends Controller {
     }
 
     def findPreviewByTags(keyWords: String) = Action {
+        mongoConfigProd.now = new Date().getTime();
         val tags: List[String] = keyWords.split(" ").toList
         val previewEvents: SearchPreview = EventDao.findPreviewByTag( tags )
         Ok( Json.toJson( renderPreviewEventInJson( previewEvents ) ) )
