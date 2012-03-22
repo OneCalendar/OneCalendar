@@ -5,19 +5,20 @@ a {
 #title {
     width: 100%;
     margin: auto;
+    margin-bottom: 70px;
 }
 
 #technoBadge {
-    width: 50%;
+    width: 40%;
 }
 
 #technoBadge a {
-    margin-left: 50px;
+    margin-left: 20px;
 }
 
 #why {
     float: right;
-    width: 50%;
+    width: 58%;
 }
 
 #footer {
@@ -38,4 +39,9 @@ a {
 
 .clear {
     clear: both;
+}
+
+.center {
+    margin: auto;
+    width: 80%
 }
