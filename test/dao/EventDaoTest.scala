@@ -78,7 +78,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
 
         EventDao.saveEvent(event)
 
-        EventDao.findAll should be (List(event))
+        EventDao.findAll should be(List(event))
     }
 
     test("should find event by tag 'devoxx'") {
@@ -94,22 +94,28 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     test("should find 3 first events by tags 'devoxx', 'java' or other ") {
         initFourData
         EventDao.findPreviewByTag(List("devoxx", "java", "other")).events should have size 3
-        EventDao.findPreviewByTag(List("devoxx", "java", "other")).events should be ( List(eventDevoxx, eventJava, eventOther ) )
+        EventDao.findPreviewByTag(List("devoxx", "java", "other")).events should be(List(eventDevoxx, eventJava, eventOther))
     }
 
     test("should find everything") {
         (1 to 50).foreach(
             id => EventDao.saveEvent(
-                    new EventBuilder()
-                        .uid(id.toString)
-                        .title(id.toString)
-                        .begin(new DateTime)
-                        .end(new DateTime)
-                        .tags(List())
+                new EventBuilder()
+                    .uid(id.toString)
+                    .title(id.toString)
+                    .begin(new DateTime)
+                    .end(new DateTime)
+                    .tags(List())
                     .toEvent
-                )
+            )
         )
         EventDao.findAll() should have size 50
+    }
+
+    test("should list tags in order of frequency") {
+        initFourData
+        val tags: List[String] = EventDao.listTags()
+        tags should be(List("OTHER", "4", "DEVOXX", "JAVA"))
     }
 
     private def initData {
