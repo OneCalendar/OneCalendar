@@ -53,7 +53,7 @@
     });
     it("8. should call rest controller to retrieve preview result when user click on search", function() {
       var callbackData, urlServer;
-      setFixtures('<input type="text" id="suggest" value="a" />\n<div id="temp"></div>\n<div id="subscription">\n  <a class="ical"></a>\n  <a class="gcal"></a>\n  <a class="webcal"></a>\n</div>');
+      setFixtures('<form method="get" id="events" >\n  <input type="text" id="suggest" value="a" />\n</form>\n<div id="subscription">\n  <a class="ical"></a>\n  <a class="gcal"></a>\n  <a class="webcal"></a>\n</div>');
       urlServer = 'http://serveur';
       callbackData = {
         "key": "value"
@@ -68,14 +68,14 @@
           return callbackData;
         });
       });
-      $("#temp").click();
+      $("#events").submit();
       expect($.ajax).toHaveBeenCalled();
       expect(SUGGEST.displayPreviewResult).toHaveBeenCalled();
       return expect(SUGGEST.displaySubscription).toHaveBeenCalledWith('A');
     });
     it("9. should call displayNoResult method when callback is error", function() {
       var callbackData, urlServer;
-      setFixtures('<input type="text" id="suggest" value="a" />\n<div id="temp"></div>\n<div id="subscription">\n  <a class="ical"></a>\n  <a class="gcal"></a>\n  <a class="webcal"></a>\n</div>');
+      setFixtures('<form method="get" id="events" >\n  <input type="text" id="suggest" value="a" />\n</form>\n<div id="subscription">\n  <a class="ical"></a>\n  <a class="gcal"></a>\n  <a class="webcal"></a>\n</div>');
       urlServer = 'http://serveur';
       callbackData = {
         "key": "value"
@@ -89,7 +89,7 @@
           return "";
         });
       });
-      $("#temp").click();
+      $("#events").submit();
       expect($.ajax).toHaveBeenCalled();
       return expect(SUGGEST.displayNoResult).toHaveBeenCalledWith('a');
     });
@@ -146,11 +146,11 @@
       return expect($('#subscription').css('display')).toEqual('none');
     });
     it("13. should hide subscription & callbackNoResult div if user dont write anything when he click", function() {
-      setFixtures('<input type="text" id="suggest" value="" />\n<div id="temp"></div>\n<div id="subscription">\n  <a class="ical"></a>\n  <a class="gcal"></a>\n  <a class="webcal"></a>\n</div>\n<div id="callbackNoResult"></div>');
+      setFixtures('<form method="get" id="events" >\n  <input type="text" id="suggest" value="" />\n</form>\n<div id="subscription">\n  <a class="ical"></a>\n  <a class="gcal"></a>\n  <a class="webcal"></a>\n</div>\n<div id="callbackNoResult"></div>');
       SUGGEST.retrievePreviewResults({
         url: ""
       });
-      $("#temp").click();
+      $("#events").submit();
       expect($("#subscription").css('display')).toEqual("none");
       return expect($("#callbackNoResult").css('display')).toEqual("none");
     });

@@ -69,7 +69,7 @@
     $('#devoxx a.webcal').attr('href', "webcal://#{applicationBaseUrl_withoutHttp}/events/DEVOXX")
 
   retrievePreviewResults: ({url}) ->
-    $("#temp").click ->
+    $("#events").submit ->
       userSearch = $('#suggest').val().toUpperCase()
 
       if userSearch != ""
@@ -88,6 +88,8 @@
       else
         $( "#subscription" ).hide()
         $( "#callbackNoResult" ).hide()
+
+      false
 
   formatIcalDate: (date) ->
     dateT = date .split "T"

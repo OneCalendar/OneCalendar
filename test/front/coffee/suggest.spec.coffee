@@ -88,8 +88,9 @@ describe 'google suggest like', ->
 
   it "8. should call rest controller to retrieve preview result when user click on search", ->
     setFixtures '''
-            <input type="text" id="suggest" value="a" />
-            <div id="temp"></div>
+            <form method="get" id="events" >
+              <input type="text" id="suggest" value="a" />
+            </form>
             <div id="subscription">
               <a class="ical"></a>
               <a class="gcal"></a>
@@ -107,7 +108,7 @@ describe 'google suggest like', ->
     spyOn($, 'ajax').andCallFake (params) ->
       params.success -> callbackData
 
-    $("#temp").click()
+    $("#events").submit()
 
     expect($.ajax).toHaveBeenCalled()
     expect(SUGGEST.displayPreviewResult).toHaveBeenCalled()
@@ -115,8 +116,9 @@ describe 'google suggest like', ->
 
   it "9. should call displayNoResult method when callback is error", ->
     setFixtures '''
-            <input type="text" id="suggest" value="a" />
-            <div id="temp"></div>
+            <form method="get" id="events" >
+              <input type="text" id="suggest" value="a" />
+            </form>
             <div id="subscription">
               <a class="ical"></a>
               <a class="gcal"></a>
@@ -133,7 +135,7 @@ describe 'google suggest like', ->
     spyOn($, 'ajax').andCallFake (params) ->
       params.error -> ""
 
-    $("#temp").click()
+    $("#events").submit()
 
     expect($.ajax).toHaveBeenCalled()
     expect(SUGGEST.displayNoResult).toHaveBeenCalledWith('a')
@@ -209,8 +211,9 @@ describe 'google suggest like', ->
 
   it "13. should hide subscription & callbackNoResult div if user dont write anything when he click", ->
     setFixtures '''
-                <input type="text" id="suggest" value="" />
-                <div id="temp"></div>
+                <form method="get" id="events" >
+                  <input type="text" id="suggest" value="" />
+                </form>
                 <div id="subscription">
                   <a class="ical"></a>
                   <a class="gcal"></a>
@@ -220,7 +223,7 @@ describe 'google suggest like', ->
             '''
     SUGGEST.retrievePreviewResults url: ""
 
-    $("#temp").click()
+    $("#events").submit()
 
     expect( $( "#subscription" ).css( 'display' ) ).toEqual( "none" )
     expect( $( "#callbackNoResult" ).css( 'display' ) ).toEqual( "none" )
