@@ -23,7 +23,7 @@ h4 {
 }
 
 #title {
-    color: grey;
+    color: #808080;
     margin-top: 30px;
     opacity: 0.6;
 }
@@ -76,8 +76,8 @@ h4 {
 
     border-top-width: 2px;
     border-left-width: 2px;
-    border-top-color: grey;
-    border-left-color: grey;
+    border-top-color: #808080;
+    border-left-color: #808080;
 
     border-radius: 2px;
 
@@ -98,7 +98,7 @@ h4 {
 
     width: 491px;
 
-    border: 1px solid grey;
+    border: 1px solid #808080;
     border-top: none;
     border-radius: 2px;
 
@@ -111,7 +111,7 @@ h4 {
 }
 
 #suggest ~ ul > li:hover {
-    background-color: grey;
+    background-color: #808080;
 }
 
 .clear {
