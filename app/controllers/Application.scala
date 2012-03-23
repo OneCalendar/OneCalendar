@@ -42,7 +42,7 @@ object Application extends Controller {
     private def renderEvents( events: List[ Event ] ) = {
         events match {
             case Nil => NotFound("Aucun évènement pour la recherche")
-            case _ => Ok( calendarService.buildCalendar( events ) ).as( "text/calendar" )
+            case _ => Ok( calendarService.buildCalendar( events ) ).as( "text/calendar; charset=utf-8" )
         }
     }
 
