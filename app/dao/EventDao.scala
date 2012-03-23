@@ -10,8 +10,14 @@ import play.api.Logger
 
 object EventDao {
     private val log = Logger( "EventDao" )
+
     private val PREVIEW_SIZE = 3
-    private val mongoURI: MongoURI = new MongoURI("mongodb://127.0.0.1")
+    private val mongoURI: MongoURI = {
+        val m = new MongoURI("mongodb://127.0.0.1")
+        m.getOptions.connectionsPerHost = 100
+        m
+    }
+
     private val mongo: Mongo = (new Mongo.Holder()).connect( mongoURI )
     
     def deleteAll()(implicit dbConfig: MongoConfiguration) {
@@ -28,6 +34,7 @@ object EventDao {
 
         val query: DBObject = new QueryBuilder().put("tags").in(javaTags).get
         log.debug( "query find by tag %s".format( query.toString ) )
+        log.debug( "pool connection number: %s".format( mongoURI.getOptions.connectionsPerHost ) )
 
         dbCursorToEvents( getEventsCollection( dbConfig.dbName ).find( query ) )
     }
