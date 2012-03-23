@@ -8,6 +8,7 @@ import org.joda.time.DateTime
 import dao.EventDao
 import dao.configuration.injection.MongoConfiguration
 import java.util.StringTokenizer
+import models.builder.EventBuilder
 
 class LoadICalStream {
     
@@ -30,15 +31,17 @@ class LoadICalStream {
 
             val vEvent: VEvent = arg.asInstanceOf[VEvent]
 
-            val oneEvent: Event = new Event(vEvent.getUid.getValue,
-            vEvent.getSummary.getValue,
-            new DateTime(vEvent.getStartDate.getDate),
-            new DateTime(vEvent.getEndDate.getDate),
-            vEvent.getLocation.getValue,
-            getDescriptionWithoutTags(vEvent.getDescription.getValue),
-            getTagsFromDescription(vEvent.getDescription.getValue + (if(!eventName.isEmpty) " #" + eventName; else ""  ) ))
+            val oneEvent: Event = new EventBuilder()
+                .uid( vEvent.getUid.getValue )
+                .title( vEvent.getSummary.getValue )
+                .begin( new DateTime( vEvent.getStartDate.getDate ) )
+                .end( new DateTime(vEvent.getEndDate.getDate) )
+                .location( vEvent.getLocation.getValue )
+                .description( getDescriptionWithoutTags( vEvent.getDescription.getValue ) )
+                .tags( getTagsFromDescription(vEvent.getDescription.getValue + (if(!eventName.isEmpty) " #" + eventName; else ""  ) ) )
+                .toEvent
 
-            EventDao.saveEvent(oneEvent)
+            EventDao.saveEvent( oneEvent )
         })
     }
 
