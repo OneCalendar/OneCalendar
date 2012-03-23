@@ -109,7 +109,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
                     .toEvent
                 )
         )
-        EventDao.findAll() should have size 50
+        EventDao.findAll should have size 50
     }
 
     private def initData {

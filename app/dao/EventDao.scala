@@ -11,9 +11,8 @@ import play.api.Logger
 object EventDao {
     private val log = Logger( "EventDao" )
     private val PREVIEW_SIZE = 3
-    private val mongo: Mongo = new Mongo()
     private val mongoURI: MongoURI = new MongoURI("mongodb://127.0.0.1")
-    private val mongoPool: Mongo = (new Mongo.Holder()).connect(mongoURI)
+    private val mongo: Mongo = (new Mongo.Holder()).connect( mongoURI )
     
     def deleteAll()(implicit dbConfig: MongoConfiguration) {
         getEventsCollection(dbConfig.dbName).drop()
@@ -30,11 +29,11 @@ object EventDao {
         val query: DBObject = new QueryBuilder().put("tags").in(javaTags).get
         log.debug( "query find by tag %s".format( query.toString ) )
 
-        dbCursorToEvents( getEventCollectionWithPool( dbConfig.dbName ).find( query ) )
+        dbCursorToEvents( getEventsCollection( dbConfig.dbName ).find( query ) )
     }
 
     def findPreviewByTag(tags: List[String])(implicit dbConfig: MongoConfiguration): SearchPreview = {
-        val eventCollection: DBCollection = getEventCollectionWithPool(dbConfig.dbName)
+        val eventCollection: DBCollection = getEventsCollection(dbConfig.dbName)
         val javaTags: java.util.List[String] = toArrayList(tags)
         val query: DBObject = new QueryBuilder().put("tags").in(javaTags).get
         val count = eventCollection.count(query)
@@ -50,20 +49,11 @@ object EventDao {
         dbCursorToEvents(cursor)
     }
 
-    private def getEventCollectionWithPool( dbName: String ): DBCollection = {
-        val db: DB = mongoPool.getDB( dbName )
-        db.requestStart
-        db.getCollection( "events" )
-    }
-    
-    private def getEventsCollection(dbName: String): DBCollection = {
-        val db: DB = getDatabase(dbName)
-        db.getCollection("events")
-    }
+    private def getEventsCollection( dbName: String ): DBCollection = getDatabase( dbName ).getCollection( "events" )
 
-    private def getDatabase(dbname: String): DB = {
-        val db: DB = mongo.getDB(dbname)
-        db.requestStart()
+    private def getDatabase( dbname: String ): DB = {
+        val db: DB = mongo.getDB( dbname )
+        db.requestStart
         db
     }
 
