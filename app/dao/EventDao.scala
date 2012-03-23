@@ -13,7 +13,8 @@ object EventDao {
     private val PREVIEW_SIZE = 3
     private val mongo: Mongo = new Mongo()
     private val mongoURI: MongoURI = new MongoURI("mongodb://127.0.0.1")
-
+    private val mongoPool: Mongo = (new Mongo.Holder()).connect(mongoURI)
+    
     def deleteAll()(implicit dbConfig: MongoConfiguration) {
         getEventsCollection(dbConfig.dbName).drop()
     }
@@ -50,8 +51,7 @@ object EventDao {
     }
 
     private def getEventCollectionWithPool( dbName: String ): DBCollection = {
-        val mongo: Mongo = (new Mongo.Holder()).connect(mongoURI)
-        val db: DB = mongo.getDB( dbName )
+        val db: DB = mongoPool.getDB( dbName )
         db.requestStart
         db.getCollection( "events" )
     }
