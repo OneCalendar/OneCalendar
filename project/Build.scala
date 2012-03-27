@@ -15,8 +15,7 @@ object ApplicationBuild extends Build {
         "org.mnode.ical4j" % "ical4j" % "1.0.3" excludeAll(
             ExclusionRule(organization = "org.slf4j"),
             ExclusionRule(organization = "commons-logging")
-        ),
-        "org.apache.httpcomponents" % "httpclient" % "4.1.3"
+        )
 
     )
 

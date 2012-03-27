@@ -20,7 +20,7 @@ package controllers
 import org.scalatest.FunSuite
 import com.codahale.jerkson.Json
 import org.codehaus.jackson.annotate._
-import play.api.mvc.Action._
+import java.net._
 import org.scalatest.matchers.ShouldMatchers
 
 
@@ -32,52 +32,28 @@ case class DevoxxSpeakers(speakerUri: String, speaker: String) {}
 case class DevoxxPresentation(tags: Seq[DevoxxTag], summary: String, id: Long,
                               speakerUri: String, title: String, speaker: String,
                               track: String, experience: String, speakers: Seq[DevoxxSpeakers],
-                              room: String) {}
+                              room: Option[String]) {}
 
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-case class DevoxxSchedule(id: Long, partnerSlot: Boolean, fromTime: String, code: String, note: String, toTime: String, kind: String, room: String
-                          //                           ,presentationUri:String="",speaker:String="", title:String="", speakerUri:String=""
+case class DevoxxSchedule(id: Option[Long], partnerSlot: Option[Boolean], fromTime: Option[String], code: Option[String],
+                          note: Option[String], toTime: Option[String], kind: Option[String], room: Option[String],
+                          presentationUri: Option[String], speaker: Option[String], title: Option[String],
+                          speakerUri: Option[String]
                              ) {
-    //    def this(id:Long,partnerSlot:Boolean, fromTime:String, code:String,note:String, toTime:String,kind:String, room:String) =
-    //        this(id,partnerSlot,fromTime,code,toTime,room)
-    //
-    //    def this(presentationUri:String,speaker:String,code:String, fromTime:String, partnerSlot:Boolean, toTime:String,id:Long, kind:String, title:String, speakerUri:String, room:String) =
-    //        this(presentationUri,speaker,code,fromTime,partnerSlot,toTime,id,kind,title,speakerUri,room)
-
 }
-
-@JsonIgnoreProperties(ignoreUnknown = true)
-case class DevoxxSchedule2() {}
 
 class DevoxxLoadTest extends FunSuite with Json with ShouldMatchers {
 
-
-    def getRestContent(url: String): String = {
-        import org.apache.http.impl.client._
-        import org.apache.http.client.methods._
-        val httpClient = new DefaultHttpClient()
-        val httpResponse = httpClient.execute(new HttpGet(url))
-        val entity = httpResponse.getEntity()
-        var content = ""
-        if (entity != null) {
-            val inputStream = entity.getContent()
-            content = io.Source.fromInputStream(inputStream).getLines.mkString
-            inputStream.close
-        }
-        httpClient.getConnectionManager().shutdown()
-        return content
-    }
-
     test("load rest url presentation") {
-        var contentPresentation: String = getRestContent("https://cfp.devoxx.com/rest/v1/events/6/presentations")
-        println(contentPresentation)
+        val presentations: Seq[DevoxxPresentation] = parse[Seq[DevoxxPresentation]](new URL("https://cfp.devoxx.com/rest/v1/events/6/presentations").openStream)
+        presentations.size should be > 0
     }
 
 
     test("load rest url schedule") {
-        var contentPresentation: String = getRestContent("https://cfp.devoxx.com/rest/v1/events/6/schedule")
-        println(contentPresentation)
+        val schedules: Seq[DevoxxSchedule] = parse[Seq[DevoxxSchedule]](new URL("https://cfp.devoxx.com/rest/v1/events/6/schedule").openStream)
+        schedules.size should be > 0
     }
 
     test("load json of devoxx") {
@@ -117,16 +93,17 @@ class DevoxxLoadTest extends FunSuite with Json with ShouldMatchers {
         """)
 
     }
-    //
-    //    test ("load json devox schedule long") {
-    //        var devoxxSchedule: DevoxxSchedule = parse[DevoxxSchedule]("""
-    //        {"speaker":"Jos[0xc3][0xa9] Paumard","presentationUri":"http://cfp.devoxx.com/rest/v1/events/presentations/1134",
-    //        "code":"DVFR12_U_18_A_1","fromTime":"2012-04-18 09:30:00.0","partnerSlot":false,"type":"University",
-    //        "speakers":[{"speakerUri":"http://cfp.devoxx.com/rest/v1/events/speakers/1420","speaker":"Jos[0xc3][0xa9] Paumard"}],
-    //        "kind":"Talk","toTime":"2012-04-18 12:30:00.0",
-    //        "id":565,"title":"De Runnable et synchronized [0xc3][0xa0] parallel() et atomically()",
-    //        "speakerUri":"http://cfp.devoxx.com/rest/v1/events/speakers/1420","room":"La Seine A"}
-    //        """)
-    //        devoxxSchedule.id should be (565)
-    //    }
+
+    test("load json devox schedule long") {
+        var devoxxSchedule: DevoxxSchedule = parse[DevoxxSchedule]("""
+            {"speaker":"Jos[0xc3][0xa9] Paumard","presentationUri":"http://cfp.devoxx.com/rest/v1/events/presentations/1134",
+            "code":"DVFR12_U_18_A_1","fromTime":"2012-04-18 09:30:00.0","partnerSlot":false,"type":"University",
+            "speakers":[{"speakerUri":"http://cfp.devoxx.com/rest/v1/events/speakers/1420","speaker":"Jos[0xc3][0xa9] Paumard"}],
+            "kind":"Talk","toTime":"2012-04-18 12:30:00.0",
+            "id":565,"title":"De Runnable et synchronized [0xc3][0xa0] parallel() et atomically()",
+            "speakerUri":"http://cfp.devoxx.com/rest/v1/events/speakers/1420","room":"La Seine A"}
+            """)
+        devoxxSchedule.id should be(Some(565))
+        devoxxSchedule.speakerUri should be (Some("http://cfp.devoxx.com/rest/v1/events/speakers/1420"))
+    }
 }
