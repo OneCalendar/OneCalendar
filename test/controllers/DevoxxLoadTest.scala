@@ -19,44 +19,28 @@ package controllers
 
 import org.scalatest.FunSuite
 import com.codahale.jerkson.Json
-import org.codehaus.jackson.annotate._
 import java.net._
 import org.scalatest.matchers.ShouldMatchers
+import models._
 
-
-case class DevoxxTag(name: String) {}
-
-case class DevoxxSpeakers(speakerUri: String, speaker: String) {}
-
-@JsonIgnoreProperties(ignoreUnknown = true)
-case class DevoxxPresentation(tags: Seq[DevoxxTag], summary: String, id: Long,
-                              speakerUri: String, title: String, speaker: String,
-                              track: String, experience: String, speakers: Seq[DevoxxSpeakers],
-                              room: Option[String]) {}
-
-
-@JsonIgnoreProperties(ignoreUnknown = true)
-case class DevoxxSchedule(id: Option[Long], partnerSlot: Option[Boolean], fromTime: Option[String], code: Option[String],
-                          note: Option[String], toTime: Option[String], kind: Option[String], room: Option[String],
-                          presentationUri: Option[String], speaker: Option[String], title: Option[String],
-                          speakerUri: Option[String]
-                             ) {
-}
 
 class DevoxxLoadTest extends FunSuite with Json with ShouldMatchers {
 
     test("load rest url presentation") {
+        import models._
         val presentations: Seq[DevoxxPresentation] = parse[Seq[DevoxxPresentation]](new URL("https://cfp.devoxx.com/rest/v1/events/6/presentations").openStream)
         presentations.size should be > 0
     }
 
 
     test("load rest url schedule") {
+        import models._
         val schedules: Seq[DevoxxSchedule] = parse[Seq[DevoxxSchedule]](new URL("https://cfp.devoxx.com/rest/v1/events/6/schedule").openStream)
         schedules.size should be > 0
     }
 
     test("load json of devoxx") {
+        import models._
         val devoxxJson: String = """{
             "tags":[{"name":"DevOps"},{"name":"Versioning"}],
             "summary":"Nous sommes amenÃ©s quotidiennement Ã  modifier et partager du code:\r\n\r\n    * refactoring et tests afin d\u2019en amÃ©liorer la qualitÃ©,\r\n    * versioning afin de conserver et tracer ces changements.\r\n\r\nQu\u2019en est-il cÃ´tÃ© base de donnÃ©es ? En Ãªtes-vous encore Ã  envoyer vos scripts SQL directement Ã  l\u2019exploitation ? Les avez-vous testÃ©s ?\r\n\r\nDirectement inspirÃ© du livre \u201cRefactoring Databases: Evolutionary Database Design\u201d, Liquibase est un outil open-source qui permet de rÃ©pondre Ã  ces besoins essentiels.\r\n\r\nCette prÃ©sentation se veut Ãªtre une dÃ©monstration des forces de cet outil, de la crÃ©ation de structures de donnÃ©es Ã  leur livraison sur plusieurs environnements en passant par les tests.",
@@ -71,16 +55,13 @@ class DevoxxLoadTest extends FunSuite with Json with ShouldMatchers {
             """
 
         val devoxxEvent: DevoxxPresentation = parse[DevoxxPresentation](devoxxJson)
-        println("experience=" + devoxxEvent.experience);
-        println("id=" + devoxxEvent.id);
-        println("speaker=" + devoxxEvent.speaker);
-        println("speakerUri=" + devoxxEvent.speakerUri);
-        println("summary=" + devoxxEvent.summary);
-        println("title=" + devoxxEvent.title);
-        println("track=" + devoxxEvent.track);
-        println("experience=" + devoxxEvent.experience);
-        println("room=" + devoxxEvent.room);
-
+        devoxxEvent.experience should be ("NOVICE")
+        devoxxEvent.id should be (1409)
+        devoxxEvent.speaker should be ("Florent Biville")
+        devoxxEvent.speakerUri should be ("http://cfp.devoxx.com/rest/v1/events/speakers/1614")
+        devoxxEvent.title should be ("(R)Ã©volutionnez vos bases de donnÃ©es avec Liquibase !")
+        devoxxEvent.track should be ("Entreprises et pratiques")
+        devoxxEvent.room should be ("La Seine C")
     }
 
 
