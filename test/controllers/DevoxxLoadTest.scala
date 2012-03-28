@@ -61,7 +61,7 @@ class DevoxxLoadTest extends FunSuite with Json with ShouldMatchers {
         devoxxEvent.speakerUri should be ("http://cfp.devoxx.com/rest/v1/events/speakers/1614")
         devoxxEvent.title should be ("(R)Ã©volutionnez vos bases de donnÃ©es avec Liquibase !")
         devoxxEvent.track should be ("Entreprises et pratiques")
-        devoxxEvent.room should be ("La Seine C")
+        devoxxEvent.room.get should be ("La Seine C")
     }
 
 
@@ -84,7 +84,7 @@ class DevoxxLoadTest extends FunSuite with Json with ShouldMatchers {
             "id":565,"title":"De Runnable et synchronized [0xc3][0xa0] parallel() et atomically()",
             "speakerUri":"http://cfp.devoxx.com/rest/v1/events/speakers/1420","room":"La Seine A"}
             """)
-        devoxxSchedule.id should be(Some(565))
-        devoxxSchedule.speakerUri should be (Some("http://cfp.devoxx.com/rest/v1/events/speakers/1420"))
+        devoxxSchedule.id.get should be(565)
+        devoxxSchedule.speakerUri.get should be ("http://cfp.devoxx.com/rest/v1/events/speakers/1420")
     }
 }
