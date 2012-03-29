@@ -1,3 +1,5 @@
 package dao.configuration.injection
 
-case class MongoConfiguration( dbName: String )
+import java.util.Date
+
+case class MongoConfiguration(dbName: String, var now: Long = new Date().getTime())

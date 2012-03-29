@@ -3,10 +3,10 @@ package dao
 import configuration.injection.MongoConfiguration
 import models._
 import collection.JavaConversions
-import org.joda.time.DateTime
 import com.mongodb._
-import java.util.ArrayList
 import play.api.Logger
+import org.joda.time.DateTime
+import java.util.ArrayList
 
 object EventDao {
     private val log = Logger( "EventDao" )
@@ -36,15 +36,23 @@ object EventDao {
         log.debug( "query find by tag %s".format( query.toString ) )
         log.debug( "pool connection number: %s".format( mongoURI.getOptions.connectionsPerHost ) )
 
-        dbCursorToEvents( getEventsCollection( dbConfig.dbName ).find( query ) )
+        dbCursorToEvents(getEventsCollection(dbConfig.dbName).find(query))
     }
 
     def findPreviewByTag(tags: List[String])(implicit dbConfig: MongoConfiguration): SearchPreview = {
         val eventCollection: DBCollection = getEventsCollection(dbConfig.dbName)
         val javaTags: java.util.List[String] = toArrayList(tags)
-        val query: DBObject = new QueryBuilder().put("tags").in(javaTags).get
+        val query: DBObject = new QueryBuilder()
+            .put("tags").in(javaTags)
+            .put("begin").greaterThan(dbConfig.now)
+            .get
         val count = eventCollection.count(query)
-        val cursor: DBCursor = eventCollection.find(query).limit(PREVIEW_SIZE)
+        val sort: DBObject = BasicDBObjectBuilder.start()
+            .add("begin", 1)
+            .get()
+        val cursor: DBCursor = eventCollection.find(query)
+            .sort(sort)
+            .limit(PREVIEW_SIZE)
         val events: List[Event] = dbCursorToEvents(cursor)
 
         SearchPreview(count, events)
