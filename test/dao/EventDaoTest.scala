@@ -122,6 +122,12 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
         EventDao.findAll should have size 50
     }
 
+    test("should list tags in order of frequency") {
+        initFourData
+        val tags: List[String] = EventDao.listTags()
+        tags should be(List("OTHER", "4", "DEVOXX", "JAVA"))
+    }
+
     private def initData {
         EventDao.saveEvent(eventDevoxx)
         EventDao.saveEvent(eventJava)

@@ -15,19 +15,19 @@ object Application extends Controller {
     val calendarService: ICalBuilder = new ICalBuilder()
 
     def index = Action {
-        Ok( views.html.index() )
+        Ok(views.html.index())
     }
 
-    def findByTags( keyWords: String ) = Action {
+    def findByTags(keyWords: String) = Action {
         val tags: List[String] = keyWords.split(" ").toList
-        renderEvents( EventDao.findByTag( tags ) )
+        renderEvents(EventDao.findByTag(tags))
     }
 
     def findPreviewByTags(keyWords: String) = Action {
         mongoConfigProd.now = new Date().getTime();
         val tags: List[String] = keyWords.split(" ").toList
-        val previewEvents: SearchPreview = EventDao.findPreviewByTag( tags )
-        Ok( Json.toJson( renderPreviewEventInJson( previewEvents ) ) )
+        val previewEvents: SearchPreview = EventDao.findPreviewByTag(tags)
+        Ok(Json.toJson(renderPreviewEventInJson(previewEvents)))
     }
 
     def loadDevoxxCalendar = Action {
@@ -40,7 +40,11 @@ object Application extends Controller {
     def about = Action {
         Ok( views.html.about() )
     }
-
+    
+    def fetchCloudOfTags = Action {
+        Ok(Json.toJson(EventDao.listTags())).as("application/json")
+    }
+    
     private def renderEvents( events: List[ Event ] ) = {
         events match {
             case Nil => NotFound("Aucun évènement pour la recherche")
@@ -48,32 +52,32 @@ object Application extends Controller {
         }
     }
 
-    private def renderPreviewEventInJson( previewEvents: SearchPreview ): JsValue = {
+    private def renderPreviewEventInJson(previewEvents: SearchPreview): JsValue = {
         JsObject(
             List(
-                ( "size", JsNumber( previewEvents.size ) ),
-                ( "eventList", JsArray(
+                ("size", JsNumber(previewEvents.size)),
+                ("eventList", JsArray(
                     List(
-                        JsObject( List(
-                            ( "event", JsObject( List(
-                                ( "date", JsString( previewEvents.events(0).begin.toString ) ),
-                                ( "title", JsString( previewEvents.events(0).title ) ),
-                                ( "location", JsString( previewEvents.events(0).location ) )
-                            ) ) ) ) ),
-                        JsObject( List(
-                            ( "event", JsObject( List(
-                                ( "date", JsString( previewEvents.events(1).begin.toString ) ),
-                                ( "title", JsString( previewEvents.events(1).title ) ),
-                                ( "location", JsString( previewEvents.events(1).location ) )
-                            ) ) ) ) ),
-                        JsObject( List(
-                            ( "event", JsObject( List(
-                                ( "date", JsString( previewEvents.events(2).begin.toString ) ),
-                                ( "title", JsString( previewEvents.events(2).title ) ),
-                                ( "location", JsString( previewEvents.events(2).location ) )
-                            ) ) ) ) )
-                    ) )
-                )
+                        JsObject(List(
+                            ("event", JsObject(List(
+                                ("date", JsString(previewEvents.events(0).begin.toString)),
+                                ("title", JsString(previewEvents.events(0).title)),
+                                ("location", JsString(previewEvents.events(0).location))
+                            ))))),
+                        JsObject(List(
+                            ("event", JsObject(List(
+                                ("date", JsString(previewEvents.events(1).begin.toString)),
+                                ("title", JsString(previewEvents.events(1).title)),
+                                ("location", JsString(previewEvents.events(1).location))
+                            ))))),
+                        JsObject(List(
+                            ("event", JsObject(List(
+                                ("date", JsString(previewEvents.events(2).begin.toString)),
+                                ("title", JsString(previewEvents.events(2).title)),
+                                ("location", JsString(previewEvents.events(2).location))
+                            )))))
+                    ))
+                    )
             )
         )
     }

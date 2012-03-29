@@ -9,7 +9,42 @@ import org.joda.time.DateTime
 import java.util.ArrayList
 
 object EventDao {
+
     private val log = Logger( "EventDao" )
+    
+    def listTags()(implicit dbConfig: MongoConfiguration): List[String] = {
+        val collection: DBCollection = getEventsCollection(dbConfig.dbName)
+        val map = "function(){" +
+            "    this.tags.forEach(" +
+            "        function(z){" +
+            "            emit( z , { count : 1 } );" +
+            "        }" +
+            "    );" +
+            "};"
+        val reduce = "function( key , values ){" +
+            "    var total = 0;" +
+            "    for ( var i=0; i<values.length; i++ )" +
+            "        total += values[i].count;" +
+            "    return { count : total };" +
+            "};"
+        collection.mapReduce(map, reduce, "tagcloud", BasicDBObjectBuilder.start().get())
+        val tagcloud: DBCollection = collection.getDB.getCollection("tagcloud")
+        val sort: DBObject = BasicDBObjectBuilder.start()
+            .add("value.count", -1)
+            .add("_id", "1")
+            .get()
+        val cursor: DBCursor = tagcloud.find().sort(sort)
+
+        var tags: List[String] = List() //TODO refactor to use immutable list in val
+
+        while (cursor.hasNext) {
+            val dbObject: DBObject = cursor.next
+            val tag: String = dbObject.toMap.get("_id").asInstanceOf[String]
+            tags = tags :+ tag
+        }
+        tags
+    }
+
 
     private val PREVIEW_SIZE = 3
     private val mongoURI: MongoURI = {
