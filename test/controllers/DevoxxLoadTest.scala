@@ -19,23 +19,23 @@ package controllers
 
 import org.scalatest.FunSuite
 import com.codahale.jerkson.Json
-import java.net._
 import org.scalatest.matchers.ShouldMatchers
 import models._
+import service.LoadDevoxx
 
 
 class DevoxxLoadTest extends FunSuite with Json with ShouldMatchers {
 
     test("load rest url presentation") {
         import models._
-        val presentations: Seq[DevoxxPresentation] = parse[Seq[DevoxxPresentation]](new URL("https://cfp.devoxx.com/rest/v1/events/6/presentations").openStream)
+        val presentations: Seq[DevoxxPresentation] = new LoadDevoxx().parseUrl[Seq[DevoxxPresentation]]("https://cfp.devoxx.com/rest/v1/events/6/presentations")
         presentations.size should be > 0
     }
 
 
     test("load rest url schedule") {
         import models._
-        val schedules: Seq[DevoxxSchedule] = parse[Seq[DevoxxSchedule]](new URL("https://cfp.devoxx.com/rest/v1/events/6/schedule").openStream)
+        val schedules: Seq[DevoxxSchedule] = new LoadDevoxx().parseUrl[Seq[DevoxxSchedule]]("https://cfp.devoxx.com/rest/v1/events/6/schedule")
         schedules.size should be > 0
     }
 
