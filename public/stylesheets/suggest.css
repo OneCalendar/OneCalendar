@@ -166,6 +166,20 @@ h4 {
 
 .preview {
     font-size: 0.9em;
+    margin-top: 20px;
+}
+
+.preview > .title {
+    font-weight: bold;
+}
+
+.preview > .date {
+   float: right;
+}
+
+.preview > .location {
+   color: #444;
+   display: block;
 }
 
 #callbackNoResult {

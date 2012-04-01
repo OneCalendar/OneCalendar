@@ -194,22 +194,22 @@ describe 'google suggest like', ->
 
     SUGGEST.displayPreviewResult callbackResponse
 
-    expect( $('#resultSize') ).toHaveText( "nombre d'évènement(s) trouvé(s): 5" )
+    expect( $('#resultSize') ).toHaveText( "2 autres évènements trouvés" )
 
     expect( $('#callbackNoResult').css('display') ).toEqual('none')
 
     previewElement = $( '#subscription .preview' )
 
     expect( $( previewElement[0] ).text() ).toContain( "title 1")
-    expect( $( previewElement[0] ).text() ).toContain( "19 04 2012 - 15:35 - GMT+02")
+    expect( $( previewElement[0] ).text() ).toContain( "19 04 2012 - 15:35")
     expect( $( previewElement[0] ).text() ).toContain( "location 1")
 
     expect( $( previewElement[1] ).text() ).toContain( "title 2")
-    expect( $( previewElement[1] ).text() ).toContain( "19 04 2012 - 15:35 - GMT+02")
+    expect( $( previewElement[1] ).text() ).toContain( "19 04 2012 - 15:35")
     expect( $( previewElement[1] ).text() ).toContain( "location 2")
 
     expect( $( previewElement[2] ).text() ).toContain( "title 3")
-    expect( $( previewElement[2] ).text() ).toContain( "19 04 2012 - 15:35 - GMT+02")
+    expect( $( previewElement[2] ).text() ).toContain( "19 04 2012 - 15:35")
     expect( $( previewElement[2] ).text() ).toContain( "location 3")
 
   it "11. should display fail", ->
@@ -246,4 +246,4 @@ describe 'google suggest like', ->
     expect( $( "#callbackNoResult" ).css( 'display' ) ).toEqual( "none" )
 
   it "14. shoud format icalendar date format", ->
-    expect( SUGGEST.formatIcalDate "2012-04-19T14:30:00.000+02:00" ).toEqual( "19 04 2012 - 14:30 - GMT+02" )
+    expect( SUGGEST.formatIcalDate "2012-04-19T14:30:00.000+02:00" ).toEqual( "19 04 2012 - 14:30" )

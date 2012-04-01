@@ -42,11 +42,12 @@
         $('#subscription a.webcal').attr('href', "webcal://#{applicationBaseUrl_withoutHttp}/events/#{userSearch}")
 
         $('#subscription').show()
+        $('#cloudtags').hide()
 
   displayPreviewResult : (data) ->
      $( "#callbackNoResult" ).hide()
 
-     $("#resultSize").html("<b>nombre d'évènement(s) trouvé(s):</b> #{data.size}")
+     $("#resultSize").html("#{data.size - 3} autres évènements trouvés")
 
      previewElement = $('#subscription .preview')
      events = data.eventList
@@ -55,19 +56,19 @@
      eventThird = events[2].event
 
      $( previewElement[0] ).html( "
-                                <b>#{eventFirst.title}</b> <br/>
-                                #{SUGGEST.formatIcalDate eventFirst.date} <br/>
-                                #{eventFirst.location}
+                                <span class='title'>#{eventFirst.title}</span>
+                                <span class='date'>#{SUGGEST.formatIcalDate eventFirst.date}</span>
+                                <span class='location'>#{eventFirst.location}</span>
                                 " )
      $( previewElement[1] ).html( "
-                                <b>#{eventSecond.title}</b> <br/>
-                                #{SUGGEST.formatIcalDate eventSecond.date} <br/>
-                                #{eventSecond.location}
+                                <span class='title'>#{eventSecond.title}</span>
+                                <span class='date'>#{SUGGEST.formatIcalDate eventSecond.date}</span>
+                                <span class='location'>#{eventSecond.location}</span>
                                 " )
-     $( previewElement[2] ).html(
-                                "<b>#{eventThird.title}</b> <br/>
-                                #{ SUGGEST.formatIcalDate eventThird.date} <br/>
-                                #{eventThird.location}
+     $( previewElement[2] ).html("
+                                <span class='title'>#{eventThird.title}</span>
+                                <span class='date'>#{ SUGGEST.formatIcalDate eventThird.date}</span>
+                                <span class='location'>#{eventThird.location}</span>
                                 " )
 
   displayNoResult : (searchWord) ->
@@ -114,4 +115,4 @@
     dateHour = dateT[1].split ":"
     dateGmt = dateT[1].split("+")[1].split(":")[0]
 
-    "#{dateDay[2]} #{dateDay[1]} #{dateDay[0]} - #{dateHour[0]}:#{dateHour[1]} - GMT+#{dateGmt}"
+    "#{dateDay[2]} #{dateDay[1]} #{dateDay[0]} - #{dateHour[0]}:#{dateHour[1]}"
