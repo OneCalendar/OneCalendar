@@ -14,83 +14,86 @@
  * You should have received a copy of the GNU General Public License
  * along with OneCalendar.  If not, see <http://www.gnu.org/licenses/>.
  */
+header, footer, aside, nav, article {
+	display: block;
+}
 
 body {
     margin: 1% 1% 0 1%;
+	font-family: Lucida, Verdana, sans-serif, Arial;
+	text-align: center;
 }
 
-a {
-    text-decoration: none;
+#content {
+	margin-right: 2%;
+	width: 70%;
+	text-align: left;
+	display: inline-block;
 }
 
-legend {
-    padding: 0 25px 0 25px;
+.content1 {
+	padding: 1%;
+	width: 70%;
+	font-size: 11px;
+	float: left;
 }
 
-#title {
-    width: 100%;
-
-    margin: auto;
-    margin-bottom: 40px;
-
-    color: #808080;
+.content2 {
+	width: 20%;
+	padding: 1%;
+	float: right;
 }
 
-#technoBadge {
-    width: 50%;
+footer {
 }
 
-#technoBadge fieldset p {
-    padding: 0 15px 0 15px;
-
-    font-size: 0.8em;
+.about-section {
+	margin:3em 0
 }
 
-#technoBadge a:nth-child(2) {
-    margin-left: 30px;
+.about-section h1 {
+	font-size:2em
 }
 
-#technoBadge a:nth-child(4) {
-    margin-left: 20px;
+header {
+	text-align: left;
+	display: inline-block;
+	width: 71%;
 }
 
-#why {
-    float: right;
-    width: 50%;
+.share-button {
+	display:block;
+	border-top:solid 1px #999
 }
 
-#why p {
-    padding: 0 15px 0 15px;
+.logo-container {
+	text-align:right;
 }
 
-.onecalendar {
-    font-weight: bold;
-    color: #808080;
-    font-style: italic;
+.logo-design  {
+	display:inline-block;
+	text-align:left;
+	font-family:'Times New Roman', Times, "Lucida Grande", Verdana, sans-serif, Arial;
+	color:#888;
+	width:283px;
+
+	padding:1em;
+	border:solid 1px #888;
+    border-radius: 6px ;
+
 }
 
-#footer {
-    width: 100%;
-    position:fixed;
-    bottom: 0;
-    text-align: right;
+img {
+    vertical-align: middle;
 }
 
-#footer a {
-    text-decoration: none;
-    color: #777777;
-    padding-right: 3%;
-    padding-bottom: 10px;
-    font-size: 0.7em;
-    display: inline-block;
+.logo-design  h1{
+	font-size:2.5em;
+	margin-bottom:0;
+	margin-top:0;
 }
 
-.clear {
-    clear: both;
-}
-
-.center {
-    margin: auto;
-    margin-top: 2%;
-    width: 80%
+.logo-design  div{
+	text-align:right;
+	font-weight:bolder;
 }
