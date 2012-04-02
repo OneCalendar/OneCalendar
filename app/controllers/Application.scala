@@ -44,7 +44,11 @@ object Application extends Controller {
         mongoConfigProd.now = new Date().getTime();
         val tags: List[String] = keyWords.split(" ").toList
         val previewEvents: SearchPreview = EventDao.findPreviewByTag(tags)
-        Ok(Json.toJson(renderPreviewEventInJson(previewEvents)))
+        if (previewEvents.size >= 3) {
+            Ok(Json.toJson(renderPreviewEventInJson(previewEvents)))
+        } else {
+            NotFound
+        }
     }
 
     def loadDevoxxCalendar = Action {
