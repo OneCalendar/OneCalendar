@@ -34,25 +34,25 @@ body {
 .content1 {
 	padding: 1%;
 	width: 70%;
-	font-size: 11px;
+	font-size: 15px;
 	float: left;
 }
 
 .content2 {
 	width: 20%;
-	padding: 1%;
 	float: right;
+    padding-top: 10px;
 }
 
 footer {
 }
 
 .about-section {
-	margin:3em 0
 }
 
 .about-section h1 {
-	font-size:2em
+	font-size:2em;
+	margin-top:0;
 }
 
 header {
@@ -68,6 +68,7 @@ header {
 
 .logo-container {
 	text-align:right;
+    float: right;
 }
 
 .logo-design  {
@@ -85,6 +86,7 @@ header {
 
 img {
     vertical-align: middle;
+    margin: 10px;
 }
 
 .logo-design  h1{
