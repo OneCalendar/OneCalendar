@@ -23,7 +23,6 @@ import org.scalatest.matchers.ShouldMatchers
 import models._
 import service.LoadDevoxx
 
-
 class DevoxxLoadTest extends FunSuite with Json with ShouldMatchers {
 
     test("load rest url presentation") {
@@ -55,17 +54,14 @@ class DevoxxLoadTest extends FunSuite with Json with ShouldMatchers {
             """
 
         val devoxxEvent: DevoxxPresentation = parse[DevoxxPresentation](devoxxJson)
-        devoxxEvent.experience should be ("NOVICE")
-        devoxxEvent.id should be (1409)
-        devoxxEvent.speaker should be ("Florent Biville")
-        devoxxEvent.speakerUri should be ("http://cfp.devoxx.com/rest/v1/events/speakers/1614")
-        devoxxEvent.title should be ("(R)Ã©volutionnez vos bases de donnÃ©es avec Liquibase !")
-        devoxxEvent.track should be ("Entreprises et pratiques")
-        devoxxEvent.room.get should be ("La Seine C")
+        devoxxEvent.experience should be("NOVICE")
+        devoxxEvent.id should be(1409)
+        devoxxEvent.speaker should be("Florent Biville")
+        devoxxEvent.speakerUri should be("http://cfp.devoxx.com/rest/v1/events/speakers/1614")
+        devoxxEvent.title should be("(R)Ã©volutionnez vos bases de donnÃ©es avec Liquibase !")
+        devoxxEvent.track should be("Entreprises et pratiques")
+        devoxxEvent.room.get should be("La Seine C")
     }
-
-
-
 
     test("load json devoxx schedule short") {
         parse[DevoxxSchedule]("""
@@ -75,8 +71,19 @@ class DevoxxLoadTest extends FunSuite with Json with ShouldMatchers {
 
     }
 
+    test("load one presention") {
+        parse[DevoxxPresentation]("""
+    {"tags":[{"name":"Xtext"},{"name":"IzPack"},{"name":"DSL"},
+    {"name":"Eclipse"}],"summary":"Cette présentation permettra de découvrir la technologie Xtext et sera décomposée en plusieurs parties:\r\n\r\n1) une première partie, plutôt théorique, sur les différentes parties de Xtext et leur rôle bien précis\r\n2) une seconde, plus business, sur des utilisations actuelles de cette technologie\r\n3) enfin,une dernière, plus pratique, montrera un cas d'utilisation de Xtext pour développer un éditeur IzPack et le lien avec les outils de développement Java",
+    "id":1415,"speakerUri":"http://cfp2.devoxx.com/rest/v1/events/speakers/1571",
+    "title":"Dessine moi un language: à la découverte de Xtext","speaker":"Jeff Maury",
+    "track":"Languages alternatifs","experience":"NOVICE","speakers":[{"speakerUri":"http://cfp2.devoxx.com/rest/v1/events/speakers/1571","speaker":"Jeff Maury"}],
+    "type":"Tools in Action","room":"La Seine A"}
+    """)
+    }
+
     test("load json devox schedule long") {
-        var devoxxSchedule: DevoxxSchedule = parse[DevoxxSchedule]("""
+        val devoxxSchedule: DevoxxSchedule = parse[DevoxxSchedule]("""
             {"speaker":"Jos[0xc3][0xa9] Paumard","presentationUri":"http://cfp.devoxx.com/rest/v1/events/presentations/1134",
             "code":"DVFR12_U_18_A_1","fromTime":"2012-04-18 09:30:00.0","partnerSlot":false,"type":"University",
             "speakers":[{"speakerUri":"http://cfp.devoxx.com/rest/v1/events/speakers/1420","speaker":"Jos[0xc3][0xa9] Paumard"}],
@@ -85,6 +92,6 @@ class DevoxxLoadTest extends FunSuite with Json with ShouldMatchers {
             "speakerUri":"http://cfp.devoxx.com/rest/v1/events/speakers/1420","room":"La Seine A"}
             """)
         devoxxSchedule.id.get should be(565)
-        devoxxSchedule.speakerUri.get should be ("http://cfp.devoxx.com/rest/v1/events/speakers/1420")
+        devoxxSchedule.speakerUri.get should be("http://cfp.devoxx.com/rest/v1/events/speakers/1420")
     }
 }

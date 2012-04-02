@@ -18,33 +18,50 @@
 package service
 
 import dao.configuration.injection._
-import dao.configuration.injection.MongoConfiguration._
 import com.codahale.jerkson.Json
 import dao._
 import models._
+import builder.EventBuilder
 import java.net._
+import org.joda.time.format.{DateTimeFormatter, DateTimeFormat}
+import collection.Seq
+import collection.immutable.List
 
 class LoadDevoxx extends Json {
 
+    val DB_NAME: String = "OneCalendar"
 
-    val DB_NAME : String = "OneCalendar"
-
-    def parseLoad() ( implicit dbConfig: MongoConfiguration = MongoConfiguration( DB_NAME ) ) {
+    def parseLoad()(implicit dbConfig: MongoConfiguration = MongoConfiguration(DB_NAME)) {
 
         EventDao.deleteAll()
 
-        val schedules: Seq[DevoxxSchedule] = parse[Seq[DevoxxSchedule]](new URL("https://cfp.devoxx.com/rest/v1/events/6/schedule").openStream)
+        val schedules: Seq[DevoxxSchedule] = parseUrl[Seq[DevoxxSchedule]]("https://cfp.devoxx.com/rest/v1/events/6/schedule")
+        val pattern: DateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.S")
 
         schedules.foreach(schedule => {
-            val presentation: DevoxxPresentation = parseUrl[DevoxxPresentation](schedule.presentationUri.get)
+            if (schedule.presentationUri.isDefined) {
+                val presentation: DevoxxPresentation = parseUrl[DevoxxPresentation](schedule.presentationUri.get.replace("http://", "https://"))
 
+                var curTags: List[String] = List("DEVOXX")
+                presentation.tags.foreach(tag => {
+                    curTags = curTags :+ (tag.name.toUpperCase)
+                })
+                val event: Event = new EventBuilder()
+                    .uid(schedule.presentationUri.get)
+                    .title( presentation.title)
+                    .begin(pattern.parseDateTime(schedule.fromTime.get))
+                    .end(pattern.parseDateTime(schedule.toTime.get))
+                    .description(presentation.summary)
+                    .location(presentation.room.get)
+                    .tags(curTags)
+                    .toEvent
 
-//              var event:Event = new Event(schedule.id,presentation.title,presentation,schedul,Nil,);
-//            presentation.
+                EventDao.saveEvent(event)
+            }
         })
     }
 
-    def parseUrl[A](url:String)(implicit mf: Manifest[A]):A = {
+    def parseUrl[A](url: String)(implicit mf: Manifest[A]): A = {
         parse[A](new URL(url).openStream())
     }
 

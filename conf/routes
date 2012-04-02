@@ -31,6 +31,7 @@ GET     /about                      controllers.Application.about
 
 # Hacking application to load DevoxxCalendar from google agenda
 GET     /loadDevoxxCalendar         controllers.Application.loadDevoxxCalendar
+GET     /loadDevoxxCfp              controllers.Application.loadDevoxxCfp
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
