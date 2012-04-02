@@ -61,7 +61,7 @@ object Application extends Controller {
     }
 
     def about = Action {
-        Ok( views.html.about() )
+        Ok(views.html.about())
     }
     
     def fetchCloudOfTags = Action {
@@ -71,8 +71,17 @@ object Application extends Controller {
     private def renderEvents( events: List[ Event ] ) = {
         events match {
             case Nil => NotFound("Aucun évènement pour la recherche")
-            case _ => Ok( calendarService.buildCalendar( events ) ).as( "text/calendar; charset=utf-8" )
+            case _ => Ok(calendarService.buildCalendar(events)).as("text/calendar; charset=utf-8")
         }
+    }
+
+    private def previewEvent2Json(preview: Event): JsObject = {
+        JsObject(List(
+            ("event", JsObject(List(
+                ("date", JsString(preview.begin.toString)),
+                ("title", JsString(preview.title)),
+                ("location", JsString(preview.location))
+            )))))
     }
 
     private def renderPreviewEventInJson(previewEvents: SearchPreview): JsValue = {
@@ -81,26 +90,11 @@ object Application extends Controller {
                 ("size", JsNumber(previewEvents.size)),
                 ("eventList", JsArray(
                     List(
-                        JsObject(List(
-                            ("event", JsObject(List(
-                                ("date", JsString(previewEvents.events(0).begin.toString)),
-                                ("title", JsString(previewEvents.events(0).title)),
-                                ("location", JsString(previewEvents.events(0).location))
-                            ))))),
-                        JsObject(List(
-                            ("event", JsObject(List(
-                                ("date", JsString(previewEvents.events(1).begin.toString)),
-                                ("title", JsString(previewEvents.events(1).title)),
-                                ("location", JsString(previewEvents.events(1).location))
-                            ))))),
-                        JsObject(List(
-                            ("event", JsObject(List(
-                                ("date", JsString(previewEvents.events(2).begin.toString)),
-                                ("title", JsString(previewEvents.events(2).title)),
-                                ("location", JsString(previewEvents.events(2).location))
-                            )))))
-                    ))
+                        previewEvent2Json(previewEvents.events(0))
+                        , previewEvent2Json(previewEvents.events(1))
+                        , previewEvent2Json(previewEvents.events(2))
                     )
+                ))
             )
         )
     }
