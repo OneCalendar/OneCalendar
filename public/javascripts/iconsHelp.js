@@ -9,7 +9,7 @@ $(function() {
             });
     }
 
-    handleHelp(".ical", "Utilisez l'url brut pour windows avec Outlook, pour les autres plateforme");
+    handleHelp(".ical", "Utilisez l'url brut pour windows avec Outlook ainsi que pour les autres plateforme");
     handleHelp(".gcal", "Pour ajouter l'agenda à ceux que vous avez déjà sur google agenda ou si vous êtes sur Android");
-    handleHelp(".webcal", "Utilisez ce moyen si votre navigateur supporte les URLs webcal:// comme sur MacOS ou iOS");
+    handleHelp(".webcal", "Si votre navigateur supporte les URLs webcal:// comme sur MacOS ou iOS");
 });

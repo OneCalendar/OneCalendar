@@ -43,6 +43,7 @@
 
         $('#subscription').show()
         $('#cloudtags').hide()
+        $('#devoxx').hide()
 
   displayPreviewResult : (data) ->
      $( "#callbackNoResult" ).hide()

@@ -22,6 +22,11 @@
     src: local("Ubuntu"), url("http://themes.googleusercontent.com/static/fonts/ubuntu/v4/VeuwHt-_EDaMbc2iV8rWdvesZW2xOQ-xsNqO47m55DA.woff") format("woff");
 }
 
+.help {
+    width: 200px;
+    height : 80px;
+}
+
 section {
     width: 580px;
     margin: auto;
@@ -42,19 +47,15 @@ h4 {
 #title {
     color: #808080;
     margin-top: 30px;
+    position: relative;
 }
 
 #beta {
-    font-size: 4.1em;
-    color: #498AF3;
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    left: 38%;
-    top: 24%;
+    font-size: 2em;
     opacity: 0.5;
-    position: fixed;
-    z-index: -1
+    position: absolute;
+    right: 200px;
+    top: 10px;
 }
 
 /************************
@@ -109,7 +110,7 @@ h4 {
 
 .center {
     margin: auto;
-    width: 80%
+    width: 100%
 }
 
 #suggest ~ ul {
@@ -155,9 +156,9 @@ h4 {
 }
 
 #subscription a {
-    float: left;
-    margin-right: 5%;
-    margin-left: 6%;
+    float: right;
+    margin-right: 2%;
+    margin-left: 2%;
 }
 
 #resultSize {
@@ -193,13 +194,11 @@ h4 {
 
 section#devoxx {
     width: 470px;
-    margin: auto;
-    margin-right: 1px;
-    /*margin: 0 1% 0 0;*/
 }
 
 section#devoxx fieldset {
-    width: 88%;
+    width: 90%;
+
 }
 
 section#devoxx fieldset > legend {
@@ -211,9 +210,9 @@ section#devoxx fieldset > legend {
 }
 
 section#devoxx a {
-    float: left;
-    margin-right: 5%;
-    margin-left: 6%;
+    float: right;
+    margin-right: 1%;
+    margin-left: 1%;
 }
 
 #cloudtags {

@@ -31,7 +31,26 @@
 </head>
 <body>
 
-<section id="devoxx">
+<div class="clear"></div>
+
+<section id="title">
+    <h2>One Calendar !</h2><h4>to meet them all</h4>
+    <span id="beta">beta</span>
+</section>
+
+<section id="search">
+    <form method="get" action="/events" id="events">
+        <input type="text" id="suggest" placeholder="Saisissez vos mots clefs pour obtenir votre agenda" />
+        <input type="submit" value="" />
+    </form>
+</section>
+<div id="cloudtags">
+    <div class="legend">Nuage de tags</div>
+    <div class="elipse">...</div>
+</div>
+<div class="clear"></div>
+
+<section id="devoxx" class="center">
     <fieldset>
         <legend></legend>
         <div class="center">
@@ -49,31 +68,15 @@
         </div>
     </fieldset>
 </section>
-<div class="clear"></div>
-
-<section id="title">
-    <h2>One Calendar !<span id="beta">beta</span></h2><h4>to meet them all</h4>
-</section>
-
-<section id="search">
-    <form method="get" action="/events" id="events">
-        <input type="text" id="suggest" placeholder="Saisissez vos mots clefs pour obtenir votre agenda" />
-        <input type="submit" value="" />
-    </form>
-</section>
-<div id="cloudtags">
-    <div class="legend">Nuage de tags</div>
-    <div class="elipse">...</div>
-</div>
-<div class="clear"></div>
 
 <section id="subscription">
+    <span>Les 3 prochains évenements</span>
     <p class="preview"><span></span><span></span><span></span></p>
     <p class="preview"></p>
     <p class="preview"></p>
     <p id="resultSize"></p>
     <fieldset>
-        <legend>S'abonner au résultats de cette recherche</legend>
+        <legend>S'abonner aux résultats de cette recherche</legend>
 
         <div class="center">
             <a class="ical"><img alt="flux texte" title="flux texte" src="/assets/images/text.png"/></a>

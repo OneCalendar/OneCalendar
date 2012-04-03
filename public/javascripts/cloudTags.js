@@ -12,7 +12,7 @@
             }
 
             $("span.clickTag").click(function(el) {
-                $("#suggest").val($("#suggest").val().trim() + " " + $(this).text().trim());
+                $("#suggest").val(($("#suggest").val().trim() + " " + $(this).text().trim()).trim());
             });
 
             $("#cloudtags .elipse").click(function () {
