@@ -26,8 +26,11 @@ import java.net._
 import org.joda.time.format.{DateTimeFormatter, DateTimeFormat}
 import collection.Seq
 import collection.immutable.List
+import play.api.Logger
 
 class LoadDevoxx extends Json {
+
+    private val log = Logger("EventDao")
 
     val DB_NAME: String = "OneCalendar"
 
@@ -40,24 +43,29 @@ class LoadDevoxx extends Json {
 
         schedules.foreach(schedule => {
             if (schedule.presentationUri.isDefined) {
-                val presentation: DevoxxPresentation = parseUrl[DevoxxPresentation](schedule.presentationUri.get.replace("http://", "https://"))
+                try {
+                    val presentation: DevoxxPresentation = parseUrl[DevoxxPresentation](schedule.presentationUri.get.replace("http://", "https://"))
 
-                var curTags: List[String] = List("DEVOXX")
-                presentation.tags.foreach(tag => {
-                    curTags = curTags :+ (tag.name.toUpperCase)
-                })
-                val event: Event = new EventBuilder()
-                    .uid(schedule.presentationUri.get)
-                    .title( presentation.title)
-                    .begin(pattern.parseDateTime(schedule.fromTime.get))
-                    .end(pattern.parseDateTime(schedule.toTime.get))
-                    .description(presentation.summary)
-                    .location(presentation.room.get)
-                    .tags(curTags)
-                    .toEvent
+                    var curTags: List[String] = List("DEVOXX")
+                    presentation.tags.foreach(tag => {
+                        curTags = curTags :+ (tag.name.toUpperCase)
+                    })
+                    val event: Event = new EventBuilder()
+                        .uid(schedule.presentationUri.get)
+                        .title(presentation.title)
+                        .begin(pattern.parseDateTime(schedule.fromTime.get))
+                        .end(pattern.parseDateTime(schedule.toTime.get))
+                        .description(presentation.summary)
+                        .location(presentation.room.get)
+                        .tags(curTags)
+                        .toEvent
 
-                EventDao.saveEvent(event)
+                    EventDao.saveEvent(event)
+                } catch {
+                    case e: Exception => log.warn("the presentation %s can't be load".format(schedule.presentationUri))
+                }
             }
+
         })
     }
 
