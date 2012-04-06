@@ -24,6 +24,7 @@ import dao.EventDao
 import play.api.libs.json._
 import java.util.Date
 import service.{LoadDevoxx, LoadICalStream, ICalBuilder}
+import com.codahale.jerkson.Json._
 
 object Application extends Controller {
 
@@ -44,7 +45,7 @@ object Application extends Controller {
         mongoConfigProd.now = new Date().getTime();
         val tags: List[String] = keyWords.split(" ").toList
         val previewEvents: SearchPreview = EventDao.findPreviewByTag(tags)
-        if (previewEvents.size >= 3) {
+        if (previewEvents.size > 0) {
             Ok(Json.toJson(renderPreviewEventInJson(previewEvents)))
         } else {
             NotFound
@@ -88,6 +89,10 @@ object Application extends Controller {
             )))))
     }
 
+    private def parseEventToJson(event: Event): String = {
+        generate(Map("event"-> Map(("date"-> event.begin.toString), ("title"-> event.title),("location"-> event.location))))
+    }
+
     private def renderPreviewEventInJson(previewEvents: SearchPreview): JsValue = {
         JsObject(
             List(
@@ -101,5 +106,9 @@ object Application extends Controller {
                 ))
             )
         )
+    }
+
+    private def getMyPreviewList(previewEvents: SearchPreview): List = {
+        previewEvents.events.slice(0,2)
     }
 }
