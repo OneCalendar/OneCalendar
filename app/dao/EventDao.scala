@@ -47,7 +47,6 @@ object EventDao {
         collection.mapReduce(map, reduce, "tagcloud", BasicDBObjectBuilder.start().get())
         val tagcloud: DBCollection = collection.getDB.getCollection("tagcloud")
         val sort: DBObject = BasicDBObjectBuilder.start()
-            .add("value.count", -1)
             .add("_id", "1")
             .get()
         val cursor: DBCursor = tagcloud.find().sort(sort)

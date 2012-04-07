@@ -142,7 +142,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     test("should list tags in order of frequency") {
         initFourData
         val tags: List[String] = EventDao.listTags()
-        tags should be(List("OTHER", "4", "DEVOXX", "JAVA"))
+        tags should be(List("4", "DEVOXX", "JAVA", "OTHER"))
     }
 
     private def initData {
