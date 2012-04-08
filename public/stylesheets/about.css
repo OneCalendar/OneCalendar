@@ -43,6 +43,12 @@ header h1 {
     overflow: hidden;
 }
 
+header a {
+    float: right;
+    padding-right: 5%;
+    text-decoration: none;
+}
+
 #contact {
     border: solid 1px black;
 
