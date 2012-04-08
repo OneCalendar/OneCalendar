@@ -25,6 +25,7 @@ import play.api.libs.json._
 import java.util.Date
 import service.{LoadDevoxx, LoadICalStream, ICalBuilder}
 import com.codahale.jerkson.Json._
+import collection.immutable.List
 
 object Application extends Controller {
 
@@ -89,26 +90,22 @@ object Application extends Controller {
             )))))
     }
 
-    private def parseEventToJson(event: Event): String = {
-        generate(Map("event"-> Map(("date"-> event.begin.toString), ("title"-> event.title),("location"-> event.location))))
-    }
-
     private def renderPreviewEventInJson(previewEvents: SearchPreview): JsValue = {
         JsObject(
             List(
                 ("size", JsNumber(previewEvents.size)),
-                ("eventList", JsArray(
-                    List(
-                        previewEvent2Json(previewEvents.events(0))
-                        , previewEvent2Json(previewEvents.events(1))
-                        , previewEvent2Json(previewEvents.events(2))
-                    )
+                ("eventList", JsArray(getMyPreviewList(previewEvents.events)                
                 ))
             )
         )
     }
 
-    private def getMyPreviewList(previewEvents: SearchPreview): List = {
-        previewEvents.events.slice(0,2)
+    private def getMyPreviewList(previewEvents: List[Event]): Seq[JsObject] = {
+        if ( previewEvents.size>3){
+            previewEvents.slice(0,2).map(previewEvent2Json)
+
+        }else{
+            previewEvents.slice(0,previewEvents.size.toInt).map(previewEvent2Json)
+        }
     }
 }
