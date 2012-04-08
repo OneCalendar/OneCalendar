@@ -14,17 +14,87 @@
  * You should have received a copy of the GNU General Public License
  * along with OneCalendar.  If not, see <http://www.gnu.org/licenses/>.
  */
-header, footer, aside, nav, article {
+/*header, footer, aside, nav, article {
 	display: block;
-}
+}*/
 
 body {
-    margin: 1% 1% 0 1%;
-	font-family: Lucida, Verdana, sans-serif, Arial;
-	text-align: center;
+	/*font-family: Lucida, Verdana, sans-serif, Arial;*/
+    font-family: arial,sans-serif;
 }
 
-#content {
+.clear {
+    clear: both;
+}
+
+header {
+    border-bottom: solid 1px #91959C;
+}
+
+header h1 {
+    color: #91959C;
+    font-size: 27px;
+    font-weight: 300;
+
+    height: 51px;
+    line-height: 1.26;
+
+    margin: 20px 0 0 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#contact {
+    border: solid 1px black;
+
+    padding: 1%;
+    padding-top: 5px;
+    margin-top: 2%;
+
+    width: 13%;
+
+    text-align: center;
+    color: #1155CC;
+    font-size: 1.1em;
+}
+
+#contact h5 {
+    margin-top: 0;
+}
+
+.gstyle {
+    margin-top: 2%;
+    padding: 0;
+    font-size: 0.8em;
+    width: 38%;
+    border: solid 1px #336699;
+}
+
+.gstyle h1 {
+    background: none repeat scroll 0 0 #336699;
+    height: 35px;
+    text-align: center;
+    margin: 0;
+    font-size: 21px;
+    color: #FFFFFF;
+    font-weight: normal;
+    padding-top: 5px;
+}
+
+.gstyle p {
+    padding: 0 2% 2% 2%;
+}
+
+#fun {
+    float: right;
+    margin-right: 45%;
+}
+
+#why {
+    margin-left: 17%;
+}
+
+/*#content {
 	margin-right: 2%;
 	width: 70%;
 	text-align: left;
@@ -55,19 +125,13 @@ footer {
 	margin-top:0;
 }
 
-header {
-	text-align: left;
-	display: inline-block;
-	width: 71%;
-}
-
 .share-button {
 	display:block;
 	border-top:solid 1px #999
 }
 
 .logo-container {
-	text-align:right;
+	text-align: left;
     float: right;
 }
 
@@ -78,9 +142,9 @@ header {
 	color:#888;
 	width:283px;
 
-	padding:1em;
+	*//*padding:1em;
 	border:solid 1px #888;
-    border-radius: 6px ;
+    border-radius: 6px ;*//*
 
 }
 
@@ -98,4 +162,4 @@ img {
 .logo-design  div{
 	text-align:right;
 	font-weight:bolder;
-}
+}*/
