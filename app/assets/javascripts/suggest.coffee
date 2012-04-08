@@ -43,6 +43,7 @@
 
         $('#subscription').show()
         $('#cloudtags').hide()
+        $(".legend").hide()
         $('#devoxx').hide()
 
   displayPreviewResult : (data) ->
