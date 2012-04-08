@@ -48,29 +48,30 @@
   displayPreviewResult : (data) ->
      $( "#callbackNoResult" ).hide()
 
-     $("#resultSize").html("#{data.size - 3} autres évènements trouvés")
+     if data.size > 3
+       $("#resultSize").html("#{data.size - 3} autres évènements trouvés")
+     else
+       $("#resultSize").html("&nbsp;")
 
      previewElement = $('#subscription .preview')
      events = data.eventList
-     eventFirst = events[0].event
-     eventSecond = events[1].event
-     eventThird = events[2].event
 
-     $( previewElement[0] ).html( "
-                                <span class='title'>#{eventFirst.title}</span>
-                                <span class='date'>#{SUGGEST.formatIcalDate eventFirst.date}</span>
-                                <span class='location'>#{eventFirst.location}</span>
-                                " )
-     $( previewElement[1] ).html( "
-                                <span class='title'>#{eventSecond.title}</span>
-                                <span class='date'>#{SUGGEST.formatIcalDate eventSecond.date}</span>
-                                <span class='location'>#{eventSecond.location}</span>
-                                " )
-     $( previewElement[2] ).html("
-                                <span class='title'>#{eventThird.title}</span>
-                                <span class='date'>#{ SUGGEST.formatIcalDate eventThird.date}</span>
-                                <span class='location'>#{eventThird.location}</span>
-                                " )
+     i = 0
+     for tag in previewElement
+       if events[i] != undefined
+         $( tag ).html( "
+                         <span class='title'>#{events[i].event.title}</span>
+                         <span class='date'>#{SUGGEST.formatIcalDate events[i].event.date}</span>
+                         <span class='location'>#{events[i].event.location}</span>
+                         " )
+       else
+         $( tag ).html( "
+                         <span class='title'></span>
+                         <span class='date'></span>
+                         <span class='location'></span>
+                         " )
+       i++
+
 
   displayNoResult : (searchWord) ->
     $( '#subscription' ).hide()
