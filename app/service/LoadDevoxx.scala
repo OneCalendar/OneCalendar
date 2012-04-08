@@ -41,7 +41,9 @@ class LoadDevoxx extends Json {
         val schedules: Seq[DevoxxSchedule] = parseUrl[Seq[DevoxxSchedule]]("https://cfp.devoxx.com/rest/v1/events/6/schedule")
         val pattern: DateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.S")
 
-        schedules.foreach(schedule => {
+        val shedulesSet = Set(schedules.toArray : _*)
+
+        shedulesSet.foreach(schedule => {
             if (schedule.presentationUri.isDefined) {
                 try {
                     val presentation: DevoxxPresentation = parseUrl[DevoxxPresentation](schedule.presentationUri.get.replace("http://", "https://"))
