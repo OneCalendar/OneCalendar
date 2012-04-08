@@ -20,7 +20,7 @@ header, footer, aside, nav, article {
 
 body {
     margin: 1% 1% 0 1%;
-	font-family: Lucida, Verdana, sans-serif, Arial;
+	font-family: sans-serif;
 	text-align: center;
 }
 
@@ -74,7 +74,7 @@ header {
 .logo-design  {
 	display:inline-block;
 	text-align:left;
-	font-family:'Times New Roman', Times, "Lucida Grande", Verdana, sans-serif, Arial;
+	font-family:sans-serif;
 	color:#888;
 	width:283px;
 
