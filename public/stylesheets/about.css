@@ -19,7 +19,6 @@
 }*/
 
 body {
-	/*font-family: Lucida, Verdana, sans-serif, Arial;*/
     font-family: arial,sans-serif;
 }
 
@@ -66,7 +65,7 @@ header h1 {
     margin-top: 2%;
     padding: 0;
     font-size: 0.8em;
-    width: 38%;
+    width: 47%;
     border: solid 1px #336699;
 }
 
@@ -81,17 +80,40 @@ header h1 {
     padding-top: 5px;
 }
 
-.gstyle p {
-    padding: 0 2% 2% 2%;
+.techno {
+    padding-top: 2%;
+    float: right;
+    width: 36%;
+    text-align: center;
 }
 
-#fun {
-    float: right;
-    margin-right: 45%;
+.techno a ~ a {
+    display: block;
+    margin-top: 15px;
+}
+
+.fun-text {
+    padding-left: 2%;
+    width: 62%;
+    text-align: justify;
 }
 
 #why {
+    float: right;
+    margin-right: 36%;
+}
+
+#why p {
+    padding: 0 2% 1% 2%;
+    text-align: justify;
+}
+
+#fun {
     margin-left: 17%;
+}
+
+#fun p {
+    padding: 0 0 2% 0;
 }
 
 /*#content {
