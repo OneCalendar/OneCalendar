@@ -42,11 +42,11 @@ header h1 {
     margin: 0;
     padding-top: 1.4%;
     overflow: hidden;
+    float: left;
 }
 
 header img {
-    float: right;
-    margin-right: 64%;
+    margin-left: 10px;
 }
 
 header a {
@@ -57,14 +57,18 @@ header a {
 }
 
 .leftSection {
+    float: left;
+    margin-top: 1%;
+}
+
+.leftSubSection {
     border: solid 1px #336699;
-    width: 13%;
+    width: 190px;
     padding: 0;
-    margin-top: 2%;
     text-align: center;
 }
 
-.leftSection h5 {
+.leftSubSection h5 {
     margin: 0;
     padding: 2% 0 2% 0;
     color: #1155CC;
@@ -72,13 +76,21 @@ header a {
     border-bottom: solid 1px #336699;
 }
 
-.leftSection p {
+.leftSubSection p {
     padding: 0 5% 0 5%;
+}
+
+#valtech {
+    margin-top: 10%;
 }
 
 #valtech p {
     text-align: justify;
     font-size: 0.8em;
+}
+
+#mainSection {
+    margin-top: 1%;
 }
 
 #why p {
@@ -87,6 +99,7 @@ header a {
 }
 
 #fun {
+    margin-top: 2%;
     margin-bottom: 2%;
 }
 
@@ -95,13 +108,11 @@ header a {
 }
 
 .gstyle {
-    margin-top: 2%;
     padding: 0;
     font-size: 0.8em;
-    width: 47%;
+    width: 680px;
     border: solid 1px #336699;
-    float: right;
-    margin-right: 36%;
+    margin-left: 210px;
 }
 
 .gstyle h1 {
@@ -138,10 +149,10 @@ header a {
 }
 
 #footer {
-    width: 30%;
-    position: fixed;
-    bottom: 0;
-    right: 0;
+    /*width: 350px;*/
+    /*position: fixed;*/
+    /*bottom: 0;
+    right: 0;*/
     text-align: right;
     color: #777777;
     padding-right: 1%;
