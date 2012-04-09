@@ -49,22 +49,47 @@ header a {
     text-decoration: none;
 }
 
-#contact {
-    border: solid 1px black;
-
-    padding: 1%;
-    padding-top: 5px;
-    margin-top: 2%;
-
+.leftSection {
+    border: solid 1px #336699;
     width: 13%;
-
+    padding: 0;
+    margin-top: 2%;
     text-align: center;
-    color: #1155CC;
-    font-size: 1.1em;
 }
 
-#contact h5 {
-    margin-top: 0;
+.leftSection h5 {
+    margin: 0;
+    padding: 2% 0 2% 0;
+    color: #1155CC;
+    font-size: 1.1em;
+    border-bottom: solid 1px #336699;
+}
+
+.leftSection p {
+    padding: 0 5% 0 5%;
+}
+
+#valtech p {
+    text-align: justify;
+    font-size: 0.8em;
+}
+
+#why {
+    /*float: right;*/
+    /*margin-right: 36%;*/
+}
+
+#why p {
+    padding: 0 2% 1% 2%;
+    text-align: justify;
+}
+
+#fun {
+    /*margin-left: 17%;*/
+}
+
+#fun p {
+    padding: 0 0 2% 0;
 }
 
 .gstyle {
@@ -73,6 +98,8 @@ header a {
     font-size: 0.8em;
     width: 47%;
     border: solid 1px #336699;
+    float: right;
+    margin-right: 36%;
 }
 
 .gstyle h1 {
@@ -84,6 +111,10 @@ header a {
     color: #FFFFFF;
     font-weight: normal;
     padding-top: 5px;
+}
+
+.gstyle h1 span {
+    padding-left: 10%;
 }
 
 .techno {
@@ -102,24 +133,6 @@ header a {
     padding-left: 2%;
     width: 62%;
     text-align: justify;
-}
-
-#why {
-    float: right;
-    margin-right: 36%;
-}
-
-#why p {
-    padding: 0 2% 1% 2%;
-    text-align: justify;
-}
-
-#fun {
-    margin-left: 17%;
-}
-
-#fun p {
-    padding: 0 0 2% 0;
 }
 
 /*#content {
