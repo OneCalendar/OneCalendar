@@ -47,7 +47,9 @@ object Application extends Controller {
         val tags: List[String] = keyWords.split(" ").toList
         val previewEvents: SearchPreview = EventDao.findPreviewByTag(tags)
         if (previewEvents.size > 0) {
-            Ok(Json.toJson(renderPreviewEventInJson(previewEvents)))
+            val tmpp = renderPreviewEventInJson(previewEvents)
+            val tmp = Json.toJson(tmpp)
+            Ok(tmp)
         } else {
             NotFound
         }
@@ -94,18 +96,10 @@ object Application extends Controller {
         JsObject(
             List(
                 ("size", JsNumber(previewEvents.size)),
-                ("eventList", JsArray(getMyPreviewList(previewEvents.events)                
-                ))
+                ("eventList", JsArray(previewEvents.events.map(previewEvent2Json))
+                )
             )
         )
     }
 
-    private def getMyPreviewList(previewEvents: List[Event]): Seq[JsObject] = {
-        if ( previewEvents.size>3){
-            previewEvents.slice(0,2).map(previewEvent2Json)
-
-        }else{
-            previewEvents.slice(0,previewEvents.size.toInt-1).map(previewEvent2Json)
-        }
-    }
 }
