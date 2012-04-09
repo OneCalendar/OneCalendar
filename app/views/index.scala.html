@@ -35,20 +35,25 @@
 <div class="clear"></div>
 
 <section id="title">
-    <h2>One Calendar !</h2><h4>to meet them all</h4>
-    <span id="beta">beta</span>
+    <img src='@routes.Assets.at("images/onecalendar-beta.png")'
+           alt="One caledar to meet them all (bêta)"
+           title="One caledar to meet them all (bêta)">
 </section>
 
 <section id="search">
     <form method="get" action="/events" id="events">
-        <input type="text" id="suggest" placeholder="Saisissez vos mots clefs pour obtenir votre agenda" />
+        <input type="text" id="suggest"  autocomplete="off" placeholder="Saisissez vos mots clefs pour obtenir votre agenda" />
         <input type="submit" value="" />
     </form>
 </section>
-<div id="cloudtags">
-    <div class="legend">Nuage de tags</div>
-    <div class="elipse">...</div>
-</div>
+<section>
+    <div class="legend">
+        <img src='@routes.Assets.at("images/idee-ampoule-gestion-pouvoir-preferences-systeme-icone-4536-48.png")'/>
+        <img src='@routes.Assets.at("images/ampoule-idee-lumiere-icone-5095-48.png")' style="display:none"/>
+        <!--http://icones.pro/idee-ampoule-gestion-pouvoir-preferences-systeme-image-png.html-->
+        <span>Nuage de tags</span></div>
+    <div id="cloudtags"/>
+</section>
 <div class="clear"></div>
 
 <section id="devoxx" class="center">
@@ -96,7 +101,7 @@
 <section id="callbackNoResult"></section>
 
 <section id="footer">
-    <a href="/about">design with scala | playframework | mongodb | coffescript | html5/css3</a>
+    <a href="/about">A propos</a>
 </section>
 
 </body>

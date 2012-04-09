@@ -38,17 +38,14 @@ h4 {
 }
 
 #title {
-    color: #808080;
-    margin-top: 30px;
+    margin-top: 100px;
     position: relative;
 }
 
-#beta {
-    font-size: 2em;
-    opacity: 0.5;
-    position: absolute;
-    right: 200px;
-    top: 10px;
+#title img {
+    display: block;
+    margin: 0 auto;
+    width: 400px;
 }
 
 /************************
@@ -63,15 +60,15 @@ h4 {
     text-decoration: none;
     float: right;
 
+    border-radius: 2px;
     border: 0;
 
     width: 48px;
     height: 46px;
 
-    background-color: #498AF3;
-    background-image: url(/assets/images/search-transparent.png);
+    margin: 0 auto;
 
-    border-radius: 2px;
+    background: #07A7DA url(/assets/images/search-transparent.png) no-repeat;
 }
 
 #suggest {
@@ -83,22 +80,16 @@ h4 {
     margin: auto;
     margin-right: 10px;
 
-    border-color: #F2F1F0;
+    border-color: #07A7DA #F2F1F0  #F2F1F0 #07A7DA;
     border-style: solid;
 
     border-top-width: 2px;
     border-left-width: 2px;
-    border-top-color: #808080;
-    border-left-color: #808080;
 
     border-radius: 2px;
 
     padding-left: 10px;
     opacity: 0.6;
-}
-
-#suggest:focus {
-    background-color: #FFF79A;
 }
 
 .center {
@@ -186,11 +177,11 @@ h4 {
 *********************************/
 
 section#devoxx {
-    width: 470px;
+    width: 580px;
 }
 
 section#devoxx fieldset {
-    width: 90%;
+    width: 100%;
 
 }
 
@@ -214,22 +205,20 @@ section#devoxx a {
     position: relative;
 }
 
-#cloudtags .legend {
+.legend img {
+    width: 40px;
+    vertical-align: middle;
+}
+.legend {
     padding-left: 40px;
     margin-bottom: 5px;
     font-size: 0.9em;
     font-style: italic;
+    cursor: pointer;
+    display: inline;
 }
 
 #cloudtags .clickTag {
-    cursor: pointer;
-}
-
-.elipse {
-    width: 30px;
-    height: 20px;
-    position: relative;
-    float: right;
     cursor: pointer;
 }
 /**************************************
@@ -237,17 +226,19 @@ section#devoxx a {
 ***************************************/
 
 #footer {
-    width: 100%;
     position: fixed;
     bottom: 0;
-    text-align: right;
+    right: 0;
+    background-color: #07A7DA;
+    text-align: center;
+    padding-top: 10px;
+    border-radius: 20px 0px 0px 0px;
+    width:100px;
 }
 
 #footer a {
     text-decoration: none;
-    color: #777777;
-    padding-right: 3%;
-    padding-bottom: 10px;
-    font-size: 0.7em;
+    color: white;
+    font-size: 1em;
     display: inline-block;
 }
