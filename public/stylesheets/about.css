@@ -14,9 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with OneCalendar.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*header, footer, aside, nav, article {
-	display: block;
-}*/
 
 body {
     font-family: arial,sans-serif;
@@ -49,20 +46,13 @@ header img {
     margin-left: 10px;
 }
 
-header a {
-    float: right;
-    padding-right: 5%;
-    text-decoration: none;
-    padding-top: 1.4%;
-}
-
 .leftSection {
     float: left;
     margin-top: 1%;
 }
 
 .leftSubSection {
-    border: solid 1px #336699;
+    border: solid 1px #07A7DA;
     width: 190px;
     padding: 0;
     text-align: center;
@@ -71,7 +61,7 @@ header a {
 .leftSubSection h5 {
     margin: 0;
     padding: 2% 0 2% 0;
-    color: #1155CC;
+    color: #07A7DA;
     font-size: 1.1em;
     border-bottom: solid 1px #336699;
 }
@@ -82,6 +72,10 @@ header a {
 
 #valtech {
     margin-top: 10%;
+}
+
+#valtech img {
+    width: 180px;
 }
 
 #valtech p {
@@ -111,12 +105,12 @@ header a {
     padding: 0;
     font-size: 0.8em;
     width: 680px;
-    border: solid 1px #336699;
+    border: solid 1px #07A7DA;
     margin-left: 210px;
 }
 
 .gstyle h1 {
-    background: none repeat scroll 0 0 #336699;
+    background: none repeat scroll 0 0 #07A7DA;
     height: 35px;
     text-align: center;
     margin: 0;

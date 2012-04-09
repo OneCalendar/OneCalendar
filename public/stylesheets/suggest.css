@@ -23,7 +23,7 @@
 section {
     width: 580px;
     margin: auto;
-    font-family: sans-serif;
+    font-family: arial,sans-serif;
     font-size: 15px;
 }
 
@@ -71,6 +71,7 @@ h4 {
     background: #07A7DA url(/assets/images/search-transparent.png) no-repeat;
 }
 
+
 #suggest {
     width: 480px;
     height: 41px;
@@ -89,7 +90,10 @@ h4 {
     border-radius: 2px;
 
     padding-left: 10px;
-    opacity: 0.6;
+}
+
+#suggest:hover {
+    border-color:#07A7DA;
 }
 
 .center {
@@ -132,7 +136,8 @@ h4 {
 }
 
 #subscription fieldset {
-    width: 470px;
+    width: 580px;
+    border: solid thin #07A7DA;
 }
 
 #subscription fieldset > legend {
@@ -182,7 +187,7 @@ section#devoxx {
 
 section#devoxx fieldset {
     width: 100%;
-
+    border: thin solid #07A7DA;
 }
 
 section#devoxx fieldset > legend {
@@ -219,7 +224,12 @@ section#devoxx a {
 }
 
 #cloudtags .clickTag {
+    border: thin solid #07A7DA;
+    border-radius: 6px;
     cursor: pointer;
+    line-height: 26px;
+    margin: 3px;
+    padding: 3px 6px;
 }
 /**************************************
 *             FOOTER
@@ -231,7 +241,8 @@ section#devoxx a {
     right: 0;
     background-color: #07A7DA;
     text-align: center;
-    padding-top: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     border-radius: 20px 0px 0px 0px;
     width:100px;
 }
