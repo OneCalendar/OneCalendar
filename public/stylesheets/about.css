@@ -14,88 +14,144 @@
  * You should have received a copy of the GNU General Public License
  * along with OneCalendar.  If not, see <http://www.gnu.org/licenses/>.
  */
-header, footer, aside, nav, article {
+/*header, footer, aside, nav, article {
 	display: block;
-}
+}*/
 
 body {
-    margin: 1% 1% 0 1%;
-	font-family: sans-serif;
-	text-align: center;
+    font-family: arial,sans-serif;
 }
 
-#content {
-	margin-right: 2%;
-	width: 70%;
-	text-align: left;
-	display: inline-block;
-}
-
-.content1 {
-	padding: 1%;
-	width: 70%;
-	font-size: 15px;
-	float: left;
-}
-
-.content2 {
-	width: 20%;
-	float: right;
-    padding-top: 10px;
-}
-
-footer {
-}
-
-.about-section {
-}
-
-.about-section h1 {
-	font-size:2em;
-	margin-top:0;
+.clear {
+    clear: both;
 }
 
 header {
-	text-align: left;
-	display: inline-block;
-	width: 71%;
+    border-bottom: solid 1px #91959C;
+    height: 80px;
 }
 
-.share-button {
-	display:block;
-	border-top:solid 1px #999
+header h1 {
+    color: #91959C;
+    font-size: 27px;
+    font-weight: 300;
+
+    height: 80px;
+    line-height: 1.26;
+
+    margin: 0;
+    padding-top: 1.4%;
+    overflow: hidden;
+    float: left;
 }
 
-.logo-container {
-	text-align:right;
+header img {
+    margin-left: 10px;
+}
+
+header a {
     float: right;
+    padding-right: 5%;
+    text-decoration: none;
+    padding-top: 1.4%;
 }
 
-.logo-design  {
-	display:inline-block;
-	text-align:left;
-	font-family:sans-serif;
-	color:#888;
-	width:283px;
-
-	padding:1em;
-	border:solid 1px #888;
-    border-radius: 6px ;
-
+.leftSection {
+    float: left;
+    margin-top: 1%;
 }
 
-img {
-    vertical-align: middle;
-    margin: 10px;
+.leftSubSection {
+    border: solid 1px #336699;
+    width: 190px;
+    padding: 0;
+    text-align: center;
 }
 
-.logo-design  h1{
-	font-size:2.5em;
-	margin-bottom:0;
-	margin-top:0;
+.leftSubSection h5 {
+    margin: 0;
+    padding: 2% 0 2% 0;
+    color: #1155CC;
+    font-size: 1.1em;
+    border-bottom: solid 1px #336699;
 }
 
-.logo-design  div{
-	text-align:right;
-	font-weight:bolder;
+.leftSubSection p {
+    padding: 0 5% 0 5%;
+}
+
+#valtech {
+    margin-top: 10%;
+}
+
+#valtech p {
+    text-align: justify;
+    font-size: 0.8em;
+}
+
+#mainSection {
+    margin-top: 1%;
+}
+
+#why p {
+    padding: 0 2% 1% 2%;
+    text-align: justify;
+}
+
+#fun {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+#fun p {
+    padding: 0 0 2% 0;
+}
+
+.gstyle {
+    padding: 0;
+    font-size: 0.8em;
+    width: 680px;
+    border: solid 1px #336699;
+    margin-left: 210px;
+}
+
+.gstyle h1 {
+    background: none repeat scroll 0 0 #336699;
+    height: 35px;
+    text-align: center;
+    margin: 0;
+    font-size: 21px;
+    color: #FFFFFF;
+    font-weight: normal;
+    padding-top: 5px;
+}
+
+.gstyle h1 span {
+    padding-left: 10%;
+}
+
+.techno {
+    padding-top: 2%;
+    float: right;
+    width: 36%;
+    text-align: center;
+}
+
+.techno a ~ a {
+    display: block;
+    margin-top: 15px;
+}
+
+.fun-text {
+    padding-left: 2%;
+    width: 62%;
+    text-align: justify;
+}
+
+#footer {
+    text-align: right;
+    color: #777777;
+    padding-right: 1%;
+    padding-bottom: 10px;
+    font-size: 0.7em;
 }
