@@ -105,7 +105,7 @@ object Application extends Controller {
             previewEvents.slice(0,2).map(previewEvent2Json)
 
         }else{
-            previewEvents.slice(0,previewEvents.size.toInt).map(previewEvent2Json)
+            previewEvents.slice(0,previewEvents.size.toInt-1).map(previewEvent2Json)
         }
     }
 }
