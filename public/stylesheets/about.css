@@ -74,18 +74,13 @@ header a {
     font-size: 0.8em;
 }
 
-#why {
-    /*float: right;*/
-    /*margin-right: 36%;*/
-}
-
 #why p {
     padding: 0 2% 1% 2%;
     text-align: justify;
 }
 
 #fun {
-    /*margin-left: 17%;*/
+    margin-bottom: 2%;
 }
 
 #fun p {
@@ -135,72 +130,14 @@ header a {
     text-align: justify;
 }
 
-/*#content {
-	margin-right: 2%;
-	width: 70%;
-	text-align: left;
-	display: inline-block;
+#footer {
+    width: 30%;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+    color: #777777;
+    padding-right: 1%;
+    padding-bottom: 10px;
+    font-size: 0.7em;
 }
-
-.content1 {
-	padding: 1%;
-	width: 70%;
-	font-size: 15px;
-	float: left;
-}
-
-.content2 {
-	width: 20%;
-	float: right;
-    padding-top: 10px;
-}
-
-footer {
-}
-
-.about-section {
-}
-
-.about-section h1 {
-	font-size:2em;
-	margin-top:0;
-}
-
-.share-button {
-	display:block;
-	border-top:solid 1px #999
-}
-
-.logo-container {
-	text-align: left;
-    float: right;
-}
-
-.logo-design  {
-	display:inline-block;
-	text-align:left;
-	font-family:'Times New Roman', Times, "Lucida Grande", Verdana, sans-serif, Arial;
-	color:#888;
-	width:283px;
-
-	*//*padding:1em;
-	border:solid 1px #888;
-    border-radius: 6px ;*//*
-
-}
-
-img {
-    vertical-align: middle;
-    margin: 10px;
-}
-
-.logo-design  h1{
-	font-size:2.5em;
-	margin-bottom:0;
-	margin-top:0;
-}
-
-.logo-design  div{
-	text-align:right;
-	font-weight:bolder;
-}*/
