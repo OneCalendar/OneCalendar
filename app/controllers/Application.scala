@@ -47,9 +47,7 @@ object Application extends Controller {
         val tags: List[String] = keyWords.split(" ").toList
         val previewEvents: SearchPreview = EventDao.findPreviewByTag(tags)
         if (previewEvents.size > 0) {
-            val tmpp = renderPreviewEventInJson(previewEvents)
-            val tmp = Json.toJson(tmpp)
-            Ok(tmp)
+            Ok(Json.toJson(renderPreviewEventInJson(previewEvents)))
         } else {
             NotFound
         }
