@@ -61,7 +61,7 @@ header img {
 .leftSubSection h5 {
     margin: 0;
     padding: 2% 0 2% 0;
-    color: #07A7DA;
+    color: black;
     font-size: 1.1em;
     border-bottom: solid 1px #336699;
 }
@@ -85,6 +85,7 @@ header img {
 
 #mainSection {
     margin-top: 1%;
+    width:900px;
 }
 
 #why p {
@@ -106,7 +107,8 @@ header img {
     font-size: 0.8em;
     width: 680px;
     border: solid 1px #07A7DA;
-    margin-left: 210px;
+    margin-left: 20px;
+    float: left;
 }
 
 .gstyle h1 {
