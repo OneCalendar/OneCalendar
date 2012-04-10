@@ -52,7 +52,7 @@ header img {
 }
 
 .leftSubSection {
-    border: solid 1px #07A7DA;
+    border: solid 1px #336699;
     width: 190px;
     padding: 0;
     text-align: center;
@@ -106,13 +106,13 @@ header img {
     padding: 0;
     font-size: 0.8em;
     width: 680px;
-    border: solid 1px #07A7DA;
+    border: solid 1px #336699;
     margin-left: 20px;
     float: left;
 }
 
 .gstyle h1 {
-    background: none repeat scroll 0 0 #07A7DA;
+    background: none repeat scroll 0 0 #336699;
     height: 35px;
     text-align: center;
     margin: 0;
