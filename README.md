@@ -1,6 +1,25 @@
-One Calendar To Meet Them All
------------------------------
+# One Calendar To Meet Them All
 
-Vous avez déjà peut-être cherché un moyen de trouver un ensemble d'événements sur un sujet donné ? Vous avez dû vous rendre compte qu'il existait beaucoup de sources d'informations diverses pas forcément structurées, et surtout rarement consultables directement depuis votre agenda. Je pense par exemple à [l'Agenda du Libre](http://www.agendadulibre.org/), des [Agilistes](http://www.agenda-agile.org/), les meetups, l'agenda [JDuchess](https://sites.google.com/site/duchessfr/calendrier-conferences) ... et pour d'autres communautés il en existe sûrement plein d'autres. Personnellement, je trouve cela assez complexe et chronophage pour me tenir à jour de tous ses événements, et toujours prévenu trop tard pour pouvoir m'inscrire. Pour les initiatives qui tentent d'agréger toutes les informations, c'est également très lourd à maintenir.
 
-L'idée est donc de simplifier tout ça en proposant un **agrégateur d'agendas**, qui va les taguer, stocker dans une structure afin de pouvoir les consulter, filtrer et en faire des extractions. Pour commencer, sous la forme de flux iCal, standard de facto selon moi, pour les agendas.
+Le site : [onecalendar.valtech.fr](http://onecalendar.valtech.fr)
+
+## Pour les développeurs
+
+
+## Tests js
+Les tests js ne se compile pas seuls, [pour l'instant](http://github.com/ValtechTechno/OneCalendar/issues/53), alors pour les compiler
+
+`coffee -o test/front/javascripts/ -w -c test/front/coffee/`
+
+lancer un navigateur sur
+
+`test/front/jasmine/SpecRunner.html`
+
+## Pour lancer l'application
+* avoir play2 d'installer qq part
+* avoir mongo2 de lancer
+    * `mongod --dbpath ./data --noprealloc --smallfiles --nojournal --rest`
+    * `play`
+    * `$ compile`
+    * `$ test`
+    * `$ run`
