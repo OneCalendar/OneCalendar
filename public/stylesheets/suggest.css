@@ -1,0 +1,255 @@
+/*
+ * This file is part of OneCalendar.
+ *
+ * OneCalendar is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * OneCalendar is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with OneCalendar.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.help {
+    width: 200px;
+    height : 80px;
+}
+
+section {
+    width: 580px;
+    margin: auto;
+    font-family: arial,sans-serif;
+    font-size: 15px;
+}
+
+h2 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+h4 {
+    margin-top: 0;
+    margin-left: 28%;
+}
+
+#title {
+    margin-top: 100px;
+    position: relative;
+}
+
+#title img {
+    display: block;
+    margin: 0 auto;
+    width: 400px;
+}
+
+/************************
+*       SEARCH
+*************************/
+
+#search {
+    margin-top: 50px;
+}
+
+#events input[type=submit] {
+    text-decoration: none;
+    float: right;
+
+    border-radius: 2px;
+    border: 0;
+
+    width: 48px;
+    height: 46px;
+
+    margin: 0 auto;
+
+    background: #07A7DA url(/assets/images/search-transparent.png) no-repeat;
+}
+
+
+#suggest {
+    width: 480px;
+    height: 41px;
+
+    font-size: 1.1em;
+
+    margin: auto;
+    margin-right: 10px;
+
+    border-color: #07A7DA #F2F1F0  #F2F1F0 #07A7DA;
+    border-style: solid;
+
+    border-top-width: 2px;
+    border-left-width: 2px;
+
+    border-radius: 2px;
+
+    padding-left: 10px;
+}
+
+#suggest:hover {
+    border-color:#07A7DA;
+}
+
+.center {
+    margin: auto;
+    width: 100%
+}
+
+#suggest ~ ul {
+    list-style: none;
+
+    width: 491px;
+
+    border: 1px solid #808080;
+    border-top: none;
+    border-radius: 2px;
+
+    padding: 0;
+    margin: 0;
+}
+
+#suggest ~ ul > li {
+    padding-left: 10px;
+}
+
+#suggest ~ ul > li:hover {
+    background-color: #808080;
+}
+
+.clear {
+    clear: both;
+}
+
+/*********************
+*     SUBSCRIPTION
+**********************/
+
+#subscription {
+    margin-top: 25px;
+    display: none;
+}
+
+#subscription fieldset {
+    width: 580px;
+    border: solid thin #07A7DA;
+}
+
+#subscription fieldset > legend {
+    font-size: 1.5em;
+}
+
+#subscription a {
+    float: right;
+    margin-right: 2%;
+    margin-left: 2%;
+}
+
+#resultSize {
+    font-size: 0.9em;
+}
+
+.preview {
+    font-size: 0.9em;
+    margin-top: 20px;
+}
+
+.preview > .title {
+    font-weight: bold;
+}
+
+.preview > .date {
+   float: right;
+}
+
+.preview > .location {
+   color: #444;
+   display: block;
+}
+
+#callbackNoResult {
+    margin-top: 10px;
+    color: red;
+}
+
+/********************************
+*         DEVOXX
+*********************************/
+
+section#devoxx {
+    width: 580px;
+}
+
+section#devoxx fieldset {
+    width: 100%;
+    border: thin solid #07A7DA;
+}
+
+section#devoxx fieldset > legend {
+    background-image: url(http://www.devoxx.com/download/attachments/5342010/Logo-Devoxx-France-seul.png?version=1&modificationDate=1320431916000);
+    border: 0;
+    width: 222px;
+    height: 92px;
+    margin-bottom: 5%;
+}
+
+section#devoxx a {
+    float: right;
+    margin-right: 1%;
+    margin-left: 1%;
+}
+
+#cloudtags {
+    margin: 10px auto;
+    width: 580px;
+    position: relative;
+}
+
+.legend img {
+    width: 40px;
+    vertical-align: middle;
+}
+.legend {
+    padding-left: 40px;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    font-style: italic;
+    cursor: pointer;
+    display: inline;
+}
+
+#cloudtags .clickTag {
+    border: thin solid #07A7DA;
+    border-radius: 6px;
+    cursor: pointer;
+    line-height: 26px;
+    margin: 3px;
+    padding: 3px 6px;
+}
+/**************************************
+*             FOOTER
+***************************************/
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-color: #07A7DA;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 20px 0px 0px 0px;
+    width:100px;
+}
+
+#footer a {
+    text-decoration: none;
+    color: white;
+    font-size: 1em;
+    display: inline-block;
+}

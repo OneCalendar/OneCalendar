@@ -1,0 +1,130 @@
+@()
+<!DOCTYPE html>
+
+<!--
+  ~ This file is part of OneCalendar.
+  ~
+  ~ OneCalendar is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ OneCalendar is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with OneCalendar.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<html>
+<head>
+    <title>One Calendar! &Agrave; propos</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/about.css")'>
+    <link href='@routes.Assets.at("images/favicon.ico")' rel="shortcut icon">
+</head>
+<body>
+	<header>
+        <a href="/">
+        <img width="160px" src="/assets/images/OneCalendar.png" alt="OneCalendar!" title="OneCalendar!">
+        </a>
+        <h1>À propos de</h1>
+	</header>
+    <div class="clear"></div>
+
+    <section class="leftSection">
+        <section id="contact" class="leftSubSection">
+            <h5>Nous contacter</h5>
+            <p><a href="mailto:onecalendartomeetthemall@@gmail.com" ><img src="/assets/images/gmail.png"></a></p>
+            <p><a href="http://github.com/ValtechTechno/OneCalendar"><img src="/assets/images/github_32.png"></a></p>
+            <p><a href="https://twitter.com/intent/tweet?screen_name=OneCalendar_" class="twitter-mention-button" data-lang="fr">Tweet to @@OneCalendar_</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            </p>
+        </section>
+
+        <section id="valtech" class="leftSubSection">
+            <img src="/assets/images/Valtech_Logo_Black.png"/>
+            <p>
+                <a href="http://www.valtech.fr">Valtech</a> participe au projet OneCalendar! en mettant à
+                disposition de ses consultants du temps et une infrastructure.
+            </p>
+        </section>
+    </section>
+
+    <section id="mainSection">
+        <section id="why" class="gstyle">
+            <h1>Pourquoi One Calendar! To Meet Them All ?</h1>
+            <p>
+                Vous avez probablement cherché un moyen de trouver un ensemble d'événements sur un sujet donné ?
+                Vous avez dû vous rendre compte qu'il existait beaucoup de sources d'informations diverses, pas
+                forcément structurées, et surtout rarement consultables directement depuis votre agenda.
+                Nous pensons par exemple à <a href="http://www.agendadulibre.org/">l'Agenda du Libre</a>,
+                des <a href="http://www.agenda-agile.org/">Agilistes</a>, les meetups, l'agenda
+                <a href="https://sites.google.com/site/duchessfr/calendrier-conferences">JDuchess</a> ...
+                et pour d'autres communautés il en existe sûrement plein d'autres.
+            </p>
+            <p>
+                Il est complexe et chronophage de se tenir à jour de tous ces événements,
+                et d'être prévenus, toujours trop tard pour s'inscrire. Pour les initiatives qui tentent d'agréger
+                toutes les informations, c'est également très lourd à maintenir.
+            </p>
+            <p>
+                L'idée est donc de simplifier tout ça en proposant un agrégateur d'agendas, qui va les "taguer", les stocker
+                dans une structure afin de pouvoir les consulter, les filtrer et en faire des extractions.
+                Pour commencer, sous la forme de flux <a href="http://fr.wikipedia.org/wiki/ICalendar">iCalendar</a>,
+                standard de facto selon nous, pour les agendas.
+            </p>
+        </section>
+
+        <section id="fun" class="gstyle">
+            <h1>Un projet "fun"</h1>
+            <div class="clear"></div>
+            <div class="techno">
+                <a href="http://validator.w3.org/check?uri=http%3A%2F%2Fonecalendar.valtech.fr%2F">
+                    <img src="http://www.w3.org/html/logo/badge/html5-badge-h-css3-semantics.png" alt="HTML5 Powered with CSS3 / Styling, and Semantics"
+                         title="HTML5 Powered with CSS3 / Styling, and Semantics" width="165" height="64" />
+                </a>
+                <a href="http://www.scala-lang.org/">
+                    <img src="/assets/images/scala-logo.png" alt="scala language" title="scala language" width="198" height="59" />
+                </a>
+                <a href="http://www.playframework.org/">
+                    <img src="/assets/images/play_logo.png" alt="playframework 2" title="playframework 2" width="177" height="64" />
+                </a>
+                <a href="http://www.mongodb.org/">
+                    <img src="/assets/images/mongodb_logo.PNG" alt="mongodb NoSQL database" title="mongodb NoSQL database" width="200" height="67" />
+                </a>
+                <a href="http://coffeescript.org/">
+                    <img src="/assets/images/coffeescript_logo.png" alt="coffescript for javascript" title="coffescript for javascript" width="225" height="50" />
+                </a>
+            </div>
+            <div class="fun-text">
+                <p>
+                    Tout un objectif en soi.
+                    Nous avons voulu démontrer, à travers l'application One Calendar!, qu'avec des technos "fun" les équipes restent très productives et même plus productives
+                    qu'avec des technos "traditionnelles".
+                    Nous pensons que les développeurs sont des professionnels avertis et que ce qu'ils trouvent "fun" rentre en raisonnance avec ce qui est efficace dans leur métier.
+                </p>
+                <p>
+                    L'application One Calendar! a été réalisée en mode "agile", plus particulièrement avec des méthodes comme eXtrême programming et Scrum, avec une équipe,
+                    de 4 personnes, auto-organisée, prenant ses décisions au consentement mutuel.
+                </p>
+                <p>
+                    Malgré l'inexperience des développeurs sur ces technos récentes (par exemple playframework 2 n'était que dans sa version bêta quand nous avons commencé à travailler dessus)
+                    il a été possible de délivrer une première version fonctionnelle de l'application en 4 jours de travail seulement.
+                    Précisons que tous les développements ont été effectués en pair programming et en tdd, même pour la partie code client, ce qui contrairement à certaines croyances répandues
+                    ne nous a pas fait perdre du temps mais nous en a plutôt fait gagner.
+                </p>
+                <p>
+                    Un projet "fun" avec une équipe "agile", des professionnels passionés, une liberté d'agir, un cocktail qui nous semble particulièrement adapaté aux contraintes du métier de
+                    créateur d'application informatique.
+                </p>
+            </div>
+        </section>
+    <div class="clear"></div>
+    </section>
+
+    <section id="footer">design with scala | playframework | mongodb | coffescript | html5/css3</section>
+
+</body>
+</html>

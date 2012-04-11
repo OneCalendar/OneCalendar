@@ -3,7 +3,12 @@ project/project
 project/target
 target
 tmp
+.history
+
+/*idea files*/
+*.idea
 *.iml
-.idea*
-.DS*
-*.*~
+*.ipr
+
+/*node_modules_coffee*/
+node_modules/

@@ -15,15 +15,8 @@
  * along with OneCalendar.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package models
+package dao.configuration.injection
 
-import org.joda.time.DateTime
+import java.util.Date
 
-case class Event( uid: String,
-                  title: String,
-                  begin: DateTime,
-                  end: DateTime,
-                  location: String = "",
-                  description: String = "",
-                  tags: List[String] = Nil
-)
+case class MongoConfiguration(dbName: String, var now: Long = new Date().getTime())
