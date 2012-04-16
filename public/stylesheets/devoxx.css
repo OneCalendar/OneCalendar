@@ -1,0 +1,56 @@
+body {
+    font-family: arial,sans-serif;
+    font-size: 15px;
+}
+
+header {
+    height: 80px;
+}
+
+header img {
+    margin-left: 10px;
+}
+
+#why {
+    width: 700px;
+    margin: auto;
+    margin-top: 50px;
+    text-align: justify;
+}
+
+.how {
+    width: 700px;
+    margin: auto;
+    margin-top: 50px;
+    text-align: justify;
+}
+
+div {
+    margin-top: 50px;
+}
+
+span {
+    width: 370px;
+    float: right;
+}
+
+fieldset {
+    float: right;
+    width: 500px;
+    height: 380px;
+}
+
+legend {
+    padding: 0 20px 0 20px;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+    color: #777777;
+    padding-right: 1%;
+    padding-bottom: 10px;
+    font-size: 0.7em;
+}

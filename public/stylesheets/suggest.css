@@ -29,7 +29,7 @@ section {
 
 #title {
     color: #808080;
-    margin-top: 60px;
+    margin-top: 100px;
 }
 
 #title img {
@@ -51,10 +51,6 @@ section#devox {
     width: 340px;
     display: inline-block;
     font-size: 0.8em;
-}
-
-.h a {
-    float: left;
 }
 
 .h + a {
