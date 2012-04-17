@@ -27,25 +27,44 @@ section {
     font-size: 15px;
 }
 
-h2 {
-    margin: 0;
-    font-size: 2.5em;
-}
-
-h4 {
-    margin-top: 0;
-    margin-left: 28%;
-}
-
 #title {
+    color: #808080;
     margin-top: 100px;
-    position: relative;
 }
 
 #title img {
-    display: block;
-    margin: 0 auto;
-    width: 400px;
+    width: 325px;
+}
+
+/********************************
+*         DEVOXX
+*********************************/
+
+section#devox {
+    width: 100%;
+    margin: 0;
+}
+
+.h {
+    padding: 0;
+    margin: 0;
+    width: 340px;
+    display: inline-block;
+    font-size: 0.8em;
+}
+
+.h + a {
+    float: left;
+}
+
+.h .helpDevoxx {
+    float: right;
+    width: 100px;
+}
+
+section#devox a {
+    margin-right: 1%;
+    margin-left: 1%;
 }
 
 /************************
@@ -53,7 +72,7 @@ h4 {
 *************************/
 
 #search {
-    margin-top: 50px;
+    margin-top: 40px;
 }
 
 #events input[type=submit] {
@@ -177,32 +196,9 @@ h4 {
     color: red;
 }
 
-/********************************
-*         DEVOXX
-*********************************/
-
-section#devoxx {
-    width: 580px;
-}
-
-section#devoxx fieldset {
-    width: 100%;
-    border: thin solid #07A7DA;
-}
-
-section#devoxx fieldset > legend {
-    background-image: url(http://www.devoxx.com/download/attachments/5342010/Logo-Devoxx-France-seul.png?version=1&modificationDate=1320431916000);
-    border: 0;
-    width: 222px;
-    height: 92px;
-    margin-bottom: 5%;
-}
-
-section#devoxx a {
-    float: right;
-    margin-right: 1%;
-    margin-left: 1%;
-}
+/*******************************************
+*           CLOUD TAG
+********************************************/
 
 #cloudtags {
     margin: 10px auto;
