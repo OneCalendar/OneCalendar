@@ -33,8 +33,7 @@ class LoadICalStream {
     val DB_NAME : String = "OneCalendar"
 
 
-    def parseLoad(url: String, eventName: String = "" )
-    ( implicit dbConfig: MongoConfiguration = MongoConfiguration( DB_NAME ) ) {
+    def parseLoad(url: String, eventName: String = "" )( implicit dbConfig: MongoConfiguration = MongoConfiguration( DB_NAME ) ) {
 
         EventDao.deleteAll()
         val urlCal = new URL(url)

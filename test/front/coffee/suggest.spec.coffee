@@ -100,8 +100,8 @@ describe 'google suggest like', ->
 
     SUGGEST.loadUrlDevoxxSection()
 
-    expect( $("#devoxx a.gcal").attr("href") ).toContain('%2Fevents%2FDEVOXX')
-    expect( $("#devoxx a.webcal").attr("href") ).toContain('/events/DEVOXX')
+    expect( $("#devoxx a.gcal").attr("href") ).toContain('%2Fevents%2FAGILEFRANCE')
+    expect( $("#devoxx a.webcal").attr("href") ).toContain('/events/AGILEFRANCE')
 
   it "8. should call rest controller to retrieve preview result when user click on search", ->
     setFixtures '''
