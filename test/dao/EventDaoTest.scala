@@ -67,6 +67,16 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
         .tags(List("4", "OTHER"))
         .toEvent
 
+    val oldEvent = event4
+
+    val newEvent: Event = new EventBuilder()
+        .uid("NEW")
+        .title("NEW")
+        .begin(new DateTime().plusDays(10))
+        .end(new DateTime().plusDays(10))
+        .tags(List("NEW"))
+        .toEvent
+
     val db: DB = {
         val mongo: Mongo = new Mongo()
         val db: DB = mongo.getDB("test")
@@ -143,6 +153,12 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
         initFourData
         val tags: List[String] = EventDao.listTags()
         tags should be(List("4", "DEVOXX", "JAVA", "OTHER"))
+    }
+
+    test("should not list old tags") {
+        EventDao.saveEvent(oldEvent)
+        EventDao.saveEvent(newEvent)
+        tags should be(List("NEW"))
     }
 
     private def initData {
