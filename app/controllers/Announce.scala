@@ -30,7 +30,7 @@ object Announce extends Controller {
     }
 
     def loadAgileFranceCalendar = Action {
-        val url: String = "http://10.61.32.155:8080/ical.ics"
+        val url: String = "http://10.61.32.155:8080/agilefrance.ics"
 
         val iCalService: LoadICalStream = new LoadICalStream()
         iCalService.parseLoad( url, "AGILEFRANCE" )

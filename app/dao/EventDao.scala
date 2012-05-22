@@ -19,6 +19,7 @@ package dao
 
 import configuration.injection.MongoConfiguration
 import models._
+import builder.EventBuilder
 import collection.JavaConversions
 import com.mongodb._
 import play.api.Logger
@@ -127,7 +128,7 @@ object EventDao {
         val tags: BasicDBList = one.toMap.get("tags").asInstanceOf[BasicDBList]
         val scalaTags: List[String] = tags.toArray.toList.map(_.asInstanceOf[String])
 
-        val event: Event = new Event(
+        /*val event: Event = new Event(
             one.toMap.get("uid").asInstanceOf[String],
             one.toMap.get("title").asInstanceOf[String],
             new DateTime(one.toMap.get("begin").asInstanceOf[Long]),
@@ -135,8 +136,17 @@ object EventDao {
             one.toMap.get("location").asInstanceOf[String],
             one.toMap.get("description").asInstanceOf[String],
             scalaTags
-        )
-        event
+        )*/
+
+        new EventBuilder()
+            .uid( one.toMap.get("uid").asInstanceOf[String] )
+            .title( one.toMap.get("title").asInstanceOf[String] )
+            .tags( scalaTags )
+            .description( one.toMap.get("description").asInstanceOf[String] )
+            .location( one.toMap.get("location").asInstanceOf[String] )
+            .begin( new DateTime(one.toMap.get("begin").asInstanceOf[Long]) )
+            .end( new DateTime(one.toMap.get("end").asInstanceOf[Long]) )
+            .toEvent
     }
 
     private def fromEvent2DBObject(event: Event): BasicDBObject = {
