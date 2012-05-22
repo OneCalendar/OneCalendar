@@ -128,16 +128,6 @@ object EventDao {
         val tags: BasicDBList = one.toMap.get("tags").asInstanceOf[BasicDBList]
         val scalaTags: List[String] = tags.toArray.toList.map(_.asInstanceOf[String])
 
-        /*val event: Event = new Event(
-            one.toMap.get("uid").asInstanceOf[String],
-            one.toMap.get("title").asInstanceOf[String],
-            new DateTime(one.toMap.get("begin").asInstanceOf[Long]),
-            new DateTime(one.toMap.get("end").asInstanceOf[Long]),
-            one.toMap.get("location").asInstanceOf[String],
-            one.toMap.get("description").asInstanceOf[String],
-            scalaTags
-        )*/
-
         new EventBuilder()
             .uid( one.toMap.get("uid").asInstanceOf[String] )
             .title( one.toMap.get("title").asInstanceOf[String] )
