@@ -24,7 +24,6 @@ import dao.EventDao
 import play.api.libs.json._
 import java.util.Date
 import service.{LoadDevoxx, LoadICalStream, ICalBuilder}
-import com.codahale.jerkson.Json._
 import collection.immutable.List
 
 object Application extends Controller {

@@ -23,9 +23,7 @@ import org.scalatest._
 import models.Event
 import models.builder.EventBuilder
 
-class ICalBuilderTest extends FunSuite
-with ShouldMatchers
-with BeforeAndAfter {
+class ICalBuilderTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
 
     var ical: String = _
 
