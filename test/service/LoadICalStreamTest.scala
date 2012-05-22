@@ -42,7 +42,7 @@ class LoadICalStreamTest extends FunSuite with ShouldMatchers with BeforeAndAfte
         db.requestDone
     }
 
-    test("should parse iCal stream") {
+    ignore("should parse iCal stream") {
         val url : String = "https://www.google.com/calendar/ical/u74tb1k9n53bnc5qsg3694p2l4%40group.calendar.google.com/public/basic.ics"
         val iCalService : LoadICalStream = new LoadICalStream()
         iCalService.parseLoad( url, "DEVOXX" )
