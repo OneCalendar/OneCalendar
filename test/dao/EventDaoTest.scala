@@ -67,7 +67,13 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
         .tags(List("4", "OTHER"))
         .toEvent
 
-    val oldEvent = event4
+    val oldEvent : Event = new EventBuilder()
+        .uid("4")
+        .title("BOF")
+        .begin(new DateTime(2012, 04, 21, 15, 0, 0, 0))
+        .end(new DateTime(2012, 04, 21, 16, 0, 0, 0))
+        .tags(List("4", "OTHER"))
+        .toEvent
 
     val newEvent: Event = new EventBuilder()
         .uid("NEW")
@@ -149,15 +155,10 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
         EventDao.findAll should have size 50
     }
 
-    test("should list tags in order of frequency") {
-        initFourData
-        val tags: List[String] = EventDao.listTags()
-        tags should be(List("4", "DEVOXX", "JAVA", "OTHER"))
-    }
-
     test("should not list old tags") {
         EventDao.saveEvent(oldEvent)
         EventDao.saveEvent(newEvent)
+        val tags: List[String] = EventDao.listTags()
         tags should be(List("NEW"))
     }
 
