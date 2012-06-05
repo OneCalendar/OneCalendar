@@ -29,14 +29,5 @@ GET     /tags                       controllers.Application.fetchCloudOfTags
 # About
 GET     /about                      controllers.Application.about
 
-# Hacking application to load DevoxxCalendar
-GET     /loadDevoxxCalendar         controllers.Application.loadDevoxxCalendar
-GET     /loadDevoxxCfp              controllers.Application.loadDevoxxCfp
-GET     /devoxx                     controllers.Devoxx.devoxx
-
-# Hacking application to load AgileFranceCalendar
-GET     /agilefrance                controllers.Announce.agilefrance
-GET     /loadAgileFranceCalendar    controllers.Announce.loadAgileFranceCalendar
-
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
