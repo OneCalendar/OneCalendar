@@ -26,11 +26,12 @@ import play.api.Logger
 import org.joda.time.DateTime
 import java.util.ArrayList
 import fr.scala.util.collection.CollectionsUtils
+import annotation.tailrec
 
 object EventDao extends CollectionsUtils{
 
     private val log = Logger( "EventDao" )
-    
+
     private val PREVIEW_SIZE = 3
 
     private val mongoURI: MongoURI = {
@@ -40,13 +41,13 @@ object EventDao extends CollectionsUtils{
     }
 
     private val mongo: Mongo = (new Mongo.Holder()).connect( mongoURI )
-    
+
     def deleteAll()(implicit dbConfig: MongoConfiguration) {
         getEventsCollection(dbConfig.dbName).drop()
     }
 
     def saveEvent(event: Event)(implicit dbConfig: MongoConfiguration) {
-        val bObject: BasicDBObject = fromEvent2DBObject(event)
+        val bObject = fromEvent2DBObject(event)
         getEventsCollection(dbConfig.dbName).save(bObject)
     }
 
@@ -86,10 +87,11 @@ object EventDao extends CollectionsUtils{
     }
 
     def listTags()(implicit dbConfig: MongoConfiguration): List[String] = {
-        var query : BasicDBObject = new BasicDBObject();
-        query.put("begin", new BasicDBObject("$gt", new DateTime().getMillis));
-        val tags : List[String] = getDatabase( dbConfig.dbName ).getCollection( "events" ).distinct("tags",query).toList.asInstanceOf[List[String]]
-        tags
+        val query = BasicDBObjectBuilder
+          .start()
+          .add("begin",new BasicDBObject("$gt", new DateTime().getMillis)).get()
+
+        getDatabase( dbConfig.dbName ).getCollection( "events" ).distinct("tags",query).toList.asInstanceOf[List[String]]
     }
 
     private def getEventsCollection( dbName: String ): DBCollection = getDatabase( dbName ).getCollection( "events" )
@@ -116,16 +118,16 @@ object EventDao extends CollectionsUtils{
             .toEvent
     }
 
-    private def fromEvent2DBObject(event: Event): BasicDBObject = {
-        val bObject: BasicDBObject = new BasicDBObject()
-        bObject.put("uid", event.uid)
-        bObject.put("title", event.title)
-        bObject.put("begin", event.begin.toDate.getTime)
-        bObject.put("end", event.end.toDate.getTime)
-        bObject.put("location", event.location)
-        bObject.put("description", event.description)
-        bObject.put("tags", JavaConversions.asJavaCollection(event.tags))
-        bObject
+    private def fromEvent2DBObject(event: Event): DBObject = {
+        BasicDBObjectBuilder.start()
+        .add("uid", event.uid)
+        .add("title", event.title)
+        .add("begin", event.begin.toDate.getTime)
+        .add("end", event.end.toDate.getTime)
+        .add("location", event.location)
+        .add("description", event.description)
+        .add("tags", JavaConversions.asJavaCollection(event.tags))
+        .get()
     }
 
     private def toArrayList(tags: List[String]): java.util.List[String] = {
@@ -135,15 +137,16 @@ object EventDao extends CollectionsUtils{
         javaTags
     }
 
+    @tailrec
+    private def dbFunCursor(cursor:DBCursor , res :List[Event] ) :List[Event] = {
+
+      cursor.hasNext() match {
+        case true => dbFunCursor(cursor,fromDbObject2Event(cursor.next()) :: res)
+        case false => res.reverse
+      }
+    }
+
     private def dbCursorToEvents(cursor: DBCursor): List[Event] = {
-        var events: List[Event] = List() //TODO refactor to use immutable list in val
-
-        while (cursor.hasNext) {
-            val dbObject: DBObject = cursor.next
-            val event: Event = fromDbObject2Event(dbObject)
-            events = events :+ event
-        }
-
-        events
+      dbFunCursor(cursor,List())
     }
 }
