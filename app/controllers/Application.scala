@@ -42,7 +42,7 @@ object Application extends Controller {
     }
 
     def findPreviewByTags(keyWords: String) = Action {
-        mongoConfigProd.now = new Date().getTime();
+        mongoConfigProd.now = new Date().getTime
         val tags: List[String] = keyWords.split(" ").toList
         val previewEvents: SearchPreview = EventDao.findPreviewByTag(tags)
         if (previewEvents.size > 0) {
@@ -52,6 +52,7 @@ object Application extends Controller {
         }
     }
 
+    // TODO dead code
     def loadDevoxxCalendar = Action {
         val url: String = "https://www.google.com/calendar/ical/u74tb1k9n53bnc5qsg3694p2l4%40group.calendar.google.com/public/basic.ics"
         val iCalService: LoadICalStream = new LoadICalStream()
@@ -59,6 +60,7 @@ object Application extends Controller {
         Ok("base " + mongoConfigProd.dbName + " loaded with devoxx Calendar")
     }
 
+    // TODO dead code
     def loadDevoxxCfp = Action {
         var devoxx: LoadDevoxx = new LoadDevoxx()
         devoxx.parseLoad()

@@ -25,10 +25,12 @@ object Announce extends Controller {
 
     implicit val mongoConfigProd: MongoConfiguration = MongoConfiguration("OneCalendar")
 
+    // TODO dead code
     def agilefrance = Action {
         Ok( views.html.agilefrance() )
     }
 
+    // TODO dead code
     def loadAgileFranceCalendar = Action {
         val url: String = "http://10.61.32.155:8080/agilefrance.ics"
 
