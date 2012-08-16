@@ -1,0 +1,17 @@
+fieldset {
+    width: 45%;
+    padding-top: 20px;
+}
+
+input[type=text], input[type=date], input[type=datetime-local] {
+    width: 48%;
+}
+
+input[type=submit] {
+    margin-left: 80%;
+}
+
+textarea {
+    width: 48%;
+    height: 80px;
+}

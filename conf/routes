@@ -29,6 +29,10 @@ GET     /tags                       controllers.Application.fetchCloudOfTags
 # About
 GET     /about                      controllers.Application.about
 
+# Add Events Calendar
+GET     /addEvents                  controllers.EventsController.addEvents
+POST    /addSingleEvent             controllers.EventsController.addSingleEvent
+
 # Hacking application to load DevoxxCalendar
 GET     /loadDevoxxCalendar         controllers.Application.loadDevoxxCalendar
 GET     /loadDevoxxCfp              controllers.Application.loadDevoxxCfp

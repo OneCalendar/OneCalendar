@@ -27,7 +27,7 @@ import org.joda.time.DateTime
 import java.util.ArrayList
 import fr.scala.util.collection.CollectionsUtils
 
-object EventDao extends CollectionsUtils{
+object EventDao extends CollectionsUtils {
 
     private val log = Logger( "EventDao" )
     
@@ -68,6 +68,7 @@ object EventDao extends CollectionsUtils{
             .put("begin").greaterThan(dbConfig.now)
             .get
         val count = eventCollection.count(query)
+
         val sort: DBObject = BasicDBObjectBuilder.start()
             .add("begin", 1)
             .get()
