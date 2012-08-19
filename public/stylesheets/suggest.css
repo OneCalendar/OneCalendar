@@ -283,4 +283,19 @@ section#devox img {
  #search {
   margin-top: auto;
  }
+ #subscription fieldset {
+  width: 275px;
+  margin: 0 auto;
+ }
+ #subscription fieldset > legend {
+  font-size: 90%;
+ }
+ #cloudtags {
+  width: 100%;
+ }
+ #subscription a {
+  float: none;
+  text-decoration: none;
+  margin: 0 9px;
+ }
 }
