@@ -113,7 +113,6 @@ header img {
 
 .gstyle h1 {
     background: none repeat scroll 0 0 #336699;
-    height: 35px;
     text-align: center;
     margin: 0;
     font-size: 21px;
@@ -150,4 +149,84 @@ header img {
     padding-right: 1%;
     padding-bottom: 10px;
     font-size: 0.7em;
+}
+
+@media (max-width: 640px) {
+ header img {
+  margin-bottom: 7px;
+  vertical-align: middle;
+  width: 140px;
+ }
+
+ .leftSubSection {
+  width: 100%;
+ }
+
+ .leftSubSection p {
+  display: inline;
+  margin: 10px;
+  padding: 0;
+ }
+
+ #valtech {
+  margin-top: 1%;
+  text-align: justify;
+ }
+ #valtech img {
+  display: block;
+  margin: auto;
+  width: 120px;
+ }
+
+ #mainSection {
+  float: left;
+  width: 100%;
+ }
+
+.gstyle {
+ width: 100%;
+ margin-left: 0;
+}
+
+ .gstyle h1 {
+  padding: 10px;
+ }
+
+.gstyle h1 span {
+    padding-left: 0;
+}
+ .techno {
+  border: thin solid;
+  margin: auto;
+  width: 98%;
+  float: none;
+ }
+
+.techno img {
+ width: 100px;
+}
+
+ .techno a {
+  text-decoration: none;
+ }
+ .techno a ~ a {
+  display: inline;
+  margin-top: 0;
+ }
+ .gstyle h1 span {
+     padding-left: 10%;
+ }
+ .fun-text {
+  padding: 2%;
+  width:auto;
+  text-align: justify;
+ }
+
+ #footer {
+     text-align: right;
+     color: #777777;
+     padding-right: 1%;
+     padding-bottom: 10px;
+     font-size: 0.7em;
+ }
 }
