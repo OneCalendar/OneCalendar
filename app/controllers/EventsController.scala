@@ -20,7 +20,6 @@ object EventsController extends Controller {
 
         EventDao.saveEvent(
             new EventBuilder()
-                .uid( "1234567" )
                 .location( event.location )
                 .begin( event.begin )
                 .description( event.description )
