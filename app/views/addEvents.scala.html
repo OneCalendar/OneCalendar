@@ -27,6 +27,15 @@
     <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/about.css")'>
     <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/addEvent.css")'>
     <script src='@routes.Assets.at("javascripts/lib/jquery.js")' type="text/javascript"></script>
+    <script src='@routes.Assets.at("javascripts/lib/modernizr.custom.55089.js")' type="text/javascript"></script>
+    <script src='@routes.Assets.at("javascripts/lib/js-webshim/minified/polyfiller.js")' type="text/javascript"></script>
+    <script>
+        //load and implement all unsupported features
+        $.webshims.polyfill();
+
+        //or only load a specific feature
+        //$.webshims.polyfill('geolocation json-storage');
+    </script>
 </head>
 
 <body>
@@ -42,9 +51,16 @@
     <form method="POST" action="/addSingleEvent">
         <fieldset>
             <legend>Ajouter un évènement dans la base OneCalendar!</legend>
-            <input type="text" name="title" placeholder="titre de l'évènement" /><input type="text" name="tags" placeholder="tags decrivant votre évènement (séparés de virgules)" /><br/>
-            <input type="datetime-local" name="begin" placeholder="date de début de l'évènement" /><input type="date" name="end" placeholder="date de fin de l'évènement" /><br/>
-            <input type="text" name="location" placeholder="lieu de l'évènement" /><br/>
+            <input type="text" name="title" title="titre de l'évènement" placeholder="titre de l'évènement" required="required" />
+            <input type="text" name="tags" placeholder="tags decrivant votre évènement (séparés de virgules)" required="required" /><br/>
+
+            <input type="date" name="begindate" placeholder="date de début de l'évènement" required="required" />
+            <input type="time" name="beginhour" placeholder="heure de début de l'évènement" required="required" /><br/>
+
+            <input type="date" name="enddate" placeholder="date de fin de l'évènement" required="required" />
+            <input type="time" name="endhour" placeholder="heure de fin de l'évènement" required="required" /><br/>
+
+            <input type="text" name="location" placeholder="lieu de l'évènement" required="required" /><br/>
             <textarea name="description" placeholder="description de l'évènement"></textarea><br/>
 
             <input type="submit" value="créer l'évènement" />

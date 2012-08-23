@@ -22,9 +22,9 @@ object EventsController extends Controller {
             new EventBuilder()
                 .uid( "1234567" )
                 .location( event.location )
-                .begin( new DateTime().plusDays(10) ) // TODO stub temporaire : une date + 10 jours
+                .begin( event.begin )
                 .description( event.description )
-                .end( new DateTime().plusDays(10) )    // TODO stub temporaire : une date + 10 jours
+                .end( event.end )
                 .tags( event.tags )
                 .title( event.title )
                 .toEvent
@@ -38,21 +38,24 @@ object EventsController extends Controller {
     private val eventForm = Form(
         mapping(
             "title" -> text,
-            /*"begin" -> date,
-            "end" -> date,
-            */
+            "begindate" -> date,
+            "beginhour" -> nonEmptyText (5, 5),
+            "enddate" -> date,
+            "endhour" -> nonEmptyText (5, 5),
             "location" -> text,
             "description" -> text,
             "tags" -> text
-        )( ( title, location, description/*, begin, end*/, tags ) => (
+        )( ( title, begindate, beginhour, endate, endhour, location, description, tags ) => (
             new EventBuilder()
                 .title( title )
                 .location( location )
                 .description( description )
+                .begin( new DateTime( begindate ) )
+                .end( new DateTime( endate ) )
                 .tags( cleanTags( tags ) )
                 .toEvent )
         )
-         ( ( event: Event ) => Some( ( event.title, event.location, event.description, event.tags.mkString( "," ) ) ) )
+         ( ( event: Event ) => Some( ( event.title, event.begin.toDate, "12345", event.end.toDate, "12345", event.location, event.description, event.tags.mkString( "," ) ) ) )
     )
 
     private def cleanTags( tags: String ): List[ String ] = {
