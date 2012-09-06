@@ -5,13 +5,10 @@ import play.api.data._
 import play.api.data.Forms._
 import models.Event
 import models.builder.EventBuilder
-import dao.configuration.injection.MongoConfiguration
 import dao.EventDao
 import org.joda.time.DateTime
 
-object EventsController extends Controller {
-
-    implicit val mongoConfigProd: MongoConfiguration = MongoConfiguration("OneCalendar")
+object EventsController extends OneCalendarController {
 
     def addEvents = Action( Ok( views.html.addEvents() ) )
 

@@ -30,6 +30,7 @@ import annotation.tailrec
 
 object EventDao extends CollectionsUtils {
 
+
     private val log = Logger( "EventDao" )
 
     private val PREVIEW_SIZE = 3
@@ -42,8 +43,15 @@ object EventDao extends CollectionsUtils {
 
     private val mongo: Mongo = (new Mongo.Holder()).connect( mongoURI )
 
+    @deprecated("never use deleteAll, very dangerous",since="27 aout 2012")
     def deleteAll()(implicit dbConfig: MongoConfiguration) {
         getEventsCollection(dbConfig.dbName).drop()
+    }
+
+    def deleteByOriginalStream(s: String)(implicit dbConfig: MongoConfiguration) = {
+        val query: DBObject = QueryBuilder.start.put("originalStream").is(s).and("end").greaterThan(dbConfig.now).get
+        log.debug("query deleteByOriginalStreal %s".format(query.toString))
+        getEventsCollection(dbConfig.dbName).findAndRemove(query)
     }
 
     def saveEvent(event: Event)(implicit dbConfig: MongoConfiguration) {
@@ -114,6 +122,7 @@ object EventDao extends CollectionsUtils {
             .tags( scalaTags )
             .description( one.toMap.get("description").asInstanceOf[String] )
             .location( one.toMap.get("location").asInstanceOf[String] )
+            .originalStream( one.toMap.get("originalStream").asInstanceOf[String] )
             .begin( new DateTime(one.toMap.get("begin").asInstanceOf[Long]) )
             .end( new DateTime(one.toMap.get("end").asInstanceOf[Long]) )
             .toEvent
@@ -128,7 +137,8 @@ object EventDao extends CollectionsUtils {
         .add("location", event.location)
         .add("description", event.description)
         .add("tags", JavaConversions.asJavaCollection(event.tags))
-        .get()
+        .add("originalStream", event.originalStream)
+        .get
     }
 
     private def toArrayList(tags: List[String]): java.util.List[String] = {

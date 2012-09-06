@@ -29,8 +29,9 @@ class EventBuilder {
     private var location: String =_
     private var description: String = _
     private var tags: List[String] = _
-    
-    def toEvent: Event = Event( uid, title, begin, end, location, description, tags )
+    private var originalStream: String = _
+
+    def toEvent: Event = Event( uid, title, begin, end, location, description, tags, originalStream )
 
     def uid( uid: String ): EventBuilder = {
         this.uid = uid
@@ -64,6 +65,11 @@ class EventBuilder {
 
     def tags( tags: List[String] ): EventBuilder = {
         this.tags = tags
+        this
+    }
+
+    def originalStream( originalStream: String) : EventBuilder = {
+        this.originalStream = originalStream
         this
     }
 }

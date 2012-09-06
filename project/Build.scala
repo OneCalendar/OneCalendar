@@ -19,7 +19,6 @@ object ApplicationBuild extends Build {
             ExclusionRule(organization = "org.slf4j"),
             ExclusionRule(organization = "commons-logging")
         )
-
     )
 
     val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA).settings(

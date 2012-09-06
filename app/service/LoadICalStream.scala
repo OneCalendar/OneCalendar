@@ -35,10 +35,10 @@ class LoadICalStream {
 
     def parseLoad(url: String, eventName: String = "" )( implicit dbConfig: MongoConfiguration = MongoConfiguration( DB_NAME ) ) {
 
-        EventDao.deleteAll()
+        EventDao.deleteByOriginalStream(url)
         val urlCal = new URL(url)
-        val builder = new CalendarBuilder();
-        val cal = builder.build(urlCal.openStream());
+        val builder = new CalendarBuilder()
+        val cal = builder.build(urlCal.openStream())
         val components: ComponentList = cal.getComponents(Component.VEVENT)
 
 
@@ -53,6 +53,7 @@ class LoadICalStream {
                 .begin( new DateTime( vEvent.getStartDate.getDate ) )
                 .end( new DateTime(vEvent.getEndDate.getDate) )
                 .location( vEvent.getLocation.getValue )
+                .originalStream(url)
                 .description( getDescriptionWithoutTags( vEvent.getDescription.getValue ) )
                 .tags( getTagsFromDescription(vEvent.getDescription.getValue + (if(!eventName.isEmpty) " #" + eventName; else ""  ) ) )
                 .toEvent

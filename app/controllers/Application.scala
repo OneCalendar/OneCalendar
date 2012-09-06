@@ -19,16 +19,13 @@ package controllers
 
 import play.api.mvc._
 import models._
-import dao.configuration.injection.MongoConfiguration
 import dao.EventDao
 import play.api.libs.json._
 import java.util.Date
 import service.{LoadDevoxx, LoadICalStream, ICalBuilder}
 import collection.immutable.List
 
-object Application extends Controller {
-
-    implicit val mongoConfigProd: MongoConfiguration = MongoConfiguration("OneCalendar")
+object Application extends OneCalendarController {
 
     val calendarService: ICalBuilder = new ICalBuilder()
 
@@ -49,7 +46,7 @@ object Application extends Controller {
         if (previewEvents.size > 0) Ok(Json.toJson(renderPreviewEventInJson(previewEvents))) else NotFound
     }
 
-    // TODO dead code
+    @deprecated
     def loadDevoxxCalendar = Action {
         val url: String = "https://www.google.com/calendar/ical/u74tb1k9n53bnc5qsg3694p2l4%40group.calendar.google.com/public/basic.ics"
         val iCalService: LoadICalStream = new LoadICalStream()
@@ -57,7 +54,7 @@ object Application extends Controller {
         Ok("base " + mongoConfigProd.dbName + " loaded with devoxx Calendar")
     }
 
-    // TODO dead code
+    @deprecated
     def loadDevoxxCfp = Action {
         var devoxx: LoadDevoxx = new LoadDevoxx()
         devoxx.parseLoad()

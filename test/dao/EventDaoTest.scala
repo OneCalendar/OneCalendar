@@ -162,6 +162,34 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
         tags should be(List("NEW"))
     }
 
+    test("delete by originalStream don't drop the older event or event without relation") {
+        EventDao.saveEvent(new EventBuilder()
+            .originalStream("hello")
+            .begin(new DateTime().plusDays(10))
+            .end(new DateTime().plusDays(10))
+            .title("title")
+            .description("description")
+            .tags(List("tag1","tag2"))
+            .toEvent)
+        EventDao.saveEvent(new EventBuilder()
+            .originalStream("hello")
+            .begin(new DateTime().minusDays(10))
+            .end(new DateTime().minusDays(10))
+            .title("title")
+            .description("description")
+            .tags(List("tag1","tag2"))
+            .toEvent)
+        initData
+
+        EventDao.findAll() should have size 4
+
+        EventDao.deleteByOriginalStream("hello")
+
+        EventDao.findAll() should have size 3
+
+
+    }
+
     private def initData {
         EventDao.saveEvent(eventDevoxx)
         EventDao.saveEvent(eventJava)
