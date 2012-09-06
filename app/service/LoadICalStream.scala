@@ -29,7 +29,7 @@ import models.builder.EventBuilder
 
 class LoadICalStream {
     
-    val TAG_PATTERN : String = "#[a-zA-Z1-9]+"
+    val TAG_PATTERN : String = "#([\\w\\d\\p{L}]+)"
     val DB_NAME : String = "OneCalendar"
 
 
@@ -54,7 +54,7 @@ class LoadICalStream {
                 .end( new DateTime(vEvent.getEndDate.getDate) )
                 .location( vEvent.getLocation.getValue )
                 .originalStream(url)
-                .description( getDescriptionWithoutTags( vEvent.getDescription.getValue ) )
+                .description( vEvent.getDescription.getValue )
                 .tags( getTagsFromDescription(vEvent.getDescription.getValue + (if(!eventName.isEmpty) " #" + eventName; else ""  ) ) )
                 .toEvent
 
