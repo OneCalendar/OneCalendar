@@ -24,6 +24,9 @@ import play.api.libs.json._
 import java.util.Date
 import service.{LoadDevoxx, LoadICalStream, ICalBuilder}
 import collection.immutable.List
+import play.api.libs.concurrent._
+import play.api.Play.current
+import akka.util.duration._
 
 object Application extends OneCalendarController {
 
@@ -92,5 +95,9 @@ object Application extends OneCalendarController {
                 ("title", JsString(preview.title)),
                 ("location", JsString(preview.location))
             )))))
+    }
+
+    Akka.system.scheduler.schedule( 2 seconds, 1 seconds ) {
+        println( "$$$$$$$$$$$$$$$ je schedule" )
     }
 }
