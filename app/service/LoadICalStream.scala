@@ -26,6 +26,7 @@ import dao.EventDao
 import dao.configuration.injection.MongoConfiguration
 import java.util.StringTokenizer
 import models.builder.EventBuilder
+import play.api.Logger
 
 class LoadICalStream {
     
@@ -41,6 +42,9 @@ class LoadICalStream {
         val cal = builder.build(urlCal.openStream())
         val components: ComponentList = cal.getComponents(Component.VEVENT)
 
+        Logger.trace("to load %d events from %s".format (components.size,url))
+
+        var nb = 0
 
         components.toArray.toList.map(_.asInstanceOf[Component]).foreach(arg => {
             import net.fortuna.ical4j.model.component._
@@ -58,8 +62,16 @@ class LoadICalStream {
                 .tags( getTagsFromDescription(vEvent.getDescription.getValue + (if(!eventName.isEmpty) " #" + eventName; else ""  ) ) )
                 .toEvent
 
-            EventDao.saveEvent( oneEvent )
+            if (oneEvent.end.isAfter(dbConfig.now)) {
+                nb=nb+1
+                EventDao.saveEvent( oneEvent )
+            } else {
+                Logger.warn("event %s not loaded because now is %s and it's already ended %s".format(oneEvent.title,new DateTime(dbConfig.now),oneEvent.end) )
+            }
         })
+
+
+        Logger.trace("been loaded %d events".format (nb))
     }
 
     def getDescriptionWithoutTags(s: String):String = {

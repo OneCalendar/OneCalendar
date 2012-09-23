@@ -92,6 +92,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     before {
         db.requestStart
         db.getCollection("events").drop
+        mongoConfigurationTesting.now = new DateTime().getMillis
     }
 
     after {
@@ -163,12 +164,21 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     }
 
     test("delete by originalStream don't drop the older event or event without relation") {
+        mongoConfigurationTesting.now = new DateTime().getMillis
         EventDao.saveEvent(new EventBuilder()
             .originalStream("hello")
             .begin(new DateTime().plusDays(10))
             .end(new DateTime().plusDays(10))
             .title("title")
             .description("description")
+            .tags(List("tag1","tag2"))
+            .toEvent)
+        EventDao.saveEvent(new EventBuilder()
+            .originalStream("hello")
+            .begin(new DateTime().plusDays(10))
+            .end(new DateTime().plusDays(10))
+            .title("title2")
+            .description("description2")
             .tags(List("tag1","tag2"))
             .toEvent)
         EventDao.saveEvent(new EventBuilder()
@@ -181,7 +191,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
             .toEvent)
         initData
 
-        EventDao.findAll() should have size 4
+        EventDao.findAll() should have size 5
 
         EventDao.deleteByOriginalStream("hello")
 

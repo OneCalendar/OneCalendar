@@ -23,6 +23,7 @@ import com.mongodb.{Mongo, DB}
 import org.scalatest.{BeforeAndAfter, FunSuite}
 import dao.configuration.injection.MongoConfiguration
 import models.Event
+import org.joda.time.DateTime
 
 class LoadICalStreamTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
 
@@ -35,10 +36,14 @@ class LoadICalStreamTest extends FunSuite with ShouldMatchers with BeforeAndAfte
     }
 
     before {
+        mongoConfigurationTesting.now = new DateTime().withDate(2012,4,1).getMillis
         db.requestStart
+        db.getCollection("events").drop()
     }
 
     after {
+        db.getCollection("test").drop()
+        mongoConfigurationTesting.now = new DateTime().getMillis
         db.requestDone
     }
 

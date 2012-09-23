@@ -28,7 +28,7 @@ import collection.Seq
 import collection.immutable.List
 import play.api.Logger
 
-@deprecated
+@deprecated("don't reuse this controller without change EventDao.deleteAll","august 2012")
 class LoadDevoxx extends Json {
 
     private val log = Logger("EventDao")

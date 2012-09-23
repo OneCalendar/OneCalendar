@@ -51,7 +51,7 @@ object EventDao extends CollectionsUtils {
     def deleteByOriginalStream(s: String)(implicit dbConfig: MongoConfiguration) = {
         val query: DBObject = QueryBuilder.start.put("originalStream").is(s).and("end").greaterThan(dbConfig.now).get
         log.debug("query deleteByOriginalStreal %s".format(query.toString))
-        getEventsCollection(dbConfig.dbName).findAndRemove(query)
+        getEventsCollection(dbConfig.dbName).remove(query)
     }
 
     def saveEvent(event: Event)(implicit dbConfig: MongoConfiguration) {
