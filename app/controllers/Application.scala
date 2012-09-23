@@ -24,9 +24,7 @@ import play.api.libs.json._
 import java.util.Date
 import service.{LoadDevoxx, LoadICalStream, ICalBuilder}
 import collection.immutable.List
-import play.api.libs.concurrent._
-import play.api.Play.current
-import akka.util.duration._
+
 
 object Application extends OneCalendarController {
 
@@ -49,7 +47,7 @@ object Application extends OneCalendarController {
         if (previewEvents.size > 0) Ok(Json.toJson(renderPreviewEventInJson(previewEvents))) else NotFound
     }
 
-    @deprecated
+    @deprecated("devoxx must not be reloaded","march 2012")
     def loadDevoxxCalendar = Action {
         val url: String = "https://www.google.com/calendar/ical/u74tb1k9n53bnc5qsg3694p2l4%40group.calendar.google.com/public/basic.ics"
         val iCalService: LoadICalStream = new LoadICalStream()
@@ -57,7 +55,7 @@ object Application extends OneCalendarController {
         Ok("base " + mongoConfigProd.dbName + " loaded with devoxx Calendar")
     }
 
-    @deprecated
+    @deprecated("devoxx must not be reloaded","march 2012")
     def loadDevoxxCfp = Action {
         var devoxx: LoadDevoxx = new LoadDevoxx()
         devoxx.parseLoad()
@@ -97,7 +95,4 @@ object Application extends OneCalendarController {
             )))))
     }
 
-    Akka.system.scheduler.schedule( 2 seconds, 1 seconds ) {
-        println( "$$$$$$$$$$$$$$$ je schedule" )
-    }
 }
