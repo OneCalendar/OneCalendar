@@ -55,9 +55,16 @@ class LoadICalStreamTest extends FunSuite with ShouldMatchers with BeforeAndAfte
         val events: List[Event] = EventDao.findAll()
         val count: Int = events.size
 
+        count.should(be.>(50))
         count should be > 50
         count should be < 100
         events.head.tags should contain ("DEVOXX")
+
+
+        List(1,2,3).should(contain (2))
+       	List(1,2,3).should(not.contain(4))
+       	List(1,2,3).should(have.size(3))
+
     }
     
     test("should remove tags from event description"){

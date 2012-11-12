@@ -46,6 +46,14 @@ class LoadICalStream {
 
         var nb = 0
 
+        import net.fortuna.ical4j.model.Property
+        def ternaire(prop:Property):String = {
+            var value = ""
+            if (prop != null) {
+                value = prop.getValue
+            }
+            value
+        }
         components.toArray.toList.map(_.asInstanceOf[Component]).foreach(arg => {
             import net.fortuna.ical4j.model.component._
 
@@ -56,10 +64,11 @@ class LoadICalStream {
                 .title( vEvent.getSummary.getValue )
                 .begin( new DateTime( vEvent.getStartDate.getDate ) )
                 .end( new DateTime(vEvent.getEndDate.getDate) )
-                .location( vEvent.getLocation.getValue )
+                .location( ternaire(vEvent.getLocation) )
+                .url( ternaire(vEvent.getUrl) )
                 .originalStream(url)
-                .description( vEvent.getDescription.getValue )
-                .tags( getTagsFromDescription(vEvent.getDescription.getValue + (if(!eventName.isEmpty) " #" + eventName; else ""  ) ) )
+                .description( ternaire(vEvent.getDescription) )
+                .tags( getTagsFromDescription(ternaire(vEvent.getDescription) + (if(!eventName.isEmpty) " #" + eventName; else ""  ) ) )
                 .toEvent
 
             if (oneEvent.end.isAfter(dbConfig.now)) {

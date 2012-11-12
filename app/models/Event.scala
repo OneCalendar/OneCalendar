@@ -26,5 +26,6 @@ case class Event( uid: String,
                   location: String = "",
                   description: String = "",
                   tags: List[String] = Nil,
-                  originalStream:String = ""
+                  originalStream:String = "",
+                  url:String
                  )

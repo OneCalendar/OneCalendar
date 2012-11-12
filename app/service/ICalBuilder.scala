@@ -23,6 +23,7 @@ import net.fortuna.ical4j.model.component._
 import property._
 import net.fortuna.ical4j.data.CalendarOutputter
 import java.io.{Writer, StringWriter}
+import java.net.URI
 
 class ICalBuilder {
     val ID: String = "-//OneCalendarToMeetThemAll//FR"
@@ -48,15 +49,18 @@ class ICalBuilder {
         vevent.getProperties.add(new Summary(event.title))
         vevent.getProperties.add(new Description(event.description))
         vevent.getProperties.add(new Location(event.location))
+        if (event.url != null) {
+            vevent.getProperties.add(new Url(new URI(event.url)))
+        }
 
         vevent
     }
 
     private def buildCalendar(componentList: ComponentList): Calendar = {
         val calendar: Calendar = new Calendar(componentList)
-        calendar.getProperties.add(Version.VERSION_2_0);
-        calendar.getProperties.add(new ProdId(ID));
-        calendar.getProperties.add(CalScale.GREGORIAN);
+        calendar.getProperties.add(Version.VERSION_2_0)
+        calendar.getProperties.add(new ProdId(ID))
+        calendar.getProperties.add(CalScale.GREGORIAN)
         calendar.getProperties.add(new XProperty("X-WR-CALNAME", "OneCalendar"))
         calendar.getProperties.add(new XProperty("X-WR-CALDESC", "My Calendar to Meet them All"))
         calendar

@@ -123,6 +123,7 @@ object EventDao extends CollectionsUtils {
             .description( one.toMap.get("description").asInstanceOf[String] )
             .location( one.toMap.get("location").asInstanceOf[String] )
             .originalStream( one.toMap.get("originalStream").asInstanceOf[String] )
+            .url( one.toMap.get("url").asInstanceOf[String] )
             .begin( new DateTime(one.toMap.get("begin").asInstanceOf[Long]) )
             .end( new DateTime(one.toMap.get("end").asInstanceOf[Long]) )
             .toEvent
@@ -136,6 +137,7 @@ object EventDao extends CollectionsUtils {
         .add("end", event.end.toDate.getTime)
         .add("location", event.location)
         .add("description", event.description)
+        .add("url", event.url)
         .add("tags", JavaConversions.asJavaCollection(event.tags))
         .add("originalStream", event.originalStream)
         .get
