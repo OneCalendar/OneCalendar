@@ -54,6 +54,7 @@ class LoadICalStream {
             }
             value
         }
+
         components.toArray.toList.map(_.asInstanceOf[Component]).foreach(arg => {
             import net.fortuna.ical4j.model.component._
 

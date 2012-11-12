@@ -94,5 +94,4 @@ object Application extends OneCalendarController {
                 ("location", JsString(preview.location))
             )))))
     }
-
 }
