@@ -26,20 +26,21 @@ import service.LoadDevoxx
 class DevoxxLoadTest extends FunSuite with Json with ShouldMatchers {
 
     test("load rest url presentation") {
-        import models._
-        val presentations: Seq[DevoxxPresentation] = new LoadDevoxx().parseUrl[Seq[DevoxxPresentation]]("https://cfp.devoxx.com/rest/v1/events/6/presentations")
+        val presentations: Seq[DevoxxPresentation] = LoadDevoxx.parseUrl[Seq[DevoxxPresentation]]("https://cfp.devoxx.com/rest/v1/events/7/presentations")
         presentations.size should be > 0
     }
 
+    test("load rest url events") {
+      val beans: Seq[DevoxxEvents] = LoadDevoxx.parseUrl[Seq[DevoxxEvents]]("https://cfp.devoxx.com/rest/v1/events/")
+      beans.size should be > 0
+    }
 
     test("load rest url schedule") {
-        import models._
-        val schedules: Seq[DevoxxSchedule] = new LoadDevoxx().parseUrl[Seq[DevoxxSchedule]]("https://cfp.devoxx.com/rest/v1/events/6/schedule")
+        val schedules: Seq[DevoxxSchedule] = LoadDevoxx.parseUrl[Seq[DevoxxSchedule]]("https://cfp.devoxx.com/rest/v1/events/7/schedule")
         schedules.size should be > 0
     }
 
     test("load json of devoxx") {
-        import models._
         val devoxxJson: String = """{
             "tags":[{"name":"DevOps"},{"name":"Versioning"}],
             "summary":"Nous sommes amenÃ©s quotidiennement Ã  modifier et partager du code:\r\n\r\n    * refactoring et tests afin d\u2019en amÃ©liorer la qualitÃ©,\r\n    * versioning afin de conserver et tracer ces changements.\r\n\r\nQu\u2019en est-il cÃ´tÃ© base de donnÃ©es ? En Ãªtes-vous encore Ã  envoyer vos scripts SQL directement Ã  l\u2019exploitation ? Les avez-vous testÃ©s ?\r\n\r\nDirectement inspirÃ© du livre \u201cRefactoring Databases: Evolutionary Database Design\u201d, Liquibase est un outil open-source qui permet de rÃ©pondre Ã  ces besoins essentiels.\r\n\r\nCette prÃ©sentation se veut Ãªtre une dÃ©monstration des forces de cet outil, de la crÃ©ation de structures de donnÃ©es Ã  leur livraison sur plusieurs environnements en passant par les tests.",

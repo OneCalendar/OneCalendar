@@ -1,6 +1,6 @@
 import controllers.OneCalendarController
 import play.api._
-import service.LoadICalStream
+import service.{LoadDevoxx, LoadICalStream}
 import models.ICalStream
 import dao.ICalStreamsDao
 import play.api.libs.concurrent._
@@ -26,6 +26,10 @@ object Global extends GlobalSettings with OneCalendarController {
             }
 
             Logger.trace("reload")
+        }
+
+        Akka.system.scheduler.schedule(10 seconds, 2 hours) {
+          LoadDevoxx.parseLoad()
         }
     }
 }

@@ -47,21 +47,6 @@ object Application extends OneCalendarController {
         if (previewEvents.size > 0) Ok(Json.toJson(renderPreviewEventInJson(previewEvents))) else NotFound
     }
 
-    @deprecated("devoxx must not be reloaded","march 2012")
-    def loadDevoxxCalendar = Action {
-        val url: String = "https://www.google.com/calendar/ical/u74tb1k9n53bnc5qsg3694p2l4%40group.calendar.google.com/public/basic.ics"
-        val iCalService: LoadICalStream = new LoadICalStream()
-        iCalService.parseLoad(url, "DEVOXX")
-        Ok("base " + mongoConfigProd.dbName + " loaded with devoxx Calendar")
-    }
-
-    @deprecated("devoxx must not be reloaded","march 2012")
-    def loadDevoxxCfp = Action {
-        var devoxx: LoadDevoxx = new LoadDevoxx()
-        devoxx.parseLoad()
-        Ok("base " + mongoConfigProd.dbName + " loaded with devoxx Calendar")
-    }
-
     def about = Action {
         Ok(views.html.about())
     }

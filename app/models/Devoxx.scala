@@ -19,3 +19,6 @@ case class DevoxxSchedule(id: Option[Long], partnerSlot: Option[Boolean], fromTi
                           presentationUri: Option[String], speaker: Option[String], title: Option[String],
                           speakerUri: Option[String]
                              )
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+case class DevoxxEvents(to:String, id:Long, enabled:Boolean, location:String, description:String, name:String, from:String)

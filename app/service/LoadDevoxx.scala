@@ -28,49 +28,56 @@ import collection.Seq
 import collection.immutable.List
 import play.api.Logger
 
-@deprecated("don't reuse this controller without change EventDao.deleteAll","august 2012")
-class LoadDevoxx extends Json {
+object LoadDevoxx extends Json {
 
-    private val log = Logger("EventDao")
-
+    val log = Logger("EventDao")
+    val pattern: DateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.S")
     val DB_NAME: String = "OneCalendar"
 
     def parseLoad()(implicit dbConfig: MongoConfiguration = MongoConfiguration(DB_NAME)) {
+        val devoxxEvents = "https://cfp.devoxx.com/rest/v1/events/"
 
-        EventDao.deleteAll()
+        val events: Seq[DevoxxEvents] = parseUrl[Seq[DevoxxEvents]](devoxxEvents)
 
-        val schedules: Seq[DevoxxSchedule] = parseUrl[Seq[DevoxxSchedule]]("https://cfp.devoxx.com/rest/v1/events/6/schedule")
-        val pattern: DateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.S")
-
-        val shedulesSet = Set(schedules.toArray : _*)
-
-        shedulesSet.foreach(schedule => {
-            if (schedule.presentationUri.isDefined) {
-                try {
-                    val presentation: DevoxxPresentation = parseUrl[DevoxxPresentation](schedule.presentationUri.get.replace("http://", "https://"))
-
-                    var curTags: List[String] = List("DEVOXX")
-                    presentation.tags.foreach(tag => {
-                        curTags = curTags :+ (tag.name.toUpperCase)
-                    })
-                    val event: Event = new EventBuilder()
-                        .uid(schedule.presentationUri.get)
-                        .title(presentation.title)
-                        .begin(pattern.parseDateTime(schedule.fromTime.get))
-                        .end(pattern.parseDateTime(schedule.toTime.get))
-                        .description(presentation.summary)
-                        .location(presentation.room.get)
-                        .tags(curTags)
-                        .toEvent
-
-                    EventDao.saveEvent(event)
-                } catch {
-                    case e: Exception => log.warn("the presentation %s can't be load".format(schedule.presentationUri))
-                }
-            }
-
-        })
+        events.map(event => "https://cfp.devoxx.com/rest/v1/events/%s/schedule".format(event.id)).foreach(load)
     }
+
+    def load(devoxxUrl: String)(implicit dbConfig: MongoConfiguration = MongoConfiguration(DB_NAME)) {
+      EventDao.deleteByOriginalStream(devoxxUrl)
+
+      val schedules: Seq[DevoxxSchedule] = parseUrl[Seq[DevoxxSchedule]](devoxxUrl)
+
+      val shedulesSet = Set(schedules.toArray : _*)
+
+      shedulesSet.foreach(schedule => {
+        if (schedule.presentationUri.isDefined) {
+          try {
+            val presentation: DevoxxPresentation = parseUrl[DevoxxPresentation](schedule.presentationUri.get.replace("http://", "https://"))
+
+            var curTags: List[String] = List("DEVOXX")
+            presentation.tags.foreach(tag => {
+              curTags = curTags :+ (tag.name.toUpperCase)
+            })
+            val event: Event = new EventBuilder()
+              .uid(schedule.presentationUri.get)
+              .title(presentation.title)
+              .begin(pattern.parseDateTime(schedule.fromTime.get))
+              .end(pattern.parseDateTime(schedule.toTime.get))
+              .description(presentation.summary)
+              .location(presentation.room.get)
+              .tags(curTags)
+              .originalStream(devoxxUrl)
+              .toEvent
+
+            EventDao.saveEvent(event)
+          } catch {
+            case e: Exception => log.warn("the presentation %s can't be load".format(schedule.presentationUri))
+          }
+        }
+
+      })
+  }
+
 
     def parseUrl[A](url: String)(implicit mf: Manifest[A]): A = {
         parse[A](new URL(url).openStream())
