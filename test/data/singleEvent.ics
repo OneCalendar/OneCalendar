@@ -1,0 +1,28 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+METHOD:PUBLISH
+CALSCALE:GREGORIAN
+PRODID:iCalendar-Ruby
+BEGIN:VEVENT
+LOCATION:La Cantine par Silicon Sentier
+SEQUENCE:0
+URL:http://lacantine.org/events/reunion-d-etude-sur-le-projet-soho-de-la-vi
+ lle-de-paris
+CLASS:PUBLIC
+DTEND:20120109T200000 +0000
+DTSTART:20120109T170000 +0000
+UID:http://lacantine.org/events/reunion-d-etude-sur-le-projet-soho-de-la-vi
+ lle-de-paris
+DTSTAMP:20120105T194533
+DESCRIPTION:La Ville de Paris a pour projet de construire et de louer des l
+ ocaux de \ntype « SOHO » (Small Office – Home Office)\, c’est-à-dire
+  des lots de \nbureau avec un logement séparé\, de plusieurs surfaces\, i
+ nférieures à 75 \nm² (tant pour le bureau que le logement).\nle but de l
+ a réunion est de recueillir le point de vue des entrepreneurs\n sur les ca
+ ractéristiques de ces locaux (techniques\, équipements\, \nmatériaux\, a
+ ménagement…) les plus adaptées à leur activité
+SUMMARY:Réunion d’étude sur le projet « SOHO »  de la Ville de Paris
+LAST-MODIFIED:20111213T145522 +0100
+CREATED:20111205T114821 +0100
+END:VEVENT
+END:VCALENDAR
