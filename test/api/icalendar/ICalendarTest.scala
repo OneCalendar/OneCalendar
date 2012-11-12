@@ -2,18 +2,17 @@ package api.icalendar
 
 import org.scalatest.FunSuite
 import org.scalatest.matchers.ShouldMatchers
-import com.google.common.io.Resources.getResource
 import net.fortuna.ical4j.model.property._
 import java.net.URI
-import java.io.InputStream
+import java.io.{FileInputStream, File}
 
 class ICalendarTest extends FunSuite with ShouldMatchers {
     test("should retireve VEvent from icalendar source null") {
         ICalendar.retrieveVEvents(null) should be (Nil)
     }
 
-    ignore("should retireve VEvent from icalendar source") {
-        val vEvents = ICalendar.retrieveVEvents( getResource("classpath://singleEvent.ics").openStream() )
+    test("should retireve VEvent from icalendar source") {
+        val vEvents = ICalendar.retrieveVEvents( new FileInputStream("test/data/singleEvent.ics") )
         vEvents should have size 1
         vEvents should contain (new VEvent(getVEvent()))
     }
@@ -34,8 +33,4 @@ class ICalendarTest extends FunSuite with ShouldMatchers {
 
         vevent
     }
-}
-
-object ICalendar {
-    def retrieveVEvents(icalSource: InputStream): List[VEvent] = Nil
 }

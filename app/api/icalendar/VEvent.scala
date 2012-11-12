@@ -2,7 +2,9 @@ package api.icalendar
 
 import org.joda.time.DateTime
 import net.fortuna.ical4j.model.property.DateProperty
-import net.fortuna.ical4j.model.Property
+import net.fortuna.ical4j.model.{Component, Property}
+import java.io.InputStream
+import net.fortuna.ical4j.data.CalendarBuilder
 
 class VEvent(vevent: net.fortuna.ical4j.model.component.VEvent) {
     require(vevent != null, "requirement failed : net.fortuna.ical4j.model.component.VEvent should not be null")
@@ -29,4 +31,13 @@ class VEvent(vevent: net.fortuna.ical4j.model.component.VEvent) {
     // TODO méfions nous des getDate de fortuna
     val toDate = (p: DateProperty) => new DateTime(p.getDate)
     val toValue = (p: Property) => p.getValue
+
+}
+
+object ICalendar {
+  def retrieveVEvents(icalSource: InputStream): List[VEvent] = {
+    new CalendarBuilder().build(icalSource).getComponents(Component.VEVENT).toArray.toList.map(toVEvent)
+  }
+
+  def toVEvent = (el: AnyRef) => new VEvent(el.asInstanceOf[net.fortuna.ical4j.model.component.VEvent])
 }
