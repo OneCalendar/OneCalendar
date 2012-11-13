@@ -27,7 +27,7 @@ import java.util.ArrayList
 import fr.scala.util.collection.CollectionsUtils
 import annotation.tailrec
 
-object EventDao extends CollectionsUtils {
+object EventDao extends CollectionsUtils with EventDaoTrait {
 
 
     private val log = Logger( "EventDao" )

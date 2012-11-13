@@ -18,7 +18,7 @@ package controllers
 
 import play.api.mvc._
 import models._
-import dao.EventDao
+import dao._
 import play.api.libs.json._
 import java.util.Date
 import service.{LoadDevoxx, LoadICalStream, ICalBuilder}
@@ -38,11 +38,10 @@ object Application extends OneCalendarController {
         renderEvents(EventDao.findByTag(tags))
     }
 
-    def findPreviewByTags(keyWords: String) = Action {
+    def findPreviewByTags(keyWords: String)(implicit dao:EventDaoTrait = EventDao) = Action {
         mongoConfigProd.now = new Date().getTime
         val tags: List[String] = keyWords.split(" ").toList
-        val previewEvents: SearchPreview = EventDao.findPreviewByTag(tags)
-
+        val previewEvents: SearchPreview = dao.findPreviewByTag(tags)
         if (previewEvents.size > 0) Ok(Json.toJson(renderPreviewEventInJson(previewEvents))) else NotFound
     }
 
