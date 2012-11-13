@@ -47,7 +47,7 @@ object EventDao extends CollectionsUtils {
     }
 
     def deleteByOriginalStream(s: String)(implicit dbConfig: MongoConfiguration) = {
-        val query: DBObject = QueryBuilder.start.put("originalStream").is(s).and("end").greaterThan(dbConfig.now).get
+        val query: DBObject = QueryBuilder.start.put("originalStream").is(s).and("end").greaterThan(dbConfig.now()).get
         log.debug("query deleteByOriginalStreal %s".format(query.toString))
         getEventsCollection(dbConfig.dbName).remove(query)
     }
@@ -72,7 +72,7 @@ object EventDao extends CollectionsUtils {
         val javaTags: java.util.List[String] = toArrayList(tags)
         val query: DBObject = new QueryBuilder()
             .put("tags").in(javaTags)
-            .put("begin").greaterThan(dbConfig.now)
+            .put("begin").greaterThan(dbConfig.now())
             .get
         val count = eventCollection.count(query)
 

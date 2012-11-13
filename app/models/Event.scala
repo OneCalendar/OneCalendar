@@ -17,6 +17,21 @@
 package models
 
 import org.joda.time.DateTime
+import util.matching.Regex
+
+object Event {
+    //TODO explicit regex
+    val TAG_PATTERN : String = """#([\w\d\p{L}]+)"""
+
+    def getTagsFromDescription(s: String): List[String] =
+        new Regex(TAG_PATTERN).findAllIn(s).map(_.replace("#", "").toUpperCase.trim()).toList
+
+    def getDescriptionWithoutTags(s: String):String = {
+        val description : String = s.replaceAll(TAG_PATTERN,"")
+        description.trim()
+    }
+
+}
 
 case class Event( uid: String = "",
                   title: String,

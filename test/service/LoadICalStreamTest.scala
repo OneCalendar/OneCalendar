@@ -26,8 +26,6 @@ import org.joda.time.DateTime
 
 class LoadICalStreamTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
 
-    implicit val mongoConfigurationTesting = MongoConfiguration( "test" )
-
     val db: DB = {
         val mongo: Mongo = new Mongo()
         val db: DB = mongo.getDB( "test" )
@@ -35,18 +33,18 @@ class LoadICalStreamTest extends FunSuite with ShouldMatchers with BeforeAndAfte
     }
 
     before {
-        mongoConfigurationTesting.now = new DateTime().withDate(2012,4,1).getMillis
         db.requestStart
         db.getCollection("events").drop()
     }
 
     after {
         db.getCollection("test").drop()
-        mongoConfigurationTesting.now = new DateTime().getMillis
         db.requestDone
     }
 
     test("should parse iCal stream") {
+        implicit val mongoConfigurationTesting = MongoConfiguration( "test", () => new DateTime().withDate(2012,4,1).getMillis )
+
         val url : String = "https://www.google.com/calendar/ical/cs98tardtttjejg93tpcb71ol6nvachq%40import.calendar.google.com/public/basic.ics"
         val iCalService : LoadICalStream = new LoadICalStream()
         iCalService.parseLoad( url, "DEVOXX" )
@@ -63,24 +61,5 @@ class LoadICalStreamTest extends FunSuite with ShouldMatchers with BeforeAndAfte
         List(1,2,3).should(contain (2))
        	List(1,2,3).should(not.contain(4))
        	List(1,2,3).should(have.size(3))
-
-    }
-    
-    test("should remove tags from event description"){
-        val iCalService : LoadICalStream = new LoadICalStream()
-
-        iCalService.getDescriptionWithoutTags("bla bla bla bla bla #toto") should be ("bla bla bla bla bla")
-        iCalService.getDescriptionWithoutTags("bla bla bla bla bla #toto #titi #tata") should be ("bla bla bla bla bla")
-        iCalService.getDescriptionWithoutTags("bla bla bla bla bla") should be ("bla bla bla bla bla")
-    }
-    
-    test("should get tags from description"){
-        val iCalService : LoadICalStream = new LoadICalStream()
-        
-        val tags : List[String] = iCalService.getTagsFromDescription("bla bla bla #Toto #tiTI")
-
-        tags.size should  be (2)
-        tags(0) should be ("TOTO")
-        tags(1) should be ("TITI")
     }
 }

@@ -16,6 +16,6 @@
 
 package dao.configuration.injection
 
-import java.util.Date
+import org.joda.time.DateTime
 
-case class MongoConfiguration(dbName: String, var now: Long = new Date().getTime())
+case class MongoConfiguration(dbName: String, now: () => Long = () => DateTime.now().getMillis)

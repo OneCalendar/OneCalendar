@@ -31,8 +31,6 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
      * mongod --dbpath data/ --fork --logpath data/mongodb.log
      */
 
-    implicit val mongoConfigurationTesting = MongoConfiguration("test")
-
     val eventDevoxx: Event = Event(
         uid = "1",
         title = "BOF",
@@ -90,7 +88,6 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     before {
         db.requestStart
         db.getCollection("events").drop
-        mongoConfigurationTesting.now = new DateTime().getMillis
     }
 
     after {
@@ -98,6 +95,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     }
 
     test("saving a new event") {
+        implicit val mongoConfigurationTesting = MongoConfiguration("test")
         val event: Event = Event(
             uid = "1",
             title = "BOF",
@@ -114,32 +112,37 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     }
 
     test("should find event by tag 'devoxx'") {
+        implicit val mongoConfigurationTesting = MongoConfiguration("test")
         initData
+
         EventDao.findByTag(List("devoxx")) should be(List(eventDevoxx))
     }
 
     test("should find events by tags 'devoxx' or 'java' ") {
+        implicit val mongoConfigurationTesting = MongoConfiguration("test")
         initData
+
         EventDao.findByTag(List("devoxx", "java")) should be(List(eventDevoxx, eventJava))
     }
 
     test("should find 3 first events by tags 'devoxx', 'java' or other ") {
+        implicit val mongoConfigurationAnyDate = MongoConfiguration("test", () => new DateTime(2012, 1, 1, 0, 0, 0, 0).toDate.getTime)
         initFourData
-        mongoConfigurationTesting.now = new DateTime(2012, 1, 1, 0, 0, 0, 0).toDate.getTime
+
         EventDao.findPreviewByTag(List("devoxx", "java", "other")).events should have size 3
         EventDao.findPreviewByTag(List("devoxx", "java", "other")).events should be(List(eventJava, eventDevoxx, eventOther))
     }
 
     test("should not return past events") {
+        implicit val mongoConfigurationAnyDate = MongoConfiguration("test", () => new DateTime(2012, 4, 20, 0, 0, 0, 0).toDate.getTime)
         initFourData
-        mongoConfigurationTesting.now = new DateTime(2012, 4, 20, 0, 0, 0, 0).toDate.getTime
+
         EventDao.findPreviewByTag(List("devoxx", "java", "other")).events should have size 2
         EventDao.findPreviewByTag(List("devoxx", "java", "other")).events should be(List(eventOther, event4))
-
     }
 
-
     test("should find everything") {
+        implicit val mongoConfigurationTesting = MongoConfiguration("test")
         (1 to 50).foreach(
             id => EventDao.saveEvent(
                 Event(
@@ -155,14 +158,18 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     }
 
     test("should not list old tags") {
+        implicit val mongoConfigurationTesting = MongoConfiguration("test")
+
         EventDao.saveEvent(oldEvent)
         EventDao.saveEvent(newEvent)
+
         val tags: List[String] = EventDao.listTags()
         tags should be(List("NEW"))
     }
 
     test("delete by originalStream don't drop the older event or event without relation") {
-        mongoConfigurationTesting.now = new DateTime().getMillis
+        implicit val mongoConfigurationTesting = MongoConfiguration("test")
+
         EventDao.saveEvent(Event(
             originalStream = "hello",
             begin = new DateTime().plusDays(10),
@@ -194,16 +201,14 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
         EventDao.deleteByOriginalStream("hello")
 
         EventDao.findAll() should have size 3
-
-
     }
 
-    private def initData {
+    private def initData(implicit mongoConfig: MongoConfiguration) {
         EventDao.saveEvent(eventDevoxx)
         EventDao.saveEvent(eventJava)
     }
 
-    private def initFourData {
+    private def initFourData(implicit mongoConfig: MongoConfiguration) {
         EventDao.saveEvent(eventDevoxx)
         EventDao.saveEvent(eventJava)
         EventDao.saveEvent(eventOther)
