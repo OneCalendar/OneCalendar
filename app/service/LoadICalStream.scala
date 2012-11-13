@@ -18,50 +18,36 @@
 package service
 
 import java.net.URL
-import org.joda.time.DateTime
 import dao.EventDao
 import dao.configuration.injection.MongoConfiguration
 import java.util.StringTokenizer
-import models.builder.EventBuilder
 import play.api.Logger
-import api.icalendar.ICalendar
+import models.Event
+import api.icalendar.{VEvent, ICalendarParsingError, ICalendar}
+import dao.EventDao.saveEvent
+import org.joda.time.DateTime
 
 class LoadICalStream {
     
     val TAG_PATTERN : String = "#([\\w\\d\\p{L}]+)"
     val DB_NAME : String = "OneCalendar"
 
-    def parseLoad(url: String, eventName: String = "" )( implicit dbConfig: MongoConfiguration = MongoConfiguration( DB_NAME ) ) {
+    def parseLoad(url: String, defaultStreamTag: String = "" )( implicit dbConfig: MongoConfiguration = MongoConfiguration( DB_NAME ) ) {
 
         EventDao.deleteByOriginalStream(url)
-        val urlCal = new URL(url)
 
-        var nb = 0
+        ICalendar.retrieveVEvents(new URL(url).openStream) match {
+            case Right(vevents) =>
+                val (toSave, passed): (List[Event], List[Event]) = vevents
+                        .map( vevent => buildEvent(url, vevent, defaultStreamTag) )
+                        .span( event => event.end.isAfter(dbConfig.now) )
 
-        ICalendar.retrieveVEvents(urlCal.openStream()) match {
-            case Right(vevents) => vevents.foreach(vEvent => {
-                val event = new EventBuilder()
-                    .uid( vEvent.uid.getOrElse("") )
-                    .title( vEvent.summary.getOrElse("") )
-                    .begin( vEvent.startDate.get )
-                    .end( vEvent.endDate.get )
-                    .location( vEvent.location.getOrElse("") )
-                    .url( vEvent.url.getOrElse("") )
-                    .originalStream(url)
-                    .description( vEvent.description.getOrElse("") )
-                    .tags( getTagsFromDescription(vEvent.description.getOrElse("") + (if(!eventName.isEmpty) " #" + eventName; else ""  ) ) )
-                    .toEvent
+                saveEvents(toSave)
 
-                if (event.end.isAfter(dbConfig.now)) {
-                    nb=nb+1
-                    EventDao.saveEvent( event )
-                } else {
-                    Logger.warn("event %s not loaded because now is %s and it's already ended %s".format(event.title,new DateTime(dbConfig.now),event.end) )
-                }
-            })
-            case Left(error) => Logger.warn(error.message + " : " + error.e.getMessage)
+                reportNotLoadedEvents(passed)
+                
+            case Left(ICalendarParsingError(message, exception)) => Logger.warn(message + " : " + exception.getMessage)
         }
-        Logger.trace("been loaded %d events".format (nb))
     }
 
     def getDescriptionWithoutTags(s: String):String = {
@@ -79,5 +65,29 @@ class LoadICalStream {
             }
         }
         tags
+    }
+
+    private def buildEvent(url: String, vEvent: VEvent, defaultStreamTag: String): Event = {
+        Event(
+            uid = vEvent.uid.getOrElse(""),
+            title = vEvent.summary.getOrElse(""),
+            begin = vEvent.startDate.get,
+            end = vEvent.endDate.get,
+            location = vEvent.location.getOrElse(""),
+            url = vEvent.url.getOrElse(""),
+            originalStream = url,
+            description = vEvent.description.getOrElse(""),
+            tags = getTagsFromDescription(vEvent.description.getOrElse("") + ( if ( !defaultStreamTag.isEmpty ) " #" + defaultStreamTag; else "" ))
+        )
+    }
+
+    private def saveEvents(toSave: scala.List[ Event ])(implicit dbConfig: MongoConfiguration) {
+        toSave foreach ( saveEvent )
+        Logger.info("%d events loaded".format(toSave.length))
+    }
+
+    private def reportNotLoadedEvents(notLoadedEvent: List[Event])(implicit dbConfig: MongoConfiguration) {
+        if ( !notLoadedEvent.isEmpty ) Logger.warn("%d events not loaded ".format(notLoadedEvent.length))
+        notLoadedEvent.foreach(event => Logger.warn("event %s not loaded because now is %s and it's already ended %s".format(event.title, new DateTime(dbConfig.now), event.end)))
     }
 }
