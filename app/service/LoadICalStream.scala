@@ -24,11 +24,10 @@ import models.Event
 import api.icalendar.{VEvent, ICalendarParsingError, ICalendar}
 import dao.EventDao.saveEvent
 import org.joda.time.DateTime
-import util.matching.Regex
+import models.Event._
 
 class LoadICalStream {
 
-    val TAG_PATTERN : String = """#([\w\d\p{L}]+)"""
     val DB_NAME : String = "OneCalendar"
 
     def parseLoad(url: String, defaultStreamTag: String = "" )( implicit dbConfig: MongoConfiguration = MongoConfiguration( DB_NAME ) ) {
@@ -47,15 +46,6 @@ class LoadICalStream {
                 
             case Left(ICalendarParsingError(message, exception)) => Logger.warn(message + " : " + exception.getMessage)
         }
-    }
-
-    def getDescriptionWithoutTags(s: String):String = {
-        val description : String = s.replaceAll(TAG_PATTERN,"")
-        description.trim()
-    }
-
-    def getTagsFromDescription(s: String): List[String] = {
-        new Regex(TAG_PATTERN).findAllIn(s).map(_.replace("#", "").toUpperCase).toList
     }
 
     private def buildEvent(url: String, vEvent: VEvent, defaultStreamTag: String): Event = {
