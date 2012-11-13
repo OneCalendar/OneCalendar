@@ -18,7 +18,7 @@ package controllers
 
 import play.api.mvc._
 import models._
-import dao.EventDao
+import dao._
 import service.ICalBuilder
 import collection.immutable.List
 import com.codahale.jerkson.Json
@@ -37,9 +37,9 @@ object Application extends OneCalendarController with Json {
         renderEvents(EventDao.findByTag(tags))
     }
 
-    def findPreviewByTags(keyWords: String) = Action {
+    def findPreviewByTags(keyWords: String)(implicit dao:EventDaoTrait = EventDao) = Action {
         val tags: List[String] = keyWords.split(" ").toList
-        val searchPreview: SearchPreview = EventDao.findPreviewByTag(tags)
+        val searchPreview: SearchPreview = dao.findPreviewByTag(tags)
 
         val es = searchPreview.previewEvents.map(
             e => Map("event" -> Map(
