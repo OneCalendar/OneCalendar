@@ -18,69 +18,49 @@
 package service
 
 import java.net.URL
-import net.fortuna.ical4j.data.CalendarBuilder
-import net.fortuna.ical4j.model.{Component, ComponentList}
-import models.Event
 import org.joda.time.DateTime
 import dao.EventDao
 import dao.configuration.injection.MongoConfiguration
 import java.util.StringTokenizer
 import models.builder.EventBuilder
 import play.api.Logger
+import api.icalendar.ICalendar
 
 class LoadICalStream {
     
     val TAG_PATTERN : String = "#([\\w\\d\\p{L}]+)"
     val DB_NAME : String = "OneCalendar"
 
-
     def parseLoad(url: String, eventName: String = "" )( implicit dbConfig: MongoConfiguration = MongoConfiguration( DB_NAME ) ) {
 
         EventDao.deleteByOriginalStream(url)
         val urlCal = new URL(url)
-        val builder = new CalendarBuilder()
-        val cal = builder.build(urlCal.openStream())
-        val components: ComponentList = cal.getComponents(Component.VEVENT)
-
-        Logger.trace("to load %d events from %s".format (components.size,url))
 
         var nb = 0
 
-        import net.fortuna.ical4j.model.Property
-        def ternaire(prop:Property):String = {
-            var value = ""
-            if (prop != null) {
-                value = prop.getValue
-            }
-            value
+        ICalendar.retrieveVEvents(urlCal.openStream()) match {
+            case Right(vevents) => vevents.foreach(vEvent => {
+                val event = new EventBuilder()
+                    .uid( vEvent.uid.getOrElse("") )
+                    .title( vEvent.summary.getOrElse("") )
+                    .begin( vEvent.startDate.get )
+                    .end( vEvent.endDate.get )
+                    .location( vEvent.location.getOrElse("") )
+                    .url( vEvent.url.getOrElse("") )
+                    .originalStream(url)
+                    .description( vEvent.description.getOrElse("") )
+                    .tags( getTagsFromDescription(vEvent.description.getOrElse("") + (if(!eventName.isEmpty) " #" + eventName; else ""  ) ) )
+                    .toEvent
+
+                if (event.end.isAfter(dbConfig.now)) {
+                    nb=nb+1
+                    EventDao.saveEvent( event )
+                } else {
+                    Logger.warn("event %s not loaded because now is %s and it's already ended %s".format(event.title,new DateTime(dbConfig.now),event.end) )
+                }
+            })
+            case Left(error) => Logger.warn(error.message + " : " + error.e.getMessage)
         }
-
-        components.toArray.toList.map(_.asInstanceOf[Component]).foreach(arg => {
-            import net.fortuna.ical4j.model.component._
-
-            val vEvent: VEvent = arg.asInstanceOf[VEvent]
-
-            val oneEvent: Event = new EventBuilder()
-                .uid( vEvent.getUid.getValue )
-                .title( vEvent.getSummary.getValue )
-                .begin( new DateTime( vEvent.getStartDate.getDate ) )
-                .end( new DateTime(vEvent.getEndDate.getDate) )
-                .location( ternaire(vEvent.getLocation) )
-                .url( ternaire(vEvent.getUrl) )
-                .originalStream(url)
-                .description( ternaire(vEvent.getDescription) )
-                .tags( getTagsFromDescription(ternaire(vEvent.getDescription) + (if(!eventName.isEmpty) " #" + eventName; else ""  ) ) )
-                .toEvent
-
-            if (oneEvent.end.isAfter(dbConfig.now)) {
-                nb=nb+1
-                EventDao.saveEvent( oneEvent )
-            } else {
-                Logger.warn("event %s not loaded because now is %s and it's already ended %s".format(oneEvent.title,new DateTime(dbConfig.now),oneEvent.end) )
-            }
-        })
-
-
         Logger.trace("been loaded %d events".format (nb))
     }
 
@@ -97,7 +77,6 @@ class LoadICalStream {
             if(token.matches(TAG_PATTERN)){
                 tags=tags:+(token.replace("#","").trim().toUpperCase())
             }
-
         }
         tags
     }
