@@ -2,29 +2,25 @@ package api.icalendar
 
 import org.scalatest.FunSuite
 import org.scalatest.matchers.ShouldMatchers
-import net.fortuna.ical4j.model.property._
 import java.net.URI
-import java.io.{FileInputStream, File}
+import com.google.common.io.Resources.getResource
+import net.fortuna.ical4j.model.property._
 
 class ICalendarTest extends FunSuite with ShouldMatchers {
-    test("should retireve VEvent from icalendar source null") {
-        ICalendar.retrieveVEvents(null) should be (Nil)
+    test("should retireve empty list when feed is empty") {
+        val vEvents = ICalendar.retrieveVEvents( getResource("api/icalendar/empty.ics").openStream() )
+        vEvents should be (Right(Nil))
     }
 
     test("should retireve VEvent from icalendar source") {
-        val vEvents = ICalendar.retrieveVEvents( new FileInputStream("test/api/icalendar/singleEvent.ics") )
-        vEvents should have size 1
-        vEvents should contain (new VEvent(getVEvent()))
+        val vEvents = ICalendar.retrieveVEvents( getResource("api/icalendar/singleEvent.ics").openStream() )
+        vEvents.right.get should have size 1
+        vEvents.right.get should contain (new VEvent(getVEvent()))
     }
 
-    test("should retireve empty list when fedd is invalid") {
-        val vEvents = ICalendar.retrieveVEvents( new FileInputStream("test/api/icalendar/invalidFeed.ics") )
-        vEvents should have size 0
-    }
-
-    test("should retireve empty list when feed is empty") {
-        val vEvents = ICalendar.retrieveVEvents( new FileInputStream("test/api/icalendar/emptyFeed.ics") )
-        vEvents should have size 0
+    test("should retrieve empty list when feed is invalid") {
+        val vEvents = ICalendar.retrieveVEvents( getResource("api/icalendar/invalid.ics").openStream() )
+        vEvents.left.get.message should be ("Parsing error from ICalendar")
     }
 
     // TODO duplication voir VEventTest
