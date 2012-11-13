@@ -4,7 +4,8 @@ import org.joda.time.DateTime
 import net.fortuna.ical4j.model.property.DateProperty
 import net.fortuna.ical4j.model.{Component, Property}
 import java.io.InputStream
-import net.fortuna.ical4j.data.CalendarBuilder
+import net.fortuna.ical4j.data.{ParserException, CalendarBuilder}
+import java.net.ProxySelector
 
 class VEvent(vevent: net.fortuna.ical4j.model.component.VEvent) {
     require(vevent != null, "requirement failed : net.fortuna.ical4j.model.component.VEvent should not be null")
@@ -35,9 +36,13 @@ class VEvent(vevent: net.fortuna.ical4j.model.component.VEvent) {
 }
 
 object ICalendar {
-  def retrieveVEvents(icalSource: InputStream): List[VEvent] = {
-    new CalendarBuilder().build(icalSource).getComponents(Component.VEVENT).toArray.toList.map(toVEvent)
-  }
+    def retrieveVEvents(icalSource: InputStream): List[VEvent] = {
+        try {
+            Option(icalSource).map(src => new CalendarBuilder().build(src).getComponents(Component.VEVENT).toArray.toList.map(toVEvent)).getOrElse(Nil)
+        } catch {
+            case e: ParserException => Nil
+        }
+    }
 
   def toVEvent = (el: AnyRef) => new VEvent(el.asInstanceOf[net.fortuna.ical4j.model.component.VEvent])
 }

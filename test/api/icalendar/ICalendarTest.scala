@@ -12,9 +12,19 @@ class ICalendarTest extends FunSuite with ShouldMatchers {
     }
 
     test("should retireve VEvent from icalendar source") {
-        val vEvents = ICalendar.retrieveVEvents( new FileInputStream("test/data/singleEvent.ics") )
+        val vEvents = ICalendar.retrieveVEvents( new FileInputStream("test/api/icalendar/singleEvent.ics") )
         vEvents should have size 1
         vEvents should contain (new VEvent(getVEvent()))
+    }
+
+    test("should retireve empty list when fedd is invalid") {
+        val vEvents = ICalendar.retrieveVEvents( new FileInputStream("test/api/icalendar/invalidFeed.ics") )
+        vEvents should have size 0
+    }
+
+    test("should retireve empty list when feed is empty") {
+        val vEvents = ICalendar.retrieveVEvents( new FileInputStream("test/api/icalendar/emptyFeed.ics") )
+        vEvents should have size 0
     }
 
     // TODO duplication voir VEventTest
