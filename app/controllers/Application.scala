@@ -19,13 +19,12 @@ package controllers
 import play.api.mvc._
 import models._
 import dao.EventDao
-import play.api.libs.json._
-import java.util.Date
-import service.{LoadDevoxx, LoadICalStream, ICalBuilder}
+import service.ICalBuilder
 import collection.immutable.List
+import com.codahale.jerkson.Json
 
 
-object Application extends OneCalendarController {
+object Application extends OneCalendarController with Json {
 
     val calendarService: ICalBuilder = new ICalBuilder()
 
@@ -40,9 +39,27 @@ object Application extends OneCalendarController {
 
     def findPreviewByTags(keyWords: String) = Action {
         val tags: List[String] = keyWords.split(" ").toList
-        val previewEvents: SearchPreview = EventDao.findPreviewByTag(tags)
+        val searchPreview: SearchPreview = EventDao.findPreviewByTag(tags)
 
-        if (previewEvents.size > 0) Ok(Json.toJson(renderPreviewEventInJson(previewEvents))) else NotFound
+        val es = searchPreview.previewEvents.map(
+            e => Map("event" -> Map(
+                            "date" -> e.begin.toString(),
+                            "title" -> e.title,
+                            "location" -> e.location
+                            )
+            )
+        )
+
+        val previewJson: String = generate(Option(searchPreview).map(
+          p => Map(
+            "size" -> p.totalEventNumber,
+            "eventList" -> es
+          ))
+        )
+        if (searchPreview.totalEventNumber > 0) {
+          Ok(previewJson).as("application/json")
+        }
+        else NotFound
     }
 
     def about = Action {
@@ -50,7 +67,7 @@ object Application extends OneCalendarController {
     }
     
     def fetchCloudOfTags = Action {
-        Ok(Json.toJson(EventDao.listTags())).as("application/json")
+        Ok(generate(EventDao.listTags())).as("application/json")
     }
     
     private def renderEvents( events: List[ Event ] ) = {
@@ -58,23 +75,5 @@ object Application extends OneCalendarController {
             case Nil => NotFound("Aucun évènement pour la recherche")
             case _ => Ok(calendarService.buildCalendar(events)).as("text/calendar; charset=utf-8")
         }
-    }
-
-    private def renderPreviewEventInJson(previewEvents: SearchPreview): JsValue = {
-        JsObject(
-            List(
-                ("size", JsNumber(previewEvents.size)),
-                ("eventList", JsArray(previewEvents.events.map(previewEvent2Json)) )
-            )
-        )
-    }
-
-    private def previewEvent2Json(preview: Event): JsObject = {
-        JsObject(List(
-            ("event", JsObject(List(
-                ("date", JsString(preview.begin.toString)),
-                ("title", JsString(preview.title)),
-                ("location", JsString(preview.location))
-            )))))
     }
 }
