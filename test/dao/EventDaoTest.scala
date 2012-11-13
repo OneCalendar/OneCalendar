@@ -23,7 +23,6 @@ import collection.immutable.List
 import com.mongodb._
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.{BeforeAndAfter, FunSuite}
-import models.builder.EventBuilder
 
 class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
 
@@ -34,53 +33,53 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
 
     implicit val mongoConfigurationTesting = MongoConfiguration("test")
 
-    val eventDevoxx: Event = new EventBuilder()
-        .uid("1")
-        .title("BOF")
-        .begin(new DateTime(2012, 04, 20, 0, 0, 0, 0))
-        .end(new DateTime(2012, 04, 20, 0, 0, 0, 0))
-        .tags(List("DEVOXX"))
-        .toEvent
+    val eventDevoxx: Event = Event(
+        uid = "1",
+        title = "BOF",
+        begin = new DateTime(2012, 04, 20, 0, 0, 0, 0),
+        end = new DateTime(2012, 04, 20, 0, 0, 0, 0),
+        tags = List("DEVOXX")
+    )
 
-    val eventJava: Event = new EventBuilder()
-        .uid("2")
-        .title("BOF")
-        .begin(new DateTime(2012, 04, 19, 10, 0, 0, 0))
-        .end(new DateTime(2012, 04, 19, 11, 0, 0, 0))
-        .tags(List("JAVA"))
-        .toEvent
+    val eventJava: Event = Event(
+        uid = "2",
+        title = "BOF",
+        begin = new DateTime(2012, 04, 19, 10, 0, 0, 0),
+        end = new DateTime(2012, 04, 19, 11, 0, 0, 0),
+        tags = List("JAVA")
+    )
 
-    val eventOther: Event = new EventBuilder()
-        .uid("3")
-        .title("BOF")
-        .begin(new DateTime(2012, 04, 21, 15, 0, 0, 0))
-        .end(new DateTime(2012, 04, 21, 16, 0, 0, 0))
-        .tags(List("OTHER"))
-        .toEvent
+    val eventOther: Event = Event(
+        uid = "3",
+        title = "BOF",
+        begin = new DateTime(2012, 04, 21, 15, 0, 0, 0),
+        end = new DateTime(2012, 04, 21, 16, 0, 0, 0),
+        tags = List("OTHER")
+    )
 
-    val event4: Event = new EventBuilder()
-        .uid("4")
-        .title("BOF")
-        .begin(new DateTime(2012, 04, 21, 15, 0, 0, 0))
-        .end(new DateTime(2012, 04, 21, 16, 0, 0, 0))
-        .tags(List("4", "OTHER"))
-        .toEvent
+    val event4: Event = Event(
+        uid = "4",
+        title = "BOF",
+        begin = new DateTime(2012, 04, 21, 15, 0, 0, 0),
+        end = new DateTime(2012, 04, 21, 16, 0, 0, 0),
+        tags = List("4", "OTHER")
+    )
 
-    val oldEvent : Event = new EventBuilder()
-        .uid("4")
-        .title("BOF")
-        .begin(new DateTime(2012, 04, 21, 15, 0, 0, 0))
-        .end(new DateTime(2012, 04, 21, 16, 0, 0, 0))
-        .tags(List("4", "OTHER"))
-        .toEvent
+    val oldEvent : Event = Event(
+        uid = "4",
+        title = "BOF",
+        begin = new DateTime(2012, 04, 21, 15, 0, 0, 0),
+        end = new DateTime(2012, 04, 21, 16, 0, 0, 0),
+        tags = List("4", "OTHER")
+    )
 
-    val newEvent: Event = new EventBuilder()
-        .uid("NEW")
-        .title("NEW")
-        .begin(new DateTime().plusDays(10))
-        .end(new DateTime().plusDays(10))
-        .tags(List("NEW"))
-        .toEvent
+    val newEvent: Event = Event(
+        uid = "NEW",
+        title = "NEW",
+        begin = new DateTime().plusDays(10),
+        end = new DateTime().plusDays(10),
+        tags = List("NEW")
+    )
 
     val db: DB = {
         val mongo: Mongo = new Mongo()
@@ -99,15 +98,15 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     }
 
     test("saving a new event") {
-        val event: Event = new EventBuilder()
-            .uid("1")
-            .title("BOF")
-            .begin(new DateTime(2012, 04, 19, 0, 0, 0, 0))
-            .end(new DateTime(2012, 04, 19, 0, 0, 0, 0))
-            .description("")
-            .location("")
-            .tags(List("JAVA", "DEVOXX"))
-            .toEvent
+        val event: Event = Event(
+            uid = "1",
+            title = "BOF",
+            begin = new DateTime(2012, 04, 19, 0, 0, 0, 0),
+            end = new DateTime(2012, 04, 19, 0, 0, 0, 0),
+            description = "",
+            location = "",
+            tags = List("JAVA", "DEVOXX")
+        )
 
         EventDao.saveEvent(event)
 
@@ -143,13 +142,13 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     test("should find everything") {
         (1 to 50).foreach(
             id => EventDao.saveEvent(
-                new EventBuilder()
-                    .uid(id.toString)
-                    .title(id.toString)
-                    .begin(new DateTime)
-                    .end(new DateTime)
-                    .tags(List())
-                    .toEvent
+                Event(
+                    uid = id.toString,
+                    title = id.toString,
+                    begin = new DateTime,
+                    end = new DateTime,
+                    tags = Nil
+                )
             )
         )
         EventDao.findAll should have size 50
@@ -164,30 +163,30 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
 
     test("delete by originalStream don't drop the older event or event without relation") {
         mongoConfigurationTesting.now = new DateTime().getMillis
-        EventDao.saveEvent(new EventBuilder()
-            .originalStream("hello")
-            .begin(new DateTime().plusDays(10))
-            .end(new DateTime().plusDays(10))
-            .title("title")
-            .description("description")
-            .tags(List("tag1","tag2"))
-            .toEvent)
-        EventDao.saveEvent(new EventBuilder()
-            .originalStream("hello")
-            .begin(new DateTime().plusDays(10))
-            .end(new DateTime().plusDays(10))
-            .title("title2")
-            .description("description2")
-            .tags(List("tag1","tag2"))
-            .toEvent)
-        EventDao.saveEvent(new EventBuilder()
-            .originalStream("hello")
-            .begin(new DateTime().minusDays(10))
-            .end(new DateTime().minusDays(10))
-            .title("title")
-            .description("description")
-            .tags(List("tag1","tag2"))
-            .toEvent)
+        EventDao.saveEvent(Event(
+            originalStream = "hello",
+            begin = new DateTime().plusDays(10),
+            end = new DateTime().plusDays(10),
+            title = "title",
+            description = "description",
+            tags = List("tag1","tag2")
+        ))
+        EventDao.saveEvent(Event(
+            originalStream = "hello",
+            begin = new DateTime().plusDays(10),
+            end = new DateTime().plusDays(10),
+            title = "title2",
+            description = "description2",
+            tags = List("tag1","tag2")
+        ))
+        EventDao.saveEvent(Event(
+            originalStream = "hello",
+            begin = new DateTime().minusDays(10),
+            end = new DateTime().minusDays(10),
+            title = "title",
+            description = "description",
+            tags = List("tag1","tag2")
+        ))
         initData
 
         EventDao.findAll() should have size 5

@@ -20,7 +20,6 @@ import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
 import models.Event
-import models.builder.EventBuilder
 import dao.EventDao
 import org.joda.time.DateTime
 
@@ -32,14 +31,14 @@ object EventsController extends OneCalendarController {
         val event:Event = eventForm.bindFromRequest.get
 
         EventDao.saveEvent(
-            new EventBuilder()
-                .location( event.location )
-                .begin( event.begin )
-                .description( event.description )
-                .end( event.end )
-                .tags( event.tags )
-                .title( event.title )
-                .toEvent
+            Event(
+                location = event.location,
+                begin = event.begin,
+                description = event.description,
+                end = event.end,
+                tags = event.tags,
+                title = event.title
+            )
         )
 
         Ok( "évènement " + event + " ajouté dans la base 'OneCalendar'" )
@@ -58,14 +57,14 @@ object EventsController extends OneCalendarController {
             "description" -> text,
             "tags" -> text
         )( ( title, begindate, beginhour, endate, endhour, location, description, tags ) => (
-            new EventBuilder()
-                .title( title )
-                .location( location )
-                .description( description )
-                .begin( new DateTime( begindate ).plusHours( beginhour.split( ":" )(0).toInt ).plusMinutes( beginhour.split( ":" )(1).toInt ) )
-                .end( new DateTime( endate ).plusHours( endhour.split( ":" )(0).toInt ).plusMinutes( endhour.split( ":" )(1).toInt ) )
-                .tags( cleanTags( tags ) )
-                .toEvent )
+            Event(
+                title = title,
+                location = location,
+                description = description,
+                begin = new DateTime( begindate ).plusHours( beginhour.split( ":" )(0).toInt ).plusMinutes( beginhour.split( ":" )(1).toInt ),
+                end = new DateTime( endate ).plusHours( endhour.split( ":" )(0).toInt ).plusMinutes( endhour.split( ":" )(1).toInt ),
+                tags = cleanTags( tags )
+            ))
         )
          ( ( event: Event ) => Some( ( event.title, event.begin.toDate, "12345", event.end.toDate, "12345", event.location, event.description, event.tags.mkString( "," ) ) ) )
     )

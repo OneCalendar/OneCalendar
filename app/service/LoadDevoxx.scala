@@ -20,7 +20,6 @@ import dao.configuration.injection._
 import com.codahale.jerkson.Json
 import dao._
 import models._
-import builder.EventBuilder
 import java.net._
 import org.joda.time.format.{DateTimeFormatter, DateTimeFormat}
 import collection.Seq
@@ -52,15 +51,15 @@ class LoadDevoxx extends Json {
                     presentation.tags.foreach(tag => {
                         curTags = curTags :+ (tag.name.toUpperCase)
                     })
-                    val event: Event = new EventBuilder()
-                        .uid(schedule.presentationUri.get)
-                        .title(presentation.title)
-                        .begin(pattern.parseDateTime(schedule.fromTime.get))
-                        .end(pattern.parseDateTime(schedule.toTime.get))
-                        .description(presentation.summary)
-                        .location(presentation.room.get)
-                        .tags(curTags)
-                        .toEvent
+                    val event: Event = Event(
+                        uid = schedule.presentationUri.get,
+                        title = presentation.title,
+                        begin = pattern.parseDateTime(schedule.fromTime.get),
+                        end = pattern.parseDateTime(schedule.toTime.get),
+                        description = presentation.summary,
+                        location = presentation.room.get,
+                        tags = curTags
+                    )
 
                     EventDao.saveEvent(event)
                 } catch {

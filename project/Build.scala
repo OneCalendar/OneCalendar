@@ -22,7 +22,10 @@ object ApplicationBuild extends Build {
     )
 
     val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA).settings(
-        testOptions in Test := Nil  //to run scalatest in play2 console arghhhh!!!
+        testOptions in Test := Nil,  //to run scalatest in play2 console arghhhh!!!
+
+        // available test resources in play2 classpath
+        unmanagedClasspath in Test <+= (baseDirectory) map { bd => Attributed.blank(bd / "test") }
     )
 
 }
