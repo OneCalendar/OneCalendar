@@ -3,7 +3,6 @@ package api.icalendar
 import org.joda.time.DateTime
 import net.fortuna.ical4j.model.property.DateProperty
 import net.fortuna.ical4j.model.Property
-import fr.scala.util.collection.CollectionsUtils
 
 class VEvent(vevent: net.fortuna.ical4j.model.component.VEvent) {
     require(vevent != null, "requirement failed : net.fortuna.ical4j.model.component.VEvent should not be null")
