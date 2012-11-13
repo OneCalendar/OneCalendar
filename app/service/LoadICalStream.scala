@@ -19,16 +19,16 @@ package service
 import java.net.URL
 import dao.EventDao
 import dao.configuration.injection.MongoConfiguration
-import java.util.StringTokenizer
 import play.api.Logger
 import models.Event
 import api.icalendar.{VEvent, ICalendarParsingError, ICalendar}
 import dao.EventDao.saveEvent
 import org.joda.time.DateTime
+import util.matching.Regex
 
 class LoadICalStream {
-    
-    val TAG_PATTERN : String = "#([\\w\\d\\p{L}]+)"
+
+    val TAG_PATTERN : String = """#([\w\d\p{L}]+)"""
     val DB_NAME : String = "OneCalendar"
 
     def parseLoad(url: String, defaultStreamTag: String = "" )( implicit dbConfig: MongoConfiguration = MongoConfiguration( DB_NAME ) ) {
@@ -54,16 +54,8 @@ class LoadICalStream {
         description.trim()
     }
 
-    def getTagsFromDescription(s: String): scala.List[String] = {
-        var tags : List[String]= List()
-        val tokenizer: StringTokenizer = new StringTokenizer(s)
-        while (tokenizer.hasMoreTokens()) {
-            var token : String = tokenizer.nextToken()
-            if(token.matches(TAG_PATTERN)){
-                tags=tags:+(token.replace("#","").trim().toUpperCase())
-            }
-        }
-        tags
+    def getTagsFromDescription(s: String): List[String] = {
+        new Regex(TAG_PATTERN).findAllIn(s).map(_.replace("#", "").toUpperCase).toList
     }
 
     private def buildEvent(url: String, vEvent: VEvent, defaultStreamTag: String): Event = {
