@@ -41,22 +41,24 @@ object Application extends OneCalendarController with Json {
     def findPreviewByTags(keyWords: String) = Action {
         mongoConfigProd.now = new Date().getTime
         val tags: List[String] = keyWords.split(" ").toList
-        val previewEvents: SearchPreview = EventDao.findPreviewByTag(tags)
+        val searchPreview: SearchPreview = EventDao.findPreviewByTag(tags)
 
-        val es = previewEvents.previewEvents.map(
-          e => Map("event" -> Map(
-            "date" -> e.begin.toString(),
-            "title" -> e.title,
-            "location" -> e.location
-          ))
+        val es = searchPreview.previewEvents.map(
+            e => Map("event" -> Map(
+                            "date" -> e.begin.toString(),
+                            "title" -> e.title,
+                            "location" -> e.location
+                            )
+            )
         )
-        val previewJson: String = generate(Option(previewEvents).map(
+
+        val previewJson: String = generate(Option(searchPreview).map(
           p => Map(
-            "totalEventNumber" -> p.totalEventNumber,
+            "size" -> p.totalEventNumber,
             "eventList" -> es
           ))
         )
-        if (previewEvents.totalEventNumber > 0) {
+        if (searchPreview.totalEventNumber > 0) {
           Ok(previewJson).as("application/json")
         }
         else NotFound
