@@ -19,13 +19,13 @@ package controllers
 import play.api.mvc._
 import models._
 import dao.EventDao
-import play.api.libs.json._
 import java.util.Date
 import service.{LoadDevoxx, LoadICalStream, ICalBuilder}
 import collection.immutable.List
+import com.codahale.jerkson.Json
 
 
-object Application extends OneCalendarController {
+object Application extends OneCalendarController with Json {
 
     val calendarService: ICalBuilder = new ICalBuilder()
 
@@ -43,7 +43,23 @@ object Application extends OneCalendarController {
         val tags: List[String] = keyWords.split(" ").toList
         val previewEvents: SearchPreview = EventDao.findPreviewByTag(tags)
 
-        if (previewEvents.size > 0) Ok(Json.toJson(renderPreviewEventInJson(previewEvents))) else NotFound
+        val es = previewEvents.events.map(
+          e => Map("event" -> Map(
+            "date" -> e.begin.toString(),
+            "title" -> e.title,
+            "location" -> e.location
+          ))
+        )
+        val previewJson: String = generate(Option(previewEvents).map(
+          p => Map(
+            "size" -> p.size,
+            "eventList" -> es
+          ))
+        )
+        if (previewEvents.size > 0) {
+          Ok(previewJson).as("application/json")
+        }
+        else NotFound
     }
 
     @deprecated("devoxx must not be reloaded","march 2012")
@@ -66,7 +82,7 @@ object Application extends OneCalendarController {
     }
     
     def fetchCloudOfTags = Action {
-        Ok(Json.toJson(EventDao.listTags())).as("application/json")
+        Ok(generate(EventDao.listTags())).as("application/json")
     }
     
     private def renderEvents( events: List[ Event ] ) = {
@@ -75,23 +91,4 @@ object Application extends OneCalendarController {
             case _ => Ok(calendarService.buildCalendar(events)).as("text/calendar; charset=utf-8")
         }
     }
-
-    private def renderPreviewEventInJson(previewEvents: SearchPreview): JsValue = {
-        JsObject(
-            List(
-                ("size", JsNumber(previewEvents.size)),
-                ("eventList", JsArray(previewEvents.events.map(previewEvent2Json)) )
-            )
-        )
-    }
-
-    private def previewEvent2Json(preview: Event): JsObject = {
-        JsObject(List(
-            ("event", JsObject(List(
-                ("date", JsString(preview.begin.toString)),
-                ("title", JsString(preview.title)),
-                ("location", JsString(preview.location))
-            )))))
-    }
-
 }
