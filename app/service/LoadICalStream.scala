@@ -38,7 +38,7 @@ class LoadICalStream {
             case Right(vevents) =>
                 val (toSave, passed): (List[Event], List[Event]) = vevents
                         .map( vevent => buildEvent(url, vevent, defaultStreamTag) )
-                        .span( event => event.end.isAfter(dbConfig.now) )
+                        .span( event => event.end.isAfter(dbConfig.now()) )
 
                 saveEvents(toSave)
 

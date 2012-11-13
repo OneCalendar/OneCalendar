@@ -39,7 +39,6 @@ object Application extends OneCalendarController {
     }
 
     def findPreviewByTags(keyWords: String) = Action {
-        mongoConfigProd.now = new Date().getTime
         val tags: List[String] = keyWords.split(" ").toList
         val previewEvents: SearchPreview = EventDao.findPreviewByTag(tags)
 
