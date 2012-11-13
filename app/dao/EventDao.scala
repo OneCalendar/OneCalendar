@@ -19,7 +19,6 @@ package dao
 
 import configuration.injection.MongoConfiguration
 import models._
-import builder.EventBuilder
 import collection.JavaConversions
 import com.mongodb._
 import play.api.Logger
@@ -116,17 +115,17 @@ object EventDao extends CollectionsUtils {
         val tags: BasicDBList = one.toMap.get("tags").asInstanceOf[BasicDBList]
         val scalaTags: List[String] = tags.toArray.toList.map(_.asInstanceOf[String])
 
-        new EventBuilder()
-            .uid( one.toMap.get("uid").asInstanceOf[String] )
-            .title( one.toMap.get("title").asInstanceOf[String] )
-            .tags( scalaTags )
-            .description( one.toMap.get("description").asInstanceOf[String] )
-            .location( one.toMap.get("location").asInstanceOf[String] )
-            .originalStream( one.toMap.get("originalStream").asInstanceOf[String] )
-            .url( one.toMap.get("url").asInstanceOf[String] )
-            .begin( new DateTime(one.toMap.get("begin").asInstanceOf[Long]) )
-            .end( new DateTime(one.toMap.get("end").asInstanceOf[Long]) )
-            .toEvent
+        new Event(
+            uid = one.toMap.get("uid").asInstanceOf[String],
+            title = one.toMap.get("title").asInstanceOf[String],
+            tags = scalaTags,
+            description = one.toMap.get("description").asInstanceOf[String],
+            location = one.toMap.get("location").asInstanceOf[String],
+            originalStream = one.toMap.get("originalStream").asInstanceOf[String],
+            url = one.toMap.get("url").asInstanceOf[String],
+            begin = new DateTime(one.toMap.get("begin").asInstanceOf[Long]),
+            end = new DateTime(one.toMap.get("end").asInstanceOf[Long])
+        )
     }
 
     private def fromEvent2DBObject(event: Event): DBObject = {

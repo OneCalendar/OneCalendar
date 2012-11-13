@@ -21,7 +21,6 @@ import org.scalatest.matchers._
 import org.joda.time.DateTime
 import org.scalatest._
 import models.Event
-import models.builder.EventBuilder
 
 class ICalBuilderTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
 
@@ -29,25 +28,25 @@ class ICalBuilderTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
 
     before {
         val events: List[Event] = List(
-            new EventBuilder()
-                .uid( "0" )
-                .title( "Event1" )
-                .begin( new DateTime() )
-                .end( new DateTime() )
-                .location( "place1" )
-                .description( "super java conf" )
-                .tags( List("java") )
-                .toEvent,
+            Event(
+                uid = "0",
+                title = "Event1",
+                begin = new DateTime(),
+                end = new DateTime(),
+                location = "place1",
+                description = "super java conf",
+                tags = List("java")
+            ),
 
-            new EventBuilder()
-                .uid( "1" )
-                .title( "Event2" )
-                .begin( new DateTime() )
-                .end( new DateTime() )
-                .location( "place2" )
-                .description( "super scala conf" )
-                .tags( List("scala") )
-                .toEvent
+            Event(
+                uid = "1",
+                title = "Event2",
+                begin = new DateTime(),
+                end = new DateTime(),
+                location = "place2",
+                description = "super scala conf",
+                tags = List("scala")
+            )
         )
 
         ical = new ICalBuilder().buildCalendar(events)
@@ -66,16 +65,15 @@ class ICalBuilderTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     
     test("event should have all properties") {
         val event = new ICalBuilder().buildCalendar(
-            List( new EventBuilder()
-                .uid( "0" )
-                .title( "Event1" )
-                .begin( new DateTime( 2010, 01, 01, 12, 0, 0 ) )
-                .end( new DateTime( 2010, 01, 01, 14, 0, 0 ) )
-                .location( "place1" )
-                .description( "super java conf" )
-                .tags( List("java") )
-                .toEvent
-            )
+            List( Event(
+                uid = "0",
+                title = "Event1",
+                begin = new DateTime( 2010, 01, 01, 12, 0, 0 ),
+                end = new DateTime( 2010, 01, 01, 14, 0, 0 ),
+                location = "place1",
+                description = "super java conf",
+                tags = List("java")
+            ))
         )
 
         event should include ( "DTSTART:20100101T120000" )
