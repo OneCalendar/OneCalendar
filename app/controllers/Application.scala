@@ -43,7 +43,7 @@ object Application extends OneCalendarController with Json {
         val tags: List[String] = keyWords.split(" ").toList
         val previewEvents: SearchPreview = EventDao.findPreviewByTag(tags)
 
-        val es = previewEvents.events.map(
+        val es = previewEvents.previewEvents.map(
           e => Map("event" -> Map(
             "date" -> e.begin.toString(),
             "title" -> e.title,
@@ -52,11 +52,11 @@ object Application extends OneCalendarController with Json {
         )
         val previewJson: String = generate(Option(previewEvents).map(
           p => Map(
-            "size" -> p.size,
+            "totalEventNumber" -> p.totalEventNumber,
             "eventList" -> es
           ))
         )
-        if (previewEvents.size > 0) {
+        if (previewEvents.totalEventNumber > 0) {
           Ok(previewJson).as("application/json")
         }
         else NotFound

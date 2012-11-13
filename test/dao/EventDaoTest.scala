@@ -127,15 +127,15 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     test("should find 3 first events by tags 'devoxx', 'java' or other ") {
         initFourData
         mongoConfigurationTesting.now = new DateTime(2012, 1, 1, 0, 0, 0, 0).toDate.getTime
-        EventDao.findPreviewByTag(List("devoxx", "java", "other")).events should have size 3
-        EventDao.findPreviewByTag(List("devoxx", "java", "other")).events should be(List(eventJava, eventDevoxx, eventOther))
+        EventDao.findPreviewByTag(List("devoxx", "java", "other")).previewEvents should have size 3
+        EventDao.findPreviewByTag(List("devoxx", "java", "other")).previewEvents should be(List(eventJava, eventDevoxx, eventOther))
     }
 
     test("should not return past events") {
         initFourData
         mongoConfigurationTesting.now = new DateTime(2012, 4, 20, 0, 0, 0, 0).toDate.getTime
-        EventDao.findPreviewByTag(List("devoxx", "java", "other")).events should have size 2
-        EventDao.findPreviewByTag(List("devoxx", "java", "other")).events should be(List(eventOther, event4))
+        EventDao.findPreviewByTag(List("devoxx", "java", "other")).previewEvents should have size 2
+        EventDao.findPreviewByTag(List("devoxx", "java", "other")).previewEvents should be(List(eventOther, event4))
 
     }
 

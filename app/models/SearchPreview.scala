@@ -16,5 +16,4 @@
 
 package models
 
-case class SearchPreview( size:Long, events: Seq[Event] )
-
+case class SearchPreview( totalEventNumber: Long, previewEvents: Seq[Event] )
