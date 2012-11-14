@@ -69,6 +69,18 @@ class VEventTest extends FunSuite with ShouldMatchers {
         vEvent.endDate     should be (expected.endDate    )
     }
     
+    test("compagnon object should build VEvent even if some properties were not set") {
+        val vEvent = VEvent( uid = "123" )
+        
+        vEvent.uid         should be (Option("123"))
+        vEvent.description should be (None)
+        vEvent.summary     should be (None)
+        vEvent.location    should be (None)
+        vEvent.url         should be (None)
+        vEvent.startDate   should be (None)
+        vEvent.endDate     should be (None)
+    }
+    
     private def getVEvent(uid: Boolean = true): net.fortuna.ical4j.model.component.VEvent = {
         val vevent = new net.fortuna.ical4j.model.component.VEvent()
 
