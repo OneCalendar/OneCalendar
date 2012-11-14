@@ -23,7 +23,12 @@ import casbah.Imports._
 import play.api.Logger
 import fr.scala.util.collection.CollectionsUtils
 import models.SearchPreview
-import service._
+
+object EventDaoBis {
+    def findAll()(implicit mongo: (String) => MongoCollection) = EventDao.findAll()
+    def deleteByOriginalStream(url: String)(implicit now: () => Long, mongo: (String) => MongoCollection) = EventDao.deleteByOriginalStream(url)
+    def saveEvent(event: Event)(implicit now: () => Long, mongo: (String) => MongoCollection) = EventDao.saveEvent(event)
+}
 
 object EventDao extends CollectionsUtils with EventDaoTrait with MongoOperations {
 
@@ -37,9 +42,7 @@ object EventDao extends CollectionsUtils with EventDaoTrait with MongoOperations
         delete(query)
     }
 
-    def saveEvent(event: Event)(implicit collection : String => MongoCollection) {
-        save(event)
-    }
+    def saveEvent(event: Event)(implicit collection : String => MongoCollection) = save(event)
 
     def findByTag(tags: List[String])(implicit collection : String => MongoCollection): List[Event] = {
         val query = "tags" $in tags.map(_.toUpperCase)
@@ -56,13 +59,10 @@ object EventDao extends CollectionsUtils with EventDaoTrait with MongoOperations
         SearchPreview(c,  find[Event](query,sortByBeginDate,PREVIEW_SIZE))
     }
 
-    def findAll()(implicit collection : String => MongoCollection): List[Event] = {
-      find[Event](MongoDBObject())
-    }
+    def findAll()(implicit collection : String => MongoCollection): List[Event] = find[Event](MongoDBObject())
 
     def listTags()(implicit collection : String => MongoCollection, now: () => Long): List[String] = {
         val query = "begin" $gt now()
         collection(EventMongoModel.collectionName).distinct("tags",query).toList.asInstanceOf[List[String]]
     }
-
 }

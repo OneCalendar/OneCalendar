@@ -15,6 +15,7 @@
  */
 
 import controllers.OneCalendarController
+import org.joda.time.DateTime
 import play.api._
 import service.{LoadDevoxx, LoadICalStream}
 import models.ICalStream
@@ -35,6 +36,7 @@ object Global extends GlobalSettings with OneCalendarController {
             streams.foreach {
                 stream =>
                     try {
+                        implicit val now = () => DateTime.now.getMillis
                         loader.parseLoad(stream.url, stream.defaultTag)
                     } catch {
                         case e: Exception => Logger.error("something wrong with %s".format(stream.url))

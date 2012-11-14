@@ -29,11 +29,12 @@ object Announce extends OneCalendarController {
 
     // TODO dead code
     def loadAgileFranceCalendar = Action {
-        val url: String = "http://10.61.32.155:8080/agilefrance.ics"
+        /*val url: String = "http://10.61.32.155:8080/agilefrance.ics"
 
         val iCalService: LoadICalStream = new LoadICalStream()
         iCalService.parseLoad( url, "AGILEFRANCE" )
 
-        Ok( "base " + mongoConfigProd.dbName + " loaded with agile france Calendar" )
+        Ok( "base " + mongoConfigProd.dbName + " loaded with agile france Calendar" )*/
+        Ok
     }
 }

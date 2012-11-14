@@ -17,12 +17,10 @@
 package service
 
 import java.net.URL
-import dao.EventDao
-import dao.configuration.injection.MongoConfiguration
 import play.api.Logger
 import models.Event
-import api.icalendar.{VEvent, ICalendarParsingError, ICalendar}
-import dao.EventDao.saveEvent
+import api.icalendar.{VEvent, ICalendar}
+import dao.EventDaoBis
 import org.joda.time.DateTime
 import models.Event._
 import com.mongodb.casbah.Imports._
@@ -31,19 +29,19 @@ import api.icalendar.ICalendarParsingError
 import dao.configuration.injection.MongoConfiguration
 import scala.Right
 
-class LoadICalStream extends NowEventInjection{
+class LoadICalStream {
 
     val DB_NAME : String = "OneCalendar"
 
-    def parseLoad(url: String, defaultStreamTag: String = "" )( implicit dbConfig: MongoConfiguration = MongoConfiguration( DB_NAME ),collection : String => MongoCollection ) {
+    def parseLoad(url: String, defaultStreamTag: String = "" )( implicit now: () => Long,collection : String => MongoCollection ) {
 
-        EventDao.deleteByOriginalStream(url)
+        EventDaoBis.deleteByOriginalStream(url)
 
         ICalendar.retrieveVEvents(new URL(url).openStream) match {
             case Right(vevents) =>
                 val (toSave, passed): (List[Event], List[Event]) = vevents
                         .map( vevent => buildEvent(url, vevent, defaultStreamTag) )
-                        .span( event => event.end.isAfter(dbConfig.now()) )
+                        .span( event => event.end.isAfter(now()) )
 
                 saveEvents(toSave)
 
@@ -67,13 +65,13 @@ class LoadICalStream extends NowEventInjection{
         )
     }
 
-    private def saveEvents(toSave: scala.List[ Event ])(implicit dbConfig: MongoConfiguration, collection : String => MongoCollection) {
-        toSave foreach ( saveEvent )
+    private def saveEvents(toSave: scala.List[ Event ])(implicit now: () => Long, collection : String => MongoCollection) {
+        toSave foreach ( EventDaoBis.saveEvent )
         Logger.info("%d events loaded".format(toSave.length))
     }
 
-    private def reportNotLoadedEvents(notLoadedEvent: List[Event])(implicit dbConfig: MongoConfiguration) {
+    private def reportNotLoadedEvents(notLoadedEvent: List[Event])(implicit now: () => Long) {
         if ( !notLoadedEvent.isEmpty ) Logger.warn("%d events not loaded ".format(notLoadedEvent.length))
-        notLoadedEvent.foreach(event => Logger.warn("event %s not loaded because now is %s and it's already ended %s".format(event.title, new DateTime(dbConfig.now), event.end)))
+        notLoadedEvent.foreach(event => Logger.warn("event %s not loaded because now is %s and it's already ended %s".format(event.title, new DateTime(now()), event.end)))
     }
 }
