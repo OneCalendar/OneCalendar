@@ -20,9 +20,7 @@ import play.api.mvc._
 import dao.configuration.injection.MongoConfiguration
 import service.LoadICalStream
 
-object Announce extends Controller {
-
-    implicit val mongoConfigProd: MongoConfiguration = MongoConfiguration("OneCalendar")
+object Announce extends OneCalendarController {
 
     // TODO dead code
     def agilefrance = Action {

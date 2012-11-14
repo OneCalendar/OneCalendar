@@ -31,8 +31,8 @@ object EventDao extends CollectionsUtils with EventDaoTrait with MongoOperations
 
     private val PREVIEW_SIZE = 3
 
-    def deleteByOriginalStream(originalStream: String)(implicit collection : String => MongoCollection, now: NowTrait = Now) = {
-        val query = ("end" $gt now.now()) ++ ("originalStream" -> originalStream)
+    def deleteByOriginalStream(originalStream: String)(implicit collection : String => MongoCollection, now: () => Long) = {
+        val query = ("end" $gt now()) ++ ("originalStream" -> originalStream)
         log.debug("query deleteByOriginalStreal %s".format(query))
         delete(query)
     }
@@ -47,8 +47,8 @@ object EventDao extends CollectionsUtils with EventDaoTrait with MongoOperations
         find[Event](query)
     }
 
-    def findPreviewByTag(tags: List[String])(implicit collection : String => MongoCollection, now: NowTrait = Now): SearchPreview = {
-        val query = ("tags" $in tags.map(_.toUpperCase)) ++("begin" $gt now.now())
+    def findPreviewByTag(tags: List[String])(implicit collection : String => MongoCollection, now: () => Long): SearchPreview = {
+        val query = ("tags" $in tags.map(_.toUpperCase)) ++("begin" $gt now())
         val c = count[Event](query)
 
         val sortByBeginDate = MongoDBObject("begin" -> 1)
@@ -60,8 +60,8 @@ object EventDao extends CollectionsUtils with EventDaoTrait with MongoOperations
       find[Event](MongoDBObject())
     }
 
-    def listTags()(implicit collection : String => MongoCollection, now: NowTrait = Now): List[String] = {
-        val query = "begin" $gt now.now()
+    def listTags()(implicit collection : String => MongoCollection, now: () => Long): List[String] = {
+        val query = "begin" $gt now()
         collection(EventMongoModel.collectionName).distinct("tags",query).toList.asInstanceOf[List[String]]
     }
 

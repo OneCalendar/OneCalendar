@@ -23,28 +23,22 @@ import org.scalatest.{BeforeAndAfter, FunSuite}
 import dao.configuration.injection.MongoConfiguration
 import models.Event
 import org.joda.time.DateTime
+import com.mongodb.casbah.Imports._
+import dao.configuration.injection.MongoConfiguration
 
 class LoadICalStreamTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
 
-    val db: DB = {
-        val mongo: Mongo = new Mongo()
-        val db: DB = mongo.getDB( "test" )
-        db
-    }
+    implicit def collFun : String => MongoCollection = (name : String) => MongoConnection()("test")(name)
 
     before {
-        db.requestStart
-        db.getCollection("events").drop()
+        collFun("events").drop()
     }
 
     after {
-        db.getCollection("test").drop()
-        db.requestDone
+        collFun("events").drop()
     }
 
     test("should parse iCal stream") {
-        implicit val mongoConfigurationTesting = MongoConfiguration( "test", () => new DateTime().withDate(2012,4,1).getMillis )
-
         val url : String = "https://www.google.com/calendar/ical/cs98tardtttjejg93tpcb71ol6nvachq%40import.calendar.google.com/public/basic.ics"
         val iCalService : LoadICalStream = new LoadICalStream()
         iCalService.parseLoad( url, "DEVOXX" )

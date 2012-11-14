@@ -19,9 +19,10 @@ package controllers
 import play.api.mvc._
 import models._
 import dao._
-import service.ICalBuilder
+import service._
 import collection.immutable.List
 import com.codahale.jerkson.Json
+import org.joda.time.DateTime
 
 
 object Application extends OneCalendarController with Json {
@@ -37,7 +38,7 @@ object Application extends OneCalendarController with Json {
         renderEvents(EventDao.findByTag(tags))
     }
 
-    def findPreviewByTags(keyWords: String)(implicit dao:EventDaoTrait = EventDao) = Action {
+    def findPreviewByTags(keyWords: String)(implicit dao:EventDaoTrait = EventDao, now: () => Long = () => DateTime.now.getMillis) = Action {
         val tags: List[String] = keyWords.split(" ").toList
         val searchPreview: SearchPreview = dao.findPreviewByTag(tags)
 
@@ -66,7 +67,7 @@ object Application extends OneCalendarController with Json {
         Ok(views.html.about())
     }
     
-    def fetchCloudOfTags = Action {
+    def fetchCloudOfTags (implicit now: () => Long = () => DateTime.now.getMillis)= Action {
         Ok(generate(EventDao.listTags())).as("application/json")
     }
     

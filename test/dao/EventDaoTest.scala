@@ -17,7 +17,6 @@
 package dao
 
 import configuration.injection.MongoConfiguration
-import configuration.injection.MongoConfiguration
 import models.Event
 import org.joda.time.DateTime
 import collection.immutable.List
@@ -33,7 +32,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
      * mongod --dbpath data/ --fork --logpath data/mongodb.log
      */
 
-    implicit def collFun : String => MongoCollection = (name : String) => MongoConnection()("test")(name)
+    implicit val mongoConfigurationTesting = (name:String) => MongoConnection()("test")(name)
 
     val eventDevoxx: Event = Event(
         uid = "1",
@@ -83,23 +82,11 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
         tags = List("NEW")
     )
 
-    val db: DB = {
-        val mongo: Mongo = new Mongo()
-        val db: DB = mongo.getDB("test")
-        db
-    }
-
     before {
-        //db.requestStart
-        db.getCollection("events").drop
-    }
-
-    after {
-        //db.requestDone
+        mongoConfigurationTesting("events").drop()
     }
 
     test("saving a new event") {
-        implicit val mongoConfigurationTesting = MongoConfiguration("test")
         val event: Event = Event(
             uid = "1",
             title = "BOF",
@@ -116,21 +103,19 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     }
 
     test("should find event by tag 'devoxx'") {
-        implicit val mongoConfigurationTesting = MongoConfiguration("test")
         initData
 
         EventDao.findByTag(List("devoxx")) should be(List(eventDevoxx))
     }
 
     test("should find events by tags 'devoxx' or 'java' ") {
-        implicit val mongoConfigurationTesting = MongoConfiguration("test")
         initData
 
         EventDao.findByTag(List("devoxx", "java")) should be(List(eventDevoxx, eventJava))
     }
 
     test("should find 3 first events by tags 'devoxx', 'java' or other ") {
-        implicit val mongoConfigurationAnyDate = MongoConfiguration("test", () => new DateTime(2012, 1, 1, 0, 0, 0, 0).toDate.getTime)
+        implicit val now : () => Long = () => new DateTime(2010,1,1,1,1).getMillis
         initFourData
 
         EventDao.findPreviewByTag(List("devoxx", "java", "other")).previewEvents should have size 3
@@ -138,7 +123,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     }
 
     test("should not return past events") {
-        implicit val mongoConfigurationAnyDate = MongoConfiguration("test", () => new DateTime(2012, 4, 20, 0, 0, 0, 0).toDate.getTime)
+        implicit val now : () => Long = () => new DateTime(2012, 4, 20, 0, 0, 0, 0).getMillis
         initFourData
 
         EventDao.findPreviewByTag(List("devoxx", "java", "other")).previewEvents should have size 2
@@ -146,7 +131,6 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     }
 
     test("should find everything") {
-        implicit val mongoConfigurationTesting = MongoConfiguration("test")
         (1 to 50).foreach(
             id => EventDao.saveEvent(
                 Event(
@@ -162,7 +146,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     }
 
     test("should not list old tags") {
-        implicit val mongoConfigurationTesting = MongoConfiguration("test")
+        implicit val now : () => Long = () => new DateTime(2012,5,1,1,1).getMillis
 
         EventDao.saveEvent(oldEvent)
         EventDao.saveEvent(newEvent)
@@ -172,8 +156,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     }
 
     test("delete by originalStream don't drop the older event or event without relation") {
-        implicit val mongoConfigurationTesting = MongoConfiguration("test")
-
+        implicit val now : () => Long = () => DateTime.now.getMillis
         EventDao.saveEvent(Event(
             originalStream = "hello",
             begin = new DateTime().plusDays(10),
@@ -207,12 +190,12 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
         EventDao.findAll() should have size 3
     }
 
-    private def initData(implicit mongoConfig: MongoConfiguration) {
+    private def initData() {
         EventDao.saveEvent(eventDevoxx)
         EventDao.saveEvent(eventJava)
     }
 
-    private def initFourData(implicit mongoConfig: MongoConfiguration) {
+    private def initFourData() {
         EventDao.saveEvent(eventDevoxx)
         EventDao.saveEvent(eventJava)
         EventDao.saveEvent(eventOther)

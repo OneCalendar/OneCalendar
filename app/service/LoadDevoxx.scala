@@ -19,20 +19,25 @@ package service
 import dao.configuration.injection._
 import com.codahale.jerkson.Json
 import dao._
+import configuration.injection.MongoConfiguration
 import models._
 import java.net._
 import org.joda.time.format.{DateTimeFormatter, DateTimeFormat}
 import collection.Seq
 import collection.immutable.List
 import play.api.Logger
+import com.mongodb.casbah.Imports._
+import models.DevoxxSchedule
+import models.DevoxxEvents
+import models.DevoxxPresentation
 
-object LoadDevoxx extends Json {
+object LoadDevoxx extends Json with NowEventInjection {
 
     val log = Logger("EventDao")
     val pattern: DateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.S")
     val DB_NAME: String = "OneCalendar"
 
-    def parseLoad()(implicit dbConfig: MongoConfiguration = MongoConfiguration(DB_NAME)) {
+    def parseLoad()(implicit collection : String => MongoCollection) {
         val devoxxEvents = "https://cfp.devoxx.com/rest/v1/events/"
 
         val events: Seq[DevoxxEvents] = parseUrl[Seq[DevoxxEvents]](devoxxEvents)
@@ -40,7 +45,7 @@ object LoadDevoxx extends Json {
         events.map(event => "https://cfp.devoxx.com/rest/v1/events/%s/schedule".format(event.id)).foreach(load)
     }
 
-    def load(devoxxUrl: String)(implicit dbConfig: MongoConfiguration = MongoConfiguration(DB_NAME)) {
+    def load(devoxxUrl: String)(implicit collection : String => MongoCollection) {
       EventDao.deleteByOriginalStream(devoxxUrl)
 
       val schedules: Seq[DevoxxSchedule] = parseUrl[Seq[DevoxxSchedule]](devoxxUrl)

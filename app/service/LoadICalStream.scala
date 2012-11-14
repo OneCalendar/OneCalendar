@@ -25,12 +25,17 @@ import api.icalendar.{VEvent, ICalendarParsingError, ICalendar}
 import dao.EventDao.saveEvent
 import org.joda.time.DateTime
 import models.Event._
+import com.mongodb.casbah.Imports._
+import scala.Left
+import api.icalendar.ICalendarParsingError
+import dao.configuration.injection.MongoConfiguration
+import scala.Right
 
-class LoadICalStream {
+class LoadICalStream extends NowEventInjection{
 
     val DB_NAME : String = "OneCalendar"
 
-    def parseLoad(url: String, defaultStreamTag: String = "" )( implicit dbConfig: MongoConfiguration = MongoConfiguration( DB_NAME ) ) {
+    def parseLoad(url: String, defaultStreamTag: String = "" )( implicit dbConfig: MongoConfiguration = MongoConfiguration( DB_NAME ),collection : String => MongoCollection ) {
 
         EventDao.deleteByOriginalStream(url)
 
@@ -62,7 +67,7 @@ class LoadICalStream {
         )
     }
 
-    private def saveEvents(toSave: scala.List[ Event ])(implicit dbConfig: MongoConfiguration) {
+    private def saveEvents(toSave: scala.List[ Event ])(implicit dbConfig: MongoConfiguration, collection : String => MongoCollection) {
         toSave foreach ( saveEvent )
         Logger.info("%d events loaded".format(toSave.length))
     }
