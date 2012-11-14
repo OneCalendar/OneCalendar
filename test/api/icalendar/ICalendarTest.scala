@@ -1,26 +1,89 @@
 package api.icalendar
 
-import org.scalatest.FunSuite
 import org.scalatest.matchers.ShouldMatchers
 import java.net.URI
 import com.google.common.io.Resources.getResource
 import net.fortuna.ical4j.model.property._
+import models.Event
+import org.joda.time.DateTime
+import org.scalatest.{BeforeAndAfter, FunSuite}
+import api.icalendar.ICalendar._
+import models.mapping.Event$VEventMapping
 
-class ICalendarTest extends FunSuite with ShouldMatchers {
+class ICalendarTest extends FunSuite with ShouldMatchers with BeforeAndAfter with Event$VEventMapping {
+    var ical: String = _
+
+    before {
+        val events: List[Event] = List(
+            Event(
+                uid = "0",
+                title = "Event1",
+                begin = new DateTime(),
+                end = new DateTime(),
+                location = "place1",
+                description = "super java conf",
+                tags = List("java")
+            ),
+
+            Event(
+                uid = "1",
+                title = "Event2",
+                begin = new DateTime(),
+                end = new DateTime(),
+                location = "place2",
+                description = "super scala conf",
+                tags = List("scala")
+            )
+        )
+
+        ical = buildCalendar(events)
+    }
+
     test("should retireve empty list when feed is empty") {
-        val vEvents = ICalendar.retrieveVEvents( getResource("api/icalendar/empty.ics").openStream() )
+        val vEvents = retrieveVEvents( getResource("api/icalendar/empty.ics").openStream() )
         vEvents should be (Right(Nil))
     }
 
     test("should retireve VEvent from icalendar source") {
-        val vEvents = ICalendar.retrieveVEvents( getResource("api/icalendar/singleEvent.ics").openStream() )
+        val vEvents = retrieveVEvents( getResource("api/icalendar/singleEvent.ics").openStream() )
         vEvents.right.get should have size 1
         vEvents.right.get should contain (new VEvent(getVEvent()))
     }
 
     test("should retrieve empty list when feed is invalid") {
-        val vEvents = ICalendar.retrieveVEvents( getResource("api/icalendar/invalid.ics").openStream() )
+        val vEvents = retrieveVEvents( getResource("api/icalendar/invalid.ics").openStream() )
         vEvents.left.get.message should be ("Parsing error from ICalendar")
+    }
+
+    test("ical should be a valid iCal") {
+        ical should startWith ("BEGIN:VCALENDAR")
+        ical should include ("VERSION:2.0")
+        ical should include ("PRODID:")
+    }
+
+    test("ical should have all events") {
+        ical should include ("SUMMARY:Event1")
+        ical should include ("SUMMARY:Event2")
+    }
+
+    test("event should have all properties") {
+        val event = buildCalendar(
+            List( Event(
+                uid = "0",
+                title = "Event1",
+                begin = new DateTime( 2010, 01, 01, 12, 0, 0 ),
+                end = new DateTime( 2010, 01, 01, 14, 0, 0 ),
+                location = "place1",
+                description = "super java conf",
+                tags = List("java")
+            ))
+        )
+
+        event should include ( "DTSTART:20100101T120000" )
+        event should include ( "DTEND:20100101T140000" )
+        event should include ( "DESCRIPTION:super java conf" )
+        event should include ( "LOCATION:place1" )
+        event should include ( "UID:0" )
     }
 
     // TODO duplication voir VEventTest
