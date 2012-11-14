@@ -44,6 +44,30 @@ class VEventTest extends FunSuite with ShouldMatchers {
         new VEvent(getVEvent(uid = false)) should not equal(new VEvent(getVEvent(uid = false)))
         new VEvent(getVEvent()) should not equal ("")
     }
+
+    test("compagnon object should build VEvent from map") {
+        val vEvent = VEvent(
+            uid = "123",
+            summary = "title",
+            description = "description",
+            location = "location",
+            url = "url",
+            startDate = new DateTime(123456L),
+            endDate = new DateTime(456457L)
+        )
+
+        val expected = new VEvent(getVEvent())
+
+        vEvent should be (expected) // Not sufficient because we need test mapping
+
+        vEvent.description should be (expected.description)
+        vEvent.uid         should be (expected.uid        )
+        vEvent.summary     should be (expected.summary    )
+        vEvent.location    should be (expected.location   )
+        vEvent.url         should be (expected.url        )
+        vEvent.startDate   should be (expected.startDate  )
+        vEvent.endDate     should be (expected.endDate    )
+    }
     
     private def getVEvent(uid: Boolean = true): net.fortuna.ical4j.model.component.VEvent = {
         val vevent = new net.fortuna.ical4j.model.component.VEvent()
