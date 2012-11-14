@@ -22,9 +22,10 @@ import dao.EventDao
 import collection.immutable.List
 import com.codahale.jerkson.Json
 import api.icalendar.ICalendar
+import mapping.Event$VEventMapping
 
 
-object Application extends OneCalendarController with Json {
+object Application extends OneCalendarController with Json with Event$VEventMapping {
 
     def index = Action {
         Ok(views.html.index())

@@ -8,8 +8,9 @@ import models.Event
 import org.joda.time.DateTime
 import org.scalatest.{BeforeAndAfter, FunSuite}
 import api.icalendar.ICalendar._
+import models.mapping.Event$VEventMapping
 
-class ICalendarTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
+class ICalendarTest extends FunSuite with ShouldMatchers with BeforeAndAfter with Event$VEventMapping {
     var ical: String = _
 
     before {

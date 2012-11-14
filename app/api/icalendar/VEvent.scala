@@ -46,6 +46,9 @@ class VEvent(vevent: net.fortuna.ical4j.model.component.VEvent) {
 
     def description: Option[ String ] = Option(vevent.getDescription) map toValue
 
+    // TODO cette méthode ne doit être visible que dans le package api.calendar
+    def toICal4J: net.fortuna.ical4j.model.component.VEvent = vevent
+
     override def equals(vevent: Any): Boolean = vevent match {
         case that: VEvent => if ( this.uid == None || that.uid == None ) false else this.uid == that.uid
         case _ => false

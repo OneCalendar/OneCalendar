@@ -26,32 +26,14 @@ object ICalendar extends CollectionsUtils {
 
     val ID: String = "-//OneCalendarToMeetThemAll//FR"
 
-    def buildCalendar(events: List[Event]): ICalendarRender = {
+    def buildCalendar(vEvents: List[VEvent]): ICalendarRender = {
         val componentList: ComponentList = new ComponentList()
 
-        events.map(event => componentList.add(buildVEvent(event)))
-
+        vEvents foreach ( e => componentList.add(e.toICal4J) )
+        
         val calendar: Calendar = buildCalendar(componentList)
 
         serializeCalendar(calendar)
-    }
-
-    private def buildVEvent(event: Event): net.fortuna.ical4j.model.component.VEvent = {
-        val vevent: net.fortuna.ical4j.model.component.VEvent = new net.fortuna.ical4j.model.component.VEvent
-
-        vevent.getProperties.add(new net.fortuna.ical4j.model.property.Uid(event.uid))
-
-        vevent.getProperties.add(new net.fortuna.ical4j.model.property.DtStart(new DateTime(event.begin.toDate)))
-        vevent.getProperties.add(new net.fortuna.ical4j.model.property.DtEnd(new DateTime(event.end.toDate)))
-
-        vevent.getProperties.add(new net.fortuna.ical4j.model.property.Summary(event.title))
-        vevent.getProperties.add(new net.fortuna.ical4j.model.property.Description(event.description))
-        vevent.getProperties.add(new net.fortuna.ical4j.model.property.Location(event.location))
-        if (event.url != null) {
-            vevent.getProperties.add(new net.fortuna.ical4j.model.property.Url(new URI(event.url)))
-        }
-
-        vevent
     }
 
     private def buildCalendar(componentList: ComponentList): Calendar = {
