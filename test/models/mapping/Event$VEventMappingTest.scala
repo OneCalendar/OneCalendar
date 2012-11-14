@@ -28,4 +28,21 @@ class Event$VEventMappingTest extends FunSuite with ShouldMatchers with Event$VE
         vEvent.startDate   should be (Option(start)        )
         vEvent.endDate     should be (Option(end)          )
     }
+
+    test("should map 'complete' Events to VEvents") {
+        val start = new DateTime(123000L)
+        val end = new DateTime(456000L)
+
+        val event = List(Event(title= "title", begin = start, end = end, uid = "123", location = "location", description = "description", url = "url"))
+
+        val vEvents: List[VEvent] = convertEventsToVEvents( event )
+
+        vEvents.head.uid         should be (Option("123")        )
+        vEvents.head.summary     should be (Option("title")      )
+        vEvents.head.description should be (Option("description"))
+        vEvents.head.location    should be (Option("location")   )
+        vEvents.head.url         should be (Option("url")        )
+        vEvents.head.startDate   should be (Option(start)        )
+        vEvents.head.endDate     should be (Option(end)          )
+    }
 }
