@@ -16,6 +16,4 @@
 
 package models
 
-case class ICalStream (url:String, defaultTag:String)
-
-
+case class ICalStream (url: String, streamTags: List[String])

@@ -34,7 +34,7 @@ object Announce extends Controller {
         val url: String = "http://10.61.32.155:8080/agilefrance.ics"
 
         val iCalService: LoadICalStream = new LoadICalStream()
-        iCalService.parseLoad( url, "AGILEFRANCE" )
+        iCalService.parseLoad( url, List("AGILEFRANCE") )
 
         Ok( "base " + mongoConfigProd.dbName + " loaded with agile france Calendar" )
     }
