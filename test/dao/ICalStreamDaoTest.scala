@@ -43,8 +43,7 @@ class ICalStreamDaoTest  extends FunSuite with ShouldMatchers with BeforeAndAfte
     }
 
     test("find ical streams to load") {
-        ICalStreamsDao.save(ICalStream("hello","tag"))
+        ICalStreamsDao.save(ICalStream("hello",List("tag")))
         ICalStreamsDao.findAll() should have size 1
     }
-
 }

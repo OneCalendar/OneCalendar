@@ -35,48 +35,47 @@ object LoadDevoxx extends Json {
     def parseLoad()(implicit dbConfig: MongoConfiguration = MongoConfiguration(DB_NAME)) {
         val devoxxEvents = "https://cfp.devoxx.com/rest/v1/events/"
 
-        val events: Seq[DevoxxEvents] = parseUrl[Seq[DevoxxEvents]](devoxxEvents)
+        val events: Seq[ DevoxxEvents ] = parseUrl[ Seq[ DevoxxEvents ] ](devoxxEvents)
 
         events.map(event => "https://cfp.devoxx.com/rest/v1/events/%s/schedule".format(event.id)).foreach(load)
     }
 
     def load(devoxxUrl: String)(implicit dbConfig: MongoConfiguration = MongoConfiguration(DB_NAME)) {
-      EventDao.deleteByOriginalStream(devoxxUrl)
+        EventDao.deleteByOriginalStream(devoxxUrl)
 
-      val schedules: Seq[DevoxxSchedule] = parseUrl[Seq[DevoxxSchedule]](devoxxUrl)
+        val schedules: Seq[ DevoxxSchedule ] = parseUrl[ Seq[ DevoxxSchedule ] ](devoxxUrl)
 
-      val shedulesSet = Set(schedules.toArray : _*)
+        val shedulesSet = Set(schedules.toArray: _*)
 
-      shedulesSet.foreach(schedule => {
-        if (schedule.presentationUri.isDefined) {
-          try {
-            val presentation: DevoxxPresentation = parseUrl[DevoxxPresentation](schedule.presentationUri.get.replace("http://", "https://"))
+        shedulesSet.foreach(schedule => {
+            if ( schedule.presentationUri.isDefined ) {
+                try {
+                    val presentation: DevoxxPresentation = parseUrl[ DevoxxPresentation ](schedule.presentationUri.get.replace("http://", "https://"))
 
-            var curTags: List[String] = List("DEVOXX")
-            presentation.tags.foreach(tag => {
-              curTags = curTags :+ (tag.name.toUpperCase)
-            })
-            val event: Event = Event(
-                uid = schedule.presentationUri.get,
-                title = presentation.title,
-                begin = pattern.parseDateTime(schedule.fromTime.get),
-                end = pattern.parseDateTime(schedule.toTime.get),
-                description = presentation.summary,
-                location = presentation.room.get,
-                tags = curTags
-            )
-            EventDao.saveEvent(event)
-          } catch {
-            case e: Exception => log.warn("the presentation %s can't be load".format(schedule.presentationUri))
-          }
-        }
+                    var curTags: List[ String ] = List("DEVOXX")
+                    presentation.tags.foreach(tag => {
+                        curTags = curTags :+ ( tag.name.toUpperCase )
+                    })
+                    val event: Event = Event(
+                        uid = schedule.presentationUri.get,
+                        title = presentation.title,
+                        begin = pattern.parseDateTime(schedule.fromTime.get),
+                        end = pattern.parseDateTime(schedule.toTime.get),
+                        description = presentation.summary,
+                        location = presentation.room.get,
+                        originalStream = devoxxUrl,
+                        tags = curTags
+                    )
+                    EventDao.saveEvent(event)
+                } catch {
+                    case e: Exception => log.warn("the presentation %s can't be load".format(schedule.presentationUri))
+                }
+            }
 
-      })
-  }
-
-
-    def parseUrl[A](url: String)(implicit mf: Manifest[A]): A = {
-        parse[A](new URL(url).openStream())
+        })
     }
 
+    def parseUrl[ A ](url: String)(implicit mf: Manifest[ A ]): A = {
+        parse[ A ](new URL(url).openStream())
+    }
 }

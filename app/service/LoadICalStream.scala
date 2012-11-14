@@ -30,14 +30,14 @@ class LoadICalStream {
 
     val DB_NAME : String = "OneCalendar"
 
-    def parseLoad(url: String, defaultStreamTag: String = "" )( implicit dbConfig: MongoConfiguration = MongoConfiguration( DB_NAME ) ) {
+    def parseLoad(url: String, streamTags: List[String] = Nil )( implicit dbConfig: MongoConfiguration = MongoConfiguration( DB_NAME ) ) {
 
         EventDao.deleteByOriginalStream(url)
 
         ICalendar.retrieveVEvents(new URL(url).openStream) match {
             case Right(vevents) =>
                 val (toSave, passed): (List[Event], List[Event]) = vevents
-                        .map( vevent => buildEvent(url, vevent, defaultStreamTag) )
+                        .map( vevent => buildEvent(url, vevent, streamTags) )
                         .span( event => event.end.isAfter(dbConfig.now()) )
 
                 saveEvents(toSave)
@@ -48,7 +48,7 @@ class LoadICalStream {
         }
     }
 
-    private def buildEvent(url: String, vEvent: VEvent, defaultStreamTag: String): Event = {
+    private def buildEvent(url: String, vEvent: VEvent, streamTags: List[String]): Event = {
         Event(
             uid = vEvent.uid.getOrElse(""),
             title = vEvent.summary.getOrElse(""),
@@ -58,7 +58,7 @@ class LoadICalStream {
             url = vEvent.url.getOrElse(""),
             originalStream = url,
             description = vEvent.description.getOrElse(""),
-            tags = getTagsFromDescription(vEvent.description.getOrElse("") + ( if ( !defaultStreamTag.isEmpty ) " #" + defaultStreamTag; else "" ))
+            tags = getTagsFromDescription(vEvent.description.getOrElse("") + extractTagsFromStreamTags(streamTags))
         )
     }
 
@@ -71,4 +71,7 @@ class LoadICalStream {
         if ( !notLoadedEvent.isEmpty ) Logger.warn("%d events not loaded ".format(notLoadedEvent.length))
         notLoadedEvent.foreach(event => Logger.warn("event %s not loaded because now is %s and it's already ended %s".format(event.title, new DateTime(dbConfig.now), event.end)))
     }
+
+    private def extractTagsFromStreamTags(streamTags: List[String]): String =
+        if ( streamTags.isEmpty ) "" else " #" + streamTags.mkString("#")
 }

@@ -32,6 +32,8 @@ class LoadICalStreamTest extends FunSuite with ShouldMatchers with BeforeAndAfte
         db
     }
 
+    val url : String = "https://www.google.com/calendar/ical/cs98tardtttjejg93tpcb71ol6nvachq%40import.calendar.google.com/public/basic.ics"
+
     before {
         db.requestStart
         db.getCollection("events").drop()
@@ -45,21 +47,30 @@ class LoadICalStreamTest extends FunSuite with ShouldMatchers with BeforeAndAfte
     test("should parse iCal stream") {
         implicit val mongoConfigurationTesting = MongoConfiguration( "test", () => new DateTime().withDate(2012,4,1).getMillis )
 
-        val url : String = "https://www.google.com/calendar/ical/cs98tardtttjejg93tpcb71ol6nvachq%40import.calendar.google.com/public/basic.ics"
         val iCalService : LoadICalStream = new LoadICalStream()
-        iCalService.parseLoad( url, "DEVOXX" )
+        iCalService.parseLoad( url, List("DEVOXX") )
 
         val events: List[Event] = EventDao.findAll()
         val count: Int = events.size
 
-        count.should(be.>(50))
+        count should be > 50
         count should be > 50
         count should be < 100
         events.head.tags should contain ("DEVOXX")
+    }
 
+    test("should parse iCal stream with two stream tags") {
+        implicit val mongoConfigurationTesting = MongoConfiguration( "test", () => new DateTime().withDate(2012,4,1).getMillis )
 
-        List(1,2,3).should(contain (2))
-       	List(1,2,3).should(not.contain(4))
-       	List(1,2,3).should(have.size(3))
+        val iCalService : LoadICalStream = new LoadICalStream()
+        iCalService.parseLoad( url, List("DEVOXX","TEST") )
+
+        val events: List[Event] = EventDao.findAll()
+        val count: Int = events.size
+
+        count should be > 50
+        count should be > 50
+        count should be < 100
+        events.head.tags should be (List("DEVOXX", "TEST"))
     }
 }
