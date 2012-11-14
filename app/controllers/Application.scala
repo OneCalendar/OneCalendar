@@ -19,14 +19,12 @@ package controllers
 import play.api.mvc._
 import models._
 import dao.EventDao
-import service.ICalBuilder
 import collection.immutable.List
 import com.codahale.jerkson.Json
+import api.icalendar.ICalendar
 
 
 object Application extends OneCalendarController with Json {
-
-    val calendarService: ICalBuilder = new ICalBuilder()
 
     def index = Action {
         Ok(views.html.index())
@@ -73,7 +71,7 @@ object Application extends OneCalendarController with Json {
     private def renderEvents( events: List[ Event ] ) = {
         events match {
             case Nil => NotFound("Aucun évènement pour la recherche")
-            case _ => Ok(calendarService.buildCalendar(events)).as("text/calendar; charset=utf-8")
+            case _ => Ok(ICalendar.buildCalendar(events)).as("text/calendar; charset=utf-8")
         }
     }
 }
