@@ -1,22 +1,22 @@
 package dao
 
-import configuration.injection.MongoConfiguration
-import models.SearchPreview
 import models.Event
+import com.mongodb.casbah.Imports._
+import models.SearchPreview
+import service.NowTrait
 
 //ToDo: this trait was added only to allow mocks into tests
 trait EventDaoTrait {
-  def deleteAll()(implicit dbConfig: MongoConfiguration)
 
-  def deleteByOriginalStream(s: String)(implicit dbConfig: MongoConfiguration)
+  def deleteByOriginalStream(s: String)(implicit collection : String => MongoCollection, now: NowTrait)
 
-  def saveEvent(event: Event)(implicit dbConfig: MongoConfiguration)
+  def saveEvent(event: Event)(implicit collection : String => MongoCollection)
 
-  def findByTag(tags: List[String])(implicit dbConfig: MongoConfiguration): List[Event]
+  def findByTag(tags: List[String])(implicit collection : String => MongoCollection): List[Event]
 
-  def findPreviewByTag(tags: List[String])(implicit dbConfig: MongoConfiguration): SearchPreview
+  def findPreviewByTag(tags: List[String])(implicit collection : String => MongoCollection, now: NowTrait): SearchPreview
 
-  def findAll()(implicit dbConfig: MongoConfiguration): List[Event]
+  def findAll()(implicit collection : String => MongoCollection): List[Event]
 
-  def listTags()(implicit dbConfig: MongoConfiguration): List[String]
+  def listTags()(implicit collection : String => MongoCollection, now: NowTrait): List[String]
 }

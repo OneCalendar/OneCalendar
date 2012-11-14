@@ -17,10 +17,12 @@
 package dao
 
 import configuration.injection.MongoConfiguration
+import configuration.injection.MongoConfiguration
 import models.Event
 import org.joda.time.DateTime
 import collection.immutable.List
 import com.mongodb._
+import casbah.Imports._
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.{BeforeAndAfter, FunSuite}
 
@@ -30,6 +32,8 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
      * RUNNING MONGO SERVER BEFORE -
      * mongod --dbpath data/ --fork --logpath data/mongodb.log
      */
+
+    implicit def collFun : String => MongoCollection = (name : String) => MongoConnection()("test")(name)
 
     val eventDevoxx: Event = Event(
         uid = "1",
@@ -86,12 +90,12 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     }
 
     before {
-        db.requestStart
+        //db.requestStart
         db.getCollection("events").drop
     }
 
     after {
-        db.requestDone
+        //db.requestDone
     }
 
     test("saving a new event") {

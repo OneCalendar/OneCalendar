@@ -18,7 +18,9 @@ package controllers
 
 import play.api.mvc.Controller
 import dao.configuration.injection.MongoConfiguration
+import com.mongodb.casbah.MongoConnection
 
 trait OneCalendarController extends Controller {
     implicit val mongoConfigProd: MongoConfiguration = MongoConfiguration("OneCalendar")
+    implicit val mongo = MongoConnection("OneCalendar")
 }
