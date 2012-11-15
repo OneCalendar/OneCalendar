@@ -2,7 +2,7 @@ package dao
 
 import models.Event
 import models.SearchPreview
-import dao.configuration.injection.MongoPool.MongoDbName
+import dao.configuration.injection.MongoProp.MongoDbName
 
 //ToDo: this trait was added only to allow mocks into tests
 trait EventDaoTrait {

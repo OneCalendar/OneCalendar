@@ -25,7 +25,7 @@ import models.Event._
 import scala.Left
 import api.icalendar.ICalendarParsingError
 import scala.Right
-import dao.configuration.injection.MongoPool.MongoDbName
+import dao.configuration.injection.MongoProp.MongoDbName
 
 class LoadICalStream {
 

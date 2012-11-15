@@ -20,7 +20,7 @@ import play.api.mvc.Controller
 import dao.configuration.injection.MongoConfiguration
 import com.mongodb.casbah._
 import com.mongodb.{ServerAddress, MongoOptions}
-import dao.configuration.injection.MongoPool.MongoDbName
+import dao.configuration.injection.MongoProp.MongoDbName
 
 object mongoConn {
     private val conn:MongoConnection = {

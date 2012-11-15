@@ -1,6 +1,6 @@
 package dao
 
-import configuration.injection.MongoPool.MongoDbName
+import dao.configuration.injection.MongoProp.MongoDbName
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfter, FunSuite}
 import com.mongodb.casbah.TypeImports._
 import com.mongodb.casbah.MongoConnection

@@ -17,7 +17,7 @@
 package dao
 
 import configuration.injection.MongoConnectionPool
-import configuration.injection.MongoPool.MongoDbName
+import dao.configuration.injection.MongoProp.MongoDbName
 import models._
 import com.mongodb._
 import casbah.Imports._

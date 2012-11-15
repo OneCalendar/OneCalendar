@@ -13,7 +13,7 @@ import org.mockito.Matchers
 import fr.scala.util.collection.CollectionsUtils
 import org.joda.time.DateTime
 import com.codahale.jerkson.Json
-import dao.configuration.injection.MongoPool.MongoDbName
+import dao.configuration.injection.MongoProp.MongoDbName
 
 case class PreviewTuple(date:String, title:String, location:String)
 case class PreviewEvent(event:PreviewTuple)

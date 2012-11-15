@@ -27,7 +27,7 @@ import play.api.Logger
 import models.DevoxxSchedule
 import models.DevoxxEvents
 import models.DevoxxPresentation
-import dao.configuration.injection.MongoPool.MongoDbName
+import dao.configuration.injection.MongoProp.MongoDbName
 
 object LoadDevoxx extends Json with NowEventInjection {
 
