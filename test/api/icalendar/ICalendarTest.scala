@@ -86,6 +86,15 @@ class ICalendarTest extends FunSuite with ShouldMatchers with BeforeAndAfter wit
         event should include ( "UID:0" )
     }
 
+    ignore("should retrieve 2 valid events when an event is invalid") {
+        val vEvents = retrieveVEvents( getResource("api/icalendar/twoValidOneInvalidEvent.ics").openStream() )
+        vEvents match {
+            case Right(list) => list  should have size (2)
+            case Left(err) => fail(err.e)
+        }
+        //cause : new URI("marketing%zenika.com@gtempaccount.com")
+    }
+
     // TODO duplication voir VEventTest
     private def getVEvent(uid: Boolean = true): net.fortuna.ical4j.model.component.VEvent = {
         val vevent = new net.fortuna.ical4j.model.component.VEvent()
