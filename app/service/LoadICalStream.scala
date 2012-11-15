@@ -20,26 +20,26 @@ import java.net.URL
 import play.api.Logger
 import models.Event
 import api.icalendar.{VEvent, ICalendar}
-import dao.EventDaoBis
-import org.joda.time.DateTime
+import dao.EventDao._
 import models.Event._
-import com.mongodb.casbah.Imports._
 import scala.Left
 import api.icalendar.ICalendarParsingError
 import scala.Right
+import dao.configuration.injection.MongoPool.MongoDbName
 
 class LoadICalStream {
 
-    def parseLoad(url: String, streamTags: List[String] = Nil)(implicit now: () => Long, collection: String => MongoCollection) {
+    def parseLoad(url: String, streamTags: List[String] = Nil)(implicit now: () => Long, dbName: MongoDbName) {
+
         ICalendar.retrieveVEvents(new URL(url).openStream) match {
             case Right(vevents) =>
-                EventDaoBis.deleteByOriginalStream(url)
+                deleteByOriginalStream(url)
 
                 val (toSave, passed): (List[Event], List[Event]) = vevents
                     .map(vevent => buildEvent(url, vevent, streamTags))
                     .span(event => event.end.isAfter(now()))
 
-                saveEvents(toSave, url)
+                saveEvents(toSave)
                 reportNotLoadedEvents(passed, url)
                 
             case Left(ICalendarParsingError(message, exception)) => Logger.warn(message + " from " + url + " : " + exception.getMessage)
@@ -60,9 +60,9 @@ class LoadICalStream {
         )
     }
 
-    private def saveEvents(toSave: scala.List[Event], url:String)(implicit now: () => Long, collection: String => MongoCollection) {
-        toSave foreach ( EventDaoBis.saveEvent )
-            Logger.info("%d events loaded from %s".format(toSave.length, url))
+    private def saveEvents(toSave: List[Event])(implicit now: () => Long, dbName: MongoDbName) {
+        toSave foreach ( saveEvent )
+        Logger.info("%d events loaded".format(toSave.length))
     }
 
     private def reportNotLoadedEvents(notLoadedEvent: List[Event], url:String)(implicit now: () => Long) {

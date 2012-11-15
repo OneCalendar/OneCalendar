@@ -20,7 +20,8 @@ import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.FunSuite
 import models.Event
 import org.joda.time.DateTime
-import dao.{MongoDbConnection, EventDaoBis}
+import dao.MongoDbConnection
+import dao.EventDao._
 
 class LoadICalStreamTest extends FunSuite with ShouldMatchers with MongoDbConnection {
 
@@ -32,7 +33,7 @@ class LoadICalStreamTest extends FunSuite with ShouldMatchers with MongoDbConnec
         val iCalService : LoadICalStream = new LoadICalStream()
         iCalService.parseLoad( url, List("DEVOXX") )
 
-        val events: List[Event] = EventDaoBis.findAll
+        val events: List[Event] = findAll
         val count: Int = events.size
 
         count should be > 50
@@ -47,7 +48,7 @@ class LoadICalStreamTest extends FunSuite with ShouldMatchers with MongoDbConnec
         val iCalService : LoadICalStream = new LoadICalStream()
         iCalService.parseLoad( url, List("DEVOXX","TEST") )
 
-        val events: List[Event] = EventDaoBis.findAll()
+        val events: List[Event] = findAll()
         val count: Int = events.size
 
         count should be > 50
