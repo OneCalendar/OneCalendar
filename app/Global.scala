@@ -37,7 +37,7 @@ object Global extends GlobalSettings with OneCalendarController {
                     try {
                         loader.parseLoad(stream.url, stream.streamTags)
                     } catch {
-                        case e: Exception => Logger.error("something wrong with %s".format(stream.url))
+                        case e: Exception => Logger.error("something wrong with %s : ".format(stream.url) + e.getMessage)
                     }
             }
 

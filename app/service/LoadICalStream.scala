@@ -40,9 +40,9 @@ class LoadICalStream {
                         .map( vevent => buildEvent(url, vevent, streamTags) )
                         .span( event => event.end.isAfter(dbConfig.now()) )
 
-                saveEvents(toSave)
+                saveEvents(toSave, url)
 
-                reportNotLoadedEvents(passed)
+                reportNotLoadedEvents(passed, url)
                 
             case Left(ICalendarParsingError(message, exception)) => Logger.warn(message + " : " + exception.getMessage)
         }
@@ -62,13 +62,13 @@ class LoadICalStream {
         )
     }
 
-    private def saveEvents(toSave: scala.List[ Event ])(implicit dbConfig: MongoConfiguration) {
+    private def saveEvents(toSave: scala.List[ Event ], url:String)(implicit dbConfig: MongoConfiguration) {
         toSave foreach ( saveEvent )
-        Logger.info("%d events loaded".format(toSave.length))
+        Logger.info("%d events loaded from %s".format(toSave.length, url))
     }
 
-    private def reportNotLoadedEvents(notLoadedEvent: List[Event])(implicit dbConfig: MongoConfiguration) {
-        if ( !notLoadedEvent.isEmpty ) Logger.warn("%d events not loaded ".format(notLoadedEvent.length))
+    private def reportNotLoadedEvents(notLoadedEvent: List[Event], url:String)(implicit dbConfig: MongoConfiguration) {
+        if ( !notLoadedEvent.isEmpty ) Logger.warn("%d events not loaded from %s".format(notLoadedEvent.length, url))
         notLoadedEvent.foreach(event => Logger.warn("event %s not loaded because now is %s and it's already ended %s".format(event.title, new DateTime(dbConfig.now), event.end)))
     }
 
