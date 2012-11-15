@@ -17,40 +17,22 @@
 package service
 
 import org.scalatest.matchers.ShouldMatchers
-import dao.EventDao
-import com.mongodb.{Mongo, DB}
-import org.scalatest.{BeforeAndAfter, FunSuite}
-import dao.configuration.injection.MongoConfiguration
+import org.scalatest.FunSuite
 import models.Event
 import org.joda.time.DateTime
+import dao.{MongoDbConnection, EventDaoBis}
 
-class LoadICalStreamTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
-
-    val db: DB = {
-        val mongo: Mongo = new Mongo()
-        val db: DB = mongo.getDB( "test" )
-        db
-    }
+class LoadICalStreamTest extends FunSuite with ShouldMatchers with MongoDbConnection {
 
     val url : String = "https://www.google.com/calendar/ical/cs98tardtttjejg93tpcb71ol6nvachq%40import.calendar.google.com/public/basic.ics"
 
-    before {
-        db.requestStart
-        db.getCollection("events").drop()
-    }
-
-    after {
-        db.getCollection("test").drop()
-        db.requestDone
-    }
-
     test("should parse iCal stream") {
-        implicit val mongoConfigurationTesting = MongoConfiguration( "test", () => new DateTime().withDate(2012,4,1).getMillis )
+        implicit val now = () => new DateTime().withDate(2012,4,1).getMillis
 
         val iCalService : LoadICalStream = new LoadICalStream()
         iCalService.parseLoad( url, List("DEVOXX") )
 
-        val events: List[Event] = EventDao.findAll()
+        val events: List[Event] = EventDaoBis.findAll
         val count: Int = events.size
 
         count should be > 50
@@ -60,12 +42,12 @@ class LoadICalStreamTest extends FunSuite with ShouldMatchers with BeforeAndAfte
     }
 
     test("should parse iCal stream with two stream tags") {
-        implicit val mongoConfigurationTesting = MongoConfiguration( "test", () => new DateTime().withDate(2012,4,1).getMillis )
+        implicit val now = () => new DateTime().withDate(2012,4,1).getMillis
 
         val iCalService : LoadICalStream = new LoadICalStream()
         iCalService.parseLoad( url, List("DEVOXX","TEST") )
 
-        val events: List[Event] = EventDao.findAll()
+        val events: List[Event] = EventDaoBis.findAll()
         val count: Int = events.size
 
         count should be > 50

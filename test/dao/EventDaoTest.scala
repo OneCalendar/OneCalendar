@@ -16,15 +16,12 @@
 
 package dao
 
-import configuration.injection.MongoConfiguration
 import models.Event
 import org.joda.time.DateTime
-import collection.immutable.List
-import com.mongodb._
 import org.scalatest.matchers.ShouldMatchers
-import org.scalatest.{BeforeAndAfter, FunSuite}
+import org.scalatest.FunSuite
 
-class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
+class EventDaoTest extends FunSuite with ShouldMatchers with MongoDbConnection {
 
     /**
      * RUNNING MONGO SERVER BEFORE -
@@ -32,70 +29,55 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
      */
 
     val eventDevoxx: Event = Event(
-        uid = "1",
-        title = "BOF",
-        begin = new DateTime(2012, 04, 20, 0, 0, 0, 0),
-        end = new DateTime(2012, 04, 20, 0, 0, 0, 0),
-        tags = List("DEVOXX")
+            uid = "1",
+            title = "BOF",
+            begin = new DateTime(2012, 04, 20, 0, 0, 0, 0),
+            end = new DateTime(2012, 04, 20, 0, 0, 0, 0),
+            tags = List("DEVOXX")
     )
 
     val eventJava: Event = Event(
-        uid = "2",
-        title = "BOF",
-        begin = new DateTime(2012, 04, 19, 10, 0, 0, 0),
-        end = new DateTime(2012, 04, 19, 11, 0, 0, 0),
-        tags = List("JAVA")
+            uid = "2",
+            title = "BOF",
+            begin = new DateTime(2012, 04, 19, 10, 0, 0, 0),
+            end = new DateTime(2012, 04, 19, 11, 0, 0, 0),
+            tags = List("JAVA")
     )
 
     val eventOther: Event = Event(
-        uid = "3",
-        title = "BOF",
-        begin = new DateTime(2012, 04, 21, 15, 0, 0, 0),
-        end = new DateTime(2012, 04, 21, 16, 0, 0, 0),
-        tags = List("OTHER")
+            uid = "3",
+            title = "BOF",
+            begin = new DateTime(2012, 04, 21, 15, 0, 0, 0),
+            end = new DateTime(2012, 04, 21, 16, 0, 0, 0),
+            tags = List("OTHER")
     )
 
     val event4: Event = Event(
-        uid = "4",
-        title = "BOF",
-        begin = new DateTime(2012, 04, 21, 15, 0, 0, 0),
-        end = new DateTime(2012, 04, 21, 16, 0, 0, 0),
-        tags = List("4", "OTHER")
+            uid = "4",
+            title = "BOF",
+            begin = new DateTime(2012, 04, 21, 15, 0, 0, 0),
+            end = new DateTime(2012, 04, 21, 16, 0, 0, 0),
+            tags = List("4", "OTHER")
     )
 
     val oldEvent : Event = Event(
-        uid = "4",
-        title = "BOF",
-        begin = new DateTime(2012, 04, 21, 15, 0, 0, 0),
-        end = new DateTime(2012, 04, 21, 16, 0, 0, 0),
-        tags = List("4", "OTHER")
+            uid = "4",
+            title = "BOF",
+            begin = new DateTime(2012, 04, 21, 15, 0, 0, 0),
+            end = new DateTime(2012, 04, 21, 16, 0, 0, 0),
+            tags = List("4", "OTHER")
     )
 
     val newEvent: Event = Event(
-        uid = "NEW",
-        title = "NEW",
-        begin = new DateTime().plusDays(10),
-        end = new DateTime().plusDays(10),
-        tags = List("NEW")
+            uid = "NEW",
+            title = "NEW",
+            begin = new DateTime().plusDays(10),
+            end = new DateTime().plusDays(10),
+            tags = List("NEW")
     )
 
-    val db: DB = {
-        val mongo: Mongo = new Mongo()
-        val db: DB = mongo.getDB("test")
-        db
-    }
-
-    before {
-        db.requestStart
-        db.getCollection("events").drop
-    }
-
-    after {
-        db.requestDone
-    }
 
     test("saving a new event") {
-        implicit val mongoConfigurationTesting = MongoConfiguration("test")
         val event: Event = Event(
             uid = "1",
             title = "BOF",
@@ -112,21 +94,19 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     }
 
     test("should find event by tag 'devoxx'") {
-        implicit val mongoConfigurationTesting = MongoConfiguration("test")
         initData
 
         EventDao.findByTag(List("devoxx")) should be(List(eventDevoxx))
     }
 
     test("should find events by tags 'devoxx' or 'java' ") {
-        implicit val mongoConfigurationTesting = MongoConfiguration("test")
         initData
 
         EventDao.findByTag(List("devoxx", "java")) should be(List(eventDevoxx, eventJava))
     }
 
     test("should find 3 first events by tags 'devoxx', 'java' or other ") {
-        implicit val mongoConfigurationAnyDate = MongoConfiguration("test", () => new DateTime(2012, 1, 1, 0, 0, 0, 0).toDate.getTime)
+        implicit val now : () => Long = () => new DateTime(2010,1,1,1,1).getMillis
         initFourData
 
         EventDao.findPreviewByTag(List("devoxx", "java", "other")).previewEvents should have size 3
@@ -134,7 +114,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     }
 
     test("should not return past events") {
-        implicit val mongoConfigurationAnyDate = MongoConfiguration("test", () => new DateTime(2012, 4, 20, 0, 0, 0, 0).toDate.getTime)
+        implicit val now : () => Long = () => new DateTime(2012, 4, 20, 0, 0, 0, 0).getMillis
         initFourData
 
         EventDao.findPreviewByTag(List("devoxx", "java", "other")).previewEvents should have size 2
@@ -142,7 +122,6 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     }
 
     test("should find everything") {
-        implicit val mongoConfigurationTesting = MongoConfiguration("test")
         (1 to 50).foreach(
             id => EventDao.saveEvent(
                 Event(
@@ -158,7 +137,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     }
 
     test("should not list old tags") {
-        implicit val mongoConfigurationTesting = MongoConfiguration("test")
+        implicit val now : () => Long = () => new DateTime(2012,5,1,1,1).getMillis
 
         EventDao.saveEvent(oldEvent)
         EventDao.saveEvent(newEvent)
@@ -168,8 +147,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
     }
 
     test("delete by originalStream don't drop the older event or event without relation") {
-        implicit val mongoConfigurationTesting = MongoConfiguration("test")
-
+        implicit val now : () => Long = () => DateTime.now.getMillis
         EventDao.saveEvent(Event(
             originalStream = "hello",
             begin = new DateTime().plusDays(10),
@@ -203,12 +181,12 @@ class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
         EventDao.findAll() should have size 3
     }
 
-    private def initData(implicit mongoConfig: MongoConfiguration) {
+    private def initData() {
         EventDao.saveEvent(eventDevoxx)
         EventDao.saveEvent(eventJava)
     }
 
-    private def initFourData(implicit mongoConfig: MongoConfiguration) {
+    private def initFourData() {
         EventDao.saveEvent(eventDevoxx)
         EventDao.saveEvent(eventJava)
         EventDao.saveEvent(eventOther)

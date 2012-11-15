@@ -16,7 +16,6 @@
 
 package service
 
-import dao.configuration.injection._
 import com.codahale.jerkson.Json
 import dao._
 import models._
@@ -25,34 +24,40 @@ import org.joda.time.format.{DateTimeFormatter, DateTimeFormat}
 import collection.Seq
 import collection.immutable.List
 import play.api.Logger
+import com.mongodb.casbah.Imports._
+import models.DevoxxSchedule
+import models.DevoxxEvents
+import models.DevoxxPresentation
 
-object LoadDevoxx extends Json {
+object LoadDevoxx extends Json with NowEventInjection {
 
     val log = Logger("EventDao")
     val pattern: DateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.S")
     val DB_NAME: String = "OneCalendar"
 
-    def parseLoad()(implicit dbConfig: MongoConfiguration = MongoConfiguration(DB_NAME)) {
+    def parseLoad()(implicit collection: String => MongoCollection) {
         val devoxxEvents = "https://cfp.devoxx.com/rest/v1/events/"
 
-        val events: Seq[ DevoxxEvents ] = parseUrl[ Seq[ DevoxxEvents ] ](devoxxEvents)
+        val events: Seq[DevoxxEvents] = parseUrl[Seq[DevoxxEvents]](devoxxEvents)
 
-        events.map(event => "https://cfp.devoxx.com/rest/v1/events/%s/schedule".format(event.id)).foreach(load)
+        events
+            .map(event => "https://cfp.devoxx.com/rest/v1/events/%s/schedule".format(event.id))
+            .foreach(load)
     }
 
-    def load(devoxxUrl: String)(implicit dbConfig: MongoConfiguration = MongoConfiguration(DB_NAME)) {
+    def load(devoxxUrl: String)(implicit collection: String => MongoCollection) {
         EventDao.deleteByOriginalStream(devoxxUrl)
 
-        val schedules: Seq[ DevoxxSchedule ] = parseUrl[ Seq[ DevoxxSchedule ] ](devoxxUrl)
+        val schedules: Seq[DevoxxSchedule] = parseUrl[Seq[DevoxxSchedule]](devoxxUrl)
 
         val shedulesSet = Set(schedules.toArray: _*)
 
         shedulesSet.foreach(schedule => {
             if ( schedule.presentationUri.isDefined ) {
                 try {
-                    val presentation: DevoxxPresentation = parseUrl[ DevoxxPresentation ](schedule.presentationUri.get.replace("http://", "https://"))
+                    val presentation: DevoxxPresentation = parseUrl[DevoxxPresentation](schedule.presentationUri.get.replace("http://", "https://"))
 
-                    var curTags: List[ String ] = List("DEVOXX")
+                    var curTags: List[String] = List("DEVOXX")
                     presentation.tags.foreach(tag => {
                         curTags = curTags :+ ( tag.name.toUpperCase )
                     })
@@ -75,7 +80,5 @@ object LoadDevoxx extends Json {
         })
     }
 
-    def parseUrl[ A ](url: String)(implicit mf: Manifest[ A ]): A = {
-        parse[ A ](new URL(url).openStream())
-    }
+    def parseUrl[A](url: String)(implicit mf: Manifest[A]): A = parse[A](new URL(url).openStream())
 }
