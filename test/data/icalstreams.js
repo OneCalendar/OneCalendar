@@ -69,6 +69,15 @@ if (db.getName() === "OneCalendar") {
     //Company
     save({ "url" : "http://www.sqli.com/fre/sqlical/show", "streamTags" : ["sqli"] });
 
-    //save({ "url" : "", "streamTags" : [""] });
+    save({ "url" : "http://www.meetup.com/gsummitx-France/events/ical/gsummitx+-+Gamification+in+Paris/", "streamTags" : ["Gamification","Gaming","Social Gaming","Engagement","Customer Loyalty & Rewards Programs","Gabe Zichermann","Human Resources","Web Technology","Game Development","Game Design","Business Strategy","Mobile Technology","Paris","Internet Marketing","Social Media Marketing"] });
+    save({ "url" : "http://www.meetup.com/SemanticCampParis/events/ical/SemanticCamp+Paris/", "streamTags" : ["Linked Data","SPARQL","Web Development","Semantic Web","Web Standards","Collaboration & Knowledge Sharing","Internet & Technology","Knowledge Management"] });
+    save({ "url" : "http://www.meetup.com/Wordpress-Developers-Paris/events/ical/Paris+Wordpress+Developer+Meetup/", "streamTags" : ["Web Design","Search Engine Optimization","WordPress Users","Wordpress Customization","Wordpress Help","PHP","WordPress Small Business Web Sites","WordPress","Web Content Management Systems","WordPress as a Content Management System (CMS)","Blog"] });
+    save({ "url" : "http://www.meetup.com/Paris-Arduino/events/ical/Paris+Arduino/", "streamTags" : ["Makerspaces","Hacking","Microcontrollers","hackerspaces","Artificial Intelligence","electronics","Do It Yourself","Robotics","Arduin","Arduino","Arduino and Robotics","Arduino Netduino and Robotics","Arduino Uno","Programming"] });
+    save({ "url" : "http://www.meetup.com/ParisAPI/events/ical/Paris+API/", "streamTags" : ["Open Source","Software Developers","Web Development","Web Application","APIs","Web & Mobile development","Developers"] });
+    save({ "url" : "http://www.meetup.com/Paris-iOS-LiveCode/events/ical/Paris+iOS+LiveCode/", "streamTags" : ["iPhone Development","iPhone App Developers","Mobile Development","iPad Developers","iOS","iOS Development","IPhone IPad IOS developers","iPhone developers","LiveCode","Objective C","Xcode Users","Apple Mobile Device Application Development","mobile applications","Mobile Apps"] });
+    save({ "url" : "http://www.meetup.com/PhoneGap-Paris/events/ical/PhoneGap+Paris/", "streamTags" : ["Open Source","JavaScript","Mobile Technology","PhoneGap","Sencha Touch","Android developers","iPhone developers","Bada developers","HTML5"] });
+    save({ "url" : "http://www.meetup.com/Django-Paris/events/ical/Django+Paris/", "streamTags" : ["Web Design","Software Developers","Internet Professionals","Django","Programming","Python","Web Development","Web Technology"] });
+    save({ "url" : "http://www.meetup.com/drupal-france-francophonie/events/ical/Drupal+France+et+Francophonie/", "streamTags" : ["Programming","Web Content Management Systems","Learning Drupal","Drupal","Drupal themers","Drupal Developers","Drupal Designers","Drupal Users","PHP","CMS"] });
 
+    //save({ "url" : "", "streamTags" : [""] });
 }
