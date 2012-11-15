@@ -31,11 +31,10 @@ import scala.Right
 class LoadICalStream {
 
     def parseLoad(url: String, streamTags: List[String] = Nil)(implicit now: () => Long, collection: String => MongoCollection) {
-
-        EventDaoBis.deleteByOriginalStream(url)
-
         ICalendar.retrieveVEvents(new URL(url).openStream) match {
             case Right(vevents) =>
+                EventDaoBis.deleteByOriginalStream(url)
+
                 val (toSave, passed): (List[Event], List[Event]) = vevents
                     .map(vevent => buildEvent(url, vevent, streamTags))
                     .span(event => event.end.isAfter(now()))
