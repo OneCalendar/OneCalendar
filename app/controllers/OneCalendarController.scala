@@ -19,9 +19,15 @@ package controllers
 import play.api.mvc.Controller
 import dao.configuration.injection.MongoConfiguration
 import com.mongodb.casbah._
+import com.mongodb.{ServerAddress, MongoOptions}
 
 object mongoConn {
-    private val conn:MongoConnection = MongoConnection()
+    private val conn:MongoConnection = {
+        val options: MongoOptions = new MongoOptions()
+        options.setConnectionsPerHost(100)
+        MongoConnection(new ServerAddress("127.0.0.1"),options)
+    }
+
     def apply(dbName: String) = conn(dbName)
 }
 
