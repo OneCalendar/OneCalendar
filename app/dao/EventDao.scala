@@ -24,6 +24,7 @@ import play.api.Logger
 import fr.scala.util.collection.CollectionsUtils
 import models.SearchPreview
 
+@deprecated
 object EventDaoBis {
     def findAll()(implicit mongo: (String) => MongoCollection) = EventDao.findAll()
     def deleteByOriginalStream(url: String)(implicit now: () => Long, mongo: (String) => MongoCollection) = EventDao.deleteByOriginalStream(url)

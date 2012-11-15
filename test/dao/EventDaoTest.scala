@@ -16,75 +16,66 @@
 
 package dao
 
-import configuration.injection.MongoConfiguration
 import models.Event
 import org.joda.time.DateTime
-import collection.immutable.List
-import com.mongodb._
-import casbah.Imports._
 import org.scalatest.matchers.ShouldMatchers
-import org.scalatest.{BeforeAndAfter, FunSuite}
+import org.scalatest.FunSuite
 
-class EventDaoTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
+class EventDaoTest extends FunSuite with ShouldMatchers with MongoDbConnection {
 
     /**
      * RUNNING MONGO SERVER BEFORE -
      * mongod --dbpath data/ --fork --logpath data/mongodb.log
      */
 
-    implicit val mongoConfigurationTesting = (name:String) => MongoConnection()("test")(name)
-
     val eventDevoxx: Event = Event(
-        uid = "1",
-        title = "BOF",
-        begin = new DateTime(2012, 04, 20, 0, 0, 0, 0),
-        end = new DateTime(2012, 04, 20, 0, 0, 0, 0),
-        tags = List("DEVOXX")
+            uid = "1",
+            title = "BOF",
+            begin = new DateTime(2012, 04, 20, 0, 0, 0, 0),
+            end = new DateTime(2012, 04, 20, 0, 0, 0, 0),
+            tags = List("DEVOXX")
     )
 
     val eventJava: Event = Event(
-        uid = "2",
-        title = "BOF",
-        begin = new DateTime(2012, 04, 19, 10, 0, 0, 0),
-        end = new DateTime(2012, 04, 19, 11, 0, 0, 0),
-        tags = List("JAVA")
+            uid = "2",
+            title = "BOF",
+            begin = new DateTime(2012, 04, 19, 10, 0, 0, 0),
+            end = new DateTime(2012, 04, 19, 11, 0, 0, 0),
+            tags = List("JAVA")
     )
 
     val eventOther: Event = Event(
-        uid = "3",
-        title = "BOF",
-        begin = new DateTime(2012, 04, 21, 15, 0, 0, 0),
-        end = new DateTime(2012, 04, 21, 16, 0, 0, 0),
-        tags = List("OTHER")
+            uid = "3",
+            title = "BOF",
+            begin = new DateTime(2012, 04, 21, 15, 0, 0, 0),
+            end = new DateTime(2012, 04, 21, 16, 0, 0, 0),
+            tags = List("OTHER")
     )
 
     val event4: Event = Event(
-        uid = "4",
-        title = "BOF",
-        begin = new DateTime(2012, 04, 21, 15, 0, 0, 0),
-        end = new DateTime(2012, 04, 21, 16, 0, 0, 0),
-        tags = List("4", "OTHER")
+            uid = "4",
+            title = "BOF",
+            begin = new DateTime(2012, 04, 21, 15, 0, 0, 0),
+            end = new DateTime(2012, 04, 21, 16, 0, 0, 0),
+            tags = List("4", "OTHER")
     )
 
     val oldEvent : Event = Event(
-        uid = "4",
-        title = "BOF",
-        begin = new DateTime(2012, 04, 21, 15, 0, 0, 0),
-        end = new DateTime(2012, 04, 21, 16, 0, 0, 0),
-        tags = List("4", "OTHER")
+            uid = "4",
+            title = "BOF",
+            begin = new DateTime(2012, 04, 21, 15, 0, 0, 0),
+            end = new DateTime(2012, 04, 21, 16, 0, 0, 0),
+            tags = List("4", "OTHER")
     )
 
     val newEvent: Event = Event(
-        uid = "NEW",
-        title = "NEW",
-        begin = new DateTime().plusDays(10),
-        end = new DateTime().plusDays(10),
-        tags = List("NEW")
+            uid = "NEW",
+            title = "NEW",
+            begin = new DateTime().plusDays(10),
+            end = new DateTime().plusDays(10),
+            tags = List("NEW")
     )
 
-    before {
-        mongoConfigurationTesting("events").drop()
-    }
 
     test("saving a new event") {
         val event: Event = Event(
