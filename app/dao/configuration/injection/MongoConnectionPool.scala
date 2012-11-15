@@ -5,12 +5,13 @@ import com.mongodb.{ServerAddress, MongoOptions}
 
 object MongoProp {
     type MongoDbName = String
+    type MongoCollectionName = String
 }
 
 trait MongoConnectionPool {
-    import MongoProp.MongoDbName
+    import MongoProp._
 
-    implicit def retrieveMongoCollection(collectionName: String)(implicit dbName: MongoDbName): MongoCollection = {
+    implicit def retrieveMongoCollection(collectionName: MongoCollectionName)(implicit dbName: MongoDbName): MongoCollection = {
         val collFun = MongoPool()
         collFun(collectionName)
     }
