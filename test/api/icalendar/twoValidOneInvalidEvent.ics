@@ -1,0 +1,79 @@
+BEGIN:VCALENDAR
+PRODID:-//Google Inc//Google Calendar 70.9054//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Conférences
+X-WR-TIMEZONE:Europe/Paris
+X-WR-CALDESC:Cet agenda est maintenu par Duchess France. Il reporte les con
+ férences et événements techniques qui nous intéressent et donc devraient vo
+ us aussi vous intéresser.
+BEGIN:VEVENT
+DTSTART:20100921T163000Z
+DTEND:20100921T190000Z
+DTSTAMP:20121115T125631Z
+ORGANIZER;CN=clement.griffoin@gmail.com:mailto:clement.griffoin@gmail.com
+UID:r2ov5hfjv3acln8sg1q7icmf1g@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;X-NUM
+ -GUESTS=0:mailto:qde8vmooe48vsm1ma3i9je88q8@group.calendar.google.com
+CREATED:20100926T132755Z
+DESCRIPTION:Nous avons le plaisir de vous annoncer que la prochaine session
+  du Ch’ti JUG est prévue le 21  Septembre  2010 à 18h30 chez Logica Lille.\
+ nNous aurons l’honneur de recevoir Benjamin Boutros qui nous présentera Tal
+ end MDM\nCette session est rendue possible grâce à Logica\, sponsor de l’év
+ ènement.
+LAST-MODIFIED:20101014T002306Z
+LOCATION:http://maps.google.fr/maps/place?cid=17213005759109797638&q=logica
+ +lille&hl=fr
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:[Lille] Ch'ti JUG - Talend MDM
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20100916T170000Z
+DTEND:20100916T190000Z
+DTSTAMP:20121115T125631Z
+ORGANIZER;CN=marketing%zenika.com@gtempaccount.com:mailto:marketing%zenika.
+ com@gtempaccount.com
+UID:aeu01f5imsg0eo8hu71pl8114g@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=TENTATIVE;X-NUM-GU
+ ESTS=0:mailto:qde8vmooe48vsm1ma3i9je88q8@group.calendar.google.com
+CREATED:20100826T122706Z
+DESCRIPTION:Cette conférence s'adresse à tous ceux qui souhaitent mettre le
+ ur application Spring en production... Et donc ceux qui pensent réussir leu
+ rs développements !\n\nAprès un bref rappel du fonctionnement de Spring\, n
+ ous étudierons de quelle manière bien configurer le framework\, ainsi que s
+ on comportement précis au démarrage et à l'exécution de l'application...\n\
+ nDétails et inscriptions sur : http://www.zenika.com/conference/java/spring
+ -3-en-production?fg=50013
+LAST-MODIFIED:20101010T001632Z
+LOCATION:Zenika\, 51 rue le Peletier 75009 Paris
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:[Paris] Spring User Group FR: Spring 3 en production
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20100921T163000Z
+DTEND:20100921T190000Z
+DTSTAMP:20121115T125631Z
+ORGANIZER;CN=julien.jakubowski@gmail.com:mailto:julien.jakubowski@gmail.com
+UID:5t9i9bq3lccg5el2em15b6vkuc@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;X-NUM
+ -GUESTS=0:mailto:qde8vmooe48vsm1ma3i9je88q8@group.calendar.google.com
+CREATED:20100908T200257Z
+DESCRIPTION:Nous avons le plaisir de vous annoncer que la prochaine session
+  du Ch’ti JUG est prévue le 21  Septembre  2010 à 18h30 chez Logica Lille.\
+ nNous aurons l’honneur de recevoir Benjamin Boutros qui nous présentera Tal
+ end MDM\nCette session est rendue possible grâce à Logica\, sponsor de l’év
+ ènement.
+LAST-MODIFIED:20101009T235218Z
+LOCATION:http://maps.google.fr/maps/place?cid=17213005759109797638&q=logica
+ +lille&hl=fr
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:[Lille] Ch'ti JUG - Talend MDM
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR
