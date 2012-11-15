@@ -35,8 +35,6 @@ object mongoConn {
 trait OneCalendarController extends Controller {
     @deprecated("a jarter après que tous les dao passe à type class ","15 nov 2012")
     implicit val mongoConfigProd: MongoConfiguration = MongoConfiguration("OneCalendar")
-    @deprecated("a jarter après que tous les dao passe à type class ","15 nov 2012")
-    implicit val mongoCollectionProvider : (String) => MongoCollection = (name: String) => mongoConn("OneCalendar")(name)
 
     implicit val mongoDbName: MongoDbName = "OneCalendar"
 }

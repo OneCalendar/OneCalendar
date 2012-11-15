@@ -20,10 +20,9 @@ import java.net.URL
 import play.api.Logger
 import models.Event
 import api.icalendar.{VEvent, ICalendar}
-import dao.EventDaoBis
+import dao.EventDao._
 import org.joda.time.DateTime
 import models.Event._
-import com.mongodb.casbah.Imports._
 import scala.Left
 import api.icalendar.ICalendarParsingError
 import scala.Right
@@ -33,7 +32,7 @@ class LoadICalStream {
 
     def parseLoad(url: String, streamTags: List[String] = Nil)(implicit now: () => Long, dbName: MongoDbName) {
 
-        EventDaoBis.deleteByOriginalStream(url)
+        deleteByOriginalStream(url)
 
         ICalendar.retrieveVEvents(new URL(url).openStream) match {
             case Right(vevents) =>
@@ -64,7 +63,7 @@ class LoadICalStream {
     }
 
     private def saveEvents(toSave: scala.List[Event])(implicit now: () => Long, dbName: MongoDbName) {
-        toSave foreach ( EventDaoBis.saveEvent )
+        toSave foreach ( saveEvent )
         Logger.info("%d events loaded".format(toSave.length))
     }
 

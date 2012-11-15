@@ -26,16 +26,6 @@ import play.api.Logger
 import fr.scala.util.collection.CollectionsUtils
 import models.SearchPreview
 
-
-@deprecated
-object EventDaoBis extends MongoConnectionPool {
-    def findAll()(implicit dbName: MongoDbName) = EventDao.findAll()
-
-    def deleteByOriginalStream(url: String)(implicit now: () => Long, dbName: MongoDbName) = EventDao.deleteByOriginalStream(url)
-
-    def saveEvent(event: Event)(implicit now: () => Long, dbName: MongoDbName) = EventDao.saveEvent(event)
-}
-
 object EventDao extends CollectionsUtils
         with EventDaoTrait
         with MongoOperations
