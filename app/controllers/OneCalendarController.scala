@@ -20,7 +20,13 @@ import play.api.mvc.Controller
 import dao.configuration.injection.MongoConfiguration
 import com.mongodb.casbah._
 
+object mongoConn {
+    private val conn:MongoConnection = MongoConnection()
+    def apply(dbName: String) = conn(dbName)
+}
+
 trait OneCalendarController extends Controller {
+    @deprecated("a jarter après que tous les dao passe à type class ","15 nov 2012")
     implicit val mongoConfigProd: MongoConfiguration = MongoConfiguration("OneCalendar")
-    implicit val mongo : (String) => MongoCollection = (name: String) => MongoConnection()("OneCalendar")(name)
+    implicit val mongoCollectionProvider : (String) => MongoCollection = (name: String) => mongoConn("OneCalendar")(name)
 }
