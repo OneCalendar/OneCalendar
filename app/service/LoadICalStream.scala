@@ -44,7 +44,7 @@ class LoadICalStream {
 
                 reportNotLoadedEvents(passed, url)
                 
-            case Left(ICalendarParsingError(message, exception)) => Logger.warn(message + " : " + exception.getMessage)
+            case Left(ICalendarParsingError(message, exception)) => Logger.warn(message + " from " + url + " : " + exception.getMessage)
         }
     }
 
@@ -69,7 +69,7 @@ class LoadICalStream {
 
     private def reportNotLoadedEvents(notLoadedEvent: List[Event], url:String)(implicit dbConfig: MongoConfiguration) {
         if ( !notLoadedEvent.isEmpty ) Logger.warn("%d events not loaded from %s".format(notLoadedEvent.length, url))
-        notLoadedEvent.foreach(event => Logger.warn("event %s not loaded because now is %s and it's already ended %s".format(event.title, new DateTime(dbConfig.now), event.end)))
+        notLoadedEvent.foreach(event => Logger.warn("event %s not loaded because now is %s and it's already ended %s".format(event.title, new DateTime(dbConfig.now()), event.end)))
     }
 
     private def extractTagsFromStreamTags(streamTags: List[String]): String =
