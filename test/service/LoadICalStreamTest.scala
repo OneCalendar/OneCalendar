@@ -17,25 +17,14 @@
 package service
 
 import org.scalatest.matchers.ShouldMatchers
-import org.scalatest.{BeforeAndAfter, FunSuite}
+import org.scalatest.FunSuite
 import models.Event
-import com.mongodb.casbah.Imports._
 import org.joda.time.DateTime
-import dao.EventDaoBis
+import dao.{MongoDbConnection, EventDaoBis}
 
-class LoadICalStreamTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
-
-    implicit def collFun : String => MongoCollection = (name : String) => MongoConnection()("test")(name)
+class LoadICalStreamTest extends FunSuite with ShouldMatchers with MongoDbConnection {
 
     val url : String = "https://www.google.com/calendar/ical/cs98tardtttjejg93tpcb71ol6nvachq%40import.calendar.google.com/public/basic.ics"
-
-    before {
-        collFun("events").drop()
-    }
-
-    after {
-        collFun("events").drop()
-    }
 
     test("should parse iCal stream") {
         implicit val now = () => new DateTime().withDate(2012,4,1).getMillis
