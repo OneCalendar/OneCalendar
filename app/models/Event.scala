@@ -30,7 +30,6 @@ object Event {
         val description : String = s.replaceAll(TAG_PATTERN,"")
         description.trim()
     }
-
 }
 
 case class Event( uid: String = "",

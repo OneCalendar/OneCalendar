@@ -26,32 +26,29 @@ import models.Event._
 import com.mongodb.casbah.Imports._
 import scala.Left
 import api.icalendar.ICalendarParsingError
-import dao.configuration.injection.MongoConfiguration
 import scala.Right
 
 class LoadICalStream {
 
-    val DB_NAME : String = "OneCalendar"
-
-    def parseLoad(url: String, defaultStreamTag: String = "" )( implicit now: () => Long,collection : String => MongoCollection ) {
+    def parseLoad(url: String, streamTags: List[String] = Nil)(implicit now: () => Long, collection: String => MongoCollection) {
 
         EventDaoBis.deleteByOriginalStream(url)
 
         ICalendar.retrieveVEvents(new URL(url).openStream) match {
             case Right(vevents) =>
                 val (toSave, passed): (List[Event], List[Event]) = vevents
-                        .map( vevent => buildEvent(url, vevent, defaultStreamTag) )
-                        .span( event => event.end.isAfter(now()) )
+                    .map(vevent => buildEvent(url, vevent, streamTags))
+                    .span(event => event.end.isAfter(now()))
 
                 saveEvents(toSave)
 
                 reportNotLoadedEvents(passed)
-                
+
             case Left(ICalendarParsingError(message, exception)) => Logger.warn(message + " : " + exception.getMessage)
         }
     }
 
-    private def buildEvent(url: String, vEvent: VEvent, defaultStreamTag: String): Event = {
+    private def buildEvent(url: String, vEvent: VEvent, streamTags: List[String]): Event = {
         Event(
             uid = vEvent.uid.getOrElse(""),
             title = vEvent.summary.getOrElse(""),
@@ -61,11 +58,11 @@ class LoadICalStream {
             url = vEvent.url.getOrElse(""),
             originalStream = url,
             description = vEvent.description.getOrElse(""),
-            tags = getTagsFromDescription(vEvent.description.getOrElse("") + ( if ( !defaultStreamTag.isEmpty ) " #" + defaultStreamTag; else "" ))
+            tags = getTagsFromDescription(vEvent.description.getOrElse("") + extractTagsFromStreamTags(streamTags))
         )
     }
 
-    private def saveEvents(toSave: scala.List[ Event ])(implicit now: () => Long, collection : String => MongoCollection) {
+    private def saveEvents(toSave: scala.List[Event])(implicit now: () => Long, collection: String => MongoCollection) {
         toSave foreach ( EventDaoBis.saveEvent )
         Logger.info("%d events loaded".format(toSave.length))
     }
@@ -74,4 +71,7 @@ class LoadICalStream {
         if ( !notLoadedEvent.isEmpty ) Logger.warn("%d events not loaded ".format(notLoadedEvent.length))
         notLoadedEvent.foreach(event => Logger.warn("event %s not loaded because now is %s and it's already ended %s".format(event.title, new DateTime(now()), event.end)))
     }
+
+    private def extractTagsFromStreamTags(streamTags: List[String]): String =
+        if ( streamTags.isEmpty ) "" else " #" + streamTags.mkString("#")
 }

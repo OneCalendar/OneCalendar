@@ -37,7 +37,7 @@ object Global extends GlobalSettings with OneCalendarController {
                 stream =>
                     try {
                         implicit val now = () => DateTime.now.getMillis
-                        loader.parseLoad(stream.url, stream.defaultTag)
+                        loader.parseLoad(stream.url, stream.streamTags)
                     } catch {
                         case e: Exception => Logger.error("something wrong with %s".format(stream.url))
                     }
@@ -47,7 +47,7 @@ object Global extends GlobalSettings with OneCalendarController {
         }
 
         Akka.system.scheduler.schedule(10 seconds, 2 hours) {
-          LoadDevoxx.parseLoad()
+            LoadDevoxx.parseLoad()
         }
     }
 }
