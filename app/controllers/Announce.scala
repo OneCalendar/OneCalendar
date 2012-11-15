@@ -20,9 +20,7 @@ import play.api.mvc._
 import dao.configuration.injection.MongoConfiguration
 import service.LoadICalStream
 
-object Announce extends Controller {
-
-    implicit val mongoConfigProd: MongoConfiguration = MongoConfiguration("OneCalendar")
+object Announce extends OneCalendarController {
 
     // TODO dead code
     def agilefrance = Action {
@@ -31,11 +29,12 @@ object Announce extends Controller {
 
     // TODO dead code
     def loadAgileFranceCalendar = Action {
-        val url: String = "http://10.61.32.155:8080/agilefrance.ics"
+        /*val url: String = "http://10.61.32.155:8080/agilefrance.ics"
 
         val iCalService: LoadICalStream = new LoadICalStream()
         iCalService.parseLoad( url, List("AGILEFRANCE") )
 
-        Ok( "base " + mongoConfigProd.dbName + " loaded with agile france Calendar" )
+        Ok( "base " + mongoConfigProd.dbName + " loaded with agile france Calendar" )*/
+        Ok
     }
 }

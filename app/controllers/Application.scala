@@ -18,6 +18,7 @@ package controllers
 
 import play.api.mvc._
 import models._
+import org.joda.time.DateTime
 import collection.immutable.List
 import com.codahale.jerkson.Json
 import api.icalendar.ICalendar
@@ -36,27 +37,27 @@ object Application extends OneCalendarController with Json with Event$VEventMapp
         renderEvents(EventDao.findByTag(tags))
     }
 
-    def findPreviewByTags(keyWords: String)(implicit dao:EventDaoTrait = EventDao) = Action {
+    def findPreviewByTags(keyWords: String)(implicit dao: EventDaoTrait = EventDao, now: () => Long = () => DateTime.now.getMillis) = Action {
         val tags: List[String] = keyWords.split(" ").toList
         val searchPreview: SearchPreview = dao.findPreviewByTag(tags)
 
         val es = searchPreview.previewEvents.map(
             e => Map("event" -> Map(
-                            "date" -> e.begin.toString(),
-                            "title" -> e.title,
-                            "location" -> e.location
-                            )
+                "date" -> e.begin.toString(),
+                "title" -> e.title,
+                "location" -> e.location
+            )
             )
         )
 
         val previewJson: String = generate(Option(searchPreview).map(
-          p => Map(
-            "size" -> p.totalEventNumber,
-            "eventList" -> es
-          ))
+            p => Map(
+                "size" -> p.totalEventNumber,
+                "eventList" -> es
+            ))
         )
-        if (searchPreview.totalEventNumber > 0) {
-          Ok(previewJson).as("application/json")
+        if ( searchPreview.totalEventNumber > 0 ) {
+            Ok(previewJson).as("application/json")
         }
         else NotFound
     }
@@ -64,12 +65,12 @@ object Application extends OneCalendarController with Json with Event$VEventMapp
     def about = Action {
         Ok(views.html.about())
     }
-    
-    def fetchCloudOfTags = Action {
+
+    def fetchCloudOfTags(implicit now: () => Long = () => DateTime.now.getMillis) = Action {
         Ok(generate(EventDao.listTags())).as("application/json")
     }
-    
-    private def renderEvents( events: List[ Event ] ) = {
+
+    private def renderEvents(events: List[Event]) = {
         events match {
             case Nil => NotFound("Aucun évènement pour la recherche")
             case _ => Ok(ICalendar.buildCalendar(events)).as("text/calendar; charset=utf-8")

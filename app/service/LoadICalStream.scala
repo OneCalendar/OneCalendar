@@ -17,31 +17,30 @@
 package service
 
 import java.net.URL
-import dao.EventDao
-import dao.configuration.injection.MongoConfiguration
 import play.api.Logger
 import models.Event
-import api.icalendar.{VEvent, ICalendarParsingError, ICalendar}
-import dao.EventDao.saveEvent
+import api.icalendar.{VEvent, ICalendar}
+import dao.EventDaoBis
 import org.joda.time.DateTime
 import models.Event._
+import com.mongodb.casbah.Imports._
+import scala.Left
+import api.icalendar.ICalendarParsingError
+import scala.Right
 
 class LoadICalStream {
 
-    val DB_NAME : String = "OneCalendar"
+    def parseLoad(url: String, streamTags: List[String] = Nil)(implicit now: () => Long, collection: String => MongoCollection) {
 
-    def parseLoad(url: String, streamTags: List[String] = Nil )( implicit dbConfig: MongoConfiguration = MongoConfiguration( DB_NAME ) ) {
-
-        EventDao.deleteByOriginalStream(url)
+        EventDaoBis.deleteByOriginalStream(url)
 
         ICalendar.retrieveVEvents(new URL(url).openStream) match {
             case Right(vevents) =>
                 val (toSave, passed): (List[Event], List[Event]) = vevents
-                        .map( vevent => buildEvent(url, vevent, streamTags) )
-                        .span( event => event.end.isAfter(dbConfig.now()) )
+                    .map(vevent => buildEvent(url, vevent, streamTags))
+                    .span(event => event.end.isAfter(now()))
 
                 saveEvents(toSave, url)
-
                 reportNotLoadedEvents(passed, url)
                 
             case Left(ICalendarParsingError(message, exception)) => Logger.warn(message + " from " + url + " : " + exception.getMessage)
@@ -62,12 +61,12 @@ class LoadICalStream {
         )
     }
 
-    private def saveEvents(toSave: scala.List[ Event ], url:String)(implicit dbConfig: MongoConfiguration) {
-        toSave foreach ( saveEvent )
-        Logger.info("%d events loaded from %s".format(toSave.length, url))
+    private def saveEvents(toSave: scala.List[Event], url:String)(implicit now: () => Long, collection: String => MongoCollection) {
+        toSave foreach ( EventDaoBis.saveEvent )
+            Logger.info("%d events loaded from %s".format(toSave.length, url))
     }
 
-    private def reportNotLoadedEvents(notLoadedEvent: List[Event], url:String)(implicit dbConfig: MongoConfiguration) {
+    private def reportNotLoadedEvents(notLoadedEvent: List[Event], url:String)(implicit now: () => Long) {
         if ( !notLoadedEvent.isEmpty ) Logger.info("%d already ended events not loaded from %s".format(notLoadedEvent.length, url))
     }
 

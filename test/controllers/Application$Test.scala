@@ -5,8 +5,7 @@ import org.scalatest.FunSuite
 import org.scalatest.matchers.ShouldMatchers
 import dao.EventDaoTrait
 import org.mockito.Mockito.when
-import models.{Event, SearchPreview}
-import dao.configuration.injection.MongoConfiguration
+import models._
 import play.api.test.Helpers._
 import play.api.test._
 import org.specs2.mock.Mockito
@@ -14,6 +13,8 @@ import org.mockito.Matchers
 import fr.scala.util.collection.CollectionsUtils
 import org.joda.time.DateTime
 import com.codahale.jerkson.Json
+import com.mongodb.casbah.MongoCollection
+import service.NowEvent
 
 case class PreviewTuple(date:String, title:String, location:String)
 case class PreviewEvent(event:PreviewTuple)
@@ -21,22 +22,25 @@ case class Preview (size: Int, eventList:Seq[PreviewEvent])
 
 class Application$Test extends FunSuite with ShouldMatchers with Mockito with CollectionsUtils {
 
+
   test("should find Nothing") {
+    val now = () => new DateTime(2009,1,1,1,1).getMillis
     val dao = mock[EventDaoTrait]
-    when(dao.findPreviewByTag(Matchers.anyListOf(classOf[String]))(any[MongoConfiguration])).thenReturn(SearchPreview(0, Seq()))
-    val tags = Application.findPreviewByTags("no match")(dao)(FakeRequest())
+    when(dao.findPreviewByTag(Matchers.anyListOf(classOf[String]))(any[(String) => MongoCollection], any[() => Long])).thenReturn(SearchPreview(0, Seq()))
+    val tags = Application.findPreviewByTags("no match")(dao,now)(FakeRequest())
     status(tags) should be (NOT_FOUND)
   }
 
   test("should find something with less than 3 elements") {
+      val now = () => new DateTime(2009,1,1,1,1).getMillis
     val dao = mock[EventDaoTrait]
     val size: Int = 2
-    when(dao.findPreviewByTag(Matchers.anyListOf(classOf[String]))(any[MongoConfiguration]))
+    when(dao.findPreviewByTag(Matchers.anyListOf(classOf[String]))(any[(String) => MongoCollection], any[() => Long]))
       .thenReturn(SearchPreview(size, Seq(
       Event(uid = "Z", title = "title1", begin = new DateTime(2010, 1, 1, 1, 1), end = new DateTime(2010, 1, 2, 1, 1), location = "location1"),
       Event(uid = "W", title = "title2", begin = new DateTime(2011, 1, 1, 1, 1), end = new DateTime(2011, 1, 2, 1, 1), location = "location2")
     )))
-    val tags = Application.findPreviewByTags("with match")(dao)(FakeRequest())
+    val tags = Application.findPreviewByTags("with match")(dao,now)(FakeRequest())
     status(tags) should be (OK)
 
     val currentPreview = Json.parse[Preview](contentAsString(tags))
@@ -49,15 +53,16 @@ class Application$Test extends FunSuite with ShouldMatchers with Mockito with Co
   }
 
   test("should find something with more than 3 elements and sort is not changed") {
+    val now = () => new DateTime(2009,1,1,1,1).getMillis
     val dao = mock[EventDaoTrait]
     val size: Int = 5
-    when(dao.findPreviewByTag(Matchers.anyListOf(classOf[String]))(any[MongoConfiguration]))
+    when(dao.findPreviewByTag(Matchers.anyListOf(classOf[String]))(any[(String) => MongoCollection], any[() => Long]))
       .thenReturn(SearchPreview(size, Seq(
       Event(uid = "Z", title = "title1", begin = new DateTime(2010, 1, 1, 1, 1), end = new DateTime(2010, 1, 2, 1, 1), location = "location1"),
       Event(uid = "W", title = "title2", begin = new DateTime(2011, 1, 1, 1, 1), end = new DateTime(2011, 1, 2, 1, 1), location = "location2"),
       Event(uid = "y", title = "title3", begin = new DateTime(2012, 1, 1, 1, 1), end = new DateTime(2012, 1, 2, 1, 1), location = "location3")
     )))
-    val tags = Application.findPreviewByTags("with match")(dao)(FakeRequest())
+    val tags = Application.findPreviewByTags("with match")(dao,now)(FakeRequest())
     status(tags) should be (OK)
 
     val currentPreview = Json.parse[Preview](contentAsString(tags))
