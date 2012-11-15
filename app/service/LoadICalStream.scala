@@ -27,10 +27,11 @@ import com.mongodb.casbah.Imports._
 import scala.Left
 import api.icalendar.ICalendarParsingError
 import scala.Right
+import dao.configuration.injection.MongoPool.MongoDbName
 
 class LoadICalStream {
 
-    def parseLoad(url: String, streamTags: List[String] = Nil)(implicit now: () => Long, collection: String => MongoCollection) {
+    def parseLoad(url: String, streamTags: List[String] = Nil)(implicit now: () => Long, dbName: MongoDbName) {
 
         EventDaoBis.deleteByOriginalStream(url)
 
@@ -62,7 +63,7 @@ class LoadICalStream {
         )
     }
 
-    private def saveEvents(toSave: scala.List[Event])(implicit now: () => Long, collection: String => MongoCollection) {
+    private def saveEvents(toSave: scala.List[Event])(implicit now: () => Long, dbName: MongoDbName) {
         toSave foreach ( EventDaoBis.saveEvent )
         Logger.info("%d events loaded".format(toSave.length))
     }

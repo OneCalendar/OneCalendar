@@ -1,10 +1,13 @@
 package dao
 
+import configuration.injection.MongoPool.MongoDbName
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfter, FunSuite}
 import com.mongodb.casbah.TypeImports._
 import com.mongodb.casbah.MongoConnection
 
 trait MongoDbConnection extends FunSuite with BeforeAndAfter with BeforeAndAfterAll {
+    implicit val dbName: MongoDbName = "test"
+    
     val connection: MongoConnection = MongoConnection()
 
     val db = {

@@ -4,7 +4,7 @@ import dao.EventMap._
 import org.scalatest.FunSuite
 import com.mongodb.casbah.Imports._
 import com.mongodb.{ServerAddress, MongoOptions}
-import dao.MongoPool._
+import dao.MongoPoolTest._
 
 
 /**
@@ -12,7 +12,7 @@ import dao.MongoPool._
  */
 
 
-trait MongoConnectionPool {
+trait MongoConnectionPoolTest {
     /*
     MARCHE PO PARCE qu'on peut pas avoir d'implicit parameter sur une fonction
     implicit val retrieveMongoCollection: (MongoDbName, String) => MongoCollection = {
@@ -23,12 +23,12 @@ trait MongoConnectionPool {
     }*/
     
     implicit def retrieveMongoCollection(collectionName: String)(implicit dbName: MongoDbName): MongoCollection = {
-        val collFun = MongoPool()
+        val collFun = MongoPoolTest()
         collFun(collectionName)
     }
 }
 
-object MongoPool {
+object MongoPoolTest {
     type MongoDbName = String
 
     def apply()(implicit dbName: MongoDbName) = connection(dbName)
@@ -40,7 +40,7 @@ object MongoPool {
     }
 }
 
-object MyEventDao extends MongoOperationsTest with MongoConnectionPool {
+object MyEventDao extends MongoOperationsTest with MongoConnectionPoolTest {
 
     def toto()(implicit dbName: MongoDbName) {
         print()
@@ -50,7 +50,7 @@ object MyEventDao extends MongoOperationsTest with MongoConnectionPool {
 class TestDao extends FunSuite {
 
     test("test") {
-        implicit val dbName: MongoPool.MongoDbName = "test"
+        implicit val dbName: MongoPoolTest.MongoDbName = "test"
         MyEventDao.toto()
     }
 }
