@@ -1,10 +1,10 @@
 package dao
 
-import dao.EventMap._
 import org.scalatest.FunSuite
 import com.mongodb.casbah.Imports._
 import com.mongodb.{ServerAddress, MongoOptions}
 import dao.MongoPoolTest._
+import models.EventTypeClass
 
 
 /**
@@ -40,7 +40,7 @@ object MongoPoolTest {
     }
 }
 
-object MyEventDao extends MongoOperationsTest with MongoConnectionPoolTest {
+object MyEventDao extends MongoOperationsTest with MongoConnectionPoolTest with EventTypeClass {
 
     def toto()(implicit dbName: MongoDbName) {
         print()

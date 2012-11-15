@@ -19,7 +19,6 @@ package dao
 import configuration.injection.MongoConnectionPool
 import configuration.injection.MongoPool.MongoDbName
 import models._
-import dao.EventMap._
 import com.mongodb._
 import casbah.Imports._
 import play.api.Logger
@@ -29,7 +28,8 @@ import models.SearchPreview
 object EventDao extends CollectionsUtils
         with EventDaoTrait
         with MongoOperations
-        with MongoConnectionPool {
+        with MongoConnectionPool
+        with EventTypeClass {
 
     private val log = Logger("EventDao")
 

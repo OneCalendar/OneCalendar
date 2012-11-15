@@ -18,6 +18,8 @@ package models
 
 import org.joda.time.DateTime
 import util.matching.Regex
+import com.mongodb.casbah.Imports._
+import dao.MongoDbModel
 
 object Event {
     //TODO explicit regex
@@ -42,3 +44,35 @@ case class Event( uid: String = "",
                   originalStream: String = "",
                   url:String = ""
                  )
+
+trait EventTypeClass {
+    implicit object EventMongoModel extends MongoDbModel[Event] {
+        def collectionName: String = "events"
+
+        def write(event: Event): DBObject =
+            DBObject(
+                "begin" -> event.begin.getMillis,
+                "description" -> event.description,
+                "end" -> event.end.getMillis,
+                "location" -> event.location,
+                "originalStream" -> event.originalStream,
+                "tags" -> event.tags,
+                "title" -> event.title,
+                "uid" -> event.uid,
+                "url" -> event.url
+            )
+
+        def read(dbo: DBObject): Event =
+            Event(
+                begin = new DateTime(dbo.as[Long]("begin")),
+                description = dbo.as[String]("description"),
+                end = new DateTime(dbo.as[Long]("end")),
+                location = dbo.as[String]("location"),
+                originalStream = dbo.as[String]("originalStream"),
+                tags = dbo.as[MongoDBList]("tags").toList.asInstanceOf[List[String]],
+                title = dbo.as[String]("title"),
+                uid = dbo.as[String]("uid"),
+                url = dbo.as[String]("url")
+            )
+    }
+}
