@@ -39,7 +39,7 @@ class LoadICalStream {
                     .map(vevent => buildEvent(url, vevent, streamTags))
                     .span(event => event.end.isAfter(now()))
 
-                saveEvents(toSave)
+                saveEvents(toSave, url)
                 reportNotLoadedEvents(passed, url)
                 
             case Left(ICalendarParsingError(message, exception)) => Logger.warn(message + " from " + url + " : " + exception.getMessage)
@@ -60,9 +60,9 @@ class LoadICalStream {
         )
     }
 
-    private def saveEvents(toSave: List[Event])(implicit now: () => Long, dbName: MongoDbName) {
+    private def saveEvents(toSave: List[Event], url: String)(implicit now: () => Long, dbName: MongoDbName) {
         toSave foreach ( saveEvent )
-        Logger.info("%d events loaded".format(toSave.length))
+        Logger.info("%d events loaded from %s".format(toSave.length, url))
     }
 
     private def reportNotLoadedEvents(notLoadedEvent: List[Event], url:String)(implicit now: () => Long) {
