@@ -119,3 +119,20 @@
     dateGmt = dateT[1].split("+")[1].split(":")[0]
 
     "#{dateDay[2]} #{dateDay[1]} #{dateDay[0]} - #{dateHour[0]}:#{dateHour[1]}"
+
+  retrieveEventNumber: ({url}) ->
+    $.ajax(
+      {
+        type: 'GET',
+        url: "#{url}/eventCount",
+        dataType: "json",
+        success: (data) ->
+          SUGGEST.displayEventNumber data
+        error: (data) ->
+          SUGGEST.displayEventNumber {'eventNumber':'N/A'}
+      }
+    )
+
+  displayEventNumber: (data) ->
+    $("#eventNumber").text(data.eventNumber)
+

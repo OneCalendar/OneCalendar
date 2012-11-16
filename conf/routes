@@ -24,6 +24,7 @@ GET     /                           controllers.Application.index
 GET     /events/*keyWords           controllers.Application.findByTags(keyWords)
 GET     /preview/*keyWords          controllers.Application.findPreviewByTags(keyWords)
 GET     /tags                       controllers.Application.fetchCloudOfTags
+GET     /eventCount                 controllers.Application.eventCount
 
 # About
 GET     /about                      controllers.Application.about

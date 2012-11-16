@@ -69,6 +69,10 @@ object Application extends OneCalendarController with Json with Event$VEventMapp
     def fetchCloudOfTags(implicit now: () => Long = () => DateTime.now.getMillis) = Action {
         Ok(generate(EventDao.listTags())).as("application/json")
     }
+    
+    def eventCount = Action {
+        Ok("""{"eventNumber":"5"}""").as("application/json")
+    }
 
     private def renderEvents(events: List[Event]) = {
         events match {
