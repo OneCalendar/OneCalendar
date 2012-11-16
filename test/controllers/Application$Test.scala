@@ -15,12 +15,7 @@ import org.joda.time.DateTime
 import com.codahale.jerkson.Json
 import dao.configuration.injection.MongoProp.MongoDbName
 
-case class PreviewTuple(date:String, title:String, location:String)
-case class PreviewEvent(event:PreviewTuple)
-case class Preview (size: Int, eventList:Seq[PreviewEvent])
-
 class Application$Test extends FunSuite with ShouldMatchers with Mockito with CollectionsUtils {
-
 
   test("should find Nothing") {
     val now = () => new DateTime(2009,1,1,1,1).getMillis
