@@ -23,6 +23,7 @@ import java.net.URL
 import com.codahale.jerkson.Json
 import java.io.{InputStreamReader, BufferedReader}
 import org.codehaus.jackson.annotate.JsonIgnoreProperties
+import java.lang.IllegalArgumentException
 
 class EventbriteTest extends FunSuite with ShouldMatchers with BeforeAndAfter with Json {
     import Eventbrite.JsonResponse
@@ -117,45 +118,66 @@ class EventbriteTest extends FunSuite with ShouldMatchers with BeforeAndAfter wi
 
     test("should throw exception when stream is invalid") {
         evaluating {
-            parse[Events]("""{toto}}}""")
+            Eventbrite.parse("""{toto}}}""")
         } should produce [com.codahale.jerkson.ParsingException]
     }
 
     test("request with country filter should not throw exception") {
         val events = Eventbrite.parse(Eventbrite.request("java", Some("FR")))
     }
+
+    test("should understand no event found") {
+        val response = Eventbrite.parse("""{"events": [], "error": {"error_type": "Not Found", "error_message": "No events found matching the following criteria. [organizer=pppppppppppppp,  ]"}}""")
+        response should be (Nil)
+    }
+
+    test("request with bad license key should throw IllegalArgumentException") {
+        val thrown = evaluating {
+            Eventbrite.parse(Eventbrite.request(keyWork = "toto", licenseKey = "invalidLicenceKey"))
+        } should produce [IllegalArgumentException]
+        thrown.getMessage should (include("application key") and include ("not valid"))
+    }
+
+    test("unknown response from eventbrite should throw IllegalStateException") {
+        val thrown = evaluating {
+            Eventbrite.parse("""{"toto": "titi"}""")
+        } should produce [IllegalStateException]
+        thrown.getMessage should include ("""{"toto": "titi"}""")
+    }
 }
 
 object Eventbrite extends Json {
-    val eventbriteKey = "2Z5MEY5C4CD7D3FXUA"
-
     type JsonResponse = String
 
     /** @param countryCode @see http://www.iso.org/iso/country_codes/iso_3166_code_lists/country_names_and_code_elements **/
-    def request(keyWork: String, countryCode: Option[String] = None): JsonResponse = {
+    def request(keyWork: String, countryCode: Option[String] = None, licenseKey: String = "2Z5MEY5C4CD7D3FXUA"): JsonResponse = {
         val countryParam: String = countryCode match {
             case Some(code) => "&country=" + code
             case _ => ""
         }
         val url = "https://www.eventbrite.com/json/event_search" +
-            "?app_key=" + eventbriteKey +
+            "?app_key=" + licenseKey +
             "&keywords=" + keyWork +
             countryParam
         new BufferedReader(new InputStreamReader( new URL(url).openStream() )).readLine()
     }
 
     def parse(json: JsonResponse): Seq[Event] = {
-        def eventOrSummaryIsEvent: EventOrSummary => Boolean = _.event.isDefined
-        def getEvent: EventOrSummary => Event = _.event.get
-
-        parse[Events](json).events
-            .filter(eventOrSummaryIsEvent)
-            .map(getEvent)
+        parse[EventbriteResponse](json) match {
+            case EventbriteResponse(None, Some(eventbriteError)) =>
+                throw new IllegalArgumentException(eventbriteError.error_type.get + " : " + eventbriteError.error_message.get)
+            case EventbriteResponse(Some(events), _) => {
+                events
+                    .filter(_.event.isDefined)
+                    .map(_.event.get)
+            }
+            case unknownResponse => throw new IllegalStateException("unknown response from eventbrite : " + json)
+        }
     }
 }
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-case class Events(events: Seq[EventOrSummary])
+case class EventbriteResponse(events: Option[Seq[EventOrSummary]], error: Option[EventBriteError])
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 case class EventOrSummary(event: Option[Event], summary: Option[Any])
@@ -178,3 +200,6 @@ case class Venue(address: Option[String],
                  region: Option[String],
                  country: Option[String],
                  postal_code: Option[String])
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+case class EventBriteError(error_type: Option[String], error_message: Option[String])
