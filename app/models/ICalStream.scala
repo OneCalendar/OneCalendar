@@ -16,4 +16,22 @@
 
 package models
 
+import dao.MongoDbModel
+import com.mongodb.casbah.Imports._
+
 case class ICalStream (url: String, streamTags: List[String])
+
+trait ICalStreamTypeClass {
+    implicit object ICalStreamMongoModel extends MongoDbModel[ICalStream] {
+        def collectionName: String = "icalstreams"
+
+        def write(stream: ICalStream): DBObject =
+            DBObject( "url" -> stream.url, "streamTags" -> stream.streamTags )
+
+        def read(dbo: DBObject): ICalStream =
+            ICalStream(
+                url = dbo.as[String]("url"),
+                streamTags = dbo.as[MongoDBList]("streamTags").toList.asInstanceOf[List[String]]
+            )
+    }
+}

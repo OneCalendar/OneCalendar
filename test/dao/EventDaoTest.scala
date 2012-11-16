@@ -16,12 +16,12 @@
 
 package dao
 
-import models.Event
 import org.joda.time.DateTime
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.FunSuite
+import models.Event
 
-class EventDaoTest extends FunSuite with ShouldMatchers with MongoDbConnection {
+class EventDaoTest extends FunSuite with ShouldMatchers with DaoCleaner {
 
     /**
      * RUNNING MONGO SERVER BEFORE -
@@ -181,6 +181,15 @@ class EventDaoTest extends FunSuite with ShouldMatchers with MongoDbConnection {
         EventDao.findAll() should have size 3
     }
 
+    test("count futur events") {
+        implicit val now : () => Long = () => new DateTime(2012,5,1,1,1).getMillis
+
+        EventDao.saveEvent(oldEvent)
+        EventDao.saveEvent(newEvent)
+
+        EventDao.countFutureEvents should be (1)
+    }
+    
     private def initData() {
         EventDao.saveEvent(eventDevoxx)
         EventDao.saveEvent(eventJava)

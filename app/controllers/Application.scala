@@ -25,6 +25,9 @@ import api.icalendar.ICalendar
 import mapping.Event$VEventMapping
 import dao.{EventDaoTrait, EventDao}
 
+case class PreviewTuple(date:String, title:String, location:String)
+case class PreviewEvent(event:PreviewTuple)
+case class Preview (size: Long, eventList:Seq[PreviewEvent])
 
 object Application extends OneCalendarController with Json with Event$VEventMapping {
 
@@ -41,20 +44,12 @@ object Application extends OneCalendarController with Json with Event$VEventMapp
         val tags: List[String] = keyWords.split(" ").toList
         val searchPreview: SearchPreview = dao.findPreviewByTag(tags)
 
-        val es = searchPreview.previewEvents.map(
-            e => Map("event" -> Map(
-                "date" -> e.begin.toString(),
-                "title" -> e.title,
-                "location" -> e.location
-            )
-            )
+        val previewEvents = searchPreview.previewEvents.map(
+            e => PreviewEvent(PreviewTuple(date = e.begin.toString(),title = e.title,location = e.location))
         )
 
         val previewJson: String = generate(Option(searchPreview).map(
-            p => Map(
-                "size" -> p.totalEventNumber,
-                "eventList" -> es
-            ))
+            p => Preview(size = p.totalEventNumber, eventList= previewEvents))
         )
         if ( searchPreview.totalEventNumber > 0 ) {
             Ok(previewJson).as("application/json")
@@ -68,6 +63,10 @@ object Application extends OneCalendarController with Json with Event$VEventMapp
 
     def fetchCloudOfTags(implicit now: () => Long = () => DateTime.now.getMillis) = Action {
         Ok(generate(EventDao.listTags())).as("application/json")
+    }
+    
+    def eventCount(implicit now: () => Long = () => DateTime.now.getMillis) = Action {
+        Ok("""{"eventNumber":"%s"}""".format(EventDao.countFutureEvents)).as("application/json")
     }
 
     private def renderEvents(events: List[Event]) = {

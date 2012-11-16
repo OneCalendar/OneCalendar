@@ -24,10 +24,10 @@ import org.joda.time.format.{DateTimeFormatter, DateTimeFormat}
 import collection.Seq
 import collection.immutable.List
 import play.api.Logger
-import com.mongodb.casbah.Imports._
 import models.DevoxxSchedule
 import models.DevoxxEvents
 import models.DevoxxPresentation
+import dao.configuration.injection.MongoProp.MongoDbName
 
 object LoadDevoxx extends Json with NowEventInjection {
 
@@ -35,7 +35,7 @@ object LoadDevoxx extends Json with NowEventInjection {
     val pattern: DateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.S")
     val DB_NAME: String = "OneCalendar"
 
-    def parseLoad()(implicit collection: String => MongoCollection) {
+    def parseLoad()(implicit dbName: MongoDbName) {
         val devoxxEvents = "https://cfp.devoxx.com/rest/v1/events/"
 
         val events: Seq[DevoxxEvents] = parseUrl[Seq[DevoxxEvents]](devoxxEvents)
@@ -45,7 +45,7 @@ object LoadDevoxx extends Json with NowEventInjection {
             .foreach(load)
     }
 
-    def load(devoxxUrl: String)(implicit collection: String => MongoCollection) {
+    def load(devoxxUrl: String)(implicit dbName: MongoDbName) {
         EventDao.deleteByOriginalStream(devoxxUrl)
 
         val schedules: Seq[DevoxxSchedule] = parseUrl[Seq[DevoxxSchedule]](devoxxUrl)

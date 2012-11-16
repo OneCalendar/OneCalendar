@@ -16,16 +16,19 @@
 
 package dao
 
-import org.scalatest.{BeforeAndAfter, FunSuite}
-import org.scalatest.matchers.ShouldMatchers
-import ICalStreamDao._
-import models.ICalStream
+import configuration.injection.MongoProp._
+import configuration.injection.{MongoConnectionPool, MongoConfiguration}
+import fr.scala.util.collection.CollectionsUtils
+import com.mongodb._
+import casbah.Imports._
+import models.{ICalStreamTypeClass, ICalStream}
 
-class ICalStreamDaoTest  extends FunSuite with ShouldMatchers with DaoCleaner {
+object ICalStreamDao extends CollectionsUtils
+        with MongoOperations
+        with ICalStreamTypeClass
+        with MongoConnectionPool {
 
-    test("find ical streams to load") {
-        findAll() should have size 0
-        saveICalStream(ICalStream("hello",List("tag")))
-        findAll() should have size 1
-    }
+    def findAll()(implicit dbName: MongoDbName): List[ICalStream] = find[ICalStream](MongoDBObject())
+
+    def saveICalStream(stream: ICalStream)(implicit dbName: MongoDbName) = save(stream)
 }
