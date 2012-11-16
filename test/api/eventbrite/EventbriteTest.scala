@@ -18,10 +18,9 @@ package api.eventbrite
 
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.FunSuite
-import org.scalatest.BeforeAndAfter
 import java.lang.IllegalArgumentException
 
-class EventbriteTest extends FunSuite with ShouldMatchers with BeforeAndAfter {
+class EventbriteTest extends FunSuite with ShouldMatchers {
 
     test("should parse real eventbrite stream without exception") {
         Eventbrite.request("scala")

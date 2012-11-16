@@ -16,12 +16,12 @@
 
 package api.eventbrite
 
-import org.scalatest.{BeforeAndAfter, FunSuite}
+import org.scalatest.FunSuite
 import org.scalatest.matchers.ShouldMatchers
 import com.codahale.jerkson.Json
 import EventBriteParser.parseEvents
 
-class EventbriteParserTest extends FunSuite with ShouldMatchers with BeforeAndAfter with Json {
+class EventbriteParserTest extends FunSuite with ShouldMatchers with Json {
 
     test("should map 1 dummy event") {
         val events: Seq[EventbriteEvent] = parseEvents("""{"events":[ {"event": { "id":4737033595 } } ] }""")

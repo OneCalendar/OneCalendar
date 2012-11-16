@@ -44,23 +44,23 @@ case class EventbriteResponse(events: Option[Seq[EventOrSummary]], error: Option
 case class EventOrSummary(event: Option[EventbriteEvent], summary: Option[Any])
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-case class EventbriteEvent(id: Option[String],
-                 title: Option[String],
-                 start_date: Option[String],
-                 description: Option[String],
-                 end_date: Option[String],
-                 tags: Option[String],
-                 timezone_offset: Option[String],
-                 url: Option[String],
-                 venue: Option[Venue])
+case class EventbriteEvent(id: Option[String] = None,
+                 title: Option[String] = None,
+                 start_date: Option[String] = None,
+                 description: Option[String] = None,
+                 end_date: Option[String] = None,
+                 tags: Option[String] = None,
+                 timezone_offset: Option[String] = None,
+                 url: Option[String] = None,
+                 venue: Option[Venue] = None)
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-case class Venue(address: Option[String],
-                 address_2: Option[String],
-                 city: Option[String],
-                 region: Option[String],
-                 country: Option[String],
-                 postal_code: Option[String])
+case class Venue(address: Option[String] = None,
+                 address_2: Option[String] = None,
+                 city: Option[String] = None,
+                 region: Option[String] = None,
+                 country: Option[String] = None,
+                 postal_code: Option[String] = None)
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 case class EventBriteError(error_type: Option[String], error_message: Option[String])
