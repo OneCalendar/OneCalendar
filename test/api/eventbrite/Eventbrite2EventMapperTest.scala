@@ -96,7 +96,7 @@ class Eventbrite2EventMapperTest extends FunSuite with ShouldMatchers {
     test("should map tags") {
         val eb = EventbriteEvent(tags = Some("programming, paris scala user group"))
         val event: Event = toEvent(eb, List("default"), "")
-        event.tags should be (List("default","programming", "paris", "scala", "user", "group"))
+        event.tags should be (List("DEFAULT","PROGRAMMING", "PARIS", "SCALA", "USER", "GROUP"))
     }
 
     test("should map url") {

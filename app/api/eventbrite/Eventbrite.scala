@@ -27,14 +27,14 @@ object Eventbrite  {
     type JsonResponse = String
 
     /** @param countryCode @see http://www.iso.org/iso/country_codes/iso_3166_code_lists/country_names_and_code_elements **/
-    def request(keyWork: String, countryCode: Option[String] = None, defaultTags: List[String], originalStream: String, licenseKey: String = "2Z5MEY5C4CD7D3FXUA"):  Seq[Event] = {
+    def request(keyWord: String, countryCode: Option[String] = None, defaultTags: List[String], originalStream: String, licenseKey: String = "2Z5MEY5C4CD7D3FXUA"):  Seq[Event] = {
         val countryParam: String = countryCode match {
             case Some(code) => "&country=" + code
             case _ => ""
         }
         val url = "https://www.eventbrite.com/json/event_search" +
             "?app_key=" + licenseKey +
-            "&keywords=" + keyWork +
+            "&keywords=" + keyWord +
             countryParam
         val response = new BufferedReader(new InputStreamReader( new URL(url).openStream() )).readLine()
 
@@ -49,7 +49,7 @@ object Eventbrite  {
             end = toDate(eb.end_date,eb.timezone_offset),
             location = venueToLocation(eb.venue),
             description = eb.description.getOrElse(""),
-            tags = defaultTags ::: toTags(eb.tags),
+            tags = (defaultTags ::: toTags(eb.tags)).map(_.toUpperCase),
             url = eb.url.getOrElse(""),
             originalStream = originalStream
         )

@@ -16,6 +16,34 @@
 
 package service
 
-object LoadEventBrite {
+import dao.configuration.injection.MongoProp._
+import api.eventbrite.Eventbrite
+import models.Event
+import dao.EventDao._
+import play.api.Logger
+
+object LoadEventbrite extends NowEventInjection {
+
+    def parseLoad(keyWord: String)(implicit dbName: MongoDbName) {
+        val originalStream = "eventbrite-" + keyWord
+
+        val events: Seq[Event] = Eventbrite.request(keyWord = keyWord, defaultTags = List(keyWord), originalStream = originalStream)
+
+        val (toSave, passed) = events.span(event => event.end.isAfter(now()))
+
+        deleteByOriginalStream(originalStream)
+
+        saveEvents(toSave, originalStream)
+        reportNotLoadedEvents(passed, originalStream)
+    }
+
+    private def saveEvents(toSave: Seq[Event], url: String)(implicit now: () => Long, dbName: MongoDbName) {
+        toSave foreach ( saveEvent )
+        Logger.info("%d events loaded from %s".format(toSave.length, url))
+    }
+
+    private def reportNotLoadedEvents(notLoadedEvent: Seq[Event], url:String)(implicit now: () => Long) {
+        if ( !notLoadedEvent.isEmpty ) Logger.info("%d already ended events not loaded from %s".format(notLoadedEvent.length, url))
+    }
 
 }
