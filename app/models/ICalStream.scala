@@ -16,8 +16,8 @@
 
 package models
 
-import dao.MongoDbModel
 import com.mongodb.casbah.Imports._
+import dao.MongoDbModel
 
 case class ICalStream (url: String, streamTags: List[String])
 

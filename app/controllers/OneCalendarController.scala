@@ -16,11 +16,11 @@
 
 package controllers
 
-import play.api.mvc.Controller
-import dao.configuration.injection.MongoConfiguration
 import com.mongodb.casbah._
 import com.mongodb.{ServerAddress, MongoOptions}
+import dao.configuration.injection.MongoConfiguration
 import dao.configuration.injection.MongoProp.MongoDbName
+import play.api.mvc.Controller
 
 object mongoConn {
     private val conn:MongoConnection = {

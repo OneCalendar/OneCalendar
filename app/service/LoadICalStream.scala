@@ -16,16 +16,15 @@
 
 package service
 
-import java.net.URL
-import play.api.Logger
-import models.Event
-import api.icalendar.{VEvent, ICalendar}
+import api.icalendar._
 import dao.EventDao._
-import models.Event._
-import scala.Left
-import api.icalendar.ICalendarParsingError
-import scala.Right
 import dao.configuration.injection.MongoProp.MongoDbName
+import java.net.URL
+import models.Event
+import models.Event._
+import play.api.Logger
+import scala.Left
+import scala.Right
 
 class LoadICalStream {
 

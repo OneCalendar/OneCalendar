@@ -1,6 +1,7 @@
 package service
 
 import org.joda.time.DateTime
+
 trait NowEvent {
     implicit val now: () => Long
 }

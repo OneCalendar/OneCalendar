@@ -9,9 +9,10 @@ object MongoProp {
 }
 
 trait MongoConnectionPool {
-    import MongoProp._
 
-    implicit def retrieveMongoCollection(collectionName: MongoCollectionName)(implicit dbName: MongoDbName): MongoCollection = {
+  import MongoProp._
+
+  implicit def retrieveMongoCollection(collectionName: MongoCollectionName)(implicit dbName: MongoDbName): MongoCollection = {
         val pool: MongoDB = MongoPool()
         pool(collectionName)
     }

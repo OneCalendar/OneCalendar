@@ -1,9 +1,9 @@
 package api.icalendar
 
-import org.joda.time.DateTime
+import java.net.URI
 import net.fortuna.ical4j.model.Property
 import net.fortuna.ical4j.model.property._
-import java.net.URI
+import org.joda.time.DateTime
 
 object VEvent {
     // Don't panic ! the null value are catched just below - permit to build easily VEvent with no all properties which are not mandatory
