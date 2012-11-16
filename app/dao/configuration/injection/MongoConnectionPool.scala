@@ -12,12 +12,12 @@ trait MongoConnectionPool {
     import MongoProp._
 
     implicit def retrieveMongoCollection(collectionName: MongoCollectionName)(implicit dbName: MongoDbName): MongoCollection = {
-        val collFun = MongoPool()
-        collFun(collectionName)
+        val pool: MongoDB = MongoPool()
+        pool(collectionName)
     }
 
     private object MongoPool {
-        def apply()(implicit dbName: MongoDbName) = connection(dbName)
+        def apply()(implicit dbName: MongoDbName): MongoDB = connection(dbName)
 
         private val connection: MongoConnection = {
             val options: MongoOptions = new MongoOptions()

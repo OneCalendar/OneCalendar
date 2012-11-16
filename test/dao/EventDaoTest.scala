@@ -16,12 +16,12 @@
 
 package dao
 
-import models.Event
 import org.joda.time.DateTime
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.FunSuite
+import models.Event
 
-class EventDaoTest extends FunSuite with ShouldMatchers with MongoDbConnection {
+class EventDaoTest extends FunSuite with ShouldMatchers with DaoCleaner {
 
     /**
      * RUNNING MONGO SERVER BEFORE -

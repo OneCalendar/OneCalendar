@@ -17,13 +17,13 @@
 package service
 
 import org.scalatest.matchers.ShouldMatchers
-import org.scalatest.FunSuite
 import models.Event
 import org.joda.time.DateTime
-import dao.MongoDbConnection
 import dao.EventDao._
+import org.scalatest.FunSuite
+import dao.DaoCleaner
 
-class LoadICalStreamTest extends FunSuite with ShouldMatchers with MongoDbConnection {
+class LoadICalStreamTest extends FunSuite with ShouldMatchers with DaoCleaner {
 
     val url : String = "https://www.google.com/calendar/ical/cs98tardtttjejg93tpcb71ol6nvachq%40import.calendar.google.com/public/basic.ics"
 

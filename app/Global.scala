@@ -19,7 +19,7 @@ import org.joda.time.DateTime
 import play.api._
 import service.{LoadDevoxx, LoadICalStream}
 import models.ICalStream
-import dao.ICalStreamsDao
+import dao.ICalStreamDao
 import play.api.libs.concurrent._
 import play.api.Play.current
 import akka.util.duration._
@@ -31,7 +31,7 @@ object Global extends GlobalSettings with OneCalendarController {
     override def onStart(app: Application) {
         Logger.info("start")
         Akka.system.scheduler.schedule(30 seconds, 1 day) {
-            val streams: List[ICalStream] = ICalStreamsDao.findAll()
+            val streams: List[ICalStream] = ICalStreamDao.findAll()
 
             streams.foreach {
                 stream =>
