@@ -18,13 +18,16 @@ package api.eventbrite
 
 import java.io.{InputStreamReader, BufferedReader}
 import java.net.URL
+import models.Event
+import org.joda.time.DateTime
+import org.joda.time.format.DateTimeFormat
 
 object Eventbrite  {
 
     type JsonResponse = String
 
     /** @param countryCode @see http://www.iso.org/iso/country_codes/iso_3166_code_lists/country_names_and_code_elements **/
-    def request(keyWork: String, countryCode: Option[String] = None, licenseKey: String = "2Z5MEY5C4CD7D3FXUA"):  Seq[EventbriteEvent] = {
+    def request(keyWork: String, countryCode: Option[String] = None, defaultTags: List[String], originalStream: String, licenseKey: String = "2Z5MEY5C4CD7D3FXUA"):  Seq[Event] = {
         val countryParam: String = countryCode match {
             case Some(code) => "&country=" + code
             case _ => ""
@@ -35,7 +38,50 @@ object Eventbrite  {
             countryParam
         val response = new BufferedReader(new InputStreamReader( new URL(url).openStream() )).readLine()
 
-        EventBriteParser.parseEvents(response)
+        EventBriteParser.parseEvents(response).map(toEvent(_, defaultTags, originalStream))
+    }
+
+    val toEvent: (EventbriteEvent, List[String], String) => Event = {
+        (eb, defaultTags, originalStream) => new Event(
+            uid = eb.id.getOrElse(""),
+            title = eb.title.getOrElse(""),
+            begin = toDate(eb.start_date,eb.timezone_offset),
+            end = toDate(eb.end_date,eb.timezone_offset),
+            location = venueToLocation(eb.venue),
+            description = eb.description.getOrElse(""),
+            tags = defaultTags ::: toTags(eb.tags),
+            url = eb.url.getOrElse(""),
+            originalStream = originalStream
+        )
+    }
+
+    val venueToLocation: (Option[Venue]) => String = { opVenue =>
+        opVenue match {
+            case None => ""
+            case Some(venue) => {
+                List(venue.address, venue.address_2, venue.city, venue.postal_code, venue.region, venue.country)
+                    .map(_.getOrElse(""))
+                    .foldLeft("")((acc, s) => acc + " " + s)
+            }
+        }
+    }
+
+    val toTags: (Option[String]) => List[String] = { opTags =>
+        opTags match {
+            case None => Nil
+            case Some(tags) =>
+                tags.split("[,| ]")
+                    .map(_.trim())
+                    .filter(!_.trim().isEmpty )
+                    .toList
+        }
+    }
+
+    val toDate: (Option[String],Option[String]) => DateTime = { (opDate,opTimeZone) =>
+        (opDate,opTimeZone) match {
+            case (None,_) => null
+            case (Some(date),Some(timeZone)) => DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss'GMT'Z").withOffsetParsed().parseDateTime(date + timeZone)
+        }
     }
 
 }

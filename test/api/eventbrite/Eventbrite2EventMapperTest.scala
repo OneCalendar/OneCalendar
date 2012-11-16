@@ -20,19 +20,19 @@ import org.scalatest.FunSuite
 import org.scalatest.matchers.ShouldMatchers
 import models.Event
 import org.joda.time.{DateTimeZone, DateTime}
-import org.joda.time.format.DateTimeFormat
+import api.eventbrite.Eventbrite.toEvent
 
 class Eventbrite2EventMapperTest extends FunSuite with ShouldMatchers {
 
     test("should map id") {
         val eb = EventbriteEvent(id = Some("id"))
-        val event: Event = toEvent(eb)
+        val event: Event = toEvent(eb, Nil, "")
         event.uid should be ("id")
     }
 
     test("should map title") {
         val eb = EventbriteEvent(title = Some("title"))
-        val event: Event = toEvent(eb)
+        val event: Event = toEvent(eb, Nil, "")
         event.title should be ("title")
     }
 
@@ -40,7 +40,7 @@ class Eventbrite2EventMapperTest extends FunSuite with ShouldMatchers {
         val eb = EventbriteEvent(
             description = Some("""<P><SPAN STYLE=\\\"font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: x-large;\\\">Summary</SPAN></P>\\r\\n""")
         )
-        val event: Event = toEvent(eb)
+        val event: Event = toEvent(eb, Nil, "")
         event.description should be ("Summary")
     }
 
@@ -48,7 +48,7 @@ class Eventbrite2EventMapperTest extends FunSuite with ShouldMatchers {
         val eb = EventbriteEvent(
             description = Some("""<P><SPAN STYLE=\\\"font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: x-large;\\\">Summary</SPAN></P>\\r\\n""")
         )
-        val event: Event = toEvent(eb)
+        val event: Event = toEvent(eb, Nil, "")
         event.description should include ("Summary")
     }
 
@@ -58,7 +58,7 @@ class Eventbrite2EventMapperTest extends FunSuite with ShouldMatchers {
             end_date = Some("2020-01-01 00:00:00"),
             timezone_offset = Some("GMT-0500")
         )
-        val event: Event = toEvent(eb)
+        val event: Event = toEvent(eb, Nil, "")
         println(event.begin)
         event.begin should be (new DateTime(2013, 01, 28, 9, 4, 5, 0, DateTimeZone.forOffsetHours(-5) ))
     }
@@ -69,7 +69,7 @@ class Eventbrite2EventMapperTest extends FunSuite with ShouldMatchers {
             end_date = Some("2013-01-28 09:02:01"),
             timezone_offset = Some("GMT-0500")
         )
-        val event: Event = toEvent(eb)
+        val event: Event = toEvent(eb, Nil, "")
         event.end should be (new DateTime(2013, 01, 28, 9, 2, 1, 0, DateTimeZone.forOffsetHours(-5) ))
     }
 
@@ -84,7 +84,7 @@ class Eventbrite2EventMapperTest extends FunSuite with ShouldMatchers {
                 postal_code = Some("postal_code")
             ))
         )
-        val event: Event = toEvent(eb)
+        val event: Event = toEvent(eb, Nil, "")
         event.location should include ("addresse1")
         event.location should include ("addresse2")
         event.location should include ("city")
@@ -95,55 +95,21 @@ class Eventbrite2EventMapperTest extends FunSuite with ShouldMatchers {
 
     test("should map tags") {
         val eb = EventbriteEvent(tags = Some("programming, paris scala user group"))
-        val event: Event = toEvent(eb)
-        event.tags should be (List("programming", "paris", "scala", "user", "group"))
+        val event: Event = toEvent(eb, List("default"), "")
+        event.tags should be (List("default","programming", "paris", "scala", "user", "group"))
     }
 
     test("should map url") {
         val eb = EventbriteEvent(url = Some("http://psug-27-SRCH.eventbrite.com"))
-        val event: Event = toEvent(eb)
+        val event: Event = toEvent(eb, Nil, "")
         event.url should be ("http://psug-27-SRCH.eventbrite.com")
     }
 
-    val toEvent: (EventbriteEvent) => Event = {
-        eb => new Event(
-            uid = eb.id.getOrElse(""),
-            title = eb.title.getOrElse(""),
-            begin = toDate(eb.start_date,eb.timezone_offset),
-            end = toDate(eb.end_date,eb.timezone_offset),
-            location = venueToLocation(eb.venue),
-            description = eb.description.getOrElse(""),
-            tags = toTags(eb.tags),
-            url = eb.url.getOrElse("")
-        )
+    test("should have originalStream = keyword") {
+        val eb = EventbriteEvent()
+        val event: Event = toEvent(eb, Nil, "keyword")
+        event.originalStream should be ("keyword")
     }
 
-    val venueToLocation: (Option[Venue]) => String = { opVenue =>
-        opVenue match {
-            case None => ""
-            case Some(venue) => {
-                List(venue.address, venue.address_2, venue.city, venue.postal_code, venue.region, venue.country)
-                    .map(_.getOrElse(""))
-                    .foldLeft("")((acc, s) => acc + " " + s)
-            }
-        }
-    }
 
-    val toTags: (Option[String]) => List[String] = { opTags =>
-        opTags match {
-            case None => Nil
-            case Some(tags) =>
-                tags.split("[,| ]")
-                    .map(_.trim())
-                    .filter(!_.trim().isEmpty )
-                    .toList
-        }
-    }
-
-    val toDate: (Option[String],Option[String]) => DateTime = { (opDate,opTimeZone) =>
-        (opDate,opTimeZone) match {
-            case (None,_) => null
-            case (Some(date),Some(timeZone)) => DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss'GMT'Z").withOffsetParsed().parseDateTime(date + timeZone)
-        }
-    }
 }
