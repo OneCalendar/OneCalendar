@@ -181,6 +181,15 @@ class EventDaoTest extends FunSuite with ShouldMatchers with DaoCleaner {
         EventDao.findAll() should have size 3
     }
 
+    test("count futur events") {
+        implicit val now : () => Long = () => new DateTime(2012,5,1,1,1).getMillis
+
+        EventDao.saveEvent(oldEvent)
+        EventDao.saveEvent(newEvent)
+
+        EventDao.countFutureEvents should be (1)
+    }
+    
     private def initData() {
         EventDao.saveEvent(eventDevoxx)
         EventDao.saveEvent(eventJava)

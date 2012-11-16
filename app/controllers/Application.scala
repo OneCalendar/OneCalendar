@@ -70,8 +70,8 @@ object Application extends OneCalendarController with Json with Event$VEventMapp
         Ok(generate(EventDao.listTags())).as("application/json")
     }
     
-    def eventCount = Action {
-        Ok("""{"eventNumber":"5"}""").as("application/json")
+    def eventCount(implicit now: () => Long = () => DateTime.now.getMillis) = Action {
+        Ok("""{"eventNumber":"%s"}""".format(EventDao.countFutureEvents)).as("application/json")
     }
 
     private def renderEvents(events: List[Event]) = {

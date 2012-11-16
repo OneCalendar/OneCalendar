@@ -64,4 +64,9 @@ object EventDao extends CollectionsUtils
         val query = "begin" $gt now()
         retrieveMongoCollection(EventMongoModel.collectionName).distinct("tags", query).toList.asInstanceOf[List[String]]
     }
+
+    def countFutureEvents()(implicit dbName: MongoDbName, now: () => Long): Long = {
+        val query = "begin" $gt now()
+        count(query)
+    }
 }
