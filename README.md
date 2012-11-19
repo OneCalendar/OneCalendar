@@ -39,7 +39,7 @@ It's a classical web layered application.
 # For developers
 
 ### Tests js
-The js tests doesn't compile by themself [for now] (http://github.com/ValtechTechno/OneCalendar/issues/53), so to transpile those scripts
+The js tests doesn't compile by themself [for now](http://github.com/ValtechTechno/OneCalendar/issues/53), so to transpile those scripts
 
 `coffee -o test/front/javascripts/ -w -c test/front/coffee/`
 
@@ -48,15 +48,16 @@ launch a browser on
 `test/front/jasmine/SpecRunner.html`
 
 ### To launch the application
-* Have play2 installed somewhere
+* Have play2 (2.0.2) installed somewhere
 * Have it in your path
-* Have mongo2 started
+* Have mongo2 (2.0.6) started
     * create a folder named "data" where the following command is started
+    * `mkdir data`
     * `mongod --dbpath ./data --noprealloc --smallfiles --nojournal --rest`
-* To initialize the database
+* Initialize the database
     * connect to mongo and load the datas
     * `mongo OneCalendar test/data/icalstreams.js`
-* to launch the application, as any play app
+* Launch the application, as any play app
     * `play`
     * `$ compile`
     * `$ test`
