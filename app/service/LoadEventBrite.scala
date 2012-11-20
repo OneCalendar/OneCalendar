@@ -29,7 +29,7 @@ object LoadEventbrite extends NowEventInjection {
 
         val events: Seq[Event] = Eventbrite.request(keyWord = keyWord, defaultTags = List(keyWord), originalStream = originalStream)
 
-        val (toSave, passed) = events.span(event => event.end.isAfter(now()))
+        val (toSave, passed) = events.partition(event => event.end.isAfter(now()))
 
         deleteByOriginalStream(originalStream)
 
