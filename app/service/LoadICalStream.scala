@@ -36,7 +36,7 @@ class LoadICalStream {
 
                 val (toSave, passed): (List[Event], List[Event]) = vevents
                     .map(vevent => buildEvent(url, vevent, streamTags))
-                    .span(event => event.end.isAfter(now()))
+                    .partition(event => event.end.isAfter(now()))
 
                 saveEvents(toSave)
                 reportNotLoadedEvents(passed, url)
