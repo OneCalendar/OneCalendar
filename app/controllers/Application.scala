@@ -16,14 +16,13 @@
 
 package controllers
 
-import play.api.mvc._
+import api.icalendar.ICalendar
+import com.codahale.jerkson.Json
+import dao._
+import models.mapping.Event$VEventMapping
 import models._
 import org.joda.time.DateTime
-import collection.immutable.List
-import com.codahale.jerkson.Json
-import api.icalendar.ICalendar
-import mapping.Event$VEventMapping
-import dao.{EventDaoTrait, EventDao}
+import play.api.mvc._
 
 case class PreviewTuple(date:String, title:String, location:String)
 case class PreviewEvent(event:PreviewTuple)

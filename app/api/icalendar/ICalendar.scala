@@ -1,12 +1,10 @@
 package api.icalendar
 
-import java.util.ArrayList
 import fr.scala.util.collection.CollectionsUtils
-import models.Event
-import net.fortuna.ical4j.model.{DateTime, Calendar, ComponentList, Component}
-import java.net.URI
 import java.io.{StringWriter, Writer, InputStream}
+import java.util.ArrayList
 import net.fortuna.ical4j.data.{CalendarOutputter, ParserException, CalendarBuilder}
+import net.fortuna.ical4j.model.{Calendar, ComponentList, Component}
 
 case class ICalendarParsingError(message: String, e: Exception)
 

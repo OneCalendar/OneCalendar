@@ -16,10 +16,10 @@
 
 package models
 
-import org.joda.time.DateTime
-import util.matching.Regex
 import com.mongodb.casbah.Imports._
 import dao.MongoDbModel
+import org.joda.time.DateTime
+import util.matching.Regex
 
 object Event {
     //TODO explicit regex

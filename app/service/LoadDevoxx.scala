@@ -18,16 +18,11 @@ package service
 
 import com.codahale.jerkson.Json
 import dao._
-import models._
-import java.net._
-import org.joda.time.format.{DateTimeFormatter, DateTimeFormat}
-import collection.Seq
-import collection.immutable.List
-import play.api.Logger
-import models.DevoxxSchedule
-import models.DevoxxEvents
-import models.DevoxxPresentation
 import dao.configuration.injection.MongoProp.MongoDbName
+import java.net._
+import models._
+import org.joda.time.format.{DateTimeFormatter, DateTimeFormat}
+import play.api.Logger
 
 object LoadDevoxx extends Json with NowEventInjection {
 

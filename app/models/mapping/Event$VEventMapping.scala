@@ -1,7 +1,7 @@
 package models.mapping
 
-import models.Event
 import api.icalendar.VEvent
+import models.Event
 
 trait Event$VEventMapping {
     implicit def convertEventToVEvent(event: Event): VEvent =

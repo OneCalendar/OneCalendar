@@ -16,14 +16,12 @@
 
 package dao
 
+import com.mongodb.casbah.Imports._
 import configuration.injection.MongoConnectionPool
 import configuration.injection.MongoProp.MongoDbName
-import models._
-import com.mongodb._
-import casbah.Imports._
-import play.api.Logger
 import fr.scala.util.collection.CollectionsUtils
-import models.SearchPreview
+import models._
+import play.api.Logger
 
 object EventDao extends CollectionsUtils
         with EventDaoTrait
