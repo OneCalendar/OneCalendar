@@ -54,7 +54,7 @@ class LoadICalStream {
             end = vEvent.endDate.get,
             location = vEvent.location.getOrElse(""),
             url = vEvent.url,
-            originalStream = Some(url),
+            originalStream = Option(url),
             description = vEvent.description.getOrElse(""),
             tags = getTagsFromDescription(vEvent.description.getOrElse("") + extractTagsFromStreamTags(streamTags))
         )

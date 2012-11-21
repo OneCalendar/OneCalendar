@@ -41,8 +41,8 @@ case class Event( uid: String = "",
                   location: String = "",
                   description: String = "",
                   tags: List[String] = Nil,
-                  originalStream: Option[String] = Some(""),
-                  url:Option[String] = Some("")
+                  originalStream: Option[String] = Option(""),
+                  url:Option[String] = Option("")
                  )
 
 trait EventTypeClass {
