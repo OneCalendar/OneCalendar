@@ -149,7 +149,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with DaoCleaner {
     test("delete by originalStream don't drop the older event or event without relation") {
         implicit val now : () => Long = () => DateTime.now.getMillis
         EventDao.saveEvent(Event(
-            originalStream = "hello",
+            originalStream = Some("hello"),
             begin = new DateTime().plusDays(10),
             end = new DateTime().plusDays(10),
             title = "title",
@@ -157,7 +157,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with DaoCleaner {
             tags = List("tag1","tag2")
         ))
         EventDao.saveEvent(Event(
-            originalStream = "hello",
+            originalStream = Some("hello"),
             begin = new DateTime().plusDays(10),
             end = new DateTime().plusDays(10),
             title = "title2",
@@ -165,7 +165,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with DaoCleaner {
             tags = List("tag1","tag2")
         ))
         EventDao.saveEvent(Event(
-            originalStream = "hello",
+            originalStream = Some("hello"),
             begin = new DateTime().minusDays(10),
             end = new DateTime().minusDays(10),
             title = "title",

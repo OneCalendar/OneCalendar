@@ -41,8 +41,8 @@ case class Event( uid: String = "",
                   location: String = "",
                   description: String = "",
                   tags: List[String] = Nil,
-                  originalStream: String = "",
-                  url:String = ""
+                  originalStream: Option[String] = Some(""),
+                  url:Option[String] = Some("")
                  )
 
 trait EventTypeClass {
@@ -68,11 +68,11 @@ trait EventTypeClass {
                 description = dbo.as[String]("description"),
                 end = new DateTime(dbo.as[Long]("end")),
                 location = dbo.as[String]("location"),
-                originalStream = dbo.as[String]("originalStream"),
+                originalStream = dbo.getAs[String]("originalStream"),
                 tags = dbo.as[MongoDBList]("tags").toList.asInstanceOf[List[String]],
                 title = dbo.as[String]("title"),
                 uid = dbo.as[String]("uid"),
-                url = dbo.as[String]("url")
+                url = dbo.getAs[String]("url")
             )
     }
 }
