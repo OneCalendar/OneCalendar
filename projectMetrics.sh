@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "OneCalendar! To Meet Them All project's metrics"
+echo -en "\033[31m OneCalendar! To Meet Them All project's metrics \033[0m"
 echo
 
 countFile() {
@@ -21,7 +21,11 @@ echo "nombre de fichiers scala de test : $(countFile test "*.scala")"
 ############################################################################################
 
 occurenceCount() {
-    find $1 -name $2 | xargs -d "\n" cat | more | grep -v "type class" | grep "$3" | wc -l
+    find $1 -name $2 | xargs -d "\n" cat |  grep -v "type class" | grep "$3" | wc -l
+}
+
+occurenceFromFile() {
+    find $1 -name $2 | xargs -d "\n" grep --color=auto -H $3
 }
 
 echo 
@@ -33,3 +37,22 @@ scalaClass=$(echo $scalaGlobalClass-$scalaCaseClass | bc -l)
 echo "nombre de class scala dans app/ : $scalaClass"
 echo "nombre de case class scala dans app/ : $scalaCaseClass"
 echo "nombre de object scala dans app/ : $(occurenceCount app "*.scala" object)"
+
+echo
+
+echo "nombre de méthode scala dans app/ : $(occurenceCount app "*.scala" def)"
+
+echo
+
+echo "nombre de methode de test : $(occurenceCount test "*.scala" "test(")"
+echo "nombre de méthode de test ignorées : $(occurenceCount test "*.scala" "ignore(")"
+
+echo
+
+echo "nombre de fois ou 'null' est utilisé dans le code : $(occurenceCount app "*.scala" null)"
+occurenceFromFile app "*.scala" null
+
+echo
+
+echo "nombre de fois ou 'var' est utilisé dans le code : $(occurenceCount app "*.scala" var)"
+occurenceFromFile app "*.scala" var
