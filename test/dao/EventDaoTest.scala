@@ -105,6 +105,15 @@ class EventDaoTest extends FunSuite with ShouldMatchers with DaoCleaner {
         EventDao.findByTag(List("devoxx", "java")) should be(List(eventDevoxx, eventJava))
     }
 
+    test("should find event even if it have not originalStream & url") {
+        val eventWithNoOrigStreamAndUrl =
+            Event("uid", "title", DateTime.now().plusDays(1), DateTime.now().plusDays(2), "location", "description", tags = List("TEST"))
+        EventDao.saveEvent(eventWithNoOrigStreamAndUrl)
+
+        EventDao.findByTag(List("test")) should be(List(eventWithNoOrigStreamAndUrl))
+        EventDao.findAll() should be(List(eventWithNoOrigStreamAndUrl))
+    }
+
     test("should find 3 first events by tags 'devoxx', 'java' or other ") {
         implicit val now : () => Long = () => new DateTime(2010,1,1,1,1).getMillis
         initFourData
@@ -180,6 +189,8 @@ class EventDaoTest extends FunSuite with ShouldMatchers with DaoCleaner {
 
         EventDao.findAll() should have size 3
     }
+
+
 
     test("count futur events") {
         implicit val now : () => Long = () => new DateTime(2012,5,1,1,1).getMillis
