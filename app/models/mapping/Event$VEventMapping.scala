@@ -5,7 +5,7 @@ import models.Event
 
 trait Event$VEventMapping {
     implicit def convertEventToVEvent(event: Event): VEvent =
-        VEvent(event.uid, event.title, event.begin, event.end, event.location, event.url, event.description)
+        VEvent(event.uid, event.title, event.begin, event.end, event.location, event.url.getOrElse(null), event.description)
 
     implicit def convertEventsToVEvents(events: List[Event]): List[VEvent] = events map convertEventToVEvent
 }

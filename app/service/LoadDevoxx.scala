@@ -63,7 +63,7 @@ object LoadDevoxx extends Json with NowEventInjection {
                         end = pattern.parseDateTime(schedule.toTime.get),
                         description = presentation.summary,
                         location = presentation.room.get,
-                        originalStream = devoxxUrl,
+                        originalStream = Option(devoxxUrl),
                         tags = curTags
                     )
                     EventDao.saveEvent(event)

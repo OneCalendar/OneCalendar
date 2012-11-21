@@ -16,7 +16,7 @@ class Event$VEventMappingTest extends FunSuite with ShouldMatchers with Event$VE
         val start = new DateTime(123000L)
         val end = new DateTime(456000L)
 
-        val event = Event(title= "title", begin = start, end = end, uid = "123", location = "location", description = "description", url = "url")
+        val event = Event(title= "title", begin = start, end = end, uid = "123", location = "location", description = "description", url = Option("url"))
 
         val vEvent: VEvent = convertEventToVEvent( event )
 
@@ -33,7 +33,7 @@ class Event$VEventMappingTest extends FunSuite with ShouldMatchers with Event$VE
         val start = new DateTime(123000L)
         val end = new DateTime(456000L)
 
-        val event = List(Event(title= "title", begin = start, end = end, uid = "123", location = "location", description = "description", url = "url"))
+        val event = List(Event(title= "title", begin = start, end = end, uid = "123", location = "location", description = "description", url = Option("url")))
 
         val vEvents: List[VEvent] = convertEventsToVEvents( event )
 
