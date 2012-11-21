@@ -29,18 +29,7 @@ object EventsController extends OneCalendarController {
 
     def addSingleEvent = Action { implicit request =>
         val event:Event = eventForm.bindFromRequest.get
-
-        EventDao.saveEvent(
-            Event(
-                location = event.location,
-                begin = event.begin,
-                description = event.description,
-                end = event.end,
-                tags = event.tags,
-                title = event.title
-            )
-        )
-
+        EventDao.saveEvent(event)
         Ok( "évènement " + event + " ajouté dans la base 'OneCalendar'" )
     }
 
