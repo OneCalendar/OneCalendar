@@ -1,0 +1,1416 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   inkscape:export-filename="onecalendar.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"
+   sodipodi:docname="onecalendar.svg">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient3948">
+      <stop
+         id="stop3950"
+         offset="0"
+         style="stop-color:#5fc9ff;stop-opacity:1;" />
+      <stop
+         id="stop3952"
+         offset="1"
+         style="stop-color:#91daff;stop-opacity:1;" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3938">
+      <stop
+         style="stop-color:#c3eaff;stop-opacity:1;"
+         offset="0"
+         id="stop3940" />
+      <stop
+         style="stop-color:#ebf8ff;stop-opacity:1;"
+         offset="1"
+         id="stop3942" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3930">
+      <stop
+         style="stop-color:#364e59;stop-opacity:1;"
+         offset="0"
+         id="stop3932" />
+      <stop
+         style="stop-color:#364e59;stop-opacity:0;"
+         offset="1"
+         id="stop3934" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3948"
+       id="linearGradient4521"
+       gradientUnits="userSpaceOnUse"
+       x1="150.23143"
+       y1="426.50421"
+       x2="333.4223"
+       y2="562.55225" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath548-4">
+      <path
+         inkscape:connector-curvature="0"
+         d="m 308.273,387.577 3.481,0 0,-3.238 -3.481,0 0,3.238 z"
+         id="path550-1" />
+    </clipPath>
+    <mask
+       maskUnits="userSpaceOnUse"
+       x="0"
+       y="0"
+       width="1"
+       height="1"
+       id="mask408-3">
+      <g
+         id="g410-3">
+        <g
+           style="opacity:0.44999701"
+           clip-path="url(#clipPath400-9)"
+           id="g412-8">
+          <g
+             id="g414-9">
+            <g
+               id="g416-9" />
+            <g
+               id="g418-4">
+              <g
+                 clip-path="url(#clipPath404-4)"
+                 id="g420-8">
+                <g
+                   id="g422-2">
+                  <g
+                     transform="matrix(52,0,0,23,279,264)"
+                     id="g424-8">
+                    <image
+                       width="1"
+                       height="1"
+                       transform="matrix(1,0,0,-1,0,1)"
+                       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAAXCAYAAABEQGxzAAAABHNCSVQICAgIfAhkiAAAAGRJREFUWIXt18EJwDAMQ1G5++8mnIWcS/ECLUQxehDIMR90SQAoDPKcfsDfOogkqurKQ7KDAu/kqu5eXkQAmDy5KRykzkHqHKTOQeocpM5B6hykroMy8+Q7Pllr9b1/rFOMm9wGwfuZYinwj74AAAAASUVORK5CYII="
+                       id="image426-1" />
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </mask>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath400-9">
+      <path
+         inkscape:connector-curvature="0"
+         d="m 279,287 52,0 0,-23 -52,0 0,23 z"
+         id="path402-9" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath404-4">
+      <path
+         inkscape:connector-curvature="0"
+         d="m 278,288 54,0 0,-25 -54,0 0,25 z"
+         id="path406-0" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath432-9">
+      <path
+         inkscape:connector-curvature="0"
+         d="m 281.544,284.187 46.721,0 0,-17.552 -46.721,0 0,17.552 z"
+         id="path434-7" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath80-0">
+      <path
+         inkscape:connector-curvature="0"
+         d="m 314.165,384.87 3.481,0 0,-3.712 -3.481,0 0,3.712 z"
+         id="path82-5" />
+    </clipPath>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3948"
+       id="linearGradient4224"
+       gradientUnits="userSpaceOnUse"
+       x1="150.23143"
+       y1="426.50421"
+       x2="333.4223"
+       y2="562.55225" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3948"
+       id="linearGradient4414"
+       gradientUnits="userSpaceOnUse"
+       x1="150.23143"
+       y1="426.50421"
+       x2="333.4223"
+       y2="562.55225" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3938"
+       id="linearGradient4578"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.72699285,0,0,0.72699285,14.583836,133.96632)"
+       x1="243.57141"
+       y1="510.00739"
+       x2="243.57141"
+       y2="569.51111" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3948"
+       id="linearGradient4580"
+       gradientUnits="userSpaceOnUse"
+       x1="150.23143"
+       y1="426.50421"
+       x2="333.4223"
+       y2="562.55225" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3948"
+       id="linearGradient4582"
+       gradientUnits="userSpaceOnUse"
+       x1="150.23143"
+       y1="426.50421"
+       x2="333.4223"
+       y2="562.55225" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3948"
+       id="linearGradient4584"
+       gradientUnits="userSpaceOnUse"
+       x1="150.23143"
+       y1="426.50421"
+       x2="333.4223"
+       y2="562.55225" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3948"
+       id="linearGradient4586"
+       gradientUnits="userSpaceOnUse"
+       x1="150.23143"
+       y1="426.50421"
+       x2="333.4223"
+       y2="562.55225" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3948"
+       id="linearGradient4588"
+       gradientUnits="userSpaceOnUse"
+       x1="150.23143"
+       y1="426.50421"
+       x2="333.4223"
+       y2="562.55225" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3948"
+       id="linearGradient4590"
+       gradientUnits="userSpaceOnUse"
+       x1="150.23143"
+       y1="426.50421"
+       x2="333.4223"
+       y2="562.55225" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3948"
+       id="linearGradient4592"
+       gradientUnits="userSpaceOnUse"
+       x1="150.23143"
+       y1="426.50421"
+       x2="333.4223"
+       y2="562.55225" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3948"
+       id="linearGradient4594"
+       gradientUnits="userSpaceOnUse"
+       x1="150.23143"
+       y1="426.50421"
+       x2="333.4223"
+       y2="562.55225" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3948"
+       id="linearGradient4596"
+       gradientUnits="userSpaceOnUse"
+       x1="150.23143"
+       y1="426.50421"
+       x2="333.4223"
+       y2="562.55225" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3948"
+       id="linearGradient4598"
+       gradientUnits="userSpaceOnUse"
+       x1="150.23143"
+       y1="426.50421"
+       x2="333.4223"
+       y2="562.55225" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3948"
+       id="linearGradient4600"
+       gradientUnits="userSpaceOnUse"
+       x1="150.23143"
+       y1="426.50421"
+       x2="333.4223"
+       y2="562.55225" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3948"
+       id="linearGradient4602"
+       gradientUnits="userSpaceOnUse"
+       x1="150.23143"
+       y1="426.50421"
+       x2="333.4223"
+       y2="562.55225" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3930"
+       id="linearGradient4604"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.72699285,0,0,0.79791129,14.583836,104.93827)"
+       x1="241.07143"
+       y1="403.7803"
+       x2="241.07143"
+       y2="409.5199" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="160.99887"
+     inkscape:cy="609.55645"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1375"
+     inkscape:window-height="876"
+     inkscape:window-x="65"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g4067"
+       transform="translate(56.016827,177.69852)"
+       inkscape:export-filename="/home/eric/Projets/OneCalendar/logo-calendar.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         transform="translate(0,-1.0101525)"
+         id="g4479">
+        <rect
+           style="fill:url(#linearGradient4578);fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="rect2985"
+           width="153.45506"
+           height="121.45857"
+           x="114.28571"
+           y="427.17392"
+           rx="0"
+           ry="0" />
+        <g
+           id="g3810"
+           transform="matrix(0.72699285,0,0,0.72699285,15.063489,128.4866)"
+           style="fill:url(#linearGradient4602);fill-opacity:1">
+          <rect
+             y="425.85242"
+             x="197.22694"
+             height="42.117001"
+             width="42.117001"
+             id="rect3761"
+             style="fill:url(#linearGradient4580);fill-opacity:1;stroke:none" />
+          <rect
+             style="fill:url(#linearGradient4582);fill-opacity:1;stroke:none"
+             id="rect3763"
+             width="42.117001"
+             height="42.117001"
+             x="244.70412"
+             y="425.85242" />
+          <rect
+             y="425.85242"
+             x="292.1813"
+             height="42.117001"
+             width="42.117001"
+             id="rect3765"
+             style="fill:url(#linearGradient4584);fill-opacity:1;stroke:none" />
+          <rect
+             style="fill:url(#linearGradient4586);fill-opacity:1;stroke:none"
+             id="rect3767"
+             width="42.117001"
+             height="42.117001"
+             x="149.74979"
+             y="473.32962" />
+          <rect
+             y="473.32962"
+             x="197.22696"
+             height="42.117001"
+             width="42.117001"
+             id="rect3769"
+             style="fill:url(#linearGradient4588);fill-opacity:1;stroke:none" />
+          <rect
+             style="fill:url(#linearGradient4590);fill-opacity:1;stroke:none"
+             id="rect3771"
+             width="42.117001"
+             height="42.117001"
+             x="244.70412"
+             y="473.32962" />
+          <rect
+             y="473.32962"
+             x="292.1813"
+             height="42.117001"
+             width="42.117001"
+             id="rect3773"
+             style="fill:url(#linearGradient4592);fill-opacity:1;stroke:none" />
+          <rect
+             style="fill:url(#linearGradient4594);fill-opacity:1;stroke:none"
+             id="rect3775"
+             width="42.117001"
+             height="42.117001"
+             x="292.1813"
+             y="520.80682" />
+          <rect
+             y="520.80682"
+             x="244.70415"
+             height="42.117001"
+             width="42.117001"
+             id="rect3777"
+             style="fill:url(#linearGradient4596);fill-opacity:1;stroke:none" />
+          <rect
+             style="fill:url(#linearGradient4598);fill-opacity:1;stroke:none"
+             id="rect3779"
+             width="42.117001"
+             height="42.117001"
+             x="197.22697"
+             y="520.80682" />
+          <rect
+             y="520.80682"
+             x="149.7498"
+             height="42.117001"
+             width="42.117001"
+             id="rect3781"
+             style="fill:url(#linearGradient4600);fill-opacity:1;stroke:none" />
+        </g>
+        <rect
+           style="fill:url(#linearGradient4604);fill-opacity:1;stroke:none"
+           id="rect3759"
+           width="153.45517"
+           height="45.443848"
+           x="114.28571"
+           y="386.09204" />
+        <g
+           style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans"
+           id="text2987"
+           transform="matrix(0.87717744,0,0,1.0883632,-33.966766,-16.809217)">
+          <path
+             d="m 333.48993,392.42676 0,6.67969 -36,0 0,-6.67969 36,0"
+             style="font-size:72px;font-weight:bold;fill:#ffffff;-inkscape-font-specification:Sans Bold"
+             id="path3784"
+             inkscape:connector-curvature="0" />
+        </g>
+      </g>
+      <g
+         id="g3153">
+        <text
+           xml:space="preserve"
+           style="font-size:56px;font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:FreeSans;-inkscape-font-specification:FreeSans Semi-Bold"
+           x="284.4873"
+           y="451.79779"
+           id="text3047"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3049"
+             x="284.4873"
+             y="451.79779">One</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:56px;font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:FreeSans;-inkscape-font-specification:FreeSans Semi-Bold"
+           x="284.5882"
+           y="500.13794"
+           id="text3051"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3053"
+             x="284.5882"
+             y="500.13794">calendar</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:21px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#07a7da;fill-opacity:1;stroke:none;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           x="289.09497"
+           y="531.81439"
+           id="text3055"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3057"
+             x="289.09497"
+             y="531.81439"
+             style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:FreeSans;-inkscape-font-specification:FreeSans">To meet them all !</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:21px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#07a7da;fill-opacity:1;stroke:none;font-family:FreeSans;-inkscape-font-specification:FreeSans"
+           x="483.68143"
+           y="515.51801"
+           id="text3059"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3061"
+             x="483.68143"
+             y="515.51801"
+             style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:FreeSans;-inkscape-font-specification:FreeSans">beta</tspan></text>
+      </g>
+    </g>
+    <g
+       id="g4050"
+       transform="translate(59.158755,131.78986)"
+       inkscape:export-filename="/home/eric/Projets/OneCalendar/logo-rond-1c.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         id="g4025">
+        <path
+           sodipodi:type="arc"
+           style="fill:#0e232e;fill-opacity:1;stroke:none"
+           id="path4544"
+           sodipodi:cx="220.21326"
+           sodipodi:cy="314.95084"
+           sodipodi:rx="98.994949"
+           sodipodi:ry="98.994949"
+           d="m 319.20821,314.95084 c 0,54.6734 -44.32155,98.99495 -98.99495,98.99495 -54.6734,0 -98.99495,-44.32155 -98.99495,-98.99495 0,-54.6734 44.32155,-98.99495 98.99495,-98.99495 54.6734,0 98.99495,44.32155 98.99495,98.99495 z"
+           transform="matrix(0.74024649,0,0,0.74024649,21.95024,31.906009)"
+           inkscape:export-filename="/home/eric/onecalendar.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <text
+           xml:space="preserve"
+           style="font-size:30.41423225px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           x="177.67848"
+           y="275.03708"
+           id="text4546"
+           sodipodi:linespacing="125%"
+           inkscape:export-filename="/home/eric/onecalendar.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90"><tspan
+             sodipodi:role="line"
+             id="tspan4548"
+             x="177.67848"
+             y="275.03708"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu">1</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:22.74516106px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           x="190.63142"
+           y="276.39523"
+           id="text4546-6"
+           sodipodi:linespacing="125%"
+           inkscape:export-filename="/home/eric/onecalendar.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90"><tspan
+             sodipodi:role="line"
+             id="tspan4548-9"
+             x="190.63142"
+             y="276.39523"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu">c</tspan></text>
+      </g>
+      <g
+         id="g3143">
+        <text
+           xml:space="preserve"
+           style="font-size:56px;font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:FreeSans;-inkscape-font-specification:FreeSans Semi-Bold"
+           x="280.80753"
+           y="249.96875"
+           id="text3047-8"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3049-4"
+             x="280.80753"
+             y="249.96875">One</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:56px;font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:FreeSans;-inkscape-font-specification:FreeSans Semi-Bold"
+           x="280.90842"
+           y="298.3089"
+           id="text3051-8"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3053-2"
+             x="280.90842"
+             y="298.3089">calendar</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:21px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#07a7da;fill-opacity:1;stroke:none;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           x="285.41519"
+           y="329.98535"
+           id="text3055-0"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3057-4"
+             x="285.41519"
+             y="329.98535"
+             style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:FreeSans;-inkscape-font-specification:FreeSans">To meet them all !</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:21px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#07a7da;fill-opacity:1;stroke:none;font-family:FreeSans;-inkscape-font-specification:FreeSans"
+           x="480.00162"
+           y="313.68896"
+           id="text3059-8"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3061-2"
+             x="480.00162"
+             y="313.68896"
+             style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:FreeSans;-inkscape-font-specification:FreeSans">beta</tspan></text>
+      </g>
+    </g>
+    <g
+       id="g4036"
+       transform="translate(54.706407,57.116441)"
+       inkscape:export-filename="/home/eric/Projets/OneCalendar/logo-1c.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         id="g4032">
+        <path
+           inkscape:export-ydpi="90"
+           inkscape:export-xdpi="90"
+           inkscape:export-filename="/home/eric/onecalendar.png"
+           transform="matrix(0.38492884,0.12716743,-0.33543313,0.30071884,201.97923,-6.95169)"
+           d="m 305.9454,364.44831 c -27.3367,47.34856 -87.88106,63.57137 -135.22962,36.23467 -47.34855,-27.3367 -63.57136,-87.88106 -36.23466,-135.22962 27.3367,-47.34855 87.88106,-63.57137 135.22961,-36.23466 7.49224,4.32564 14.38513,9.61474 20.50252,15.73213"
+           sodipodi:ry="98.994949"
+           sodipodi:rx="98.994949"
+           sodipodi:cy="314.95084"
+           sodipodi:cx="220.21326"
+           id="path3061"
+           style="fill:none;stroke:#0e232e;stroke-width:39.54605484;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           sodipodi:type="arc"
+           sodipodi:start="0.52359878"
+           sodipodi:end="5.4977871"
+           sodipodi:open="true" />
+        <path
+           style="fill:none;stroke:#07a7da;stroke-width:14.83845425;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 161.9853,43.34747 17.13179,-6.871462 0,78.787412"
+           id="path3853"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccc"
+           inkscape:export-filename="/home/eric/onecalendar.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+      </g>
+      <g
+         id="g3133">
+        <text
+           xml:space="preserve"
+           style="font-size:56px;font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:FreeSans;-inkscape-font-specification:FreeSans Semi-Bold"
+           x="278.72095"
+           y="75.201279"
+           id="text3047-0"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3049-6"
+             x="278.72095"
+             y="75.201279">One</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:56px;font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:FreeSans;-inkscape-font-specification:FreeSans Semi-Bold"
+           x="278.82184"
+           y="123.54143"
+           id="text3051-2"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3053-3"
+             x="278.82184"
+             y="123.54143">calendar</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:21px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#07a7da;fill-opacity:1;stroke:none;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           x="283.32861"
+           y="155.21788"
+           id="text3055-4"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3057-44"
+             x="283.32861"
+             y="155.21788"
+             style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:FreeSans;-inkscape-font-specification:FreeSans">To meet them all !</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:21px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#07a7da;fill-opacity:1;stroke:none;font-family:FreeSans;-inkscape-font-specification:FreeSans"
+           x="477.9151"
+           y="138.92149"
+           id="text3059-5"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3061-8"
+             x="477.9151"
+             y="138.92149"
+             style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:FreeSans;-inkscape-font-specification:FreeSans">beta</tspan></text>
+      </g>
+    </g>
+    <g
+       id="g4095"
+       transform="translate(51.781063,217.11634)"
+       inkscape:export-filename="/home/eric/Projets/OneCalendar/logo-original.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <text
+         sodipodi:linespacing="125%"
+         id="text3047-84"
+         y="665.63544"
+         x="290.8428"
+         style="font-size:56px;font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:FreeSans;-inkscape-font-specification:FreeSans Semi-Bold"
+         xml:space="preserve"><tspan
+           y="665.63544"
+           x="290.8428"
+           id="tspan3049-8"
+           sodipodi:role="line">One</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3051-6"
+         y="713.97559"
+         x="290.9437"
+         style="font-size:56px;font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:FreeSans;-inkscape-font-specification:FreeSans Semi-Bold"
+         xml:space="preserve"><tspan
+           y="713.97559"
+           x="290.9437"
+           id="tspan3053-28"
+           sodipodi:role="line">calendar</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3055-3"
+         y="745.65204"
+         x="295.45047"
+         style="font-size:21px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#07a7da;fill-opacity:1;stroke:none;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+         xml:space="preserve"><tspan
+           style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:FreeSans;-inkscape-font-specification:FreeSans"
+           y="745.65204"
+           x="295.45047"
+           id="tspan3057-5"
+           sodipodi:role="line">To meet them all !</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3059-7"
+         y="729.35565"
+         x="490.0369"
+         style="font-size:21px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#07a7da;fill-opacity:1;stroke:none;font-family:FreeSans;-inkscape-font-specification:FreeSans"
+         xml:space="preserve"><tspan
+           style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:FreeSans;-inkscape-font-specification:FreeSans"
+           y="729.35565"
+           x="490.0369"
+           id="tspan3061-5"
+           sodipodi:role="line">beta</tspan></text>
+      <g
+         id="g3929">
+        <g
+           id="g20"
+           transform="matrix(0.78805643,0,0,-0.78805643,270.31471,711.45951)"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90">
+          <path
+             d="m 0,0 c 0,-25.531 -17.863,-46.229 -39.901,-46.229 l -114.005,0 c -22.037,0 -39.901,20.698 -39.901,46.229 l 0,94.693 c 0,25.533 17.864,46.229 39.901,46.229 l 114.005,0 C -17.863,140.922 0,120.226 0,94.693 L 0,0 z"
+             style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path22"
+             inkscape:connector-curvature="0" />
+        </g>
+        <g
+           id="g24"
+           transform="matrix(0.78805643,0,0,-0.78805643,270.31471,711.45951)"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90">
+          <path
+             d="m 0,0 c 0,-25.531 -17.863,-46.229 -39.901,-46.229 l -114.005,0 c -22.037,0 -39.901,20.698 -39.901,46.229 l 0,94.693 c 0,25.533 17.864,46.229 39.901,46.229 l 114.005,0 C -17.863,140.922 0,120.226 0,94.693 L 0,0 z"
+             style="fill:none;stroke:#0ecfef;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none"
+             id="path26"
+             inkscape:connector-curvature="0" />
+        </g>
+        <path
+           d="m 241.9383,624.7518 -2.74559,0 0,-2.92527 2.74559,0 0,2.92527 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path28"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 246.61226,624.7518 -2.74244,0 0,-2.92527 2.74244,0 0,2.92527 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path30"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 232.58959,629.29652 -2.74796,0 0,-2.92448 2.74796,0 0,2.92448 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path32"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 237.26434,629.29652 -2.74718,0 0,-2.92448 2.74718,0 0,2.92448 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path34"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 241.9383,629.29652 -2.74559,0 0,-2.92448 2.74559,0 0,2.92448 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path36"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 232.58959,633.84046 -2.74796,0 0,-2.92448 2.74796,0 0,2.92448 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path38"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 237.26434,633.84046 -2.74718,0 0,-2.92448 2.74718,0 0,2.92448 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path40"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 241.9383,633.84046 -2.74559,0 0,-2.92448 2.74559,0 0,2.92448 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path42"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 246.61226,633.84046 -2.74244,0 0,-2.92448 2.74244,0 0,2.92448 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path44"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 246.61541,624.7518 -2.74637,0 0,-2.92527 2.74637,0 0,2.92527 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path46"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 251.28937,624.7518 -2.74637,0 0,-2.92527 2.74637,0 0,2.92527 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path48"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 255.96255,624.7518 -2.74401,0 0,-2.92527 2.74401,0 0,2.92527 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path50"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 251.28937,629.29652 -2.74637,0 0,-2.92448 2.74637,0 0,2.92448 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path52"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 255.96255,629.29652 -2.74401,0 0,-2.92448 2.74401,0 0,2.92448 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path54"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 246.61541,633.84046 -2.74637,0 0,-2.92448 2.74637,0 0,2.92448 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path56"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 251.28937,633.84046 -2.74637,0 0,-2.92448 2.74637,0 0,2.92448 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path58"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 255.96255,633.84046 -2.74401,0 0,-2.92448 2.74401,0 0,2.92448 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path60"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 232.58959,633.84046 -2.74796,0 0,-2.92448 2.74796,0 0,2.92448 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path62"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 237.26434,633.84046 -2.74718,0 0,-2.92448 2.74718,0 0,2.92448 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path64"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 241.9383,633.84046 -2.74559,0 0,-2.92448 2.74559,0 0,2.92448 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path66"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 246.61226,633.84046 -2.74244,0 0,-2.92448 2.74244,0 0,2.92448 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path68"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 232.58959,638.38439 -2.74796,0 0,-2.92448 2.74796,0 0,2.92448 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path70"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 237.26434,638.38439 -2.74718,0 0,-2.92448 2.74718,0 0,2.92448 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path72"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 241.9383,638.38439 -2.74559,0 0,-2.92448 2.74559,0 0,2.92448 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path74"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <g
+           transform="matrix(0.78805643,0,0,-0.78805643,-3.7107066,938.75845)"
+           id="g76"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90">
+          <g
+             id="g78" />
+          <g
+             id="g84">
+            <g
+               clip-path="url(#clipPath80-0)"
+               id="g86"
+               style="opacity:0.13999903">
+              <path
+                 d="m 317.646,381.158 -3.48,0 0,3.711 3.48,0 0,-3.711 z"
+                 style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+                 id="path88"
+                 inkscape:connector-curvature="0" />
+            </g>
+          </g>
+        </g>
+        <path
+           d="m 232.58959,642.92989 -2.74796,0 0,-2.92447 2.74796,0 0,2.92447 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path90"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 237.26434,642.92989 -2.74718,0 0,-2.92447 2.74718,0 0,2.92447 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path92"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 246.61541,633.84046 -2.74637,0 0,-2.92448 2.74637,0 0,2.92448 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path94"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 251.28937,633.84046 -2.74637,0 0,-2.92448 2.74637,0 0,2.92448 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path96"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 255.96255,633.84046 -2.74401,0 0,-2.92448 2.74401,0 0,2.92448 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path98"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 246.61541,638.38439 -2.74637,0 0,-2.92448 2.74637,0 0,2.92448 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path100"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 251.28937,638.38439 -2.74637,0 0,-2.92448 2.74637,0 0,2.92448 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path102"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 255.96255,638.38439 -2.74401,0 0,-2.92448 2.74401,0 0,2.92448 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path104"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 246.61462,629.29652 -2.74795,0 0,-2.92448 2.74795,0 0,2.92448 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path106"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 241.93987,642.92989 -2.74795,0 0,-2.92447 2.74795,0 0,2.92447 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path108"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <g
+           id="g110"
+           transform="matrix(0.78805643,0,0,-0.78805643,118.76626,636.83617)"
+           style="fill:#ffffff"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90">
+          <path
+             d="m 0,0 c 0,24.664 17.227,44.729 38.401,44.729 l 114.005,0 c 21.174,0 38.401,-20.065 38.401,-44.729 l 0,-16.892 L 0,-17.132 0,0 z"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path112"
+             inkscape:connector-curvature="0" />
+        </g>
+        <g
+           id="g114"
+           transform="matrix(0.78805643,0,0,-0.78805643,238.87062,600.40472)"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90">
+          <path
+             d="m 0,0 -114.005,0 c -22.037,0 -39.901,-20.696 -39.901,-46.229 l 0,-18.634 193.807,0.243 0,18.391 C 39.901,-20.696 22.038,0 0,0 m 0,-3 c 20.347,0 36.901,-19.393 36.901,-43.229 l 0,-15.395 -187.807,-0.235 0,15.63 c 0,23.836 16.554,43.229 36.901,43.229 L 0,-3"
+             style="fill:#0cc0ea;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path116"
+             inkscape:connector-curvature="0" />
+        </g>
+        <path
+           d="m 218.16185,714.80222 36.81878,0 0,13.83276 -36.81878,0 0,-13.83276 z"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path394"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <g
+           transform="matrix(0.78805643,0,0,-0.78805643,-3.7107066,938.75845)"
+           id="g396"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90">
+          <g
+             id="g398" />
+          <g
+             id="g428"
+             mask="url(#mask408-3)"
+             style="fill:#ffffff">
+            <g
+               id="g430"
+               style="fill:#ffffff" />
+            <g
+               id="g436"
+               style="fill:#ffffff">
+              <g
+                 clip-path="url(#clipPath432-9)"
+                 id="g438"
+                 style="opacity:0.44999701;fill:#ffffff">
+                <path
+                   d="m 281.544,284.188 46.721,0 0,-17.553 -46.721,0 0,17.553 z"
+                   style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+                   id="path440"
+                   inkscape:connector-curvature="0" />
+              </g>
+            </g>
+          </g>
+        </g>
+        <path
+           d="m 237.29585,623.98659 -2.74559,0 0,-2.55172 2.74559,0 0,2.55172 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path496"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 241.96903,623.98659 -2.74323,0 0,-2.55172 2.74323,0 0,2.55172 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path498"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 227.94635,627.95131 -2.74795,0 0,-2.55173 2.74795,0 0,2.55173 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path500"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 232.6211,627.95131 -2.74637,0 0,-2.55173 2.74637,0 0,2.55173 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path502"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 237.29585,627.95131 -2.74559,0 0,-2.55173 2.74559,0 0,2.55173 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path504"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 227.94635,631.91366 -2.74795,0 0,-2.55094 2.74795,0 0,2.55094 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path506"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 232.6211,631.91366 -2.74637,0 0,-2.55094 2.74637,0 0,2.55094 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path508"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 237.29585,631.91366 -2.74559,0 0,-2.55094 2.74559,0 0,2.55094 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path510"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 241.96903,631.91366 -2.74323,0 0,-2.55094 2.74323,0 0,2.55094 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path512"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 241.97297,623.98659 -2.74717,0 0,-2.55172 2.74717,0 0,2.55172 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path514"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 246.64536,623.98659 -2.74638,0 0,-2.55172 2.74638,0 0,2.55172 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path516"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 251.31932,623.98659 -2.74401,0 0,-2.55172 2.74401,0 0,2.55172 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path518"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 246.64536,627.95131 -2.74638,0 0,-2.55173 2.74638,0 0,2.55173 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path520"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 251.31932,627.95131 -2.74401,0 0,-2.55173 2.74401,0 0,2.55173 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path522"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 241.97297,631.91366 -2.74717,0 0,-2.55094 2.74717,0 0,2.55094 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path524"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 246.64536,631.91366 -2.74638,0 0,-2.55094 2.74638,0 0,2.55094 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path526"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 251.31932,631.91366 -2.74401,0 0,-2.55094 2.74401,0 0,2.55094 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path528"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 227.94635,631.91366 -2.74795,0 0,-2.55094 2.74795,0 0,2.55094 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path530"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 232.6211,631.91366 -2.74637,0 0,-2.55094 2.74637,0 0,2.55094 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path532"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 237.29585,631.91366 -2.74559,0 0,-2.55094 2.74559,0 0,2.55094 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path534"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 241.96903,631.91366 -2.74323,0 0,-2.55094 2.74323,0 0,2.55094 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path536"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 227.94635,635.87758 -2.74795,0 0,-2.55172 2.74795,0 0,2.55172 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path538"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 232.6211,635.87758 -2.74637,0 0,-2.55172 2.74637,0 0,2.55172 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path540"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 237.29585,635.87758 -2.74559,0 0,-2.55172 2.74559,0 0,2.55172 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path542"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <g
+           transform="matrix(0.78805643,0,0,-0.78805643,-3.7107066,938.75845)"
+           id="g544"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90">
+          <g
+             id="g546" />
+          <g
+             id="g552">
+            <g
+               clip-path="url(#clipPath548-4)"
+               id="g554"
+               style="opacity:0.13999903">
+              <path
+                 d="m 311.754,384.339 -3.481,0 0,3.238 3.481,0 0,-3.238 z"
+                 style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+                 id="path556"
+                 inkscape:connector-curvature="0" />
+            </g>
+          </g>
+        </g>
+        <path
+           d="m 227.94635,639.84151 -2.74795,0 0,-2.55015 2.74795,0 0,2.55015 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path558"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 232.6211,639.84151 -2.74637,0 0,-2.55015 2.74637,0 0,2.55015 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path560"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 241.97297,631.91366 -2.74717,0 0,-2.55094 2.74717,0 0,2.55094 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path562"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 246.64536,631.91366 -2.74638,0 0,-2.55094 2.74638,0 0,2.55094 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path564"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 251.31932,631.91366 -2.74401,0 0,-2.55094 2.74401,0 0,2.55094 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path566"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 241.97297,635.87758 -2.74717,0 0,-2.55172 2.74717,0 0,2.55172 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path568"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 246.64536,635.87758 -2.74638,0 0,-2.55172 2.74638,0 0,2.55172 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path570"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 251.31932,635.87758 -2.74401,0 0,-2.55172 2.74401,0 0,2.55172 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path572"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 241.9714,627.95131 -2.74796,0 0,-2.55173 2.74796,0 0,2.55173 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path574"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           d="m 237.29664,639.84151 -2.74795,0 0,-2.55015 2.74795,0 0,2.55015 z"
+           style="fill:#07a7da;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path576"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/home/wadouk/Téléchargements/text442.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+      </g>
+    </g>
+  </g>
+</svg>
