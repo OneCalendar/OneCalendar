@@ -58,6 +58,11 @@ object EventDao extends CollectionsUtils
 
     def findAll()(implicit dbName: MongoDbName): List[Event] = find[Event](MongoDBObject())
 
+    def findAllFromNow()(implicit dbName: MongoDbName, now: () => Long) = {
+        val query = "begin" $gt now()
+        find[Event](query)
+    }
+
     def listTags()(implicit dbName: MongoDbName, now: () => Long): List[String] = {
         val query = "begin" $gt now()
         retrieveMongoCollection(EventMongoModel.collectionName).distinct("tags", query).toList.asInstanceOf[List[String]]
