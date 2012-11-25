@@ -23,6 +23,7 @@
     <meta charset="utf-8"/>
     <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/mobile.css")'>
     <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/suggest.css")'>
+    <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/banner.css")'>
     <script src='@routes.Assets.at("javascripts/lib/jquery.js")' type="text/javascript"></script>
     <script src='@routes.Assets.at("javascripts/suggest.js")' type="text/javascript"></script>
     <script src='@routes.Assets.at("javascripts/loader.js")' type="text/javascript"></script>
@@ -44,28 +45,11 @@
 
     </script>
 
-    <style>
-        header {
-            background-color: black;
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 100%;
-            color: white;
-            text-align: right;
-            padding: 3px;
-            padding-right: 15px;
-        }
-    </style>
-
 </head>
-
-
-
 
 <body>
 
-<header>évènements: <span id="eventNumber"></span> </header>
+<header><a href="/event/all" title="afficher tous les évènements">évènements: <span id="eventNumber"></span></a></header>
 
 <section id="title">
     <img src='@routes.Assets.at("images/onecalendar-beta.png")' alt="One caledar to meet them all (bêta)"
