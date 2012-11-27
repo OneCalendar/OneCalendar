@@ -105,13 +105,20 @@ class EventDaoTest extends FunSuite with ShouldMatchers with DaoCleaner {
         EventDao.findByTag(List("devoxx", "java")) should be(List(eventDevoxx, eventJava))
     }
 
-    test("should find event even if it have not originalStream & url") {
+    test("should find event even if it have not originalStream and url") {
         val eventWithNoOrigStreamAndUrl =
             Event("uid", "title", DateTime.now().plusDays(1), DateTime.now().plusDays(2), "location", "description", tags = List("TEST"))
         EventDao.saveEvent(eventWithNoOrigStreamAndUrl)
 
         EventDao.findByTag(List("test")) should be(List(eventWithNoOrigStreamAndUrl))
         EventDao.findAll() should be(List(eventWithNoOrigStreamAndUrl))
+    }
+
+    test("should not find event without uid but which is in database") {
+        val now: DateTime = DateTime.now
+        EventDao.saveEvent( Event(uid = null, tags = List("NO_UID"), begin = now, end = now) )
+
+        EventDao.findByTag(List("NO_UID")) should be (List(Event(uid = "", tags = List("NO_UID"), begin = now, end = now)))
     }
 
     test("should find 3 first events by tags 'devoxx', 'java' or other ") {
