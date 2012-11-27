@@ -36,9 +36,9 @@ class Eventbrite2EventMapperTest extends FunSuite with ShouldMatchers {
         event.title should be ("title")
     }
 
-    ignore("should map description without html") {
+    test("should map description without html") {
         val eb = EventbriteEvent(
-            description = Some("""<P><SPAN STYLE=\\\"font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: x-large;\\\">Summary</SPAN></P>\\r\\n""")
+            description = Some("""<P><SPAN STYLE=\\\"font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: x-large;\\\">Summary</SPAN></P>""")
         )
         val event: Event = toEvent(eb, Nil, "")
         event.description should be ("Summary")
@@ -46,10 +46,10 @@ class Eventbrite2EventMapperTest extends FunSuite with ShouldMatchers {
 
     test("should map description") {
         val eb = EventbriteEvent(
-            description = Some("""<P><SPAN STYLE=\\\"font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: x-large;\\\">Summary</SPAN></P>\\r\\n""")
+            description = Some("""<P><SPAN STYLE=\\\"font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: x-large;\\\">Summary</SPAN></P>""")
         )
         val event: Event = toEvent(eb, Nil, "")
-        event.description should include ("Summary")
+        event.description should be ("Summary")
     }
 
     test("should map begin") {
@@ -102,13 +102,13 @@ class Eventbrite2EventMapperTest extends FunSuite with ShouldMatchers {
     test("should map url") {
         val eb = EventbriteEvent(url = Some("http://psug-27-SRCH.eventbrite.com"))
         val event: Event = toEvent(eb, Nil, "")
-        event.url should be ("http://psug-27-SRCH.eventbrite.com")
+        event.url should be (Some("http://psug-27-SRCH.eventbrite.com"))
     }
 
     test("should have originalStream = keyword") {
         val eb = EventbriteEvent()
         val event: Event = toEvent(eb, Nil, "keyword")
-        event.originalStream should be ("keyword")
+        event.originalStream should be (Some("keyword"))
     }
 
 

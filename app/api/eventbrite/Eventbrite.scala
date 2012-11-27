@@ -51,8 +51,8 @@ object Eventbrite  {
             location = venueToLocation(eb.venue),
             description = cleanHtml(eb.description.getOrElse("")),
             tags = (defaultTags ::: toTags(eb.tags)).map(_.toUpperCase),
-            url = eb.url.getOrElse(""),
-            originalStream = originalStream
+            url = eb.url,
+            originalStream = Option(originalStream)
         )
     }
 
