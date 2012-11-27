@@ -37,4 +37,8 @@ class EventbriteTest extends FunSuite with ShouldMatchers {
         thrown.getMessage should (include("application key") and include ("not valid"))
     }
 
+    test("a content with html is sanytize") {
+        Eventbrite.cleanHtml("""<a href="something">a text</a>""") should be ("a text")
+    }
+
 }

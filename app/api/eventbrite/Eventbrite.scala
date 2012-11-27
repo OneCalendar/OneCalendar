@@ -21,6 +21,7 @@ import java.net.URL
 import models.Event
 import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormat
+import scala.util.matching.Regex
 
 object Eventbrite  {
 
@@ -48,12 +49,17 @@ object Eventbrite  {
             begin = toDate(eb.start_date,eb.timezone_offset),
             end = toDate(eb.end_date,eb.timezone_offset),
             location = venueToLocation(eb.venue),
-            description = eb.description.getOrElse(""),
+            description = cleanHtml(eb.description.getOrElse("")),
             tags = (defaultTags ::: toTags(eb.tags)).map(_.toUpperCase),
             url = eb.url.getOrElse(""),
             originalStream = originalStream
         )
     }
+
+    def cleanHtml(content:String):String = {
+        new Regex("""<.*?>""").replaceAllIn(content,"")
+    }
+
 
     val venueToLocation: (Option[Venue]) => String = { opVenue =>
         opVenue match {
