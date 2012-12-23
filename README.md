@@ -1,6 +1,6 @@
 # One Calendar To Meet Them All
 
-You can view it for real on the site : [onecalendar.valtech.fr](http://onecalendar.valtech.fr)
+You can view it for real on the site : [onecalendar.fr](http://onecalendar.fr)
 
 ## The problem we solve
 
