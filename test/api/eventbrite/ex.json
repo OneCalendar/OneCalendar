@@ -1,0 +1,1007 @@
+{"events":[
+    {
+        "summary":{
+            "total_items":41,
+            "first_event":4819205373,
+            "last_event":4737033595,
+            "filters":{
+                "keywords":"scala"
+            },
+            "num_showing":10
+        }
+    },
+    {
+        "event":{
+            "box_header_text_color":"005580",
+            "link_color":"EE6600",
+            "box_background_color":"FFFFFF",
+            "timezone":"America/New_York",
+            "box_border_color":"D5D5D3",
+            "logo":"http://ebmedia.eventbrite.com/s3-build/images/784553/36940399298/1/logo.png",
+            "organizer":{
+                "url":"http://www.eventbrite.com/org/2513699582",
+                "description":"Composable Solutions provides professional Scala training and consulting.\u00a0\r\nLocated in Boston and Philadelphia, it was formed to respond to a growing demand for Scala training and consulting services.\u00a0All of our team members are seasoned software developers with broad range of skills and deep Scala expertise. They are also very active Scala community members.",
+                "long_description":"",
+                "id":2513699582,
+                "name":"Composable Solutions"
+            },
+            "background_color":"FFFFFF",
+            "id":4819205373,
+            "category":"seminars",
+            "box_header_background_color":"EFEFEF",
+            "capacity":30,
+            "num_attendee_rows":0,
+            "title":"Typesafe's Fast Track to Scala",
+            "start_date":"2013-01-28 09:00:00",
+            "status":"Live",
+            "description":"<P><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: x-large;\">Summary</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: medium;\"><A HREF=\"http://www.composables.com\" TARGET=\"_blank\">Composable Solutions</A>, in partnership with <A HREF=\"http://www.typesafe.com\" TARGET=\"_blank\">Typesafe</A>, is pleased to offer a two-day course, designed by Martin Odersky, the creator of the Scala programming language, and Heiko Seeberger, a recognized Scala expert, with a goal of giving you an excellent grounding in Scala.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: medium;\">It is intended to enable developers or development managers, who are experienced programmers in Java or other production languages like C++, C# or Ruby, to confidently start programming in Scala. No previous knowledge of Scala is assumed. Although intense, the course ensures you will have a solid understanding of the fundamentals of the language, the tooling and the development process as well as a good appreciation of the more advanced features. If you already have Scala programming experience, then this course could be a useful refresher.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: medium;\"><BR></SPAN></P>\r\n<P><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: x-large;\">Objectives</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: medium;\">After having participated in this course you should:</SPAN></P>\r\n<UL>\r\n<LI><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: medium;\">be a competent user of Scala constructs in application code</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: medium;\">know and be able to apply the functional programming style in Scala</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: medium;\">know how to use the fundamental Scala tools</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: medium;\">be confident to start using Scala in production applications</SPAN></LI>\r\n</UL>\r\n<P><SPAN STYLE=\"line-height: 21px; text-align: -webkit-auto; font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: medium;\"><SPAN STYLE=\"font-size: x-large;\"><BR></SPAN></SPAN></P>\r\n<P><SPAN STYLE=\"line-height: 21px; text-align: -webkit-auto; font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: medium;\"><SPAN STYLE=\"font-size: x-large;\">Prerequisites</SPAN>\u00a0</SPAN></P>\r\n<P><SPAN STYLE=\"line-height: 21px; text-align: -webkit-auto; font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: medium;\">The presentation will frequently be mixed with hands-on exercises that give you a good opportunity to try what you have learnt and a chance to clarify your understanding. The training facility can provide a certain number of workstations, but we highly recommend bringing your laptop so that you can preserve a fully set up Scala development environment after the course ends.</SPAN></P>\r\n<P><SPAN STYLE=\"line-height: 21px; text-align: -webkit-auto; font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: medium;\"><BR></SPAN></P>\r\n<P STYLE=\"text-align: -webkit-auto;\"><SPAN STYLE=\"font-size: x-large; color: #003366;\">Instructors</SPAN><SPAN STYLE=\"color: #003366; font-family: tahoma, arial, helvetica, sans-serif; line-height: 21px; font-size: medium;\">\u00a0</SPAN>\u00a0</P>\r\n<P><SPAN STYLE=\"line-height: 21px; text-align: -webkit-auto; font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: medium;\"><SPAN STYLE=\"line-height: 18px;\"><SPAN STYLE=\"font-size: large;\"><STRONG>Brian Clapper</STRONG></SPAN> has nearly 30 years' experience building and maintaining software systems and has been a consultant since 2009. Brian has a broad base of experience, from financial trading systems and master data management software to ecommerce web sites and Internet advertising software. He is comfortable working in companies of all sizes, but he has a special fondness for high-energy startups. He knows, and regularly uses, many different programming languages, including Scala, Python, Ruby, Java, C and C#. (He likes to think of himself as a generalist and a polyglot.) Brian is founder of the\u00a0</SPAN><SPAN STYLE=\"color: #ff6600;\"><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"http://scala-phase.org/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">Philadelphia Area Scala Enthusiasts</SPAN></A></SPAN><SPAN STYLE=\"line-height: 18px;\">\u00a0(PHASE). He is co-organizer of\u00a0</SPAN><SPAN STYLE=\"color: #ff6600;\"><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"http://scalathon.org/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">Scalathon</SPAN></A></SPAN><SPAN STYLE=\"line-height: 18px;\">, the international Scala hackathon, and he has been a co-organizer of the annual\u00a0</SPAN><SPAN STYLE=\"color: #ff6600;\"><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"http://nescala.org/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">Northeast Scala Symposium</SPAN></A></SPAN><SPAN STYLE=\"line-height: 18px;\">\u00a0since it began, in 2011. Brian maintains a number of open-source Scala projects, including\u00a0</SPAN><SPAN STYLE=\"color: #ff6600;\"><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"http://software.clapper.org/argot/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">Argot</SPAN></A></SPAN><SPAN STYLE=\"line-height: 18px;\">\u00a0(a command line parser),\u00a0</SPAN><SPAN STYLE=\"color: #ff6600;\"><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"http://software.clapper.org/avsl/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">AVSL</SPAN></A></SPAN><SPAN STYLE=\"line-height: 18px;\">\u00a0(an\u00a0</SPAN><SPAN STYLE=\"color: #ff6600;\"><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"http://www.slf4j.org/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">SLF4J</SPAN></A></SPAN><SPAN STYLE=\"line-height: 18px;\">-based logging framework),\u00a0</SPAN><SPAN STYLE=\"color: #ff6600;\"><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"http://software.clapper.org/grizzled-scala/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">Grizzled Scala</SPAN></A></SPAN><SPAN STYLE=\"line-height: 18px;\">\u00a0(a general purpose library),\u00a0</SPAN><SPAN STYLE=\"color: #ff6600;\"><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"http://software.clapper.org/classutil/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">ClassUtil</SPAN></A></SPAN><SPAN STYLE=\"line-height: 18px;\">\u00a0(a fast class-finder library),\u00a0</SPAN><SPAN STYLE=\"color: #ff6600;\"><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"http://software.clapper.org/sqlshell/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">SQLShell</SPAN></A></SPAN><SPAN STYLE=\"line-height: 18px;\">\u00a0(a JDBC-based SQL command shell), and several\u00a0</SPAN><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"http://www.scala-sbt.org/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #003366;\">SBT</SPAN></A><SPAN STYLE=\"line-height: 18px;\">\u00a0plugins. All are available at\u00a0</SPAN><SPAN STYLE=\"color: #ff6600;\"><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"http://software.clapper.org/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">software.<SPAN CLASS=\"il\">clapper</SPAN>.org</SPAN></A></SPAN><SPAN STYLE=\"line-height: 18px;\">\u00a0or in Brian's\u00a0</SPAN><SPAN STYLE=\"color: #ff6600;\"><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"https://github.com/bmc/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">GitHub repository</SPAN></A></SPAN><SPAN STYLE=\"line-height: 18px;\">.</SPAN></SPAN></P>\r\n<P STYLE=\"text-align: -webkit-auto;\"><FONT SIZE=\"3\" COLOR=\"#003366\" FACE=\"tahoma, arial, helvetica, sans-serif\"><SPAN STYLE=\"line-height: 18px;\"><BR></SPAN></FONT></P>\r\n<P STYLE=\"color: #000000; font-family: Helvetica, Arial, sans-serif; font-size: 12px; line-height: normal; text-align: left;\"><SPAN STYLE=\"line-height: 21px; text-align: -webkit-auto; font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: medium;\"><SPAN STYLE=\"line-height: 18px;\"><SPAN STYLE=\"font-size: large;\"><STRONG>Nermin Serifovic</STRONG></SPAN> has 10 years of experience building enterprise software applications using Java technologies. For the past 5 years he has focused on architecting, designing and developing backend platforms. Nermin has been a Scala enthusiast since 2009 and practitioning it professionally since mid 2011. He has given various talks at JavaOne, <A HREF=\"http://days2011.scala-lang.org/node/138/293\" TARGET=\"_blank\">Scala Days</A> and <A HREF=\"http://vimeo.com/20290504\" TARGET=\"_blank\">Northeast Scala Symposium</A>, as well as at local Scala and Java user groups. Nermin is a founder and co-organizer of\u00a0</SPAN><SPAN STYLE=\"color: #ff6600;\"><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"http://www.meetup.com/boston-scala/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">Boston Area Scala Enthusiasts</SPAN></A></SPAN><SPAN STYLE=\"line-height: 18px;\">\u00a0user group and co-founder and co-organizer of\u00a0</SPAN><SPAN STYLE=\"color: #ff6600;\"><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"http://nescala.org/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">Northeast Scala Symposium</SPAN></A></SPAN><SPAN STYLE=\"line-height: 18px;\">. Furthermore, he is a co-creator and co-maintainer of the\u00a0</SPAN><SPAN STYLE=\"color: #ff6600;\"><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"http://www.scalapuzzlers.com/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">Scala Puzzlers website</SPAN></A></SPAN><SPAN STYLE=\"line-height: 18px;\">. Nermin holds a MEng in Computer Science from Cornell University and his areas of interest include distributed systems along with concurrent, parallel and functional programming.</SPAN></SPAN></P>\r\n<P><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: medium;\">\u00a0</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: x-large;\">Outline</SPAN></P>\r\n<P><STRONG><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: medium;\">Introduction</SPAN></STRONG></P>\r\n<P><STRONG><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: medium;\">First steps in Scala</SPAN></STRONG></P>\r\n<P><STRONG><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: medium;\">OO basics</SPAN></STRONG></P>\r\n<P><STRONG><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: medium;\">Testing</SPAN></STRONG></P>\r\n<P><FONT SIZE=\"3\" COLOR=\"#003366\" FACE=\"tahoma, arial, helvetica, sans-serif\"><STRONG>Collections and functional programming</STRONG></FONT></P>\r\n<P><STRONG><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: medium;\">For-expressions and loops</SPAN></STRONG></P>\r\n<P><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: medium;\"><STRONG>Inheritance and traits</STRONG>\u00a0</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: medium;\"><STRONG>Pattern Matching</STRONG>\u00a0</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; color: #003366; font-size: medium;\"><STRONG>Dealing with optional values</STRONG>\u00a0</SPAN></P>\r\n<DIV>\r\n<DIV><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: small;\"><FONT SIZE=\"3\" COLOR=\"#000080\" FACE=\"tahoma, arial, helvetica, sans-serif\"><SPAN STYLE=\"line-height: 20px;\"><BR></SPAN></FONT></SPAN></DIV>\r\n<DIV><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: small; color: #000080;\"><FONT SIZE=\"3\" COLOR=\"#000080\" FACE=\"tahoma, arial, helvetica, sans-serif\"><SPAN STYLE=\"line-height: 20px;\">Cancellation Policy</SPAN></FONT></SPAN></DIV>\r\n<DIV><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: small; color: #000080;\"><FONT SIZE=\"3\" COLOR=\"#000080\" FACE=\"tahoma, arial, helvetica, sans-serif\"><SPAN STYLE=\"line-height: 20px;\"><BR></SPAN></FONT></SPAN></DIV>\r\n<DIV><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: small; color: #000080;\"><FONT SIZE=\"3\" COLOR=\"#000080\" FACE=\"tahoma, arial, helvetica, sans-serif\"><SPAN STYLE=\"line-height: 20px;\">This course is offered contigent upon minimum enrollment requirements. Composable Solutions reserves the right to cancel the course in case of a low enrollment, not later than three weeks before beginning of the course. You will receive a full refund if the course is cancelled.</SPAN></FONT></SPAN></DIV>\r\n<DIV><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: small; color: #000080;\"><FONT SIZE=\"3\" COLOR=\"#000080\" FACE=\"tahoma, arial, helvetica, sans-serif\"><SPAN STYLE=\"line-height: 20px;\"><BR></SPAN></FONT></SPAN></DIV>\r\n<DIV><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: small; color: #000080;\"><FONT SIZE=\"3\" COLOR=\"#000080\" FACE=\"tahoma, arial, helvetica, sans-serif\"><SPAN STYLE=\"line-height: 20px;\">Students who need to cancel the attendance will receive (less any registration servicing fees):</SPAN></FONT></SPAN></DIV>\r\n<DIV>\r\n<UL>\r\n<LI><SPAN STYLE=\"color: #000080;\"><FONT SIZE=\"3\" COLOR=\"#000080\" FACE=\"tahoma, arial, helvetica, sans-serif\"><SPAN STYLE=\"line-height: 20px;\">Full refund with two weeks notice</SPAN></FONT></SPAN></LI>\r\n<LI><SPAN STYLE=\"color: #000080;\"><FONT SIZE=\"3\" COLOR=\"#000080\" FACE=\"tahoma, arial, helvetica, sans-serif\"><SPAN STYLE=\"line-height: 20px;\">80% refund with one week notice</SPAN></FONT></SPAN></LI>\r\n<LI><SPAN STYLE=\"color: #000080;\"><FONT SIZE=\"3\" COLOR=\"#000080\" FACE=\"tahoma, arial, helvetica, sans-serif\"><SPAN STYLE=\"line-height: 20px;\">25% refund with less than one week notice</SPAN></FONT></SPAN></LI>\r\n</UL>\r\n</DIV>\r\n</DIV>",
+            "end_date":"2013-01-29 17:00:00",
+            "tags":"Scala training",
+            "timezone_offset":"GMT-0500",
+            "text_color":"005580",
+            "title_text_color":"",
+            "tickets":[
+                {
+                    "ticket":{
+                        "description":"",
+                        "end_date":"2012-12-29 09:00:00",
+                        "min":1,
+                        "max":0,
+                        "price":"1,295.00",
+                        "visible":"true",
+                        "start_date":"2012-08-27 13:00:00",
+                        "currency":"USD",
+                        "type":0,
+                        "id":15984441,
+                        "name":"Early Bird"
+                    }
+                },
+                {
+                    "ticket":{
+                        "description":"",
+                        "end_date":"2013-01-27 21:00:00",
+                        "min":1,
+                        "max":0,
+                        "price":"1,595.00",
+                        "visible":"true",
+                        "start_date":"2012-08-27 00:00:00",
+                        "currency":"USD",
+                        "type":0,
+                        "id":15984443,
+                        "name":"Regular"
+                    }
+                }
+            ],
+            "distance":"0.00M",
+            "created":"2012-11-11 18:31:10",
+            "url":"http://www.eventbrite.com/event/4819205373/SRCH",
+            "box_text_color":"000000",
+            "privacy":"Public",
+            "venue":{
+                "city":"Boston",
+                "name":"",
+                "country":"United States",
+                "region":"MA",
+                "longitude":-71.059773000000007,
+                "postal_code":"",
+                "address_2":"",
+                "address":"",
+                "latitude":42.358431000000003,
+                "country_code":"US",
+                "id":2636795,
+                "Lat-Long":"42.358431 / -71.059773"
+            },
+            "modified":"2012-11-11 18:43:13",
+            "logo_ssl":"https://ebmedia.eventbrite.com/s3-build/images/784553/36940399298/1/logo.png",
+            "repeats":"no"
+        }
+    },
+    {
+        "event":{
+            "box_header_text_color":"005580",
+            "link_color":"EE6600",
+            "box_background_color":"FFFFFF",
+            "timezone":"America/New_York",
+            "box_border_color":"D5D5D3",
+            "logo":"http://ebmedia.eventbrite.com/s3-build/images/535596/22139229324/1/logo.png",
+            "organizer":{
+                "url":"http://www.eventbrite.com/org/1530696392",
+                "description":"\r\nSkills Matter helps a community of passionate developers learn and share skills to write better software. \r\nSkills Matter collaborates with the world's leading innovators in software and thousands of passionate developers meeting up at Skills Matter, to produce some 450 intensive workshops , 500 talks & meetups, 2,000 hours worth of skillscast video's, quarterly Open Source Journal magazine's per year. Join our community to learn and share skills on leading ideas and truly bleeding edge technologies (from HTML5, Android and  iPhone to F#,  Clojure and Scala, from DDD and CQRS to RDFa and NOSQL and from Lean, Kanban and Agile Leadership to Software Craftsmanship and Agile Testing to BDD) \r\n\u00a0\r\n\u00a0\r\n Skills Matter's mission is to promote continuous learning and innovation in software. More than 35,000 people get together at Skills Matter each year, everyone with the goal of improving themselves and our community. We welcomed 42,000 face-to-face visits to our talks, workshops and gatherings in the last 12 months and our SkillsCast video's were seen by several hundreds of thousands of passionate developers too. Follow us on twitter @skillsmatter #skillsmatter\r\n\u00a0\r\n\u00a0\r\n\u00a0\r\n\u00a0\r\n\u00a0",
+                "long_description":"Skills Matter helps a community of passionate developers learn and share skills to write better software. \r\nSkills Matter collaborates with the world's leading innovators in software and thousands of passionate developers meeting up at Skills Matter, to produce some 450 intensive workshops , 500 talks & meetups, 2,000 hours worth of skillscast video's, quarterly Open Source Journal magazine's per year. Join our community to learn and share skills on leading ideas and truly bleeding edge technologies (from HTML5, Android and  iPhone to F#,  Clojure and Scala, from DDD and CQRS to RDFa and NOSQL and from Lean, Kanban and Agile Leadership to Software Craftsmanship and Agile Testing to BDD) \r\n \r\n \r\n Skills Matter's mission is to promote continuous learning and innovation in software. More than 35,000 people get together at Skills Matter each year, everyone with the goal of improving themselves and our community. We welcomed 42,000 face-to-face visits to our talks, workshops and gatherings in the last 12 months and our SkillsCast video's were seen by several hundreds of thousands of passionate developers too. Follow us on twitter @skillsmatter #skillsmatter",
+                "id":1530696392,
+                "name":"Skills Matter"
+            },
+            "background_color":"FFFFFF",
+            "id":4271165170,
+            "category":"seminars,conferences",
+            "box_header_background_color":"EFEFEF",
+            "capacity":12,
+            "num_attendee_rows":2,
+            "title":"Typesafe's Advanced Scala",
+            "start_date":"2012-12-05 09:00:00",
+            "status":"Live",
+            "description":"<DIV CLASS=\"course_text\">\r\n<DIV CLASS=\"course_text\">If you already have some programming experience with Scala and need to understand it's advanced features, Typesafe's Advanced Scala, designed by Martin Odersky, the creator of the Scala, and Heiko Seeberger, a recognized Scala expert, will show you how to unleash the full power of this scalable language.\r\n<P>It is intended to enable developers, who have at least 3 months programming experience with Scala and feel comfortable to use it in their applications, to fully understand various advanced features of this programming language and how to apply these to create well designed libraries or DSLs using proven practices. Basic knowledge of Scala like covered in <A HREF=\"http://skillsmatter.com/course/scala/object-oriented-meets-functional-an-exploration-of-scala\">Typesafe's Fast Track to Scala</A> course is a prerequisite to understand topics like advanced functional programming, details of the type system, implicits, etc.</P>\r\n</DIV>\r\n</DIV>\r\n<DIV CLASS=\"course_text\">\u00a0</DIV>\r\n<DIV CLASS=\"pluginblockcourse\" STYLE=\"color: #666666;\">LEARN HOW TO:</DIV>\r\n<DIV CLASS=\"course_text\">\r\n<DIV CLASS=\"course_text\">\r\n<P>After having participated in this course you should:</P>\r\n<UL>\r\n<LI>understand all aspects of the object-functional approach</LI>\r\n<LI>know and be able to apply advanced features of Scala's type system</LI>\r\n<LI>fully understand implicit conversions</LI>\r\n<LI>be confident to design libraries and DSLs</LI>\r\n</UL>\r\n</DIV>\r\n</DIV>\r\n<P>\u00a0</P>\r\n<DIV CLASS=\"pluginblockcourse\" STYLE=\"color: #999999;\">ABOUT THE AUTHORS</DIV>\r\n<P>\u00a0</P>\r\n<TABLE CLASS=\"pluginslot\">\r\n<TBODY>\r\n<TR>\r\n<TD><A HREF=\"http://skillsmatter.com/expert-profile//heiko-seeberger\"> <IMG STYLE=\"width: 100px; padding-right: 5px;\" SRC=\"https://skillsmatter.com/custom/geeks_thumb/heiko-seeberger-large.jpg\" ALT=\"\"> </A></TD>\r\n<TD>Heiko Seeberger is the Director Professional Services at Typesafe. He has been a Scala enthusiast ever since he came to know this beautiful language in 2008. Soon after he was infected by Scala he started the ScalaModules project, a Scala-based DSL.........<BR> <A HREF=\"http://skillsmatter.com/expert-profile//heiko-seeberger\"> More about Heiko Seeberger</A></TD>\r\n</TR>\r\n</TBODY>\r\n</TABLE>\r\n<P>\u00a0</P>\r\n<TABLE CLASS=\"pluginslot\">\r\n<TBODY>\r\n<TR>\r\n<TD><A HREF=\"http://skillsmatter.com/expert-profile//martin-odersky\"> <IMG STYLE=\"width: 100px; padding-right: 5px;\" SRC=\"https://skillsmatter.com/custom/geeks_thumb/martin-odersky-large.jpg\" ALT=\"\"> </A></TD>\r\n<TD>Martin Odersky is a professor at EPFL in Lausanne, Switzerland. He is best known as the creator of the Scala programming language. Prior to that, he made several contributions to the development of Java. He created the Pizza and GJ languages, design.......<BR> <A HREF=\"http://skillsmatter.com/expert-profile//martin-odersky\"> More about Martin Odersky</A></TD>\r\n</TR>\r\n</TBODY>\r\n</TABLE>\r\n<P>THE EXPERT</P>\r\n<TABLE CLASS=\"pluginslot\">\r\n<TBODY>\r\n<TR>\r\n<TD><A HREF=\"http://skillsmatter.com/expert-profile/scala/nilanjan-raychaudhuri\"> <IMG STYLE=\"width: 100px; padding-right: 5px;\" SRC=\"http://skillsmatter.com/custom/geeks_thumb/nilanjan-raychaudhuri-large.jpg\" ALT=\"\"> </A></TD>\r\n<TD>Nilanjan Raychaudhuri is a consultant and trainer for Typesafe. He has more than 12 years of experience managing and developing software solutions in Java/JEE, Ruby, Groovy and also in Scala. He is zealous about programming in Scala ever since he got introduced to this beautiful language. He enjoys sharing his experience via talks in various conferences and he is also the author of the \"Scala in Action\" book.<BR> <A HREF=\"http://skillsmatter.com/expert-profile/scala/nilanjan-raychaudhuri\"> More about Nilanjan Raychaudhuri</A></TD>\r\n</TR>\r\n</TBODY>\r\n</TABLE>\r\n<DIV CLASS=\"pluginblockcourse\" STYLE=\"color: #666666;\">\u00a0</DIV>\r\n<DIV CLASS=\"pluginblockcourse\" STYLE=\"color: #666666;\">PROGRAMME</DIV>\r\n<DIV CLASS=\"course_text\">\r\n<UL>\r\n<LI>Setting up the development environment\r\n<UL>\r\n<LI>Installing the Scala distribution</LI>\r\n<LI>Installing Eclipse and the Scala plugin</LI>\r\n<LI>Installing sbt</LI>\r\n</UL>\r\n</LI>\r\n<LI>Bootstrapping\r\n<UL>\r\n<LI>Initial state of the ScalaTrain case study</LI>\r\n<LI>Short recap of important basics</LI>\r\n</UL>\r\n</LI>\r\n<LI>Functional programming in depth</LI>\r\n<UL>\r\n<LI>By-name parameters</LI>\r\n<LI>Local methods</LI>\r\n<LI>Recursion and tail recursion</LI>\r\n<LI>Partial functions</LI>\r\n<LI>Currying</LI>\r\n<LI>Partially applied functions</LI>\r\n<LI>The power of folding</LI>\r\n</UL>\r\n<LI>Mastering the type system\r\n<UL>\r\n<LI>Type parameters</LI>\r\n<LI>Variance</LI>\r\n<LI>Lower and upper bounds</LI>\r\n<LI>Type members</LI>\r\n<LI>Path dependent types</LI>\r\n<LI>Refinements and structural typing</LI>\r\n<LI>Phantom types</LI>\r\n<LI>Self types</LI>\r\n</UL>\r\n</LI>\r\n<LI>Explicitly implicit\r\n<UL>\r\n<LI>Implicit conversions</LI>\r\n<LI>Implicit parameters</LI>\r\n<LI>Type classes</LI>\r\n<LI>View bounds</LI>\r\n<LI>Context bounds</LI>\r\n<LI>Manifests</LI>\r\n</UL>\r\n</LI>\r\n<LI>Internal DSLs</LI>\r\n<LI>Contributing to the Scala collections</LI>\r\n<LI>Q & A\r\n<UL>\r\n<LI>Talking about real-world experiences</LI>\r\n<LI>Scala libraries</LI>\r\n</UL>\r\n</LI>\r\n</UL>\r\n</DIV>\r\n<DIV CLASS=\"pluginblockcourse\" STYLE=\"color: #666666;\">IS THIS COURSE FOR YOU?</DIV>\r\n<DIV CLASS=\"course_text\">\r\n<P>If you are a developer with at least 3 months Scala programming experience and you would like to learn various advanced features of this programming language and how to apply these to create well designed libraries or DSLs using proven practices, Typesafe's Advanced Scala is for you!</P>\r\n</DIV>\r\n<DIV CLASS=\"pluginblockcourse\" STYLE=\"color: #666666;\">COURSE PREREQUISITES</DIV>\r\n<DIV CLASS=\"course_text\">\r\n<P>Basic knowledge of Scala like covered in <A HREF=\"http://skillsmatter.com/course/scala/object-oriented-meets-functional-an-exploration-of-scala\">Typesafe's Fast Track to Scala</A> course is a prerequisite to understand topics like advanced functional programming, details of the type system, implicits, etc</P>\r\n<P><STRONG>Important - Please note:</STRONG> Delegates are requested to bring their own laptop for this course. If you are unable to bring a laptop for the course, please contact the sales team on <SPAN CLASS=\"vevent\"><SPAN CLASS=\"description\">+1 347 708 1529</SPAN></SPAN>, or by email <A TITLE=\"bookings@skillsmatter.com\" HREF=\"mailto:bookings@skillsmatter.com\">bookings</A>. A full installation guide for the course software will be provided with your course joining instructions.</P>\r\n</DIV>\r\n<DIV CLASS=\"pluginblockcourse\" STYLE=\"color: #666666;\">COURSE LABS & EXERCISES</DIV>\r\n<DIV CLASS=\"course_text\">This Advanced Scala course features lectures, mixed with frequent hands-on exercises that give you a good opportunity to try what you have learnt and a chance to clarify your understanding.</DIV>\r\n<DIV CLASS=\"course_text\">\u00a0</DIV>\r\n<DIV CLASS=\"pluginblockcourse\" STYLE=\"color: #666666;\">TERMS AND CONDITIONS</DIV>\r\n<P><A HREF=\"https://skillsmatter.com/registration/usa_registration_terms.html\" TARGET=\"regterms\">Click here to read our Terms & Conditions</A></P>",
+            "end_date":"2012-12-06 17:00:00",
+            "tags":"",
+            "timezone_offset":"GMT-0500",
+            "text_color":"005580",
+            "title_text_color":"",
+            "tickets":[
+                {
+                    "ticket":{
+                        "description":"This Early Bird ticket entitles the holder entry to Typesafe's Advanced Scala on the 5th of December 2012 in New York City",
+                        "end_date":"2012-10-24 10:00:00",
+                        "min":1,
+                        "max":30,
+                        "price":"1,525.00",
+                        "visible":"true",
+                        "start_date":"2012-09-03 01:00:00",
+                        "currency":"USD",
+                        "type":0,
+                        "id":15107892,
+                        "name":"Early Bird 15% Off! Typesafe's Advanced Scala"
+                    }
+                },
+                {
+                    "ticket":{
+                        "description":"This ticket entitles the holder entry to Typesafe's Advanced Scala on the 5th of December 2012 in New York City",
+                        "end_date":"2012-12-04 09:00:00",
+                        "min":1,
+                        "max":30,
+                        "price":"1,795.00",
+                        "visible":"true",
+                        "start_date":"2012-10-24 10:00:00",
+                        "currency":"USD",
+                        "type":0,
+                        "id":15107894,
+                        "name":"Typesafe's Advanced Scala"
+                    }
+                }
+            ],
+            "distance":"0.00M",
+            "created":"2012-09-03 13:34:30",
+            "url":"http://www.eventbrite.com/event/4271165170/SRCH",
+            "box_text_color":"000000",
+            "privacy":"Public",
+            "venue":{
+                "city":"New York",
+                "name":"MicroTek - New York City",
+                "country":"United States",
+                "region":"NY",
+                "longitude":-74.005972999999997,
+                "postal_code":"NY 10004-250",
+                "address_2":"55 Broad Street",
+                "address":"New York Information Technology Centre",
+                "latitude":40.714353000000003,
+                "country_code":"US",
+                "id":1942757,
+                "Lat-Long":"40.714353 / -74.005973"
+            },
+            "modified":"2012-11-12 08:40:04",
+            "logo_ssl":"https://ebmedia.eventbrite.com/s3-build/images/535596/22139229324/1/logo.png",
+            "repeats":"no"
+        }
+    },
+    {
+        "event":{
+            "box_header_text_color":"FFFFFF",
+            "link_color":"8D0000",
+            "box_background_color":"F2EEE6",
+            "timezone":"America/New_York",
+            "box_border_color":"C0BDB6",
+            "logo":"http://ebmedia.eventbrite.com/s3-build/images/784557/36940399298/1/logo.png",
+            "organizer":{
+                "url":"http://www.eventbrite.com/org/2513699582",
+                "description":"Composable Solutions provides professional Scala training and consulting.\u00a0\r\nLocated in Boston and Philadelphia, it was formed to respond to a growing demand for Scala training and consulting services.\u00a0All of our team members are seasoned software developers with broad range of skills and deep Scala expertise. They are also very active Scala community members.",
+                "long_description":"",
+                "id":2513699582,
+                "name":"Composable Solutions"
+            },
+            "background_color":"FFFFFF",
+            "id":4819217409,
+            "category":"seminars",
+            "box_header_background_color":"C0BDB6",
+            "capacity":30,
+            "num_attendee_rows":0,
+            "title":"Typesafe's Fast Track to Play",
+            "start_date":"2013-01-30 09:00:00",
+            "status":"Live",
+            "description":"<P><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; color: #000080; font-size: x-large;\">Summary</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: medium; color: #000080;\"><SPAN STYLE=\"color: #ff6600;\"><A HREF=\"http://www.composables.com\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">Composable Solutions</SPAN></A></SPAN>, in partnership with <SPAN STYLE=\"color: #ff6600;\"><A HREF=\"http://www.typesafe.com\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">Typesafe</SPAN></A></SPAN>, is pleased to offer a\u00a0one-day course, designed by Fredrik Ekholdt, a Scala and web application expert, and Peter Hausel, one of the main Play committers, with a goal of empowering you to quick start web application development with Play 2.0.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: medium; color: #000080;\">The course will center around a web application that you will build from the ground up using Play 2.0. \u00a0It is intended to enable developers who want to consolidate their Scala skills and learn about this great web framework.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: medium; color: #000080;\"><FONT SIZE=\"2\" FACE=\"Helvetica Neue, Helvetica, Arial, sans-serif\"><BR></FONT></SPAN></P>\r\n<P><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; color: #000080; font-size: x-large;\">Objectives</SPAN></P>\r\n<P STYLE=\"font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px;\"><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: medium; color: #000080;\">After having participated in this course you should</SPAN></P>\r\n<UL STYLE=\"font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; line-height: 20px;\">\r\n<LI><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: medium; color: #000080;\">know how to build fully fledged web applications using Play 2.0\u00a0</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: medium; color: #000080;\">know best practices for developing web applications using Play 2.0</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: medium; color: #000080;\">be confident to start using Play 2.0 application in production</SPAN></LI>\r\n</UL>\r\n<P><SPAN STYLE=\"line-height: 21px; text-align: -webkit-auto; font-family: tahoma, arial, helvetica, sans-serif; font-size: medium; color: #000080;\"><BR></SPAN></P>\r\n<P><SPAN STYLE=\"line-height: 21px; text-align: -webkit-auto; font-family: tahoma, arial, helvetica, sans-serif; font-size: medium; color: #000080;\"><SPAN STYLE=\"font-size: x-large;\">Prerequisites</SPAN>\u00a0</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: medium; color: #000080;\"><SPAN STYLE=\"line-height: 21px; text-align: -webkit-auto;\"><SPAN STYLE=\"line-height: normal; text-align: left;\">The presentation will frequently be mixed with hands-on exercises that give you a good opportunity to try what you have learnt and a chance to clarify your understanding. </SPAN></SPAN><SPAN STYLE=\"line-height: 21px; text-align: -webkit-auto;\">The training facility can provide a certain number of workstations, but we highly recommend bringing your laptop so that you can preserve a fully set up Play 2.0 development environment after the course ends.</SPAN></SPAN></P>\r\n<P STYLE=\"color: #000000; font-family: Helvetica, Arial, sans-serif; font-size: 12px; line-height: normal; text-align: left;\"><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: medium; color: #000080;\">Code examples and exercises will be written in Scala, so previous experience with Scala is required. Experience with HTML and JavaScript is also a prerequisite.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: medium; color: #000080;\">\u00a0</SPAN></P>\r\n<P STYLE=\"text-align: -webkit-auto;\"><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: medium; color: #000080;\"><SPAN STYLE=\"font-size: x-large;\">Instructors<SPAN STYLE=\"line-height: 21px;\">\u00a0</SPAN></SPAN>\u00a0</SPAN></P>\r\n<P><SPAN STYLE=\"line-height: 21px; text-align: -webkit-auto; font-family: tahoma, arial, helvetica, sans-serif; font-size: medium; color: #000080;\"><SPAN STYLE=\"line-height: 18px;\"><STRONG>Brian Clapper</STRONG> has nearly 30 years' experience building and maintaining software systems and has been a consultant since 2009. Brian has a broad base of experience, from financial trading systems and master data management software to ecommerce web sites and Internet advertising software. He is comfortable working in companies of all sizes, but he has a special fondness for high-energy startups. He knows, and regularly uses, many different programming languages, including Scala, Python, Ruby, Java, C and C#. (He likes to think of himself as a generalist and a polyglot.) Brian is founder of the\u00a0</SPAN><SPAN STYLE=\"color: #ff6600;\"><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"http://scala-phase.org/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">Philadelphia Area Scala Enthusiasts</SPAN></A></SPAN><SPAN STYLE=\"line-height: 18px;\">\u00a0(PHASE). He is co-organizer of\u00a0</SPAN><SPAN STYLE=\"color: #ff6600;\"><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"http://scalathon.org/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">Scalathon</SPAN></A></SPAN><SPAN STYLE=\"line-height: 18px;\">, the international Scala hackathon, and he has been a co-organizer of the annual\u00a0</SPAN><SPAN STYLE=\"color: #ff6600;\"><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"http://nescala.org/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">Northeast Scala Symposium</SPAN></A></SPAN><SPAN STYLE=\"line-height: 18px;\">\u00a0since it began, in 2011. Brian maintains a number of open-source Scala projects, including\u00a0</SPAN><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"http://software.clapper.org/argot/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #000080;\">Argot</SPAN></A><SPAN STYLE=\"line-height: 18px;\">\u00a0(a command line parser),\u00a0</SPAN><SPAN STYLE=\"color: #ff6600;\"><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"http://software.clapper.org/avsl/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">AVSL</SPAN></A></SPAN><SPAN STYLE=\"line-height: 18px;\">\u00a0(an\u00a0</SPAN><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"http://www.slf4j.org/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #000080;\">SLF4J</SPAN></A><SPAN STYLE=\"line-height: 18px;\">-based logging framework),\u00a0</SPAN><SPAN STYLE=\"color: #ff6600;\"><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"http://software.clapper.org/grizzled-scala/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">Grizzled Scala</SPAN></A></SPAN><SPAN STYLE=\"line-height: 18px;\">\u00a0(a general purpose library),\u00a0</SPAN><SPAN STYLE=\"color: #ff6600;\"><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"http://software.clapper.org/classutil/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">ClassUtil</SPAN></A></SPAN><SPAN STYLE=\"line-height: 18px;\">\u00a0(a fast class-finder library),\u00a0</SPAN><SPAN STYLE=\"color: #ff6600;\"><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"http://software.clapper.org/sqlshell/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">SQLShell</SPAN></A></SPAN><SPAN STYLE=\"line-height: 18px;\">\u00a0(a JDBC-based SQL command shell), and several\u00a0</SPAN><SPAN STYLE=\"color: #ff6600;\"><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"http://www.scala-sbt.org/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">SBT</SPAN></A></SPAN><SPAN STYLE=\"line-height: 18px;\">\u00a0plugins. All are available at\u00a0</SPAN><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"http://software.clapper.org/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #000080;\"><SPAN STYLE=\"color: #ff6600;\">software.<SPAN CLASS=\"il\">clapper</SPAN>.org</SPAN></SPAN></A><SPAN STYLE=\"line-height: 18px;\">\u00a0or in Brian's\u00a0</SPAN><SPAN STYLE=\"color: #ff6600;\"><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"https://github.com/bmc/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">GitHub repository</SPAN></A></SPAN><SPAN STYLE=\"line-height: 18px;\">.</SPAN></SPAN></P>\r\n<P STYLE=\"text-align: -webkit-auto;\"><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: medium; color: #000080;\"><FONT SIZE=\"3\" COLOR=\"#003366\" FACE=\"tahoma, arial, helvetica, sans-serif\"><SPAN STYLE=\"line-height: 18px;\"><BR></SPAN></FONT></SPAN></P>\r\n<P STYLE=\"color: #000000; font-family: Helvetica, Arial, sans-serif; font-size: 12px; line-height: normal; text-align: left;\"><SPAN STYLE=\"line-height: 21px; text-align: -webkit-auto; font-family: tahoma, arial, helvetica, sans-serif; font-size: medium; color: #000080;\"><SPAN STYLE=\"line-height: 18px;\"><STRONG>Nermin Serifovic</STRONG> has 10 years of experience building enterprise software applications using Java technologies. For the past 5 years he has focused on architecting, designing and developing backend platforms. Nermin has been a Scala enthusiast since 2009 and practitioning it professionally since mid 2011. He has given various talks at JavaOne, <SPAN STYLE=\"color: #ff6600;\"><A HREF=\"http://days2011.scala-lang.org/node/138/293\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">Scala Days</SPAN></A></SPAN> and <SPAN STYLE=\"color: #ff6600;\"><A HREF=\"http://vimeo.com/20290504\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">Northeast Scala Symposium</SPAN></A></SPAN>, as well as at local Scala and Java user groups. Nermin is a founder and co-organizer of\u00a0</SPAN><SPAN STYLE=\"color: #ff6600;\"><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"http://www.meetup.com/boston-scala/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">Boston Area Scala Enthusiasts</SPAN></A></SPAN><SPAN STYLE=\"line-height: 18px;\">\u00a0user group and co-founder and co-organizer of\u00a0</SPAN><SPAN STYLE=\"color: #ff6600;\"><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"http://nescala.org/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">Northeast Scala Symposium</SPAN></A></SPAN><SPAN STYLE=\"line-height: 18px;\">. Furthermore, he is a co-creator and co-maintainer of the\u00a0</SPAN><SPAN STYLE=\"color: #ff6600;\"><A STYLE=\"color: #0088cc; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 18px;\" HREF=\"http://www.scalapuzzlers.com/\" TARGET=\"_blank\"><SPAN STYLE=\"color: #ff6600;\">Scala Puzzlers website</SPAN></A></SPAN><SPAN STYLE=\"line-height: 18px;\">. Nermin holds a MEng in Computer Science from Cornell University and his areas of interest include distributed systems along with concurrent, parallel and functional programming.</SPAN></SPAN></P>\r\n<P><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: medium; color: #000080;\">\u00a0</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; color: #000080; font-size: x-large;\">Outline</SPAN></P>\r\n<UL STYLE=\"font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; line-height: 20px;\">\r\n<LI><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: medium; color: #000080;\">Play 2.0 philosophy and architecture</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: medium; color: #000080;\">Introduction of the application to be created</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: medium; color: #000080;\">Getting started with Play 2.0</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: medium; color: #000080;\">The controller and routing</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: medium; color: #000080;\">Views and templates</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: medium; color: #000080;\">Forms</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: medium; color: #000080;\">Caching</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: medium; color: #000080;\">Working with JSON in Play</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: medium; color: #000080;\">Ajax</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: medium; color: #000080;\">Building non-blocking web applications</SPAN></LI>\r\n</UL>\r\n<DIV><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\"><FONT SIZE=\"3\" COLOR=\"#000080\" FACE=\"tahoma, arial, helvetica, sans-serif\"><SPAN STYLE=\"line-height: 20px;\"><BR></SPAN></FONT></SPAN></DIV>\r\n<DIV><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: small;\"><FONT SIZE=\"3\" COLOR=\"#000080\" FACE=\"tahoma, arial, helvetica, sans-serif\"><SPAN STYLE=\"line-height: 20px;\">Cancellation Policy</SPAN></FONT></SPAN></DIV>\r\n<DIV><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: small;\"><FONT SIZE=\"3\" COLOR=\"#000080\" FACE=\"tahoma, arial, helvetica, sans-serif\"><SPAN STYLE=\"line-height: 20px;\"><BR></SPAN></FONT></SPAN></DIV>\r\n<DIV><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: small;\"><FONT SIZE=\"3\" COLOR=\"#000080\" FACE=\"tahoma, arial, helvetica, sans-serif\"><SPAN STYLE=\"line-height: 20px;\">This course is offered contigent upon minimum enrollment requirements. Composable Solutions reserves the right to cancel the course in case of a low enrollment,\u00a0</SPAN></FONT></SPAN><SPAN STYLE=\"color: #000080; font-family: tahoma, arial, helvetica, sans-serif; font-size: medium; line-height: 20px;\">not later than three weeks before beginning of the course.</SPAN><SPAN STYLE=\"line-height: 20px; color: #000080; font-family: tahoma, arial, helvetica, sans-serif; font-size: medium;\">\u00a0You will receive a full refund if the course is cancelled.</SPAN></DIV>\r\n<DIV><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: small;\"><FONT SIZE=\"3\" COLOR=\"#000080\" FACE=\"tahoma, arial, helvetica, sans-serif\"><SPAN STYLE=\"line-height: 20px;\"><BR></SPAN></FONT></SPAN></DIV>\r\n<DIV><SPAN STYLE=\"font-family: tahoma, arial, helvetica, sans-serif; font-size: small;\"><FONT SIZE=\"3\" COLOR=\"#000080\" FACE=\"tahoma, arial, helvetica, sans-serif\"><SPAN STYLE=\"line-height: 20px;\">Students who need to cancel the attendance will receive (less any registration servicing fees):</SPAN></FONT></SPAN></DIV>\r\n<DIV>\r\n<UL>\r\n<LI><FONT SIZE=\"3\" COLOR=\"#000080\" FACE=\"tahoma, arial, helvetica, sans-serif\"><SPAN STYLE=\"line-height: 20px;\">Full refund with two weeks notice</SPAN></FONT></LI>\r\n<LI><FONT SIZE=\"3\" COLOR=\"#000080\" FACE=\"tahoma, arial, helvetica, sans-serif\"><SPAN STYLE=\"line-height: 20px;\">80% refund with one week notice</SPAN></FONT></LI>\r\n<LI><FONT SIZE=\"3\" COLOR=\"#000080\" FACE=\"tahoma, arial, helvetica, sans-serif\"><SPAN STYLE=\"line-height: 20px;\">25% refund with less than one week notice</SPAN></FONT></LI>\r\n</UL>\r\n</DIV>",
+            "end_date":"2013-01-30 17:00:00",
+            "tags":"Scala training",
+            "timezone_offset":"GMT-0500",
+            "text_color":"8D0000",
+            "title_text_color":"",
+            "tickets":[
+                {
+                    "ticket":{
+                        "description":"",
+                        "end_date":"2012-12-31 09:00:00",
+                        "min":1,
+                        "max":0,
+                        "price":"695.00",
+                        "visible":"true",
+                        "start_date":"2012-08-27 13:00:00",
+                        "currency":"USD",
+                        "type":0,
+                        "id":15984455,
+                        "name":"Early Bird"
+                    }
+                },
+                {
+                    "ticket":{
+                        "description":"",
+                        "end_date":"2013-01-29 21:00:00",
+                        "min":1,
+                        "max":30,
+                        "price":"795.00",
+                        "visible":"true",
+                        "start_date":"2012-08-27 00:00:00",
+                        "currency":"USD",
+                        "type":0,
+                        "id":15984457,
+                        "name":"Regular"
+                    }
+                }
+            ],
+            "distance":"0.00M",
+            "created":"2012-11-11 18:33:35",
+            "url":"http://www.eventbrite.com/event/4819217409/SRCH",
+            "box_text_color":"362E2C",
+            "privacy":"Public",
+            "venue":{
+                "city":"Boston",
+                "name":"",
+                "country":"United States",
+                "region":"MA",
+                "longitude":-71.059773000000007,
+                "postal_code":"",
+                "address_2":"",
+                "address":"",
+                "latitude":42.358431000000003,
+                "country_code":"US",
+                "id":2636795,
+                "Lat-Long":"42.358431 / -71.059773"
+            },
+            "modified":"2012-11-11 18:41:05",
+            "logo_ssl":"https://ebmedia.eventbrite.com/s3-build/images/784557/36940399298/1/logo.png",
+            "repeats":"no"
+        }
+    },
+    {
+        "event":{
+            "box_header_text_color":"005580",
+            "link_color":"EE6600",
+            "box_background_color":"FFFFFF",
+            "timezone":"America/Edmonton",
+            "box_border_color":"D5D5D3",
+            "logo":"http://ebmedia.eventbrite.com/s3-s3/eventlogos/44449067/4687274765-1.jpg",
+            "organizer":{
+                "url":"http://www.eventbrite.com/org/2860767167",
+                "description":"",
+                "long_description":"",
+                "id":2860767167,
+                "name":""
+            },
+            "background_color":"FFFFFF",
+            "id":4687274765,
+            "category":"meetings,other",
+            "box_header_background_color":"EFEFEF",
+            "capacity":10,
+            "num_attendee_rows":0,
+            "title":"Calgary Scala Enthusiasts Meeting",
+            "start_date":"2012-11-06 18:00:00",
+            "status":"Started",
+            "description":"<P>We've moved!\u00a0We're no longer at <A HREF=\"%20http://www.meetup.com/calgaryscala\" TARGET=\"_blank\">Meetup.com</A>.\u00a0</P>\r\n<P><STRONG>About Calgary Scala Enthusiasts</STRONG></P>\r\n<P>I wanted to get together with anyone who is interested in Scala to share ideas, maybe join forces on a project, hack on open source projects, etc. \u00a0It's more fun hacking on stuff together! There are no presentations, tutorials or pre-defined discussion topics; just good conversation and hacking. All are welcome. \u00a0If you're a Java, Groovy, JRuby or Clojure hacker, heck, C#, F#... we'll take you all! It'd be fun to see the contrast.</P>",
+            "end_date":"2012-11-06 20:00:00",
+            "tags":"programming, scala, software",
+            "timezone_offset":"GMT-0700",
+            "text_color":"005580",
+            "repeat_schedule":"monthly-1-first/wed-12/04/2013",
+            "title_text_color":"",
+            "tickets":[
+                {
+                    "ticket":{
+                        "description":"",
+                        "end_date":"2012-11-06 17:00:00",
+                        "min":0,
+                        "max":0,
+                        "price":"0.00",
+                        "visible":"false",
+                        "currency":"CAD",
+                        "type":0,
+                        "id":15776033,
+                        "name":"Hacker"
+                    }
+                }
+            ],
+            "distance":"0.00M",
+            "created":"2012-10-24 10:08:08",
+            "url":"http://calgaryscala-SRCH.eventbrite.com",
+            "box_text_color":"000000",
+            "privacy":"Public",
+            "venue":{
+                "city":"Calgary",
+                "name":"Weeds Cafe",
+                "country":"Canada",
+                "region":"Alberta",
+                "longitude":-114.104696,
+                "postal_code":"T2M 1H7",
+                "address_2":"",
+                "address":"1903 20 Avenue Northwest ",
+                "latitude":51.070557000000001,
+                "country_code":"CA",
+                "id":2568281,
+                "Lat-Long":"51.070557 / -114.104696"
+            },
+            "modified":"2012-11-06 20:31:00",
+            "logo_ssl":"https://ebmedia.eventbrite.com/s3-s3/eventlogos/44449067/4687274765-1.jpg",
+            "repeats":"yes"
+        }
+    },
+    {
+        "event":{
+            "box_header_text_color":"FFFFFF",
+            "link_color":"0077B3",
+            "box_background_color":"FFFFFF",
+            "timezone":"Europe/Berlin",
+            "box_border_color":"94BE00",
+            "logo":"http://ebmedia.eventbrite.com/s3-build/images/638060/36822217778/1/logo.png",
+            "organizer":{
+                "url":"http://101loops.eventbrite.com",
+                "description":"Stephan Behnke \r\n\r\nstudierter Wirtschaftsinformatiker\r\nSoftwareentwickler seit 0 Jahren\r\nFreelancer in der Softwarewelt\r\nGrder Firma \"101 Loops\"\r\nAnher von Scala seit 2009\r\nMitglied der Scala User Group Berlin\r\n\r\n\r\n101 Loops UG (haftungsbeschrt) \r\n\r\nEntwicklung von Webanwendungen auf Basis von Scala\r\nSitz in Berlin\r\nUSt-IdNr.: DE282120597\r\n\r\n \r\nWeitere Termine\r\n\r\n21. Januar, Berlin\r\n04. Februar, Hamburg\r\n18. Februar, Frankfurt am Main\r\n04. M, Stuttgart\r\n18. M, M\r\n\r\n \r\nMeinungen\r\n\"Die Schulung hat alle Unterschiede zw. Java und Scala aufgezeigt und durch verschiedene n verinnerlicht, [..] das Quiz zwischendurch lockert auf, da man mit den anderen zusammen ie Antworten diskutieren kann.\"\r\n- Marco R.\r\n \r\n\r\n\"Was mir gefallen hat, ist die individuelle Art, wie Stephan mit mir und den anderen Teilnehmern umgegangen ist. One-on-One Hilfe und Tipps waren reichlich vorhanden.\"\r\n- Kifah A.\r\n \r\n\r\n\"Kenntnisreiche Einf in die Welt von Scala. Fundiert und auf den Punkt gebracht. Die vielen n veranschaulichen und vertiefen die Materie. Prima!\"\r\n- Hendrik B.\r\n\r\n",
+                "long_description":"Stephan Behnke \r\n\r\nstudierter Wirtschaftsinformatiker\r\nSoftwareentwickler seit 0 Jahren\r\nFreelancer in der Softwarewelt\r\nGrder Firma \"101 Loops\"\r\nAnher von Scala seit 2009\r\nMitglied der Scala User Group Berlin\r\n\r\n\r\n101 Loops UG (haftungsbeschrt) \r\n\r\nEntwicklung von Webanwendungen auf Basis von Scala\r\nSitz in Berlin\r\nUSt-IdNr.: DE282120597\r\n\r\n \r\nWeitere Termine\r\n\r\n21. Januar, Berlin\r\n04. Februar, Hamburg\r\n18. Februar, Frankfurt am Main\r\n04. M, Stuttgart\r\n18. M, M\r\n\r\n \r\nMeinungen\r\n\"Die Schulung hat alle Unterschiede zw. Java und Scala aufgezeigt und durch verschiedene n verinnerlicht, [..] das Quiz zwischendurch lockert auf, da man mit den anderen zusammen ie Antworten diskutieren kann.\"\r\n- Marco R.\r\n \r\n\r\n\"Was mir gefallen hat, ist die individuelle Art, wie Stephan mit mir und den anderen Teilnehmern umgegangen ist. One-on-One Hilfe und Tipps waren reichlich vorhanden.\"\r\n- Kifah A.\r\n \r\n\r\n\"Kenntnisreiche Einf in die Welt von Scala. Fundiert und auf den Punkt gebracht. Die vielen n veranschaulichen und vertiefen die Materie. Prima!\"\r\n- Hendrik B.\r\n\r\n",
+                "id":2718511298,
+                "name":"Stephan Behnke, 101 Loops UG"
+            },
+            "background_color":"2996CC",
+            "id":3910432208,
+            "category":"seminars,conferences",
+            "box_header_background_color":"94BE00",
+            "capacity":8,
+            "num_attendee_rows":0,
+            "title":"Objektfunktionale Programmierung mit Scala - Schulung in Berlin",
+            "start_date":"2013-01-21 09:30:00",
+            "status":"Live",
+            "description":"<P>\u00a0</P>\r\n<P><IMG STYLE=\"margin-left: 10px; margin-right: 10px; float: right;\" TITLE=\"Scala Logo\" SRC=\"https://www.learnscala.de/assets/img/scala-logo.png\" ALT=\"Scala Logo\" WIDTH=\"190\" HEIGHT=\"56\"></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Der <STRONG>3-t\u00e4gige Kurs in Berlin</STRONG> f\u00fchrt Schritt f\u00fcr Schritt durch die wichtigsten Aspekte und Konzepte der Sprache. Dabei wird mit jedem Schritt das Verst\u00e4ndnis f\u00fcr Scala vertieft und aufgezeigt, wie es die <STRONG>t\u00e4gliche Arbeit bereichern</STRONG> kann.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><BR></SPAN></P>\r\n<P STYLE=\"font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal;\"><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\"><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">Scala</STRONG></SPAN></P>\r\n<P STYLE=\"font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal;\"><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Scala ist eine objektorientierte, moderne und funktionale Programmiersprache f\u00fcr die\u00a0<STRONG>Java-Plattform</STRONG>. Nach fast\u00a0<STRONG>10 Jahren Entwicklung</STRONG>\u00a0und dem Einsatz bei Twitter, LinkedIn und SAP ist sie bereit f\u00fcr die gro\u00dfe B\u00fchne. K\u00fcrzerer Programmcode, Java-Kompatibilit\u00e4t, Typerkennung, Klassenkomposition, Closures und eigene Kontrollstrukturen sind nur eine Auswahl der\u00a0<STRONG>bahnbrechenden M\u00f6glichkeiten</STRONG>.\u00a0</SPAN></P>\r\n<P STYLE=\"font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal;\"><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Im Kurs wird die brandneue Version 2.10 behandelt.\u00a0</SPAN><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Verpassen Sie nicht den Anschluss!</STRONG></P>\r\n<P STYLE=\"font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal;\"><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG><BR></STRONG></SPAN></P>\r\n<H3 STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">Aufbau der Schulung</H3>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Die Schulung ist sehr <STRONG>praxisorientiert</STRONG>\u00a0gestaltet und jeder Themenabschnitt wird mit <STRONG>\u00dcbungen</STRONG> gefestigt. Ein eigens f\u00fcr die Schulungsreihe gestaltetes Pr\u00e4sentationswerkzeug erlaubt es flexibel auf Teilnehmerw\u00fcnsche und -anregungen einzugehen.</SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small;\"><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\"><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">Durch die bewusst <STRONG>klein gehaltene Teilnehmerzahl</STRONG> kann auf individuelle Probleme direkt eingegangen werden.\u00a0</SPAN></SPAN></SPAN><SPAN STYLE=\"font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px;\">Der Verlauf des Workshops passt sich den <STRONG>Bed\u00fcrfnissen und W\u00fcnschen der Teilnehmer</STRONG> an, Fragen werden vom Trainer direkt beantwortet.\u00a0</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Insgesamt bietet der Kurs einen </SPAN><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">tiefgreifenden, schnellen Einstieg in Scala</STRONG><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">.</SPAN></P>\r\n<P>\u00a0</P>\r\n<H3 STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">Schulungsinhalte</H3>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Eine zusammengefasste \u00dcbersicht:</SPAN></P>\r\n<DIV>\r\n<UL>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Grundlagen:</STRONG> Syntax, Kontrollstrukturen, Typinferenz,\u00a0</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Pattern Matching, Rekursion</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Objektorientierung:</STRONG> Klassen, Vererbung, Case Class, Typ-Parameter, Singleton, Traits</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Funktionale Programmierung:</STRONG> Closures, Currying, map/flatmap, Funktionen h\u00f6herer Ordnung</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Parallele Programmierung:\u00a0</STRONG>Akka, Aktoren, asynchrone Nachrichtenkommunikation, Future</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Testen mit Scala:</STRONG> Unit Tests mit specs2, IDE-Integration</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Entwicklungswerkzeuge:</STRONG> Scala-IDE, REPL, SBT</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Ausblick:</STRONG> Entwicklungen, Bibliotheken und Frameworks</SPAN></LI>\r\n</UL>\r\n</DIV>\r\n<DIV><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">F\u00fcr weitere Informationen konsultieren Sie bitte die\u00a0<A HREF=\"https://www.learnscala.de/schulungen/scala-training\" TARGET=\"_blank\">detaillierte Themenliste</A>\u00a0und <A HREF=\"https://www.learnscala.de/schulungen/scala-training/folien\" TARGET=\"_blank\">Beispielfolien</A>.</SPAN></DIV>\r\n<DIV><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><BR></SPAN></DIV>\r\n<H3 STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">Kursvoraussetzungen</H3>\r\n<P><SPAN STYLE=\"font-size: small;\"><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">Mehrere Jahre Erfahrungen mit</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">\u00a0</SPAN><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">einer objektorientierten Programmiersprache</STRONG><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">\u00a0m\u00fcssen vorhanden sein</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">; idealerweise Java oder auch C++, C#, Python oder Ruby. Vorkenntnisse in Scala sind</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">\u00a0</SPAN><SPAN CLASS=\"underline\" STYLE=\"font-family: arial, helvetica, sans-serif; text-decoration: underline;\">nicht</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">\u00a0</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">erforderlich.</SPAN></SPAN></P>\r\n<P>\u00a0</P>\r\n<H3 STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">Ziel der Weiterbildung</H3>\r\n<P STYLE=\"font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px;\"><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Nach Abschluss dieses Kurses k\u00f6nnen Sie in\u00a0<STRONG>Scala programmieren</STRONG>\u00a0und die\u00a0<STRONG>gesteigerte Produktivit\u00e4t</STRONG>\u00a0genie\u00dfen. Sie wissen was Scala von Java unterscheidet, wo die Vor- und Nachteile liegen. Durch die geschaffenen Grundlagen lassen sich fortgeschrittene Themen\u00a0<STRONG>schneller und einfacher erlernen</STRONG>.\u00a0</SPAN></P>\r\n<HR>\r\n<P><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">H\u00e4ufig gestellte Fragen</STRONG></P>\r\n<P><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\"><BR></STRONG></P>\r\n<P><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Wie kann bezahlt werden?</STRONG></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Die Bezahlung kann via <STRONG>Kreditkarte</STRONG> durchgef\u00fchrt werden oder auf <STRONG>Rechnung</STRONG> (via \"Offline-Zahlung\" - siehe dazu \"Weitere Zahlungsoptionen anzeigen\" unter \"Registrieren\").</SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Wie gro\u00df ist die Kursgruppe?</STRONG></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Die Anzahl der Teilnehmer ist auf 8 limitiert. Das schafft eine gute Lernatmosph\u00e4re und erlaubt es dem Trainer, auf individuelle Fragen und Probleme einzugehen. </SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Die Mindestteilnehmerzahl betr\u00e4gt 4; wird diese nicht erreicht, werden alle Teilnehmer rechtzeitig benachrichtigt und erhalten die volle Geb\u00fchr erstattet.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><BR></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG>Was ist in der Kursgeb\u00fchr enthalten?</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Die Geb\u00fchr beinhaltet <STRONG>Mittagessen</STRONG>, kalte und warme <STRONG>Pauseng</STRONG></SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>etr\u00e4nke</STRONG>, <STRONG>Snacks</STRONG> und die\u00a0</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">digitalen <STRONG>Kursmaterialien</STRONG> - inklusive aller Folien, einem Glossar, allen \u00dcbungen und einer Linksammlung. Nur f\u00fcr die Unterkunft muss ggf. selbst gesorgt werden.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Eine zuz\u00fcgliche Mehrwertsteuer ist \u00fcbrigens bei Registrierungen innerhalb des Jahres 2012 nicht f\u00e4llig.</SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG>Wann beginnt der Kurs?</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Der Kurs beginnt jeden Tag um 9.30 Uhr und endet um 17:30 Uhr.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><BR></SPAN></P>\r\n<P><STRONG><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">In welcher Sprache ist das Training?</SPAN></STRONG></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Der Kurs wird auf deutsch pr\u00e4sentiert und die Kursmaterialien enthalten englischen Programmcode mit deutschen Anmerkungen.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><BR></SPAN></P>\r\n<P><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Was muss mitgebracht werden?</STRONG></P>\r\n<P><SPAN STYLE=\"font-size: small;\"><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">Jeder Teilnehmer muss zur Schulung einen </SPAN><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">eigenen Laptop\u00a0</STRONG><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">mitbringen, das Betriebssystem ist dabei beliebig. F\u00fcr alles andere, wie Essen und Getr\u00e4nke, ist gesorgt.</SPAN></SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG>Wie kann ich den Veranstalter kontaktieren, wenn ich Fragen habe?</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Nutzen Sie dazu die Funktion \"Veranstalter kontaktieren\" auf dieser Seite oder das externe\u00a0<A HREF=\"https://www.learnscala.de/kontakt\" TARGET=\"_blank\">Kontaktformular</A>. F\u00fcr einen kostenlosen R\u00fcckruf geben Sie einfach Ihre Telefonnummer an.</SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG>Wie sehen die R\u00fccktrittsbedingungen aus?</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\"><SPAN STYLE=\"font-size: small;\">Wenn Sie die Teilnahme mehr als 30 Tage vor Seminarbeginn absagen, werden 100% erstattet. Bei mehr als 14 Tagen vor Beginn werden 50% erstattet. F\u00fcr sp\u00e4tere Absagen kann es leider keine R\u00fcckerstattungen geben.</SPAN><SPAN STYLE=\"font-size: small;\"><SPAN STYLE=\"background-color: #ffffff;\">\u00a0</SPAN><SPAN STYLE=\"background-color: #ffffff;\"><SPAN>Bei Absage des Trainings durch den Veranstalter wird nat\u00fcrlich der volle Preis r\u00fcckerstattet.</SPAN><SPAN>\u00a0</SPAN></SPAN></SPAN></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG>Ist der Teilnahmeplatz \u00fcbertragbar?</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Die Teilnahme an der Schulung kann jederzeit auf andere Personen \u00fcbertragen werden, bedarf jedoch einer Benachrichtigung des Veranstalters.</SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><STRONG><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Sie haben mehr als 2 Teilnehmer? Dann rentiert sich ein firmeninternes Training!</SPAN></STRONG></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Kontaktieren Sie einfach meinen <STRONG>Kooperationspartner Tutego</STRONG> f\u00fcr eine flexible, zugeschnittene Schulung direkt bei Ihnen. Via E-Mail unter <A HREF=\"mailto:info@tutego.de\">info@tutego.de</A> oder telefonisch unter <STRONG>0800 888 3467</STRONG> (kostenfrei).</SPAN></P>\r\n<P><SPAN STYLE=\"color: rgba(78, 68, 60, 0.901961); font-family: 'Helvetica Neue', Helvetica, sans-serif; font-size: 14px; line-height: 18px;\">\u00a0</SPAN></P>\r\n<HR>\r\n<P><SPAN STYLE=\"font-size: medium; font-family: arial, helvetica, sans-serif;\"><STRONG>Teilnahmebedingungen und AGBs</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Es gelten die <A HREF=\"https://www.learnscala.de/agb\" TARGET=\"_blank\">Bedingungen der 101 Loops UG (haftungsbeschr\u00e4nkt)</A>.</SPAN></P>",
+            "end_date":"2013-01-23 17:30:00",
+            "tags":"",
+            "timezone_offset":"GMT+0100",
+            "text_color":"E5E600",
+            "title_text_color":"",
+            "tickets":[
+                {
+                    "ticket":{
+                        "description":"",
+                        "end_date":"2012-12-31 23:55:00",
+                        "min":1,
+                        "max":1,
+                        "price":"1,197.00",
+                        "visible":"true",
+                        "start_date":"2012-11-30 23:55:00",
+                        "currency":"EUR",
+                        "type":0,
+                        "id":15316124,
+                        "name":"Standard"
+                    }
+                },
+                {
+                    "ticket":{
+                        "description":"",
+                        "end_date":"2013-01-11 23:55:00",
+                        "min":1,
+                        "max":1,
+                        "price":"1,197.00",
+                        "visible":"false",
+                        "start_date":"2012-12-31 23:55:00",
+                        "currency":"EUR",
+                        "type":0,
+                        "id":15381692,
+                        "name":"Standard"
+                    }
+                },
+                {
+                    "ticket":{
+                        "description":"10% Rabatt",
+                        "end_date":"2012-11-30 23:55:00",
+                        "min":1,
+                        "max":2,
+                        "price":"1,077.00",
+                        "visible":"true",
+                        "start_date":"2012-09-19 00:00:00",
+                        "currency":"EUR",
+                        "type":0,
+                        "id":15316184,
+                        "name":"Fr\u00fchbucher"
+                    }
+                },
+                {
+                    "ticket":{
+                        "description":"10% Rabatt",
+                        "end_date":"2012-12-31 23:55:00",
+                        "min":2,
+                        "max":2,
+                        "price":"1,077.00",
+                        "visible":"false",
+                        "start_date":"2012-11-30 23:55:00",
+                        "currency":"EUR",
+                        "type":0,
+                        "id":15316284,
+                        "name":"Doppelpack"
+                    }
+                },
+                {
+                    "ticket":{
+                        "description":"10% Rabatt",
+                        "end_date":"2013-01-11 23:55:00",
+                        "min":2,
+                        "max":2,
+                        "price":"1,077.00",
+                        "visible":"false",
+                        "start_date":"2012-12-31 23:55:00",
+                        "currency":"EUR",
+                        "type":0,
+                        "id":15382180,
+                        "name":"Doppelpack"
+                    }
+                }
+            ],
+            "distance":"0.00M",
+            "created":"2012-09-19 02:37:47",
+            "url":"http://scala-schulung-berlin-SRCH.eventbrite.com",
+            "box_text_color":"0077B3",
+            "privacy":"Public",
+            "venue":{
+                "city":"Berlin",
+                "name":"",
+                "country":"Germany",
+                "region":"Berlin",
+                "longitude":13.388816,
+                "postal_code":"10117",
+                "address_2":"",
+                "address":"88 Friedrichstra\u00dfe",
+                "latitude":52.517502,
+                "country_code":"DE",
+                "id":2435510,
+                "Lat-Long":"52.517502 / 13.388816"
+            },
+            "modified":"2012-10-21 02:33:35",
+            "logo_ssl":"https://ebmedia.eventbrite.com/s3-build/images/638060/36822217778/1/logo.png",
+            "repeats":"no"
+        }
+    },
+    {
+        "event":{
+            "box_header_text_color":"FFFFFF",
+            "link_color":"0077B3",
+            "box_background_color":"FFFFFF",
+            "timezone":"Europe/Berlin",
+            "box_border_color":"94BE00",
+            "logo":"http://ebmedia.eventbrite.com/s3-build/images/638054/36822217778/1/logo.png",
+            "organizer":{
+                "url":"http://101loops.eventbrite.com",
+                "description":"Stephan Behnke \r\n\r\nstudierter Wirtschaftsinformatiker\r\nSoftwareentwickler seit 0 Jahren\r\nFreelancer in der Softwarewelt\r\nGrder Firma \"101 Loops\"\r\nAnher von Scala seit 2009\r\nMitglied der Scala User Group Berlin\r\n\r\n\r\n101 Loops UG (haftungsbeschrt) \r\n\r\nEntwicklung von Webanwendungen auf Basis von Scala\r\nSitz in Berlin\r\nUSt-IdNr.: DE282120597\r\n\r\n \r\nWeitere Termine\r\n\r\n21. Januar, Berlin\r\n04. Februar, Hamburg\r\n18. Februar, Frankfurt am Main\r\n04. M, Stuttgart\r\n18. M, M\r\n\r\n \r\nMeinungen\r\n\"Die Schulung hat alle Unterschiede zw. Java und Scala aufgezeigt und durch verschiedene n verinnerlicht, [..] das Quiz zwischendurch lockert auf, da man mit den anderen zusammen ie Antworten diskutieren kann.\"\r\n- Marco R.\r\n \r\n\r\n\"Was mir gefallen hat, ist die individuelle Art, wie Stephan mit mir und den anderen Teilnehmern umgegangen ist. One-on-One Hilfe und Tipps waren reichlich vorhanden.\"\r\n- Kifah A.\r\n \r\n\r\n\"Kenntnisreiche Einf in die Welt von Scala. Fundiert und auf den Punkt gebracht. Die vielen n veranschaulichen und vertiefen die Materie. Prima!\"\r\n- Hendrik B.\r\n\r\n",
+                "long_description":"Stephan Behnke \r\n\r\nstudierter Wirtschaftsinformatiker\r\nSoftwareentwickler seit 0 Jahren\r\nFreelancer in der Softwarewelt\r\nGrder Firma \"101 Loops\"\r\nAnher von Scala seit 2009\r\nMitglied der Scala User Group Berlin\r\n\r\n\r\n101 Loops UG (haftungsbeschrt) \r\n\r\nEntwicklung von Webanwendungen auf Basis von Scala\r\nSitz in Berlin\r\nUSt-IdNr.: DE282120597\r\n\r\n \r\nWeitere Termine\r\n\r\n21. Januar, Berlin\r\n04. Februar, Hamburg\r\n18. Februar, Frankfurt am Main\r\n04. M, Stuttgart\r\n18. M, M\r\n\r\n \r\nMeinungen\r\n\"Die Schulung hat alle Unterschiede zw. Java und Scala aufgezeigt und durch verschiedene n verinnerlicht, [..] das Quiz zwischendurch lockert auf, da man mit den anderen zusammen ie Antworten diskutieren kann.\"\r\n- Marco R.\r\n \r\n\r\n\"Was mir gefallen hat, ist die individuelle Art, wie Stephan mit mir und den anderen Teilnehmern umgegangen ist. One-on-One Hilfe und Tipps waren reichlich vorhanden.\"\r\n- Kifah A.\r\n \r\n\r\n\"Kenntnisreiche Einf in die Welt von Scala. Fundiert und auf den Punkt gebracht. Die vielen n veranschaulichen und vertiefen die Materie. Prima!\"\r\n- Hendrik B.\r\n\r\n",
+                "id":2718511298,
+                "name":"Stephan Behnke, 101 Loops UG"
+            },
+            "background_color":"2996CC",
+            "id":4479586564,
+            "category":"seminars,conferences",
+            "box_header_background_color":"94BE00",
+            "capacity":8,
+            "num_attendee_rows":0,
+            "title":"Objektfunktionale Programmierung mit Scala - Schulung in M\u00fcnchen",
+            "start_date":"2013-03-18 09:30:00",
+            "status":"Live",
+            "description":"<P>\u00a0</P>\r\n<P><IMG STYLE=\"margin-left: 10px; margin-right: 10px; float: right;\" TITLE=\"Scala Logo\" SRC=\"https://www.learnscala.de/assets/img/scala-logo.png\" ALT=\"Scala Logo\" WIDTH=\"190\" HEIGHT=\"56\"></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Der <STRONG>3-t\u00e4gige Kurs in M\u00fcnchen</STRONG> f\u00fchrt Schritt f\u00fcr Schritt durch die wichtigsten Aspekte und Konzepte der Sprache. Dabei wird mit jedem Schritt das Verst\u00e4ndnis f\u00fcr Scala vertieft und aufgezeigt, wie es die <STRONG>t\u00e4gliche Arbeit bereichern</STRONG> kann.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><BR></SPAN></P>\r\n<P STYLE=\"font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal;\"><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\"><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">Scala</STRONG></SPAN></P>\r\n<P STYLE=\"font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal;\"><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Scala ist eine objektorientierte, moderne und funktionale Programmiersprache f\u00fcr die\u00a0<STRONG>Java-Plattform</STRONG>. Nach fast\u00a0<STRONG>10 Jahren Entwicklung</STRONG>\u00a0und dem Einsatz bei Twitter, LinkedIn und SAP ist sie bereit f\u00fcr die gro\u00dfe B\u00fchne. K\u00fcrzerer Programmcode, Java-Kompatibilit\u00e4t, Typerkennung, Klassenkomposition, Closures und eigene Kontrollstrukturen sind nur eine Auswahl der\u00a0<STRONG>bahnbrechenden M\u00f6glichkeiten</STRONG>.\u00a0</SPAN></P>\r\n<P STYLE=\"font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal;\"><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Im Kurs wird die brandneue Version 2.10 behandelt.\u00a0</SPAN><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Verpassen Sie nicht den Anschluss!</STRONG></P>\r\n<P STYLE=\"font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal;\"><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG><BR></STRONG></SPAN></P>\r\n<H3 STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">Aufbau der Schulung</H3>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Die Schulung ist sehr <STRONG>praxisorientiert</STRONG>\u00a0gestaltet und jeder Themenabschnitt wird mit <STRONG>\u00dcbungen</STRONG> gefestigt. Ein eigens f\u00fcr die Schulungsreihe gestaltetes Pr\u00e4sentationswerkzeug erlaubt es flexibel auf Teilnehmerw\u00fcnsche und -anregungen einzugehen.</SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small;\"><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\"><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">Durch die bewusst <STRONG>klein gehaltene Teilnehmerzahl</STRONG> kann auf individuelle Probleme direkt eingegangen werden.\u00a0</SPAN></SPAN></SPAN><SPAN STYLE=\"font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px;\">Der Verlauf des Workshops passt sich den <STRONG>Bed\u00fcrfnissen und W\u00fcnschen der Teilnehmer</STRONG> an, Fragen werden vom Trainer direkt beantwortet.\u00a0</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Insgesamt bietet der Kurs einen </SPAN><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">tiefgreifenden, schnellen Einstieg in Scala</STRONG><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">.</SPAN></P>\r\n<P>\u00a0</P>\r\n<H3 STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">Schulungsinhalte</H3>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Eine zusammengefasste \u00dcbersicht:</SPAN></P>\r\n<DIV>\r\n<UL>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Grundlagen:</STRONG> Syntax, Kontrollstrukturen, Typinferenz,\u00a0</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Pattern Matching, Rekursion</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Objektorientierung:</STRONG> Klassen, Vererbung, Case Class, Typ-Parameter, Singleton, Traits</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Funktionale Programmierung:</STRONG> Closures, Currying, map/flatmap, Funktionen h\u00f6herer Ordnung</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Parallele Programmierung:\u00a0</STRONG>Akka, Aktoren, asynchrone Nachrichtenkommunikation, Future</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Testen mit Scala:</STRONG> Unit Tests mit specs2, IDE-Integration</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Entwicklungswerkzeuge:</STRONG> Scala-IDE, REPL, SBT</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Ausblick:</STRONG> Entwicklungen, Bibliotheken und Frameworks</SPAN></LI>\r\n</UL>\r\n</DIV>\r\n<DIV><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">F\u00fcr weitere Informationen konsultieren Sie bitte die\u00a0<A HREF=\"https://www.learnscala.de/schulungen/scala-training\" TARGET=\"_blank\">detaillierte Themenliste</A>\u00a0und <A HREF=\"https://www.learnscala.de/schulungen/scala-training/folien\" TARGET=\"_blank\">Beispielfolien</A>.</SPAN></DIV>\r\n<DIV><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><BR></SPAN></DIV>\r\n<H3 STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">Kursvoraussetzungen</H3>\r\n<P><SPAN STYLE=\"font-size: small;\"><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">Mehrere Jahre Erfahrungen mit</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">\u00a0</SPAN><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">einer objektorientierten Programmiersprache</STRONG><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">\u00a0m\u00fcssen vorhanden sein</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">; idealerweise Java oder auch C++, C#, Python oder Ruby. Vorkenntnisse in Scala sind</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">\u00a0</SPAN><SPAN CLASS=\"underline\" STYLE=\"font-family: arial, helvetica, sans-serif; text-decoration: underline;\">nicht</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">\u00a0</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">erforderlich.</SPAN></SPAN></P>\r\n<P>\u00a0</P>\r\n<H3 STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">Ziel der Weiterbildung</H3>\r\n<P STYLE=\"font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px;\"><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Nach Abschluss dieses Kurses k\u00f6nnen Sie in\u00a0<STRONG>Scala programmieren</STRONG>\u00a0und die\u00a0<STRONG>gesteigerte Produktivit\u00e4t</STRONG>\u00a0genie\u00dfen. Sie wissen was Scala von Java unterscheidet, wo die Vor- und Nachteile liegen. Durch die geschaffenen Grundlagen lassen sich fortgeschrittene Themen\u00a0<STRONG>schneller und einfacher erlernen</STRONG>.\u00a0</SPAN></P>\r\n<HR>\r\n<P><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">H\u00e4ufig gestellte Fragen</STRONG></P>\r\n<P><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\"><BR></STRONG></P>\r\n<P><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Wie kann bezahlt werden?</STRONG></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Die Bezahlung kann via <STRONG>Kreditkarte</STRONG> durchgef\u00fchrt werden oder auf <STRONG>Rechnung</STRONG> (via \"Offline-Zahlung\" - siehe dazu \"Weitere Zahlungsoptionen anzeigen\" unter \"Registrieren\").</SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Wie gro\u00df ist die Kursgruppe?</STRONG></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Die Anzahl der Teilnehmer ist auf 8 limitiert. Das schafft eine gute Lernatmosph\u00e4re und erlaubt es dem Trainer, auf individuelle Fragen und Probleme einzugehen. </SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Die Mindestteilnehmerzahl betr\u00e4gt 4; wird diese nicht erreicht, werden alle Teilnehmer rechtzeitig benachrichtigt und erhalten die volle Geb\u00fchr erstattet.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><BR></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG>Was ist in der Kursgeb\u00fchr enthalten?</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Die Geb\u00fchr beinhaltet <STRONG>Mittagessen</STRONG>, kalte und warme <STRONG>Pauseng</STRONG></SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>etr\u00e4nke</STRONG>, <STRONG>Snacks</STRONG> und die\u00a0</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">digitalen <STRONG>Kursmaterialien</STRONG> - inklusive aller Folien, einem Glossar, allen \u00dcbungen und einer Linksammlung. Nur f\u00fcr die Unterkunft muss ggf. selbst gesorgt werden.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Eine zuz\u00fcgliche Mehrwertsteuer ist \u00fcbrigens bei Registrierungen innerhalb des Jahres 2012 nicht f\u00e4llig.</SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG>Wann beginnt der Kurs?</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Der Kurs beginnt jeden Tag um 9.30 Uhr und endet um 17:30 Uhr.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><BR></SPAN></P>\r\n<P><STRONG><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">In welcher Sprache ist das Training?</SPAN></STRONG></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Der Kurs wird auf deutsch pr\u00e4sentiert und die Kursmaterialien enthalten englischen Programmcode mit deutschen Anmerkungen.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><BR></SPAN></P>\r\n<P><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Was muss mitgebracht werden?</STRONG></P>\r\n<P><SPAN STYLE=\"font-size: small;\"><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">Jeder Teilnehmer muss zur Schulung einen </SPAN><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">eigenen Laptop\u00a0</STRONG><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">mitbringen, das Betriebssystem ist dabei beliebig. F\u00fcr alles andere, wie Essen und Getr\u00e4nke, ist gesorgt.</SPAN></SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG>Wie kann ich den Veranstalter kontaktieren, wenn ich Fragen habe?</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Nutzen Sie dazu die Funktion \"Veranstalter kontaktieren\" auf dieser Seite oder das externe\u00a0<A HREF=\"https://www.learnscala.de/kontakt\" TARGET=\"_blank\">Kontaktformular</A>. F\u00fcr einen kostenlosen R\u00fcckruf geben Sie einfach Ihre Telefonnummer an.</SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG>Wie sehen die R\u00fccktrittsbedingungen aus?</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\"><SPAN STYLE=\"font-size: small;\">Wenn Sie die Teilnahme mehr als 30 Tage vor Seminarbeginn absagen, werden 100% erstattet. Bei mehr als 14 Tagen vor Beginn werden 50% erstattet. F\u00fcr sp\u00e4tere Absagen kann es leider keine R\u00fcckerstattungen geben.</SPAN><SPAN STYLE=\"font-size: small;\"><SPAN STYLE=\"background-color: #ffffff;\">\u00a0</SPAN><SPAN STYLE=\"background-color: #ffffff;\"><SPAN>Bei Absage des Trainings durch den Veranstalter wird nat\u00fcrlich der volle Preis r\u00fcckerstattet.</SPAN><SPAN>\u00a0</SPAN></SPAN></SPAN></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG>Ist der Teilnahmeplatz \u00fcbertragbar?</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Die Teilnahme an der Schulung kann jederzeit auf andere Personen \u00fcbertragen werden, bedarf jedoch einer Benachrichtigung des Veranstalters.</SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><STRONG><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Sie haben mehr als 2 Teilnehmer? Dann rentiert sich ein firmeninternes Training!</SPAN></STRONG></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Kontaktieren Sie einfach meinen <STRONG>Kooperationspartner Tutego</STRONG> f\u00fcr eine flexible, zugeschnittene Schulung direkt bei Ihnen. Via E-Mail unter <A HREF=\"mailto:info@tutego.de\">info@tutego.de</A> oder telefonisch unter <STRONG>0800 888 3467</STRONG> (kostenfrei).</SPAN></P>\r\n<P><SPAN STYLE=\"color: rgba(78, 68, 60, 0.901961); font-family: 'Helvetica Neue', Helvetica, sans-serif; font-size: 14px; line-height: 18px;\">\u00a0</SPAN></P>\r\n<HR>\r\n<P><SPAN STYLE=\"font-size: medium; font-family: arial, helvetica, sans-serif;\"><STRONG>Teilnahmebedingungen und AGBs</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Es gelten die <A HREF=\"https://www.learnscala.de/agb\" TARGET=\"_blank\">Bedingungen der 101 Loops UG (haftungsbeschr\u00e4nkt)</A>.</SPAN></P>",
+            "end_date":"2013-03-20 17:30:00",
+            "tags":"",
+            "timezone_offset":"GMT+0100",
+            "text_color":"E5E600",
+            "title_text_color":"",
+            "tickets":[
+                {
+                    "ticket":{
+                        "description":"",
+                        "end_date":"2013-03-15 23:55:00",
+                        "min":1,
+                        "max":1,
+                        "price":"1,297.00",
+                        "visible":"true",
+                        "start_date":"2013-01-25 23:55:00",
+                        "currency":"EUR",
+                        "type":0,
+                        "id":15451110,
+                        "name":"Standard"
+                    }
+                },
+                {
+                    "ticket":{
+                        "description":"10% Rabatt",
+                        "end_date":"2013-01-25 23:55:00",
+                        "min":1,
+                        "max":2,
+                        "price":"1,167.00",
+                        "visible":"false",
+                        "start_date":"2012-12-31 23:55:00",
+                        "currency":"EUR",
+                        "type":0,
+                        "id":15451112,
+                        "name":"Fr\u00fchbucher"
+                    }
+                },
+                {
+                    "ticket":{
+                        "description":"10% Rabatt",
+                        "end_date":"2013-01-25 23:55:00",
+                        "min":1,
+                        "max":2,
+                        "price":"1,167.00",
+                        "visible":"true",
+                        "start_date":"2012-09-19 00:00:00",
+                        "currency":"EUR",
+                        "type":0,
+                        "id":15451114,
+                        "name":"Fr\u00fchbucher"
+                    }
+                },
+                {
+                    "ticket":{
+                        "description":"10% Rabatt",
+                        "end_date":"2013-03-15 23:55:00",
+                        "min":2,
+                        "max":2,
+                        "price":"1,167.00",
+                        "visible":"false",
+                        "start_date":"2013-01-25 23:55:00",
+                        "currency":"EUR",
+                        "type":0,
+                        "id":15451118,
+                        "name":"Doppelpack"
+                    }
+                }
+            ],
+            "distance":"0.00M",
+            "created":"2012-09-29 02:31:12",
+            "url":"http://scala-schulung-muenchen-SRCH.eventbrite.com",
+            "box_text_color":"0077B3",
+            "privacy":"Public",
+            "venue":{
+                "city":"M\u00fcnchen",
+                "name":"",
+                "country":"Germany",
+                "region":"BY",
+                "longitude":11.556609999999999,
+                "postal_code":"80335",
+                "address_2":"",
+                "address":"4 Nymphenburger Stra\u00dfe",
+                "latitude":48.14817,
+                "country_code":"DE",
+                "id":2459350,
+                "Lat-Long":"48.14817 / 11.55661"
+            },
+            "modified":"2012-10-21 02:33:27",
+            "logo_ssl":"https://ebmedia.eventbrite.com/s3-build/images/638054/36822217778/1/logo.png",
+            "repeats":"no"
+        }
+    },
+    {
+        "event":{
+            "box_header_text_color":"FFFFFF",
+            "link_color":"0077B3",
+            "box_background_color":"FFFFFF",
+            "timezone":"Europe/Berlin",
+            "box_border_color":"94BE00",
+            "logo":"http://ebmedia.eventbrite.com/s3-build/images/638056/36822217778/1/logo.png",
+            "organizer":{
+                "url":"http://101loops.eventbrite.com",
+                "description":"Stephan Behnke \r\n\r\nstudierter Wirtschaftsinformatiker\r\nSoftwareentwickler seit 0 Jahren\r\nFreelancer in der Softwarewelt\r\nGrder Firma \"101 Loops\"\r\nAnher von Scala seit 2009\r\nMitglied der Scala User Group Berlin\r\n\r\n\r\n101 Loops UG (haftungsbeschrt) \r\n\r\nEntwicklung von Webanwendungen auf Basis von Scala\r\nSitz in Berlin\r\nUSt-IdNr.: DE282120597\r\n\r\n \r\nWeitere Termine\r\n\r\n21. Januar, Berlin\r\n04. Februar, Hamburg\r\n18. Februar, Frankfurt am Main\r\n04. M, Stuttgart\r\n18. M, M\r\n\r\n \r\nMeinungen\r\n\"Die Schulung hat alle Unterschiede zw. Java und Scala aufgezeigt und durch verschiedene n verinnerlicht, [..] das Quiz zwischendurch lockert auf, da man mit den anderen zusammen ie Antworten diskutieren kann.\"\r\n- Marco R.\r\n \r\n\r\n\"Was mir gefallen hat, ist die individuelle Art, wie Stephan mit mir und den anderen Teilnehmern umgegangen ist. One-on-One Hilfe und Tipps waren reichlich vorhanden.\"\r\n- Kifah A.\r\n \r\n\r\n\"Kenntnisreiche Einf in die Welt von Scala. Fundiert und auf den Punkt gebracht. Die vielen n veranschaulichen und vertiefen die Materie. Prima!\"\r\n- Hendrik B.\r\n\r\n",
+                "long_description":"Stephan Behnke \r\n\r\nstudierter Wirtschaftsinformatiker\r\nSoftwareentwickler seit 0 Jahren\r\nFreelancer in der Softwarewelt\r\nGrder Firma \"101 Loops\"\r\nAnher von Scala seit 2009\r\nMitglied der Scala User Group Berlin\r\n\r\n\r\n101 Loops UG (haftungsbeschrt) \r\n\r\nEntwicklung von Webanwendungen auf Basis von Scala\r\nSitz in Berlin\r\nUSt-IdNr.: DE282120597\r\n\r\n \r\nWeitere Termine\r\n\r\n21. Januar, Berlin\r\n04. Februar, Hamburg\r\n18. Februar, Frankfurt am Main\r\n04. M, Stuttgart\r\n18. M, M\r\n\r\n \r\nMeinungen\r\n\"Die Schulung hat alle Unterschiede zw. Java und Scala aufgezeigt und durch verschiedene n verinnerlicht, [..] das Quiz zwischendurch lockert auf, da man mit den anderen zusammen ie Antworten diskutieren kann.\"\r\n- Marco R.\r\n \r\n\r\n\"Was mir gefallen hat, ist die individuelle Art, wie Stephan mit mir und den anderen Teilnehmern umgegangen ist. One-on-One Hilfe und Tipps waren reichlich vorhanden.\"\r\n- Kifah A.\r\n \r\n\r\n\"Kenntnisreiche Einf in die Welt von Scala. Fundiert und auf den Punkt gebracht. Die vielen n veranschaulichen und vertiefen die Materie. Prima!\"\r\n- Hendrik B.\r\n\r\n",
+                "id":2718511298,
+                "name":"Stephan Behnke, 101 Loops UG"
+            },
+            "background_color":"2996CC",
+            "id":4479588570,
+            "category":"seminars,conferences",
+            "box_header_background_color":"94BE00",
+            "capacity":8,
+            "num_attendee_rows":0,
+            "title":"Objektfunktionale Programmierung mit Scala - Schulung in Stuttgart",
+            "start_date":"2013-03-04 09:30:00",
+            "status":"Live",
+            "description":"<P>\u00a0</P>\r\n<P><IMG STYLE=\"margin-left: 10px; margin-right: 10px; float: right;\" TITLE=\"Scala Logo\" SRC=\"https://www.learnscala.de/assets/img/scala-logo.png\" ALT=\"Scala Logo\" WIDTH=\"190\" HEIGHT=\"56\"></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Der <STRONG>3-t\u00e4gige Kurs in Stuttgart</STRONG> f\u00fchrt Schritt f\u00fcr Schritt durch die wichtigsten Aspekte und Konzepte der Sprache. Dabei wird mit jedem Schritt das Verst\u00e4ndnis f\u00fcr Scala vertieft und aufgezeigt, wie es die <STRONG>t\u00e4gliche Arbeit bereichern</STRONG> kann.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><BR></SPAN></P>\r\n<P STYLE=\"font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal;\"><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\"><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">Scala</STRONG></SPAN></P>\r\n<P STYLE=\"font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal;\"><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Scala ist eine objektorientierte, moderne und funktionale Programmiersprache f\u00fcr die\u00a0<STRONG>Java-Plattform</STRONG>. Nach fast\u00a0<STRONG>10 Jahren Entwicklung</STRONG>\u00a0und dem Einsatz bei Twitter, LinkedIn und SAP ist sie bereit f\u00fcr die gro\u00dfe B\u00fchne. K\u00fcrzerer Programmcode, Java-Kompatibilit\u00e4t, Typerkennung, Klassenkomposition, Closures und eigene Kontrollstrukturen sind nur eine Auswahl der\u00a0<STRONG>bahnbrechenden M\u00f6glichkeiten</STRONG>.\u00a0</SPAN></P>\r\n<P STYLE=\"font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal;\"><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Im Kurs wird die brandneue Version 2.10 behandelt.\u00a0</SPAN><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Verpassen Sie nicht den Anschluss!</STRONG></P>\r\n<P STYLE=\"font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal;\"><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG><BR></STRONG></SPAN></P>\r\n<H3 STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">Aufbau der Schulung</H3>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Die Schulung ist sehr <STRONG>praxisorientiert</STRONG>\u00a0gestaltet und jeder Themenabschnitt wird mit <STRONG>\u00dcbungen</STRONG> gefestigt. Ein eigens f\u00fcr die Schulungsreihe gestaltetes Pr\u00e4sentationswerkzeug erlaubt es flexibel auf Teilnehmerw\u00fcnsche und -anregungen einzugehen.</SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small;\"><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\"><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">Durch die bewusst <STRONG>klein gehaltene Teilnehmerzahl</STRONG> kann auf individuelle Probleme direkt eingegangen werden.\u00a0</SPAN></SPAN></SPAN><SPAN STYLE=\"font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px;\">Der Verlauf des Workshops passt sich den <STRONG>Bed\u00fcrfnissen und W\u00fcnschen der Teilnehmer</STRONG> an, Fragen werden vom Trainer direkt beantwortet.\u00a0</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Insgesamt bietet der Kurs einen </SPAN><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">tiefgreifenden, schnellen Einstieg in Scala</STRONG><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">.</SPAN></P>\r\n<P>\u00a0</P>\r\n<H3 STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">Schulungsinhalte</H3>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Eine zusammengefasste \u00dcbersicht:</SPAN></P>\r\n<DIV>\r\n<UL>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Grundlagen:</STRONG> Syntax, Kontrollstrukturen, Typinferenz,\u00a0</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Pattern Matching, Rekursion</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Objektorientierung:</STRONG> Klassen, Vererbung, Case Class, Typ-Parameter, Singleton, Traits</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Funktionale Programmierung:</STRONG> Closures, Currying, map/flatmap, Funktionen h\u00f6herer Ordnung</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Parallele Programmierung:\u00a0</STRONG>Akka, Aktoren, asynchrone Nachrichtenkommunikation, Future</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Testen mit Scala:</STRONG> Unit Tests mit specs2, IDE-Integration</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Entwicklungswerkzeuge:</STRONG> Scala-IDE, REPL, SBT</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Ausblick:</STRONG> Entwicklungen, Bibliotheken und Frameworks</SPAN></LI>\r\n</UL>\r\n</DIV>\r\n<DIV><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">F\u00fcr weitere Informationen konsultieren Sie bitte die\u00a0<A HREF=\"https://www.learnscala.de/schulungen/scala-training\" TARGET=\"_blank\">detaillierte Themenliste</A>\u00a0und <A HREF=\"https://www.learnscala.de/schulungen/scala-training/folien\" TARGET=\"_blank\">Beispielfolien</A>.</SPAN></DIV>\r\n<DIV><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><BR></SPAN></DIV>\r\n<H3 STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">Kursvoraussetzungen</H3>\r\n<P><SPAN STYLE=\"font-size: small;\"><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">Mehrere Jahre Erfahrungen mit</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">\u00a0</SPAN><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">einer objektorientierten Programmiersprache</STRONG><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">\u00a0m\u00fcssen vorhanden sein</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">; idealerweise Java oder auch C++, C#, Python oder Ruby. Vorkenntnisse in Scala sind</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">\u00a0</SPAN><SPAN CLASS=\"underline\" STYLE=\"font-family: arial, helvetica, sans-serif; text-decoration: underline;\">nicht</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">\u00a0</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">erforderlich.</SPAN></SPAN></P>\r\n<P>\u00a0</P>\r\n<H3 STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">Ziel der Weiterbildung</H3>\r\n<P STYLE=\"font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px;\"><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Nach Abschluss dieses Kurses k\u00f6nnen Sie in\u00a0<STRONG>Scala programmieren</STRONG>\u00a0und die\u00a0<STRONG>gesteigerte Produktivit\u00e4t</STRONG>\u00a0genie\u00dfen. Sie wissen was Scala von Java unterscheidet, wo die Vor- und Nachteile liegen. Durch die geschaffenen Grundlagen lassen sich fortgeschrittene Themen\u00a0<STRONG>schneller und einfacher erlernen</STRONG>.\u00a0</SPAN></P>\r\n<HR>\r\n<P><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">H\u00e4ufig gestellte Fragen</STRONG></P>\r\n<P><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\"><BR></STRONG></P>\r\n<P><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Wie kann bezahlt werden?</STRONG></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Die Bezahlung kann via <STRONG>Kreditkarte</STRONG> durchgef\u00fchrt werden oder auf <STRONG>Rechnung</STRONG> (via \"Offline-Zahlung\" - siehe dazu \"Weitere Zahlungsoptionen anzeigen\" unter \"Registrieren\").</SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Wie gro\u00df ist die Kursgruppe?</STRONG></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Die Anzahl der Teilnehmer ist auf 8 limitiert. Das schafft eine gute Lernatmosph\u00e4re und erlaubt es dem Trainer, auf individuelle Fragen und Probleme einzugehen. </SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Die Mindestteilnehmerzahl betr\u00e4gt 4; wird diese nicht erreicht, werden alle Teilnehmer rechtzeitig benachrichtigt und erhalten die volle Geb\u00fchr erstattet.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><BR></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG>Was ist in der Kursgeb\u00fchr enthalten?</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Die Geb\u00fchr beinhaltet <STRONG>Mittagessen</STRONG>, kalte und warme <STRONG>Pauseng</STRONG></SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>etr\u00e4nke</STRONG>, <STRONG>Snacks</STRONG> und die\u00a0</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">digitalen <STRONG>Kursmaterialien</STRONG> - inklusive aller Folien, einem Glossar, allen \u00dcbungen und einer Linksammlung. Nur f\u00fcr die Unterkunft muss ggf. selbst gesorgt werden.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Eine zuz\u00fcgliche Mehrwertsteuer ist \u00fcbrigens bei Registrierungen innerhalb des Jahres 2012 nicht f\u00e4llig.</SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG>Wann beginnt der Kurs?</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Der Kurs beginnt jeden Tag um 9.30 Uhr und endet um 17:30 Uhr.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><BR></SPAN></P>\r\n<P><STRONG><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">In welcher Sprache ist das Training?</SPAN></STRONG></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Der Kurs wird auf deutsch pr\u00e4sentiert und die Kursmaterialien enthalten englischen Programmcode mit deutschen Anmerkungen.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><BR></SPAN></P>\r\n<P><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Was muss mitgebracht werden?</STRONG></P>\r\n<P><SPAN STYLE=\"font-size: small;\"><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">Jeder Teilnehmer muss zur Schulung einen </SPAN><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">eigenen Laptop\u00a0</STRONG><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">mitbringen, das Betriebssystem ist dabei beliebig. F\u00fcr alles andere, wie Essen und Getr\u00e4nke, ist gesorgt.</SPAN></SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG>Wie kann ich den Veranstalter kontaktieren, wenn ich Fragen habe?</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Nutzen Sie dazu die Funktion \"Veranstalter kontaktieren\" auf dieser Seite oder das externe\u00a0<A HREF=\"https://www.learnscala.de/kontakt\" TARGET=\"_blank\">Kontaktformular</A>. F\u00fcr einen kostenlosen R\u00fcckruf geben Sie einfach Ihre Telefonnummer an.</SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG>Wie sehen die R\u00fccktrittsbedingungen aus?</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\"><SPAN STYLE=\"font-size: small;\">Wenn Sie die Teilnahme mehr als 30 Tage vor Seminarbeginn absagen, werden 100% erstattet. Bei mehr als 14 Tagen vor Beginn werden 50% erstattet. F\u00fcr sp\u00e4tere Absagen kann es leider keine R\u00fcckerstattungen geben.</SPAN><SPAN STYLE=\"font-size: small;\"><SPAN STYLE=\"background-color: #ffffff;\">\u00a0</SPAN><SPAN STYLE=\"background-color: #ffffff;\"><SPAN>Bei Absage des Trainings durch den Veranstalter wird nat\u00fcrlich der volle Preis r\u00fcckerstattet.</SPAN><SPAN>\u00a0</SPAN></SPAN></SPAN></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG>Ist der Teilnahmeplatz \u00fcbertragbar?</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Die Teilnahme an der Schulung kann jederzeit auf andere Personen \u00fcbertragen werden, bedarf jedoch einer Benachrichtigung des Veranstalters.</SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><STRONG><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Sie haben mehr als 2 Teilnehmer? Dann rentiert sich ein firmeninternes Training!</SPAN></STRONG></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Kontaktieren Sie einfach meinen <STRONG>Kooperationspartner Tutego</STRONG> f\u00fcr eine flexible, zugeschnittene Schulung direkt bei Ihnen. Via E-Mail unter <A HREF=\"mailto:info@tutego.de\">info@tutego.de</A> oder telefonisch unter <STRONG>0800 888 3467</STRONG> (kostenfrei).</SPAN></P>\r\n<P><SPAN STYLE=\"color: rgba(78, 68, 60, 0.901961); font-family: 'Helvetica Neue', Helvetica, sans-serif; font-size: 14px; line-height: 18px;\">\u00a0</SPAN></P>\r\n<HR>\r\n<P><SPAN STYLE=\"font-size: medium; font-family: arial, helvetica, sans-serif;\"><STRONG>Teilnahmebedingungen und AGBs</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Es gelten die <A HREF=\"https://www.learnscala.de/agb\" TARGET=\"_blank\">Bedingungen der 101 Loops UG (haftungsbeschr\u00e4nkt)</A>.</SPAN></P>",
+            "end_date":"2013-03-06 17:30:00",
+            "tags":"",
+            "timezone_offset":"GMT+0100",
+            "text_color":"E5E600",
+            "title_text_color":"",
+            "tickets":[
+                {
+                    "ticket":{
+                        "description":"",
+                        "end_date":"2013-03-01 23:55:00",
+                        "min":1,
+                        "max":1,
+                        "price":"1,297.00",
+                        "visible":"true",
+                        "start_date":"2013-01-29 23:55:00",
+                        "currency":"EUR",
+                        "type":0,
+                        "id":15451120,
+                        "name":"Standard"
+                    }
+                },
+                {
+                    "ticket":{
+                        "description":"10% Rabatt",
+                        "end_date":"2013-01-29 23:55:00",
+                        "min":1,
+                        "max":2,
+                        "price":"1,167.00",
+                        "visible":"false",
+                        "start_date":"2012-12-31 23:55:00",
+                        "currency":"EUR",
+                        "type":0,
+                        "id":15451122,
+                        "name":"Fr\u00fchbucher"
+                    }
+                },
+                {
+                    "ticket":{
+                        "description":"10% Rabatt",
+                        "end_date":"2013-01-29 23:55:00",
+                        "min":1,
+                        "max":2,
+                        "price":"1,167.00",
+                        "visible":"true",
+                        "start_date":"2012-09-19 00:00:00",
+                        "currency":"EUR",
+                        "type":0,
+                        "id":15451124,
+                        "name":"Fr\u00fchbucher"
+                    }
+                },
+                {
+                    "ticket":{
+                        "description":"10% Rabatt",
+                        "end_date":"2013-03-01 23:55:00",
+                        "min":2,
+                        "max":2,
+                        "price":"1,167.00",
+                        "visible":"false",
+                        "start_date":"2013-01-29 23:55:00",
+                        "currency":"EUR",
+                        "type":0,
+                        "id":15451128,
+                        "name":"Doppelpack"
+                    }
+                }
+            ],
+            "distance":"0.00M",
+            "created":"2012-09-29 02:32:15",
+            "url":"http://scala-schulung-stuttgart-SRCH.eventbrite.com",
+            "box_text_color":"0077B3",
+            "privacy":"Public",
+            "venue":{
+                "city":"Stuttgart",
+                "name":"",
+                "country":"Germany",
+                "region":"BW",
+                "longitude":9.1778099999999991,
+                "postal_code":"70173",
+                "address_2":"",
+                "address":"26 K\u00f6nigstra\u00dfe",
+                "latitude":48.779789999999998,
+                "country_code":"DE",
+                "id":2459352,
+                "Lat-Long":"48.77979 / 9.17781"
+            },
+            "modified":"2012-10-21 02:33:42",
+            "logo_ssl":"https://ebmedia.eventbrite.com/s3-build/images/638056/36822217778/1/logo.png",
+            "repeats":"no"
+        }
+    },
+    {
+        "event":{
+            "box_header_text_color":"FFFFFF",
+            "link_color":"0077B3",
+            "box_background_color":"FFFFFF",
+            "timezone":"Europe/Berlin",
+            "box_border_color":"94BE00",
+            "logo":"http://ebmedia.eventbrite.com/s3-build/images/638058/36822217778/1/logo.png",
+            "organizer":{
+                "url":"http://101loops.eventbrite.com",
+                "description":"Stephan Behnke \r\n\r\nstudierter Wirtschaftsinformatiker\r\nSoftwareentwickler seit 0 Jahren\r\nFreelancer in der Softwarewelt\r\nGrder Firma \"101 Loops\"\r\nAnher von Scala seit 2009\r\nMitglied der Scala User Group Berlin\r\n\r\n\r\n101 Loops UG (haftungsbeschrt) \r\n\r\nEntwicklung von Webanwendungen auf Basis von Scala\r\nSitz in Berlin\r\nUSt-IdNr.: DE282120597\r\n\r\n \r\nWeitere Termine\r\n\r\n21. Januar, Berlin\r\n04. Februar, Hamburg\r\n18. Februar, Frankfurt am Main\r\n04. M, Stuttgart\r\n18. M, M\r\n\r\n \r\nMeinungen\r\n\"Die Schulung hat alle Unterschiede zw. Java und Scala aufgezeigt und durch verschiedene n verinnerlicht, [..] das Quiz zwischendurch lockert auf, da man mit den anderen zusammen ie Antworten diskutieren kann.\"\r\n- Marco R.\r\n \r\n\r\n\"Was mir gefallen hat, ist die individuelle Art, wie Stephan mit mir und den anderen Teilnehmern umgegangen ist. One-on-One Hilfe und Tipps waren reichlich vorhanden.\"\r\n- Kifah A.\r\n \r\n\r\n\"Kenntnisreiche Einf in die Welt von Scala. Fundiert und auf den Punkt gebracht. Die vielen n veranschaulichen und vertiefen die Materie. Prima!\"\r\n- Hendrik B.\r\n\r\n",
+                "long_description":"Stephan Behnke \r\n\r\nstudierter Wirtschaftsinformatiker\r\nSoftwareentwickler seit 0 Jahren\r\nFreelancer in der Softwarewelt\r\nGrder Firma \"101 Loops\"\r\nAnher von Scala seit 2009\r\nMitglied der Scala User Group Berlin\r\n\r\n\r\n101 Loops UG (haftungsbeschrt) \r\n\r\nEntwicklung von Webanwendungen auf Basis von Scala\r\nSitz in Berlin\r\nUSt-IdNr.: DE282120597\r\n\r\n \r\nWeitere Termine\r\n\r\n21. Januar, Berlin\r\n04. Februar, Hamburg\r\n18. Februar, Frankfurt am Main\r\n04. M, Stuttgart\r\n18. M, M\r\n\r\n \r\nMeinungen\r\n\"Die Schulung hat alle Unterschiede zw. Java und Scala aufgezeigt und durch verschiedene n verinnerlicht, [..] das Quiz zwischendurch lockert auf, da man mit den anderen zusammen ie Antworten diskutieren kann.\"\r\n- Marco R.\r\n \r\n\r\n\"Was mir gefallen hat, ist die individuelle Art, wie Stephan mit mir und den anderen Teilnehmern umgegangen ist. One-on-One Hilfe und Tipps waren reichlich vorhanden.\"\r\n- Kifah A.\r\n \r\n\r\n\"Kenntnisreiche Einf in die Welt von Scala. Fundiert und auf den Punkt gebracht. Die vielen n veranschaulichen und vertiefen die Materie. Prima!\"\r\n- Hendrik B.\r\n\r\n",
+                "id":2718511298,
+                "name":"Stephan Behnke, 101 Loops UG"
+            },
+            "background_color":"2996CC",
+            "id":4479590576,
+            "category":"seminars,conferences",
+            "box_header_background_color":"94BE00",
+            "capacity":8,
+            "num_attendee_rows":0,
+            "title":"Objektfunktionale Programmierung mit Scala - Schulung in Frankfurt",
+            "start_date":"2013-02-18 09:30:00",
+            "status":"Live",
+            "description":"<P>\u00a0</P>\r\n<P><IMG STYLE=\"margin-left: 10px; margin-right: 10px; float: right;\" TITLE=\"Scala Logo\" SRC=\"https://www.learnscala.de/assets/img/scala-logo.png\" ALT=\"Scala Logo\" WIDTH=\"190\" HEIGHT=\"56\"></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Der <STRONG>3-t\u00e4gige Kurs in Frankfurt</STRONG> f\u00fchrt Schritt f\u00fcr Schritt durch die wichtigsten Aspekte und Konzepte der Sprache. Dabei wird mit jedem Schritt das Verst\u00e4ndnis f\u00fcr Scala vertieft und aufgezeigt, wie es die <STRONG>t\u00e4gliche Arbeit bereichern</STRONG> kann.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><BR></SPAN></P>\r\n<P STYLE=\"font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal;\"><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\"><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">Scala</STRONG></SPAN></P>\r\n<P STYLE=\"font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal;\"><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Scala ist eine objektorientierte, moderne und funktionale Programmiersprache f\u00fcr die\u00a0<STRONG>Java-Plattform</STRONG>. Nach fast\u00a0<STRONG>10 Jahren Entwicklung</STRONG>\u00a0und dem Einsatz bei Twitter, LinkedIn und SAP ist sie bereit f\u00fcr die gro\u00dfe B\u00fchne. K\u00fcrzerer Programmcode, Java-Kompatibilit\u00e4t, Typerkennung, Klassenkomposition, Closures und eigene Kontrollstrukturen sind nur eine Auswahl der\u00a0<STRONG>bahnbrechenden M\u00f6glichkeiten</STRONG>.\u00a0</SPAN></P>\r\n<P STYLE=\"font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal;\"><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Im Kurs wird die brandneue Version 2.10 behandelt.\u00a0</SPAN><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Verpassen Sie nicht den Anschluss!</STRONG></P>\r\n<P STYLE=\"font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal;\"><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG><BR></STRONG></SPAN></P>\r\n<H3 STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">Aufbau der Schulung</H3>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Die Schulung ist sehr <STRONG>praxisorientiert</STRONG>\u00a0gestaltet und jeder Themenabschnitt wird mit <STRONG>\u00dcbungen</STRONG> gefestigt. Ein eigens f\u00fcr die Schulungsreihe gestaltetes Pr\u00e4sentationswerkzeug erlaubt es flexibel auf Teilnehmerw\u00fcnsche und -anregungen einzugehen.</SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small;\"><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\"><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">Durch die bewusst <STRONG>klein gehaltene Teilnehmerzahl</STRONG> kann auf individuelle Probleme direkt eingegangen werden.\u00a0</SPAN></SPAN></SPAN><SPAN STYLE=\"font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px;\">Der Verlauf des Workshops passt sich den <STRONG>Bed\u00fcrfnissen und W\u00fcnschen der Teilnehmer</STRONG> an, Fragen werden vom Trainer direkt beantwortet.\u00a0</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Insgesamt bietet der Kurs einen </SPAN><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">tiefgreifenden, schnellen Einstieg in Scala</STRONG><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">.</SPAN></P>\r\n<P>\u00a0</P>\r\n<H3 STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">Schulungsinhalte</H3>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Eine zusammengefasste \u00dcbersicht:</SPAN></P>\r\n<DIV>\r\n<UL>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Grundlagen:</STRONG> Syntax, Kontrollstrukturen, Typinferenz,\u00a0</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Pattern Matching, Rekursion</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Objektorientierung:</STRONG> Klassen, Vererbung, Case Class, Typ-Parameter, Singleton, Traits</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Funktionale Programmierung:</STRONG> Closures, Currying, map/flatmap, Funktionen h\u00f6herer Ordnung</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Parallele Programmierung:\u00a0</STRONG>Akka, Aktoren, asynchrone Nachrichtenkommunikation, Future</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Testen mit Scala:</STRONG> Unit Tests mit specs2, IDE-Integration</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Entwicklungswerkzeuge:</STRONG> Scala-IDE, REPL, SBT</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Ausblick:</STRONG> Entwicklungen, Bibliotheken und Frameworks</SPAN></LI>\r\n</UL>\r\n</DIV>\r\n<DIV><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">F\u00fcr weitere Informationen konsultieren Sie bitte die\u00a0<A HREF=\"https://www.learnscala.de/schulungen/scala-training\" TARGET=\"_blank\">detaillierte Themenliste</A>\u00a0und <A HREF=\"https://www.learnscala.de/schulungen/scala-training/folien\" TARGET=\"_blank\">Beispielfolien</A>.</SPAN></DIV>\r\n<DIV><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><BR></SPAN></DIV>\r\n<H3 STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">Kursvoraussetzungen</H3>\r\n<P><SPAN STYLE=\"font-size: small;\"><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">Mehrere Jahre Erfahrungen mit</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">\u00a0</SPAN><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">einer objektorientierten Programmiersprache</STRONG><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">\u00a0m\u00fcssen vorhanden sein</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">; idealerweise Java oder auch C++, C#, Python oder Ruby. Vorkenntnisse in Scala sind</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">\u00a0</SPAN><SPAN CLASS=\"underline\" STYLE=\"font-family: arial, helvetica, sans-serif; text-decoration: underline;\">nicht</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">\u00a0</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">erforderlich.</SPAN></SPAN></P>\r\n<P>\u00a0</P>\r\n<H3 STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">Ziel der Weiterbildung</H3>\r\n<P STYLE=\"font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px;\"><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Nach Abschluss dieses Kurses k\u00f6nnen Sie in\u00a0<STRONG>Scala programmieren</STRONG>\u00a0und die\u00a0<STRONG>gesteigerte Produktivit\u00e4t</STRONG>\u00a0genie\u00dfen. Sie wissen was Scala von Java unterscheidet, wo die Vor- und Nachteile liegen. Durch die geschaffenen Grundlagen lassen sich fortgeschrittene Themen\u00a0<STRONG>schneller und einfacher erlernen</STRONG>.\u00a0</SPAN></P>\r\n<HR>\r\n<P><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">H\u00e4ufig gestellte Fragen</STRONG></P>\r\n<P><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\"><BR></STRONG></P>\r\n<P><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Wie kann bezahlt werden?</STRONG></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Die Bezahlung kann via <STRONG>Kreditkarte</STRONG> durchgef\u00fchrt werden oder auf <STRONG>Rechnung</STRONG> (via \"Offline-Zahlung\" - siehe dazu \"Weitere Zahlungsoptionen anzeigen\" unter \"Registrieren\").</SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Wie gro\u00df ist die Kursgruppe?</STRONG></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Die Anzahl der Teilnehmer ist auf 8 limitiert. Das schafft eine gute Lernatmosph\u00e4re und erlaubt es dem Trainer, auf individuelle Fragen und Probleme einzugehen. </SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Die Mindestteilnehmerzahl betr\u00e4gt 4; wird diese nicht erreicht, werden alle Teilnehmer rechtzeitig benachrichtigt und erhalten die volle Geb\u00fchr erstattet.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><BR></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG>Was ist in der Kursgeb\u00fchr enthalten?</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Die Geb\u00fchr beinhaltet <STRONG>Mittagessen</STRONG>, kalte und warme <STRONG>Pauseng</STRONG></SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>etr\u00e4nke</STRONG>, <STRONG>Snacks</STRONG> und die\u00a0</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">digitalen <STRONG>Kursmaterialien</STRONG> - inklusive aller Folien, einem Glossar, allen \u00dcbungen und einer Linksammlung. Nur f\u00fcr die Unterkunft muss ggf. selbst gesorgt werden.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Eine zuz\u00fcgliche Mehrwertsteuer ist \u00fcbrigens bei Registrierungen innerhalb des Jahres 2012 nicht f\u00e4llig.</SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG>Wann beginnt der Kurs?</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Der Kurs beginnt jeden Tag um 9.30 Uhr und endet um 17:30 Uhr.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><BR></SPAN></P>\r\n<P><STRONG><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">In welcher Sprache ist das Training?</SPAN></STRONG></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Der Kurs wird auf deutsch pr\u00e4sentiert und die Kursmaterialien enthalten englischen Programmcode mit deutschen Anmerkungen.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><BR></SPAN></P>\r\n<P><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Was muss mitgebracht werden?</STRONG></P>\r\n<P><SPAN STYLE=\"font-size: small;\"><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">Jeder Teilnehmer muss zur Schulung einen </SPAN><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">eigenen Laptop\u00a0</STRONG><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">mitbringen, das Betriebssystem ist dabei beliebig. F\u00fcr alles andere, wie Essen und Getr\u00e4nke, ist gesorgt.</SPAN></SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG>Wie kann ich den Veranstalter kontaktieren, wenn ich Fragen habe?</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Nutzen Sie dazu die Funktion \"Veranstalter kontaktieren\" auf dieser Seite oder das externe\u00a0<A HREF=\"https://www.learnscala.de/kontakt\" TARGET=\"_blank\">Kontaktformular</A>. F\u00fcr einen kostenlosen R\u00fcckruf geben Sie einfach Ihre Telefonnummer an.</SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG>Wie sehen die R\u00fccktrittsbedingungen aus?</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\"><SPAN STYLE=\"font-size: small;\">Wenn Sie die Teilnahme mehr als 30 Tage vor Seminarbeginn absagen, werden 100% erstattet. Bei mehr als 14 Tagen vor Beginn werden 50% erstattet. F\u00fcr sp\u00e4tere Absagen kann es leider keine R\u00fcckerstattungen geben.</SPAN><SPAN STYLE=\"font-size: small;\"><SPAN STYLE=\"background-color: #ffffff;\">\u00a0</SPAN><SPAN STYLE=\"background-color: #ffffff;\"><SPAN>Bei Absage des Trainings durch den Veranstalter wird nat\u00fcrlich der volle Preis r\u00fcckerstattet.</SPAN><SPAN>\u00a0</SPAN></SPAN></SPAN></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG>Ist der Teilnahmeplatz \u00fcbertragbar?</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Die Teilnahme an der Schulung kann jederzeit auf andere Personen \u00fcbertragen werden, bedarf jedoch einer Benachrichtigung des Veranstalters.</SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><STRONG><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Sie haben mehr als 2 Teilnehmer? Dann rentiert sich ein firmeninternes Training!</SPAN></STRONG></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Kontaktieren Sie einfach meinen <STRONG>Kooperationspartner Tutego</STRONG> f\u00fcr eine flexible, zugeschnittene Schulung direkt bei Ihnen. Via E-Mail unter <A HREF=\"mailto:info@tutego.de\">info@tutego.de</A> oder telefonisch unter <STRONG>0800 888 3467</STRONG> (kostenfrei).</SPAN></P>\r\n<P><SPAN STYLE=\"color: rgba(78, 68, 60, 0.901961); font-family: 'Helvetica Neue', Helvetica, sans-serif; font-size: 14px; line-height: 18px;\">\u00a0</SPAN></P>\r\n<HR>\r\n<P><SPAN STYLE=\"font-size: medium; font-family: arial, helvetica, sans-serif;\"><STRONG>Teilnahmebedingungen und AGBs</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Es gelten die <A HREF=\"https://www.learnscala.de/agb\" TARGET=\"_blank\">Bedingungen der 101 Loops UG (haftungsbeschr\u00e4nkt)</A>.</SPAN></P>",
+            "end_date":"2013-02-20 17:30:00",
+            "tags":"",
+            "timezone_offset":"GMT+0100",
+            "text_color":"E5E600",
+            "title_text_color":"",
+            "tickets":[
+                {
+                    "ticket":{
+                        "description":"",
+                        "end_date":"2013-02-15 23:55:00",
+                        "min":1,
+                        "max":1,
+                        "price":"1,297.00",
+                        "visible":"true",
+                        "start_date":"2012-12-31 23:55:00",
+                        "currency":"EUR",
+                        "type":0,
+                        "id":15451132,
+                        "name":"Standard"
+                    }
+                },
+                {
+                    "ticket":{
+                        "description":"10% Rabatt",
+                        "end_date":"2012-12-31 23:55:00",
+                        "min":1,
+                        "max":2,
+                        "price":"1,167.00",
+                        "visible":"true",
+                        "start_date":"2012-09-19 00:00:00",
+                        "currency":"EUR",
+                        "type":0,
+                        "id":15451134,
+                        "name":"Fr\u00fchbucher"
+                    }
+                },
+                {
+                    "ticket":{
+                        "description":"10% Rabatt",
+                        "end_date":"2013-02-15 23:55:00",
+                        "min":2,
+                        "max":2,
+                        "price":"1,167.00",
+                        "visible":"false",
+                        "start_date":"2012-12-31 23:55:00",
+                        "currency":"EUR",
+                        "type":0,
+                        "id":15451138,
+                        "name":"Doppelpack"
+                    }
+                }
+            ],
+            "distance":"0.00M",
+            "created":"2012-09-29 02:32:44",
+            "url":"http://scala-schulung-frankfurt-SRCH.eventbrite.com",
+            "box_text_color":"0077B3",
+            "privacy":"Public",
+            "venue":{
+                "city":"Frankfurt am Main",
+                "name":"",
+                "country":"Germany",
+                "region":"HE",
+                "longitude":8.6545640000000006,
+                "postal_code":"60325",
+                "address_2":"",
+                "address":"27 Schumannstra\u00dfe",
+                "latitude":50.115023999999998,
+                "country_code":"DE",
+                "id":2459356,
+                "Lat-Long":"50.115024 / 8.654564"
+            },
+            "modified":"2012-10-21 02:33:32",
+            "logo_ssl":"https://ebmedia.eventbrite.com/s3-build/images/638058/36822217778/1/logo.png",
+            "repeats":"no"
+        }
+    },
+    {
+        "event":{
+            "box_header_text_color":"FFFFFF",
+            "link_color":"0077B3",
+            "box_background_color":"FFFFFF",
+            "timezone":"Europe/Berlin",
+            "box_border_color":"94BE00",
+            "logo":"http://ebmedia.eventbrite.com/s3-build/images/638064/36822217778/1/logo.png",
+            "organizer":{
+                "url":"http://101loops.eventbrite.com",
+                "description":"Stephan Behnke \r\n\r\nstudierter Wirtschaftsinformatiker\r\nSoftwareentwickler seit 0 Jahren\r\nFreelancer in der Softwarewelt\r\nGrder Firma \"101 Loops\"\r\nAnher von Scala seit 2009\r\nMitglied der Scala User Group Berlin\r\n\r\n\r\n101 Loops UG (haftungsbeschrt) \r\n\r\nEntwicklung von Webanwendungen auf Basis von Scala\r\nSitz in Berlin\r\nUSt-IdNr.: DE282120597\r\n\r\n \r\nWeitere Termine\r\n\r\n21. Januar, Berlin\r\n04. Februar, Hamburg\r\n18. Februar, Frankfurt am Main\r\n04. M, Stuttgart\r\n18. M, M\r\n\r\n \r\nMeinungen\r\n\"Die Schulung hat alle Unterschiede zw. Java und Scala aufgezeigt und durch verschiedene n verinnerlicht, [..] das Quiz zwischendurch lockert auf, da man mit den anderen zusammen ie Antworten diskutieren kann.\"\r\n- Marco R.\r\n \r\n\r\n\"Was mir gefallen hat, ist die individuelle Art, wie Stephan mit mir und den anderen Teilnehmern umgegangen ist. One-on-One Hilfe und Tipps waren reichlich vorhanden.\"\r\n- Kifah A.\r\n \r\n\r\n\"Kenntnisreiche Einf in die Welt von Scala. Fundiert und auf den Punkt gebracht. Die vielen n veranschaulichen und vertiefen die Materie. Prima!\"\r\n- Hendrik B.\r\n\r\n",
+                "long_description":"Stephan Behnke \r\n\r\nstudierter Wirtschaftsinformatiker\r\nSoftwareentwickler seit 0 Jahren\r\nFreelancer in der Softwarewelt\r\nGrder Firma \"101 Loops\"\r\nAnher von Scala seit 2009\r\nMitglied der Scala User Group Berlin\r\n\r\n\r\n101 Loops UG (haftungsbeschrt) \r\n\r\nEntwicklung von Webanwendungen auf Basis von Scala\r\nSitz in Berlin\r\nUSt-IdNr.: DE282120597\r\n\r\n \r\nWeitere Termine\r\n\r\n21. Januar, Berlin\r\n04. Februar, Hamburg\r\n18. Februar, Frankfurt am Main\r\n04. M, Stuttgart\r\n18. M, M\r\n\r\n \r\nMeinungen\r\n\"Die Schulung hat alle Unterschiede zw. Java und Scala aufgezeigt und durch verschiedene n verinnerlicht, [..] das Quiz zwischendurch lockert auf, da man mit den anderen zusammen ie Antworten diskutieren kann.\"\r\n- Marco R.\r\n \r\n\r\n\"Was mir gefallen hat, ist die individuelle Art, wie Stephan mit mir und den anderen Teilnehmern umgegangen ist. One-on-One Hilfe und Tipps waren reichlich vorhanden.\"\r\n- Kifah A.\r\n \r\n\r\n\"Kenntnisreiche Einf in die Welt von Scala. Fundiert und auf den Punkt gebracht. Die vielen n veranschaulichen und vertiefen die Materie. Prima!\"\r\n- Hendrik B.\r\n\r\n",
+                "id":2718511298,
+                "name":"Stephan Behnke, 101 Loops UG"
+            },
+            "background_color":"2996CC",
+            "id":4479582552,
+            "category":"seminars,conferences",
+            "box_header_background_color":"94BE00",
+            "capacity":8,
+            "num_attendee_rows":0,
+            "title":"Objektfunktionale Programmierung mit Scala - Schulung in Hamburg",
+            "start_date":"2013-02-04 09:30:00",
+            "status":"Live",
+            "description":"<P>\u00a0</P>\r\n<P><IMG STYLE=\"margin-left: 10px; margin-right: 10px; float: right;\" TITLE=\"Scala Logo\" SRC=\"https://www.learnscala.de/assets/img/scala-logo.png\" ALT=\"Scala Logo\" WIDTH=\"190\" HEIGHT=\"56\"></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Der <STRONG>3-t\u00e4gige Kurs in Hamburg</STRONG> f\u00fchrt Schritt f\u00fcr Schritt durch die wichtigsten Aspekte und Konzepte der Sprache. Dabei wird mit jedem Schritt das Verst\u00e4ndnis f\u00fcr Scala vertieft und aufgezeigt, wie es die <STRONG>t\u00e4gliche Arbeit bereichern</STRONG> kann.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><BR></SPAN></P>\r\n<P STYLE=\"font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal;\"><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\"><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">Scala</STRONG></SPAN></P>\r\n<P STYLE=\"font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal;\"><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Scala ist eine objektorientierte, moderne und funktionale Programmiersprache f\u00fcr die\u00a0<STRONG>Java-Plattform</STRONG>. Nach fast\u00a0<STRONG>10 Jahren Entwicklung</STRONG>\u00a0und dem Einsatz bei Twitter, LinkedIn und SAP ist sie bereit f\u00fcr die gro\u00dfe B\u00fchne. K\u00fcrzerer Programmcode, Java-Kompatibilit\u00e4t, Typerkennung, Klassenkomposition, Closures und eigene Kontrollstrukturen sind nur eine Auswahl der\u00a0<STRONG>bahnbrechenden M\u00f6glichkeiten</STRONG>.\u00a0</SPAN></P>\r\n<P STYLE=\"font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal;\"><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Im Kurs wird die brandneue Version 2.10 behandelt.\u00a0</SPAN><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Verpassen Sie nicht den Anschluss!</STRONG></P>\r\n<P STYLE=\"font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal;\"><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG><BR></STRONG></SPAN></P>\r\n<H3 STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">Aufbau der Schulung</H3>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Die Schulung ist sehr <STRONG>praxisorientiert</STRONG>\u00a0gestaltet und jeder Themenabschnitt wird mit <STRONG>\u00dcbungen</STRONG> gefestigt. Ein eigens f\u00fcr die Schulungsreihe gestaltetes Pr\u00e4sentationswerkzeug erlaubt es flexibel auf Teilnehmerw\u00fcnsche und -anregungen einzugehen.</SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small;\"><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\"><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">Durch die bewusst <STRONG>klein gehaltene Teilnehmerzahl</STRONG> kann auf individuelle Probleme direkt eingegangen werden.\u00a0</SPAN></SPAN></SPAN><SPAN STYLE=\"font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px;\">Der Verlauf des Workshops passt sich den <STRONG>Bed\u00fcrfnissen und W\u00fcnschen der Teilnehmer</STRONG> an, Fragen werden vom Trainer direkt beantwortet.\u00a0</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Insgesamt bietet der Kurs einen </SPAN><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">tiefgreifenden, schnellen Einstieg in Scala</STRONG><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">.</SPAN></P>\r\n<P>\u00a0</P>\r\n<H3 STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">Schulungsinhalte</H3>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Eine zusammengefasste \u00dcbersicht:</SPAN></P>\r\n<DIV>\r\n<UL>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Grundlagen:</STRONG> Syntax, Kontrollstrukturen, Typinferenz,\u00a0</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Pattern Matching, Rekursion</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Objektorientierung:</STRONG> Klassen, Vererbung, Case Class, Typ-Parameter, Singleton, Traits</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Funktionale Programmierung:</STRONG> Closures, Currying, map/flatmap, Funktionen h\u00f6herer Ordnung</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Parallele Programmierung:\u00a0</STRONG>Akka, Aktoren, asynchrone Nachrichtenkommunikation, Future</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Testen mit Scala:</STRONG> Unit Tests mit specs2, IDE-Integration</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Entwicklungswerkzeuge:</STRONG> Scala-IDE, REPL, SBT</SPAN></LI>\r\n<LI><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>Ausblick:</STRONG> Entwicklungen, Bibliotheken und Frameworks</SPAN></LI>\r\n</UL>\r\n</DIV>\r\n<DIV><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">F\u00fcr weitere Informationen konsultieren Sie bitte die\u00a0<A HREF=\"https://www.learnscala.de/schulungen/scala-training\" TARGET=\"_blank\">detaillierte Themenliste</A>\u00a0und <A HREF=\"https://www.learnscala.de/schulungen/scala-training/folien\" TARGET=\"_blank\">Beispielfolien</A>.</SPAN></DIV>\r\n<DIV><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><BR></SPAN></DIV>\r\n<H3 STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">Kursvoraussetzungen</H3>\r\n<P><SPAN STYLE=\"font-size: small;\"><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">Mehrere Jahre Erfahrungen mit</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">\u00a0</SPAN><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">einer objektorientierten Programmiersprache</STRONG><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">\u00a0m\u00fcssen vorhanden sein</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">; idealerweise Java oder auch C++, C#, Python oder Ruby. Vorkenntnisse in Scala sind</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">\u00a0</SPAN><SPAN CLASS=\"underline\" STYLE=\"font-family: arial, helvetica, sans-serif; text-decoration: underline;\">nicht</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">\u00a0</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">erforderlich.</SPAN></SPAN></P>\r\n<P>\u00a0</P>\r\n<H3 STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">Ziel der Weiterbildung</H3>\r\n<P STYLE=\"font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px;\"><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Nach Abschluss dieses Kurses k\u00f6nnen Sie in\u00a0<STRONG>Scala programmieren</STRONG>\u00a0und die\u00a0<STRONG>gesteigerte Produktivit\u00e4t</STRONG>\u00a0genie\u00dfen. Sie wissen was Scala von Java unterscheidet, wo die Vor- und Nachteile liegen. Durch die geschaffenen Grundlagen lassen sich fortgeschrittene Themen\u00a0<STRONG>schneller und einfacher erlernen</STRONG>.\u00a0</SPAN></P>\r\n<HR>\r\n<P><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\">H\u00e4ufig gestellte Fragen</STRONG></P>\r\n<P><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: medium;\"><BR></STRONG></P>\r\n<P><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Wie kann bezahlt werden?</STRONG></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Die Bezahlung kann via <STRONG>Kreditkarte</STRONG> durchgef\u00fchrt werden oder auf <STRONG>Rechnung</STRONG> (via \"Offline-Zahlung\" - siehe dazu \"Weitere Zahlungsoptionen anzeigen\" unter \"Registrieren\").</SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Wie gro\u00df ist die Kursgruppe?</STRONG></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Die Anzahl der Teilnehmer ist auf 8 limitiert. Das schafft eine gute Lernatmosph\u00e4re und erlaubt es dem Trainer, auf individuelle Fragen und Probleme einzugehen. </SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Die Mindestteilnehmerzahl betr\u00e4gt 4; wird diese nicht erreicht, werden alle Teilnehmer rechtzeitig benachrichtigt und erhalten die volle Geb\u00fchr erstattet.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><BR></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG>Was ist in der Kursgeb\u00fchr enthalten?</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Die Geb\u00fchr beinhaltet <STRONG>Mittagessen</STRONG>, kalte und warme <STRONG>Pauseng</STRONG></SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><STRONG>etr\u00e4nke</STRONG>, <STRONG>Snacks</STRONG> und die\u00a0</SPAN><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">digitalen <STRONG>Kursmaterialien</STRONG> - inklusive aller Folien, einem Glossar, allen \u00dcbungen und einer Linksammlung. Nur f\u00fcr die Unterkunft muss ggf. selbst gesorgt werden.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Eine zuz\u00fcgliche Mehrwertsteuer ist \u00fcbrigens bei Registrierungen innerhalb des Jahres 2012 nicht f\u00e4llig.</SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG>Wann beginnt der Kurs?</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Der Kurs beginnt jeden Tag um 9.30 Uhr und endet um 17:30 Uhr.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><BR></SPAN></P>\r\n<P><STRONG><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">In welcher Sprache ist das Training?</SPAN></STRONG></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Der Kurs wird auf deutsch pr\u00e4sentiert und die Kursmaterialien enthalten englischen Programmcode mit deutschen Anmerkungen.</SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\"><BR></SPAN></P>\r\n<P><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Was muss mitgebracht werden?</STRONG></P>\r\n<P><SPAN STYLE=\"font-size: small;\"><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">Jeder Teilnehmer muss zur Schulung einen </SPAN><STRONG STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">eigenen Laptop\u00a0</STRONG><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\">mitbringen, das Betriebssystem ist dabei beliebig. F\u00fcr alles andere, wie Essen und Getr\u00e4nke, ist gesorgt.</SPAN></SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG>Wie kann ich den Veranstalter kontaktieren, wenn ich Fragen habe?</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Nutzen Sie dazu die Funktion \"Veranstalter kontaktieren\" auf dieser Seite oder das externe\u00a0<A HREF=\"https://www.learnscala.de/kontakt\" TARGET=\"_blank\">Kontaktformular</A>. F\u00fcr einen kostenlosen R\u00fcckruf geben Sie einfach Ihre Telefonnummer an.</SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG>Wie sehen die R\u00fccktrittsbedingungen aus?</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif;\"><SPAN STYLE=\"font-size: small;\">Wenn Sie die Teilnahme mehr als 30 Tage vor Seminarbeginn absagen, werden 100% erstattet. Bei mehr als 14 Tagen vor Beginn werden 50% erstattet. F\u00fcr sp\u00e4tere Absagen kann es leider keine R\u00fcckerstattungen geben.</SPAN><SPAN STYLE=\"font-size: small;\"><SPAN STYLE=\"background-color: #ffffff;\">\u00a0</SPAN><SPAN STYLE=\"background-color: #ffffff;\"><SPAN>Bei Absage des Trainings durch den Veranstalter wird nat\u00fcrlich der volle Preis r\u00fcckerstattet.</SPAN><SPAN>\u00a0</SPAN></SPAN></SPAN></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><STRONG>Ist der Teilnahmeplatz \u00fcbertragbar?</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\">Die Teilnahme an der Schulung kann jederzeit auf andere Personen \u00fcbertragen werden, bedarf jedoch einer Benachrichtigung des Veranstalters.</SPAN></P>\r\n<P><SPAN STYLE=\"font-size: small; font-family: arial, helvetica, sans-serif;\"><BR></SPAN></P>\r\n<P><STRONG><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Sie haben mehr als 2 Teilnehmer? Dann rentiert sich ein firmeninternes Training!</SPAN></STRONG></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Kontaktieren Sie einfach meinen <STRONG>Kooperationspartner Tutego</STRONG> f\u00fcr eine flexible, zugeschnittene Schulung direkt bei Ihnen. Via E-Mail unter <A HREF=\"mailto:info@tutego.de\">info@tutego.de</A> oder telefonisch unter <STRONG>0800 888 3467</STRONG> (kostenfrei).</SPAN></P>\r\n<P><SPAN STYLE=\"color: rgba(78, 68, 60, 0.901961); font-family: 'Helvetica Neue', Helvetica, sans-serif; font-size: 14px; line-height: 18px;\">\u00a0</SPAN></P>\r\n<HR>\r\n<P><SPAN STYLE=\"font-size: medium; font-family: arial, helvetica, sans-serif;\"><STRONG>Teilnahmebedingungen und AGBs</STRONG></SPAN></P>\r\n<P><SPAN STYLE=\"font-family: arial, helvetica, sans-serif; font-size: small;\">Es gelten die <A HREF=\"https://www.learnscala.de/agb\" TARGET=\"_blank\">Bedingungen der 101 Loops UG (haftungsbeschr\u00e4nkt)</A>.</SPAN></P>",
+            "end_date":"2013-02-06 17:30:00",
+            "tags":"",
+            "timezone_offset":"GMT+0100",
+            "text_color":"E5E600",
+            "title_text_color":"",
+            "tickets":[
+                {
+                    "ticket":{
+                        "description":"",
+                        "end_date":"2012-12-31 23:55:00",
+                        "min":1,
+                        "max":1,
+                        "price":"1,197.00",
+                        "visible":"true",
+                        "start_date":"2012-12-15 23:55:00",
+                        "currency":"EUR",
+                        "type":0,
+                        "id":15451088,
+                        "name":"Standard"
+                    }
+                },
+                {
+                    "ticket":{
+                        "description":"",
+                        "end_date":"2013-02-01 23:55:00",
+                        "min":1,
+                        "max":1,
+                        "price":"1,197.00",
+                        "visible":"false",
+                        "start_date":"2012-12-31 23:55:00",
+                        "currency":"EUR",
+                        "type":0,
+                        "id":15451090,
+                        "name":"Standard"
+                    }
+                },
+                {
+                    "ticket":{
+                        "description":"10% Rabatt",
+                        "end_date":"2012-12-15 23:55:00",
+                        "min":1,
+                        "max":2,
+                        "price":"1,077.00",
+                        "visible":"true",
+                        "start_date":"2012-09-19 00:00:00",
+                        "currency":"EUR",
+                        "type":0,
+                        "id":15451092,
+                        "name":"Fr\u00fchbucher"
+                    }
+                },
+                {
+                    "ticket":{
+                        "description":"10% Rabatt",
+                        "end_date":"2012-12-31 23:55:00",
+                        "min":2,
+                        "max":2,
+                        "price":"1,077.00",
+                        "visible":"false",
+                        "start_date":"2012-12-15 23:55:00",
+                        "currency":"EUR",
+                        "type":0,
+                        "id":15451094,
+                        "name":"Doppelpack"
+                    }
+                },
+                {
+                    "ticket":{
+                        "description":"10% Rabatt",
+                        "end_date":"2013-02-01 23:55:00",
+                        "min":2,
+                        "max":2,
+                        "price":"1,077.00",
+                        "visible":"false",
+                        "start_date":"2012-12-31 23:55:00",
+                        "currency":"EUR",
+                        "type":0,
+                        "id":15451096,
+                        "name":"Doppelpack"
+                    }
+                }
+            ],
+            "distance":"0.00M",
+            "created":"2012-09-29 02:29:12",
+            "url":"http://scala-schulung-hamburg-SRCH.eventbrite.com",
+            "box_text_color":"0077B3",
+            "privacy":"Public",
+            "venue":{
+                "city":"Hamburg",
+                "name":"",
+                "country":"Germany",
+                "region":"HH",
+                "longitude":9.9877950000000002,
+                "postal_code":"20354",
+                "address_2":"",
+                "address":"80 Neuer Wall",
+                "latitude":53.550500999999997,
+                "country_code":"DE",
+                "id":2459346,
+                "Lat-Long":"53.550501 / 9.987795"
+            },
+            "modified":"2012-10-21 02:33:34",
+            "logo_ssl":"https://ebmedia.eventbrite.com/s3-build/images/638064/36822217778/1/logo.png",
+            "repeats":"no"
+        }
+    },
+    {
+        "event":{
+            "box_header_text_color":"005580",
+            "link_color":"EE6600",
+            "box_background_color":"FFFFFF",
+            "timezone":"Europe/Paris",
+            "box_border_color":"D5D5D3",
+            "logo":"http://ebmedia.eventbrite.com/s3-s3/eventlogos/27257285/4737033595-1.png",
+            "organizer":{
+                "url":"http://www.eventbrite.com/org/2886826313",
+                "description":"Paris Scala User Group",
+                "long_description":"",
+                "id":2886826313,
+                "name":"Paris Scala User Group"
+            },
+            "background_color":"FFFFFF",
+            "id":4737033595,
+            "category":"meetings,other",
+            "box_header_background_color":"EFEFEF",
+            "capacity":0,
+            "num_attendee_rows":55,
+            "title":"Paris Scala User Group #27",
+            "start_date":"2012-11-28 19:30:00",
+            "status":"Live",
+            "description":"<P><SPAN STYLE=\"margin: 0px; padding: 0px; border: 0px; vertical-align: baseline; font-family: arial, sans-serif;\">La prochaine session du\u00a0<SPAN CLASS=\"il\" STYLE=\"margin: 0px; padding: 0px; border: 0px; vertical-align: baseline; background-color: #ffffcc;\">PSUG</SPAN>\u00a0devrait avoir lieu le\u00a0</SPAN><FONT STYLE=\"margin: 0px; padding: 0px; border: 0px; vertical-align: baseline;\" FACE=\"arial, sans-serif\">mercredi 28 novembre \u00e0 19:30\u00a0chez Xebia.</FONT></P>\r\n<DIV STYLE=\"margin: 0px; padding: 0px; border: 0px; vertical-align: baseline; font-family: arial, sans-serif;\">\u00a0</DIV>\r\n<DIV STYLE=\"margin: 0px; padding: 0px; border: 0px; vertical-align: baseline; font-family: arial, sans-serif;\">\r\n<DIV STYLE=\"margin: 0px; padding: 0px; border: 0px; vertical-align: baseline; color: #222222; font-size: 13px;\"><FONT STYLE=\"margin: 0px; padding: 0px; border: 0px; vertical-align: baseline;\" COLOR=\"#000000\" FACE=\"arial, sans-serif\">David Galichet nous fera une pr\u00e9sentation magistrale sur \"</FONT>Demystifying Scala Type System\"<FONT STYLE=\"margin: 0px; padding: 0px; border: 0px; vertical-align: baseline;\" COLOR=\"#000000\" FACE=\"arial, sans-serif\">.\u00a0</FONT></DIV>\r\n<DIV STYLE=\"margin: 0px; padding: 0px; border: 0px; vertical-align: baseline; color: #222222; font-size: 13px;\">\u00a0</DIV>\r\n<DIV STYLE=\"margin: 0px; padding: 0px; border: 0px; vertical-align: baseline; color: #222222; font-size: 13px;\">Je tiens \u00e9galement \u00e0 pr\u00e9ciser qu'\u00e0 cette occasion, Jetbrains - \u00a0<A STYLE=\"margin: 0px; padding: 0px; border: 0px; vertical-align: baseline; color: #1d1ece; cursor: text;\" HREF=\"http://www.jetbrains.com/\" TARGET=\"_blank\">http://www.jetbrains.com/</A>\u00a0- sponsorise l'\u00e9venement en offrant 1 \u00e0 2 licenses (en fct de l'affluence).\u00a0</DIV>\r\n<DIV STYLE=\"margin: 0px; padding: 0px; border: 0px; vertical-align: baseline; color: #222222; font-size: 13px;\">Si nous somme plus de 25, nous proc\u00e9derons \u00e0 un tirage au sort en live ;)</DIV>\r\n</DIV>\r\n<DIV>\u00a0</DIV>\r\n<DIV>\r\n<DIV STYLE=\"margin: 0px; padding: 0px; border: 0px; vertical-align: baseline; color: #222222; font-family: arial, sans-serif; font-size: 13px;\"><BR CLASS=\"Apple-interchange-newline\">Xebia\u00a0</DIV>\r\n<DIV STYLE=\"margin: 0px; padding: 0px; border: 0px; vertical-align: baseline; color: #222222; font-family: arial, sans-serif; font-size: 13px;\">156 boulevard Haussmann \u00e0 Paris\u00a0</DIV>\r\n<DIV STYLE=\"margin: 0px; padding: 0px; border: 0px; vertical-align: baseline; color: #222222; font-family: arial, sans-serif; font-size: 13px;\">Immeuble A\u00a0</DIV>\r\n<DIV STYLE=\"margin: 0px; padding: 0px; border: 0px; vertical-align: baseline; color: #222222; font-family: arial, sans-serif; font-size: 13px;\">7e \u00e9tage</DIV>\r\n</DIV>",
+            "end_date":"2012-11-28 22:00:00",
+            "tags":"paris scala user group",
+            "timezone_offset":"GMT+0100",
+            "text_color":"005580",
+            "title_text_color":"",
+            "tickets":[
+                {
+                    "ticket":{
+                        "description":"",
+                        "end_date":"2012-11-28 18:30:00",
+                        "min":0,
+                        "max":0,
+                        "price":"0.00",
+                        "visible":"true",
+                        "currency":"EUR",
+                        "type":0,
+                        "id":15854199,
+                        "name":"PSUG #27"
+                    }
+                }
+            ],
+            "distance":"0.00M",
+            "created":"2012-10-31 08:40:54",
+            "url":"http://psug-27-SRCH.eventbrite.com",
+            "box_text_color":"000000",
+            "privacy":"Public",
+            "venue":{
+                "city":"Paris",
+                "name":"Xebia",
+                "country":"France",
+                "region":"Ile De France",
+                "longitude":2.311096,
+                "postal_code":"75008",
+                "address_2":"",
+                "address":"156 boulevard Haussmann \u00e0 Paris  ",
+                "latitude":48.875250000000001,
+                "country_code":"FR",
+                "id":2593687,
+                "Lat-Long":"48.87525 / 2.311096"
+            },
+            "modified":"2012-11-07 15:46:26",
+            "logo_ssl":"https://ebmedia.eventbrite.com/s3-s3/eventlogos/27257285/4737033595-1.png",
+            "repeats":"no"
+        }
+    }
+]}

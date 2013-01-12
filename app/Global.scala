@@ -16,11 +16,12 @@
 
 import akka.util.duration._
 import controllers.OneCalendarController
-import dao.ICalStreamDao
-import models.ICalStream
 import org.joda.time.DateTime
 import play.api.Play.current
 import play.api._
+import service._
+import models.ICalStream
+import dao.ICalStreamDao
 import play.api.libs.concurrent._
 import service.{LoadDevoxx, LoadICalStream}
 
@@ -48,6 +49,10 @@ object Global extends GlobalSettings with OneCalendarController {
 
         Akka.system.scheduler.schedule(10 seconds, 2 hours) {
             LoadDevoxx.parseLoad()
+        }
+
+        Akka.system.scheduler.schedule(5 seconds, 1 day) {
+            LoadEventbrite.parseLoad("scala")
         }
     }
 }

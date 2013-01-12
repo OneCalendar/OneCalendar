@@ -2,7 +2,7 @@ One Calendar To Meet Them All
 =============================
 
 You can view it for real on the site :
-`onecalendar.valtech.fr <http://onecalendar.valtech.fr>`_
+`onecalendar.fr <http://onecalendar.fr>`_
 
 The problem we solve
 --------------------

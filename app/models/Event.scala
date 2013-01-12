@@ -35,7 +35,7 @@ object Event {
 }
 
 case class Event( uid: String = "",
-                  title: String,
+                  title: String = "",
                   begin: DateTime,
                   end: DateTime,
                   location: String = "",
@@ -71,7 +71,7 @@ trait EventTypeClass {
                 originalStream = dbo.getAs[String]("originalStream"),
                 tags = dbo.as[MongoDBList]("tags").toList.asInstanceOf[List[String]],
                 title = dbo.as[String]("title"),
-                uid = dbo.as[String]("uid"),
+                uid = dbo.getAs[String]("uid").getOrElse(""),
                 url = dbo.getAs[String]("url")
             )
     }
