@@ -24,6 +24,7 @@ import play.api.data._
 import play.api.mvc._
 
 object EventsController extends OneCalendarController {
+    implicit val now = () => DateTime.now.getMillis
 
     def addEvents = Action( Ok( views.html.addEvents() ) )
 
@@ -33,8 +34,12 @@ object EventsController extends OneCalendarController {
         Ok( "évènement " + event + " ajouté dans la base 'OneCalendar'" )
     }
 
-    // TODO tous les champs sont obligatoires sauf description
+    def allEvents = Action {
+        val events = EventDao.findAllFromNow()
+        Ok( views.html.allEvents(events) )
+    }
 
+    // TODO tous les champs sont obligatoires sauf description
     private val eventForm = Form(
         mapping(
             "title" -> text,

@@ -1,0 +1,21 @@
+header {
+    background-color: black;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    color: white;
+    text-align: right;
+    padding: 3px;
+    padding-right: 15px;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+}
+
+header a:hover {
+    color: #eeeeee;
+    text-decoration: none;
+}

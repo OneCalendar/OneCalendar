@@ -20,6 +20,7 @@ import org.joda.time.DateTime
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.FunSuite
 import models.Event
+import dao.EventRepository._
 
 class EventDaoTest extends FunSuite with ShouldMatchers with DaoCleaner {
 
@@ -27,55 +28,6 @@ class EventDaoTest extends FunSuite with ShouldMatchers with DaoCleaner {
      * RUNNING MONGO SERVER BEFORE -
      * mongod --dbpath data/ --fork --logpath data/mongodb.log
      */
-
-    val eventDevoxx: Event = Event(
-            uid = "1",
-            title = "BOF",
-            begin = new DateTime(2012, 04, 20, 0, 0, 0, 0),
-            end = new DateTime(2012, 04, 20, 0, 0, 0, 0),
-            tags = List("DEVOXX")
-    )
-
-    val eventJava: Event = Event(
-            uid = "2",
-            title = "BOF",
-            begin = new DateTime(2012, 04, 19, 10, 0, 0, 0),
-            end = new DateTime(2012, 04, 19, 11, 0, 0, 0),
-            tags = List("JAVA")
-    )
-
-    val eventOther: Event = Event(
-            uid = "3",
-            title = "BOF",
-            begin = new DateTime(2012, 04, 21, 15, 0, 0, 0),
-            end = new DateTime(2012, 04, 21, 16, 0, 0, 0),
-            tags = List("OTHER")
-    )
-
-    val event4: Event = Event(
-            uid = "4",
-            title = "BOF",
-            begin = new DateTime(2012, 04, 21, 15, 0, 0, 0),
-            end = new DateTime(2012, 04, 21, 16, 0, 0, 0),
-            tags = List("4", "OTHER")
-    )
-
-    val oldEvent : Event = Event(
-            uid = "4",
-            title = "BOF",
-            begin = new DateTime(2012, 04, 21, 15, 0, 0, 0),
-            end = new DateTime(2012, 04, 21, 16, 0, 0, 0),
-            tags = List("4", "OTHER")
-    )
-
-    val newEvent: Event = Event(
-            uid = "NEW",
-            title = "NEW",
-            begin = new DateTime().plusDays(10),
-            end = new DateTime().plusDays(10),
-            tags = List("NEW")
-    )
-
 
     test("saving a new event") {
         val event: Event = Event(
@@ -152,6 +104,15 @@ class EventDaoTest extends FunSuite with ShouldMatchers with DaoCleaner {
         EventDao.findAll should have size 50
     }
 
+    test("should find all events from now") {
+        implicit val now = () => DateTime.now.getMillis
+
+        EventDao.saveEvent(oldEvent)
+        EventDao.saveEvent(newEvent)
+
+        EventDao.findAllFromNow() should be (List(newEvent))
+    }
+
     test("should not list old tags") {
         implicit val now : () => Long = () => new DateTime(2012,5,1,1,1).getMillis
 
@@ -219,4 +180,54 @@ class EventDaoTest extends FunSuite with ShouldMatchers with DaoCleaner {
         EventDao.saveEvent(eventOther)
         EventDao.saveEvent(event4)
     }
+}
+
+object EventRepository {
+    val eventDevoxx: Event = Event(
+        uid = "1",
+        title = "BOF",
+        begin = new DateTime(2012, 04, 20, 0, 0, 0, 0),
+        end = new DateTime(2012, 04, 20, 0, 0, 0, 0),
+        tags = List("DEVOXX")
+    )
+
+    val eventJava: Event = Event(
+        uid = "2",
+        title = "BOF",
+        begin = new DateTime(2012, 04, 19, 10, 0, 0, 0),
+        end = new DateTime(2012, 04, 19, 11, 0, 0, 0),
+        tags = List("JAVA")
+    )
+
+    val eventOther: Event = Event(
+        uid = "3",
+        title = "BOF",
+        begin = new DateTime(2012, 04, 21, 15, 0, 0, 0),
+        end = new DateTime(2012, 04, 21, 16, 0, 0, 0),
+        tags = List("OTHER")
+    )
+
+    val event4: Event = Event(
+        uid = "4",
+        title = "BOF",
+        begin = new DateTime(2012, 04, 21, 15, 0, 0, 0),
+        end = new DateTime(2012, 04, 21, 16, 0, 0, 0),
+        tags = List("4", "OTHER")
+    )
+
+    val oldEvent : Event = Event(
+        uid = "4",
+        title = "BOF",
+        begin = new DateTime(2012, 04, 21, 15, 0, 0, 0),
+        end = new DateTime(2012, 04, 21, 16, 0, 0, 0),
+        tags = List("4", "OTHER")
+    )
+
+    val newEvent: Event = Event(
+        uid = "NEW",
+        title = "NEW",
+        begin = new DateTime().plusDays(10),
+        end = new DateTime().plusDays(10),
+        tags = List("NEW")
+    )
 }

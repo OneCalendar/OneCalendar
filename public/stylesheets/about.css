@@ -16,7 +16,7 @@
  */
 
 body {
-    font-family: arial,sans-serif;
+    font-family: arial, sans-serif;
 }
 
 .clear {
@@ -85,7 +85,7 @@ header img {
 
 #mainSection {
     margin-top: 1%;
-    width:900px;
+    width: 900px;
 }
 
 #why p {
@@ -152,81 +152,86 @@ header img {
 }
 
 @media (max-width: 640px) {
- header img {
-  margin-bottom: 7px;
-  vertical-align: middle;
-  width: 140px;
- }
+    header img {
+        margin-bottom: 7px;
+        vertical-align: middle;
+        width: 140px;
+    }
 
- .leftSubSection {
-  width: 100%;
- }
+    .leftSubSection {
+        width: 100%;
+    }
 
- .leftSubSection p {
-  display: inline;
-  margin: 10px;
-  padding: 0;
- }
+    .leftSubSection p {
+        display: inline;
+        margin: 10px;
+        padding: 0;
+    }
 
- #valtech {
-  margin-top: 1%;
-  text-align: justify;
- }
- #valtech img {
-  display: block;
-  margin: auto;
-  width: 120px;
- }
+    #valtech {
+        margin-top: 1%;
+        text-align: justify;
+    }
 
- #mainSection {
-  float: left;
-  width: 100%;
- }
+    #valtech img {
+        display: block;
+        margin: auto;
+        width: 120px;
+    }
 
-.gstyle {
- width: 100%;
- margin-left: 0;
-}
+    #mainSection {
+        float: left;
+        width: 100%;
+    }
 
- .gstyle h1 {
-  padding: 10px;
- }
+    .gstyle {
+        width: 100%;
+        margin-left: 0;
+    }
 
-.gstyle h1 span {
-    padding-left: 0;
-}
- .techno {
-  border: thin solid;
-  margin: auto;
-  width: 98%;
-  float: none;
- }
+    .gstyle h1 {
+        padding: 10px;
+    }
 
-.techno img {
- width: 100px;
-}
+    .gstyle h1 span {
+        padding-left: 0;
+    }
 
- .techno a {
-  text-decoration: none;
- }
- .techno a ~ a {
-  display: inline;
-  margin-top: 0;
- }
- .gstyle h1 span {
-     padding-left: 10%;
- }
- .fun-text {
-  padding: 2%;
-  width:auto;
-  text-align: justify;
- }
+    .techno {
+        border: thin solid;
+        margin: auto;
+        width: 98%;
+        float: none;
+    }
 
- #footer {
-     text-align: right;
-     color: #777777;
-     padding-right: 1%;
-     padding-bottom: 10px;
-     font-size: 0.7em;
- }
+    .techno img {
+        width: 100px;
+    }
+
+    .techno a {
+        text-decoration: none;
+    }
+
+    .techno a ~ a {
+        display: inline;
+        margin-top: 0;
+    }
+
+    .gstyle h1 span {
+        padding-left: 10%;
+    }
+
+    .fun-text {
+        padding: 2%;
+        width: auto;
+        text-align: justify;
+    }
+
+    #footer {
+        text-align: right;
+        color: #777777;
+        padding-right: 1%;
+        padding-bottom: 10px;
+        font-size: 0.7em;
+    }
 }
