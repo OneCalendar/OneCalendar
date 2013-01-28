@@ -97,7 +97,7 @@
         $.ajax(
           {
             type: 'GET'
-            url: "#{url}/preview/#{userSearch}",
+            url: "#{url}/event/tags/#{userSearch}",
             dataType: "json"
             success: (data) ->
               SUGGEST.displayPreviewResult data
@@ -124,7 +124,7 @@
     $.ajax(
       {
         type: 'GET',
-        url: "#{url}/eventCount",
+        url: "#{url}/event/count",
         dataType: "json",
         success: (data) ->
           SUGGEST.displayEventNumber data

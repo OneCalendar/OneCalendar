@@ -49,7 +49,11 @@
 
 <body>
 
-<header><a href="/event/all" title="afficher tous les évènements">évènements: <span id="eventNumber"></span></a></header>
+<header>
+    <a href="@routes.EventsController.addEvents()">Ajouter un évènement</a> |
+    <a href="@routes.EventsController.allEvents()">Tous les prochains évènements</a> |
+    <a href="@routes.EventsController.allEvents()" title="afficher tous les évènements"><span id="eventNumber">N/A</span> évènements à venir</a>
+</header>
 
 <section id="title">
     <img src='@routes.Assets.at("images/onecalendar-beta.png")' alt="One caledar to meet them all (bêta)"

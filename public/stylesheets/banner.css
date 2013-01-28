@@ -1,13 +1,17 @@
 header {
     background-color: black;
-    position: fixed;
-    top: 0;
-    right: 0;
     width: 100%;
     color: white;
-    text-align: right;
-    padding: 3px;
-    padding-right: 15px;
+    padding: 5px;
+    font-family: arial,serif;
+    font-size: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+body {
+    margin: 0;
 }
 
 header a {
