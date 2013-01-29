@@ -1,0 +1,45 @@
+body {
+    margin: 10px;
+}
+
+header {
+    margin: 10px 20px 70px 20px;
+}
+
+h2 {
+    margin-left: 30px;
+    margin-bottom: 50px;
+}
+
+section.event {
+    padding: 5px 20px;
+    margin: 30px;
+    border: 1px solid black;
+    width: 60%;
+}
+
+div.filter {
+    margin-left: 30px;
+}
+
+div.filter h3 {
+    display: inline;
+    margin-right: 35px;
+}
+
+div.filter input {
+    margin-right: 35px;
+}
+
+.location {
+    float: right;
+}
+
+.details {
+    display: none;
+}
+
+.tags {
+    display: inline;
+    padding-right: 5px;
+}

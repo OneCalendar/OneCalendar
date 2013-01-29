@@ -25,47 +25,44 @@
     <title>One Calendar! liste des évènements</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/about.css")'>
-    <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/addEvent.css")'>
-    <style>
-        div.event {
-            width:400px;
-            margin-left: 200px;
-            margin-top: 20px;
-            padding: 3px;
-            border-radius:3px;
-            border:thin solid #000000;
-            box-shadow: 8px 8px 3px #777777;
-        }
-        div.event > span{
-            display:block
-        }
-
-        .begin, .end {
-            text-align:right
-        }
-    </style>
+    <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/allEvents.css")'>
     <script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>
+    <script src='@routes.Assets.at("stylesheets/allEvents.css")' type="text/javascript"></script>
 </head>
 
 <body>
-<header>
-    <a href="/">
-        <img width="160px" src="/assets/images/OneCalendar.png" alt="OneCalendar!" title="OneCalendar!">
-    </a>
-    <h1>Liste des évènements de </h1>
-</header>
-<div class="clear"></div>
+    <header>
+        <h1>Les évènements</h1>
+        <a href="/">
+            <img width="160px" src="/assets/images/OneCalendar.png" alt="OneCalendar!" title="OneCalendar!">
+        </a>
+    </header>
+    <div class="clear"></div>
 
-<p>@events.size évènements dans la base OneCalendar!</p>
+    <h2>@events.size évènements dans la base OneCalendar!</h2>
 
-@events.map { event =>
-    <div class="event">
-      <span class="title">@event.title</span>
-      <span class="begin">@DateTimeFormat.forPattern("dd/MM/yyyy HH:mm").print(event.begin)</span>
-      <span class="end">@DateTimeFormat.forPattern("dd/MM/yyyy HH:mm").print(event.end)</span>
-      <span class="tags">@event.tags.map(_.toLowerCase.capitalize).mkString(", ")</span>
+    <div class="filter">
+        <h3>filtre</h3>
+        <input type="text" id="tags" placeholder="   tag1,tag2,..." />
+        <input type="datetime" id="from" placeholder="   du (date)" />
+        <input type="datetime" id="to" placeholder="   au (date)" />
     </div>
-}
+
+    @events.map { event =>
+        <section class="event">
+            <p class="location">@event.location</p>
+            <p>Du @DateTimeFormat.forPattern("dd/MM/yyyy HH:mm").print(event.begin) au @DateTimeFormat.forPattern("dd/MM/yyyy HH:mm").print(event.end)</p>
+            <div class="clear"></div>
+
+            <h3>@event.title</h3>
+
+            <h4 class="tags">TAGS</h4>
+            <p class="tags">@event.tags.map( _.toLowerCase.capitalize ).mkString(", ")
+
+            <h4>DESCRIPTION</h4>
+            <p class="details">@event.description</p>
+        </section>
+    }
 
 </body>
 

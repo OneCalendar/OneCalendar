@@ -35,7 +35,7 @@ object EventsController extends OneCalendarController {
     }
 
     def allEvents = Action {
-        val events = EventDao.findAllFromNow()
+        val events = EventDao.findAllFromNow().map( event => event.copy(tags = event.tags.distinct) )  // TODO régler le problème à la source <=> mettre un Set sur tags et supprimé les doublons à l'écriture
         Ok( views.html.allEvents(events) )
     }
 
