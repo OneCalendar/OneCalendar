@@ -1,0 +1,22 @@
+.event {
+    border: #777777 thin solid;
+    padding: 3px;
+    margin-bottom: 5px;
+    border-radius: 10px 0 10px 0;
+    color: grey;
+}
+
+.description {
+    display:none
+}
+
+
+.event.highlight {
+    box-shadow:20px 20px 20px darkgrey;
+    color:black;
+    z-index: 10;
+}
+
+.event.highlight .description{
+    display: block;
+}
