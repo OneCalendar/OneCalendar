@@ -35,11 +35,52 @@ div.filter input {
     float: right;
 }
 
-.details {
-    display: none;
-}
-
 .tags {
     display: inline;
     padding-right: 5px;
+    zoom: 1;                /*contient les float pour IE*/
+}
+
+.tags ul {
+    margin: 0;
+}
+
+.tags li {
+    list-style: none;
+    padding: .2em .5em;
+    margin-right: .5em;
+    margin-bottom: .3em;
+    background-color: #eeeeee;
+    border: 1px solid #cccccc;
+    float: left;
+    border-radius: 2px;
+}
+
+.tags:after {
+    content: '.';
+    clear: both;
+    visibility: hidden;
+}
+
+div.description {
+    margin-top: 1em;
+}
+
+.description h4 {
+    text-transform: uppercase;
+}
+
+.description h4 .icon-chevron-down, .description h4 .icon-chevron-up {
+    margin-left: .5em;
+}
+
+.description p {
+    max-height: 200px;;
+    overflow-y: auto;
+    padding: 10px 15px 10px 0;
+    text-align: justify;
+}
+
+.cursor {
+    cursor: pointer;
 }
