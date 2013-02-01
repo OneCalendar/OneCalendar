@@ -59,14 +59,21 @@ description_selector = ".description p"
 
     $("#filterResult").text(number + res)
 
-  displaySectionsMatchingWithTags : (sections, tags) ->
+  displaySectionsMatchingWithTags : (sections, stringTags) ->
     result = 0
+    tags = stringTags.split("|").map (n) ->
+      n.toLowerCase()
+
     sections.each (i) ->
       section = $(this)
 
-      section.find("li").each (j) ->
-        if(tags.toLowerCase() == $(this).text().toLowerCase())
-          result = result + 1
-          section.show()
+      if(ALL_EVENTS.retrieveLi_matchingWithTags(section.find("li"), tags).length > 0)
+        result += 1
+        section.show()
 
     result
+
+  retrieveLi_matchingWithTags : (lis, tags) ->
+    lis.filter (j) ->
+      liContent = $(this).text().toLowerCase()
+      $.grep(tags, (n,i) -> n == liContent).length > 0
