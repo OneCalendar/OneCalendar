@@ -37,7 +37,7 @@
     <header>
         <h1>Les évènements</h1>
         <a href="/">
-            <img width="160px" src="/assets/images/OneCalendar.png" alt="OneCalendar!" title="OneCalendar!">
+            <img width="160px" src="/assets/images/OneCalendar.png" alt="OneCalendar!" title="retour à OneCalendar!">
         </a>
     </header>
     <div class="clear"></div>
@@ -46,9 +46,10 @@
 
     <div class="filter">
         <h3>filtre</h3>
-        <input type="text" id="tags" placeholder="   tag1,tag2,..." />
-        <input type="datetime" id="from" placeholder="   du (date)" />
-        <input type="datetime" id="to" placeholder="   au (date)" />
+        <input type="text" id="tags" placeholder="   tag1&tag2|tag3" />
+        <input type="datetime" id="from" placeholder="   du (date)" disabled />
+        <input type="datetime" id="to" placeholder="   au (date)" disabled />
+        <span id="filterResult"></span>
     </div>
 
     @events.map { event =>
@@ -62,7 +63,7 @@
             <div class="tags">
                 <ul>
                 @for(tag <- event.tags.map( _.toLowerCase.capitalize )) {
-                    <li>@tag</li>
+                    <li>@tag</li>  <!-- classe tag pour jquery ??? -->
                 }
                 </ul>
             </div>

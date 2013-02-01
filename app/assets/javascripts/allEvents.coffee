@@ -1,6 +1,10 @@
 $(document).ready ->
-  ALL_EVENTS.hideAllDescription()
-  ALL_EVENTS.listenDescriptionButton()
+  ALL_EVENTS.hideAllDescriptions()
+  ALL_EVENTS.listenDescriptionsButton()
+  ALL_EVENTS.listenFilterButtons()
+
+  nbEvent = $("section.event").length
+  ALL_EVENTS.displayFilterResult(nbEvent)
 
 up_button_selector = ".description h4 .icon-chevron-up"
 down_button_selector = ".description h4 .icon-chevron-down"
@@ -8,7 +12,18 @@ description_selector = ".description p"
 
 @ALL_EVENTS =
 
-  hideAllDescription : ->
+  listenDescriptionsButton : ->
+    $(down_button_selector).on "click", ->
+      ALL_EVENTS.showDescription(this)
+
+    $(up_button_selector).on "click", ->
+      ALL_EVENTS.hideDescription(this)
+
+  listenFilterButtons : ->
+    $("#tags").on "keyup", ->
+      ALL_EVENTS.filterByTag(this.value)
+
+  hideAllDescriptions : ->
     $(up_button_selector).hide()
     $(down_button_selector).show()
     $(description_selector).hide()
@@ -23,9 +38,35 @@ description_selector = ".description p"
     $(button_down).parent().parent().find(".icon-chevron-up").show()
     $(button_down).parent().parent().parent().find("p").show()
 
-  listenDescriptionButton : ->
-    $(down_button_selector).on "click", ->
-      ALL_EVENTS.showDescription(this)
+  filterByTag : (tags) ->
+    sections = $("section.event")
 
-    $(up_button_selector).on "click", ->
-      ALL_EVENTS.hideDescription(this)
+    if(tags.length != 0)
+      sections.hide()
+
+      result = ALL_EVENTS.displaySectionsMatchingWithTags(sections, tags)
+
+      ALL_EVENTS.displayFilterResult(result)
+
+    else
+      sections.show()
+      ALL_EVENTS.displayFilterResult(sections.length)
+
+  displayFilterResult : (number) ->
+    res = " résultas"
+    if(number == 0 || number == 1)
+       res = " résultat"
+
+    $("#filterResult").text(number + res)
+
+  displaySectionsMatchingWithTags : (sections, tags) ->
+    result = 0
+    sections.each (i) ->
+      section = $(this)
+
+      section.find("li").each (j) ->
+        if(tags.toLowerCase() == $(this).text().toLowerCase())
+          result = result + 1
+          section.show()
+
+    result
