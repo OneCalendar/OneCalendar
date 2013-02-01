@@ -66,14 +66,31 @@ description_selector = ".description p"
 
     sections.each (i) ->
       section = $(this)
-
-      if(ALL_EVENTS.retrieveLi_matchingWithTags(section.find("li"), tags).length > 0)
+      if(ALL_EVENTS.sectionMatchingWithTags(section, tags))
         result += 1
         section.show()
 
     result
 
-  retrieveLi_matchingWithTags : (lis, tags) ->
+  sectionMatchingWithTags : (section, tags) ->
+    lis = section.find("li")
+
+    $.grep( tags, (tag,i) ->
+      incl_tags = tag.split("&")
+      ALL_EVENTS.eachInclTagMatchingWithAtLeastOneLi(incl_tags, lis)
+    ).length > 0
+
+  eachInclTagMatchingWithAtLeastOneLi : (incl_tags, lis) ->
+    $.grep( incl_tags, (incl_tag, j) ->
+      ALL_EVENTS.eachLiMatchingWithAtLeastOneInclTag(lis, incl_tag)
+    ).length == incl_tags.length
+
+  eachLiMatchingWithAtLeastOneInclTag : (lis, incl_tag) ->
+    (lis.filter (k) ->
+      liContent = $(this).text().toLowerCase()
+      liContent == incl_tag).length > 0
+
+  ###retrieveLi_matchingWithTags : (lis, tags) ->
     lis.filter (j) ->
       liContent = $(this).text().toLowerCase()
-      $.grep(tags, (n,i) -> n == liContent).length > 0
+      $.grep(tags, (n,i) -> n == liContent).length > 0###
