@@ -30,13 +30,13 @@ description_selector = ".description p"
 
   hideDescription : (button_up)->
     $(button_up).hide()
-    $(button_up).parent().parent().find(".icon-chevron-down").show()
-    $(button_up).parent().parent().parent().find("p").hide()
+    $(button_up).parents(".description").find(".icon-chevron-down").show()
+    $(button_up).parents(".description").find("p").hide()
 
   showDescription : (button_down) ->
     $(button_down).hide()
-    $(button_down).parent().parent().find(".icon-chevron-up").show()
-    $(button_down).parent().parent().parent().find("p").show()
+    $(button_down).parents(".description").find(".icon-chevron-up").show()
+    $(button_down).parents(".description").find("p").show()
 
   filterByTag : (tags) ->
     sections = $("section.event")
