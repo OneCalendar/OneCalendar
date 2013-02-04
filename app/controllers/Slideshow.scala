@@ -10,7 +10,7 @@ object Slideshow extends OneCalendarController with Json {
 
     def slideshow()(implicit now: () => Long = () => DateTime.now.getMillis) = Action { request =>
             request.headers.get("Content-Type") match {
-                case Some("application/ajax") => Ok(generate(EventDao.findAllFromNow)).as("application/json")
+                case Some("application/ajax") => Ok(generate(EventDao.closestEvents())).as("application/json")
                 case _ => Ok(views.html.slideshow())
             }
 

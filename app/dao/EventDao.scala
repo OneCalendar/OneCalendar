@@ -72,4 +72,31 @@ object EventDao extends CollectionsUtils
         val query = "begin" $gt now()
         count(query)
     }
+
+    /**
+     * Find events that has not already finished without almost those
+     * Or
+     * Find events that will begin pretty soon
+     * >                 Now
+     * >            offset  afterset
+     * Time
+     * >-------------|xxxx$xxx|-------->
+     * @param offset
+     * @param afterset
+     * @param dbName
+     * @param now
+     * @return
+     */
+    def closestEvents(offset: Int = 5, afterset : Int = 2)(implicit dbName: MongoDbName, now: () => Long): List[Event] = {
+        import akka.util.duration._
+
+        val offsetMillis: Long = (offset minutes).toMillis
+        val aftersetMillis: Long = (afterset hours).toMillis
+
+        val futurEvents = ("begin" $gte (now() - offsetMillis) $lte (now() + aftersetMillis) )
+        val eventsBeganNotFinish = DBList("begin" $lte now(), "end" $gt (now() - offsetMillis) )
+        val query = DBObject("$or" -> DBList(futurEvents,DBObject("$and" -> eventsBeganNotFinish)))
+
+        find[Event](query)
+    }
 }

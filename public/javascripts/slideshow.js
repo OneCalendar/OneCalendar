@@ -2,6 +2,12 @@ $(document).ready(function hello(){
     "use strict";
 
     var TEMPLATE_EVENT = $("#event").text();
+    var timeout = {
+        lastTimeout:null,lastId:""
+    };
+
+    var reload;
+
     function templateThisEvent(event) {
         event = event || {
             uid:"",tags:[],location:"",description:"",begin:0,end:0,originalStream:"",title:""
@@ -15,10 +21,9 @@ $(document).ready(function hello(){
             } else {
                 return begin.format("DD/MM/YYYY HH:mm") + " - " + end.format("DD/MM/YYYY HH:mm");
             }
-
         }
 
-        $(".row").append(TEMPLATE_EVENT
+        $("#rows").append(TEMPLATE_EVENT
             .replace(/\$title/g,event.title)
             .replace(/\$date/g,toDateDisplayed(event))
             .replace(/\$description/g,event.description)
@@ -26,13 +31,14 @@ $(document).ready(function hello(){
         );
 
     }
+    var DELAY = 5000;
 
     function launchAnim() {
         var current = $(".event.highlight");
-        var delay = 5000;
+
         var next = current.next();
         if (current.length === 0 || next.length === 0) {
-            current = $(".row .event").first();
+            current = $("#rows").find(".event").first();
             next = current;
         }
         current.removeClass("highlight");
@@ -40,7 +46,7 @@ $(document).ready(function hello(){
             scrollTop:$(next).offset().top
         });
         $(next).addClass("highlight");
-        setTimeout(launchAnim,delay);
+        timeout.lastTimeout = setTimeout(launchAnim,DELAY);
     }
 
     function success(data) {
@@ -50,15 +56,21 @@ $(document).ready(function hello(){
             return e1.begin - e2.begin;
         }
 
-        function filterEvent(event) {
-            return true;
-        }
+        $("#rows").empty();
+        data.sort(sortEvent).forEach(templateThisEvent);
 
-        data.sort(sortEvent).filter(filterEvent).forEach(templateThisEvent);
+        launchAnim();
 
-        setTimeout(launchAnim,0);
+        reload = setTimeout(function () {
+            load();
+        },30*60*1000);
     }
 
-    $.ajax({action:"slideshow",contentType:"application/ajax",success:success});
 
+    function load() {
+        clearTimeout(reload);
+        clearTimeout(timeout.lastTimeout);
+        $.ajax({action:"slideshow",contentType:"application/ajax",success:success});
+    }
+    load();
 });

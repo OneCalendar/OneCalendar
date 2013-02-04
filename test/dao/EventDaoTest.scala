@@ -54,7 +54,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with DaoCleaner {
     test("should find events by tags 'devoxx' or 'java' ") {
         initData
 
-        EventDao.findByTag(List("devoxx", "java")) should be(List(eventDevoxx, eventJava))
+        EventDao.findByTag(List("devoxx", "java")).map(_.tags).flatten.sorted should be(List("JAVA","DEVOXX").sorted)
     }
 
     test("should find event even if it have not originalStream and url") {
@@ -86,7 +86,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with DaoCleaner {
         initFourData
 
         EventDao.findPreviewByTag(List("devoxx", "java", "other")).previewEvents should have size 2
-        EventDao.findPreviewByTag(List("devoxx", "java", "other")).previewEvents should be(List(eventOther, event4))
+        EventDao.findPreviewByTag(List("devoxx", "java", "other")).previewEvents.map(_.begin.getMillis).foreach(_ should be >= (now()))
     }
 
     test("should find everything") {
@@ -158,7 +158,16 @@ class EventDaoTest extends FunSuite with ShouldMatchers with DaoCleaner {
         EventDao.findAll() should have size 3
     }
 
+    test("current events or next ones") {
+        import akka.util.duration._
+        implicit val now : () => Long = () => new DateTime(2012,4,21,15,00).getMillis
 
+        initFourData
+
+        val closestEvents: List[Event] = EventDao.closestEvents(offset = 5, afterset = 2)
+        closestEvents should have size 2
+        closestEvents.map(_.begin.getMillis).foreach(_.should(be <= (now() + (2 hours).toMillis) or be >= (now() - (5 minutes).toMillis)))
+    }
 
     test("count futur events") {
         implicit val now : () => Long = () => new DateTime(2012,5,1,1,1).getMillis
