@@ -24,8 +24,8 @@ body {
 }
 
 header {
-    border-bottom: solid 1px #91959C;
-    height: 80px;
+    /*border-bottom: solid 1px #91959C;*/
+    /*height: 80px;*/
 }
 
 header h1 {
@@ -39,7 +39,7 @@ header h1 {
     margin: 0;
     padding-top: 1.4%;
     overflow: hidden;
-    float: left;
+    float: right;
 }
 
 header img {
