@@ -53,7 +53,7 @@ description_selector = ".description p"
       ALL_EVENTS.displayFilterResult(sections.length)
 
   displayFilterResult : (number) ->
-    res = " résultas"
+    res = " résultats"
     if(number == 0 || number == 1)
        res = " résultat"
 
