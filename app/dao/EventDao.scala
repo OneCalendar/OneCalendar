@@ -34,9 +34,7 @@ object EventDao extends CollectionsUtils
     private val PREVIEW_SIZE = 3
 
     def deleteByOriginalStream(originalStream: String)(implicit dbName: MongoDbName, now: () => Long) = {
-        val query = ( "end" $gt now() ) ++ ( "originalStream" -> originalStream )
-        log.debug("query deleteByOriginalStreal %s".format(query))
-        delete(query)
+        delete(DBObject("originalStream" -> originalStream))
     }
 
     def saveEvent(event: Event)(implicit dbName: MongoDbName) = save(event)
