@@ -26,6 +26,9 @@ description_selector = ".description p"
     $("#from").on "keyup", ->
       ALL_EVENTS.filter()
 
+    $("#to").on "keyup", ->
+      ALL_EVENTS.filter()
+
   hideAllDescriptions : ->
     $(up_button_selector).hide()
     $(down_button_selector).show()
@@ -44,14 +47,16 @@ description_selector = ".description p"
   filter : ->
     tags = $("#tags").val()
     fromDate = $("#from").val()
+    toDate = $("#to").val()
+
     tagsSections = ALL_EVENTS.filterByTag(tags) # tableau simple d'objets jquery
     fromDateSections = ALL_EVENTS.filterByFromDate(fromDate) # tableau simple d'objets jquery
+    toDateSections = ALL_EVENTS.filterByToDate(toDate) # tableau simple d'objets jquery
 
-    sectionsToDisplay = $.grep( tagsSections, (tagSection, j) ->
-      $.grep(fromDateSections, (fromDateSection, k) ->
-        tagSection.get(0) == fromDateSection.get(0)
-      ).length > 0
-    )
+    console.log toDateSections.length
+
+    sectionsToDisplay = ALL_EVENTS.intersectArrayOfJQueryElem(tagsSections, fromDateSections)
+    sectionsToDisplay = ALL_EVENTS.intersectArrayOfJQueryElem(sectionsToDisplay, toDateSections)
 
     ALL_EVENTS.displayFilterResult sectionsToDisplay.length
 
@@ -77,12 +82,31 @@ description_selector = ".description p"
     fullReturn = []
 
     if(from.match("[0-9]{2}\/[0-9]{2}\/[0-9]{4}") != null)
-      ALL_EVENTS.selectSectionsMatchingWithFrom(sections, from)
+      ALL_EVENTS.selectSectionsMatchingWithFromDate(sections, from)
     else
       sections.each (i) ->
         fullReturn.push $(this)
 
       fullReturn
+
+  filterByToDate : (to) ->
+    sections = $("section.event")
+    fullReturn = []
+
+    if(to.match("[0-9]{2}\/[0-9]{2}\/[0-9]{4}") != null)
+      ALL_EVENTS.selectSectionsMatchingWithToDate(sections, to)
+    else
+      sections.each (i) ->
+        fullReturn.push $(this)
+
+      fullReturn
+
+  intersectArrayOfJQueryElem : (array1, array2) ->
+    $.grep( array1, (elem1, j) ->
+      $.grep(array2, (elem2, k) ->
+        elem1.get(0) == elem2.get(0)
+      ).length > 0
+    )
 
   displayFilterResult : (number) ->
     res = " résultats"
@@ -103,7 +127,8 @@ description_selector = ".description p"
 
     sectionsMatching
 
-  selectSectionsMatchingWithFrom : (sections, from) ->
+    # eliminer la duplication avec une injection de fonction pour le sections.each
+  selectSectionsMatchingWithFromDate : (sections, from) ->
     sectionsMatching = []
 
     sections.each (i) ->
@@ -113,6 +138,20 @@ description_selector = ".description p"
       fromDateMoment = moment(from, "DD/MM/YYYY")
 
       if(sectionDateMoment.diff(fromDateMoment) >= 0)
+        sectionsMatching.push section
+
+    sectionsMatching
+
+  selectSectionsMatchingWithToDate : (sections, to) ->
+    sectionsMatching = []
+
+    sections.each (i) ->
+      section = $(this)
+      sectionDate = section.find(".to").text().split(" ")[0]
+      sectionDateMoment = moment(sectionDate, "DD/MM/YYYY")
+      toDateMoment = moment(to, "DD/MM/YYYY")
+
+      if(sectionDateMoment.diff(toDateMoment) <= 0)
         sectionsMatching.push section
 
     sectionsMatching

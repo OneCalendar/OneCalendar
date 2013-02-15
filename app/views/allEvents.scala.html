@@ -49,14 +49,17 @@
         <h3>filtre</h3>
         <input type="text" id="tags" placeholder="   tag1&tag2|tag3 ..." />
         <input type="datetime" id="from" placeholder="   du (jj/mm/aaaa)" />
-        <input type="datetime" id="to" placeholder="   au (jj/mm/aaaa)" disabled />
+        <input type="datetime" id="to" placeholder="   au (jj/mm/aaaa)" />
         <span id="filterResult"></span>
     </div>
 
     @events.map { event =>
         <section class="event">
             <p class="location">@event.location</p>
-            <p>Du <span class="from">@DateTimeFormat.forPattern("dd/MM/yyyy HH:mm").print(event.begin)</span> au <span class="to">@DateTimeFormat.forPattern("dd/MM/yyyy HH:mm").print(event.end)</span></p>
+            <p>
+                Du <span class="from">@DateTimeFormat.forPattern("dd/MM/yyyy HH:mm").print(event.begin)</span>
+                au <span class="to">@DateTimeFormat.forPattern("dd/MM/yyyy HH:mm").print(event.end)</span>
+            </p>
             <div class="clear"></div>
 
             <h3>@event.title</h3>
@@ -64,14 +67,18 @@
             <div class="tags">
                 <ul>
                 @for(tag <- event.tags.map( _.toLowerCase.capitalize )) {
-                    <li>@tag</li>  <!-- classe tag pour jquery ??? -->
+                    <li>@tag</li>
                 }
                 </ul>
             </div>
             <div class="clear"></div>
 
             <div class="description">
-                <h4>Description<span class="cursor"><i class="icon-chevron-down"></i></span><span class="cursor"><i class="icon-chevron-up"></i></span></h4>
+                <h4>
+                    Description
+                    <span class="cursor"><i class="icon-chevron-down"></i></span>
+                    <span class="cursor"><i class="icon-chevron-up"></i></span>
+                </h4>
                 <p>@event.description</p>
             </div>
         </section>
