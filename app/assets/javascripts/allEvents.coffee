@@ -21,7 +21,13 @@ description_selector = ".description p"
 
   listenFilterButtons : ->
     $("#tags").on "keyup", ->
-      ALL_EVENTS.filterByTag(this.value)
+      ALL_EVENTS.filter()
+
+    $("#from").on "keyup", ->
+      ALL_EVENTS.filter()
+
+    $("#to").on "keyup", ->
+      ALL_EVENTS.filter()
 
   hideAllDescriptions : ->
     $(up_button_selector).hide()
@@ -38,19 +44,69 @@ description_selector = ".description p"
     $(button_down).parents(".description").find(".icon-chevron-up").show()
     $(button_down).parents(".description").find("p").show()
 
+  filter : ->
+    tags = $("#tags").val()
+    fromDate = $("#from").val()
+    toDate = $("#to").val()
+
+    tagsSections = ALL_EVENTS.filterByTag(tags) # tableau simple d'objets jquery
+    fromDateSections = ALL_EVENTS.filterByFromDate(fromDate) # tableau simple d'objets jquery
+    toDateSections = ALL_EVENTS.filterByToDate(toDate) # tableau simple d'objets jquery
+
+    console.log toDateSections.length
+
+    sectionsToDisplay = ALL_EVENTS.intersectArrayOfJQueryElem(tagsSections, fromDateSections)
+    sectionsToDisplay = ALL_EVENTS.intersectArrayOfJQueryElem(sectionsToDisplay, toDateSections)
+
+    ALL_EVENTS.displayFilterResult sectionsToDisplay.length
+
+    $("section.event").hide()
+    $.each(sectionsToDisplay, (k, value) ->
+      $(value).show()
+    )
+
   filterByTag : (tags) ->
     sections = $("section.event")
+    fullReturn = []
 
     if(tags.length != 0)
-      sections.hide()
-
-      result = ALL_EVENTS.displaySectionsMatchingWithTags(sections, tags)
-
-      ALL_EVENTS.displayFilterResult(result)
-
+      ALL_EVENTS.selectSectionsMatchingWithTags(sections, tags)
     else
-      sections.show()
-      ALL_EVENTS.displayFilterResult(sections.length)
+      sections.each (i) ->
+        fullReturn.push $(this)
+
+      fullReturn
+
+  filterByFromDate : (from) ->
+    sections = $("section.event")
+    fullReturn = []
+
+    if(from.match("[0-9]{2}\/[0-9]{2}\/[0-9]{4}") != null)
+      ALL_EVENTS.selectSectionsMatchingWithFromDate(sections, from)
+    else
+      sections.each (i) ->
+        fullReturn.push $(this)
+
+      fullReturn
+
+  filterByToDate : (to) ->
+    sections = $("section.event")
+    fullReturn = []
+
+    if(to.match("[0-9]{2}\/[0-9]{2}\/[0-9]{4}") != null)
+      ALL_EVENTS.selectSectionsMatchingWithToDate(sections, to)
+    else
+      sections.each (i) ->
+        fullReturn.push $(this)
+
+      fullReturn
+
+  intersectArrayOfJQueryElem : (array1, array2) ->
+    $.grep( array1, (elem1, j) ->
+      $.grep(array2, (elem2, k) ->
+        elem1.get(0) == elem2.get(0)
+      ).length > 0
+    )
 
   displayFilterResult : (number) ->
     res = " résultats"
@@ -59,18 +115,46 @@ description_selector = ".description p"
 
     $("#filterResult").text(number + res)
 
-  displaySectionsMatchingWithTags : (sections, stringTags) ->
-    result = 0
+  selectSectionsMatchingWithTags : (sections, stringTags) ->
+    sectionsMatching = []
     tags = stringTags.split("|").map (n) ->
       n.toLowerCase()
 
     sections.each (i) ->
       section = $(this)
       if(ALL_EVENTS.sectionMatchingWithTags(section, tags))
-        result += 1
-        section.show()
+        sectionsMatching.push section
 
-    result
+    sectionsMatching
+
+    # eliminer la duplication avec une injection de fonction pour le sections.each
+  selectSectionsMatchingWithFromDate : (sections, from) ->
+    sectionsMatching = []
+
+    sections.each (i) ->
+      section = $(this)
+      sectionDate = section.find(".from").text().split(" ")[0]
+      sectionDateMoment = moment(sectionDate, "DD/MM/YYYY")
+      fromDateMoment = moment(from, "DD/MM/YYYY")
+
+      if(sectionDateMoment.diff(fromDateMoment) >= 0)
+        sectionsMatching.push section
+
+    sectionsMatching
+
+  selectSectionsMatchingWithToDate : (sections, to) ->
+    sectionsMatching = []
+
+    sections.each (i) ->
+      section = $(this)
+      sectionDate = section.find(".to").text().split(" ")[0]
+      sectionDateMoment = moment(sectionDate, "DD/MM/YYYY")
+      toDateMoment = moment(to, "DD/MM/YYYY")
+
+      if(sectionDateMoment.diff(toDateMoment) <= 0)
+        sectionsMatching.push section
+
+    sectionsMatching
 
   sectionMatchingWithTags : (section, tags) ->
     lis = section.find("li")
@@ -89,8 +173,3 @@ description_selector = ".description p"
     (lis.filter (k) ->
       liContent = $(this).text().toLowerCase()
       liContent == incl_tag).length > 0
-
-  ###retrieveLi_matchingWithTags : (lis, tags) ->
-    lis.filter (j) ->
-      liContent = $(this).text().toLowerCase()
-      $.grep(tags, (n,i) -> n == liContent).length > 0###
