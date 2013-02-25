@@ -1,0 +1,65 @@
+/* ----- Background ----- */
+.bgcontainer {
+}
+.bgcontainer .space {
+    background: url("../../images/devoxx/bg.jpg") no-repeat;
+    bottom: 0px;
+    height: 2000px;
+    left: 0px;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+}
+
+.infobar {
+    min-height: 100px;
+    padding-right: 20px;
+    padding-left: 20px;
+    background-repeat: repeat-x;
+}
+
+.logo {
+    background: url("../../images/devoxx/devox-logo.png") no-repeat;
+    background-position: center;
+    float: none;
+    height: 80px;
+    margin: 40px auto;
+}
+
+.bgcontainer .earth {
+    background: url("../../images/devoxx/earth.png") no-repeat;
+    bottom: 0px;
+    height: 1100px;
+    left: 0px;
+    position: fixed;
+    right: 0px;
+    top: 90px;
+    width: 1920px;
+}
+
+.footer {
+
+}
+
+/* -----------Event---------- */
+.event {
+    border: #777777 thin solid;
+    padding: 3px;
+    margin-bottom: 5px;
+    border-radius: 10px 0 10px 0;
+    color: grey;
+    background-color: #eeeeee;
+
+.description {
+    display:none
+}
+
+.event.highlight {
+    box-shadow:20px 20px 20px darkgrey;
+    color:#000000;
+    z-index: 10;
+}
+
+.event.highlight .description{
+    display: block;
+}
