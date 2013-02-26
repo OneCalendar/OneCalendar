@@ -58,7 +58,8 @@ $(document).ready(function hello(){
         $("#rows").empty();
         data.sort(sortEvent).forEach(templateThisEvent);
 
-        launchAnim();
+        /*---Animation inactive. To be changedgit ---*/
+        //launchAnim();
 
         reload = setTimeout(function () {
             load();
