@@ -30,10 +30,13 @@
 
     <script type="text/javascript" src='@routes.Assets.at("javascripts/devoxx/devoxxshow.js")'></script>
     <script type="text/template" id="event">
-        <section class="span12 event">
-            <h4>$title</h4>
-            <h5>$date ($location)</h5>
-        </section>
+        <li class="span3 event">
+            <div class="thumbnail">
+                <h3>$location</h3>
+                <h6>$date</h6>
+                <h5>$title</h5>
+            </div>
+        </li>
     </script>
 </head>
 <body>
@@ -44,7 +47,8 @@
     </div>
     <div class="earth">
         <div class="events">
-            <div id="rows"></div>
+            <ul id="rows" class="thumbnails">
+            </ul>
             <img src='@routes.Assets.at("images/OneCalendar.png")' class="footer"/>
         </div>
         <div>

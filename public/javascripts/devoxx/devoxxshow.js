@@ -10,7 +10,7 @@ $(document).ready(function hello(){
 
     function templateThisEvent(event) {
         event = event || {
-            uid:"",tags:[],location:"",begin:0,end:0,originalStream:"",title:""
+            uid:"",tags:[],location:"",description:"",begin:0,end:0,originalStream:"",title:""
         };
 
         function toDateDisplayed(event) {
@@ -58,7 +58,7 @@ $(document).ready(function hello(){
         $("#rows").empty();
         data.sort(sortEvent).forEach(templateThisEvent);
 
-        /*---Animation inactive. To be changedgit ---*/
+        /*---Animation inactive. To be changed ---*/
         //launchAnim();
 
         reload = setTimeout(function () {

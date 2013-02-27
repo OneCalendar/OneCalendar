@@ -22,6 +22,9 @@ import configuration.injection.MongoProp.MongoDbName
 import fr.scala.util.collection.CollectionsUtils
 import models._
 import play.api.Logger
+import models.SearchPreview
+import com.mongodb.casbah.query.dsl.QueryExpressionObject
+import org.joda.time.DateTime
 
 object EventDao extends CollectionsUtils
         with EventDaoTrait
@@ -85,15 +88,24 @@ object EventDao extends CollectionsUtils
      * @param now
      * @return
      */
-    def closestEvents(offset: Int = 5, afterset : Int = 2)(implicit dbName: MongoDbName, now: () => Long): List[Event] = {
+    def closestEvents(offset: Int = 5, afterset : Int = 2, tags:List[String]= List.empty)(implicit dbName: MongoDbName, now: () => Long): List[Event] = {
         import akka.util.duration._
 
         val offsetMillis: Long = (offset minutes).toMillis
         val aftersetMillis: Long = (afterset hours).toMillis
+        var futurEvents : DBObject =  null
+        var eventsBeganNotFinish = DBList.empty
 
-        val futurEvents = ("begin" $gte (now() - offsetMillis) $lte (now() + aftersetMillis) )
-        val eventsBeganNotFinish = DBList("begin" $lte now(), "end" $gt (now() - offsetMillis) )
-        val query = DBObject("$or" -> DBList(futurEvents,DBObject("$and" -> eventsBeganNotFinish)))
+        if (!tags.isEmpty) {
+           futurEvents = ("tags" $in tags.map(_.toUpperCase)) ++ ("begin" $gte (now() - offsetMillis) $lte (now() + aftersetMillis))
+           eventsBeganNotFinish = DBList("tags" $in tags.map(_.toUpperCase), "begin" $lte now(), "end" $gt (now() - offsetMillis))
+
+        } else{
+
+          futurEvents = ("begin" $gte (now() - offsetMillis) $lte (now() + aftersetMillis) )
+          eventsBeganNotFinish = DBList("begin" $lte now(), "end" $gt (now() - offsetMillis) )
+        }
+        val query =  DBObject("$or" -> DBList(futurEvents,DBObject("$and" -> eventsBeganNotFinish)))
 
         find[Event](query)
     }

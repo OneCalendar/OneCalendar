@@ -6,6 +6,7 @@ import play.api.mvc._
 import dao.EventDao
 import org.joda.time.DateTime
 import io.Source._
+import models.Event
 
 object Slideshow extends OneCalendarController with Json {
 
@@ -17,7 +18,7 @@ object Slideshow extends OneCalendarController with Json {
 
     }
 
-    def devoxxshow()(implicit now: () => Long = () => DateTime.now.getMillis) = Action { request =>
+  def devoxxshow()(implicit now: () => Long = () => DateTime.now.getMillis) = Action { request =>
 
       val content = """[{
                             "uid":"5475776194",
@@ -71,7 +72,9 @@ object Slideshow extends OneCalendarController with Json {
                             "originalStream":"eventbrite-scala",
                             "url":"http://www.eventbrite.com/event/5474739092/SRCH"
                          }]"""
-        request.headers.get("Content-Type") match {
+
+      request.headers.get("Content-Type") match {
+        //case Some("application/ajax") => Ok(generate(EventDao.closestEvents(tags = List("devoxx"))).as("application/json")
         case Some("application/ajax") => Ok(content).as("application/json")
         case _ => Ok(views.html.devoxxshow())
       }

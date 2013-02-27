@@ -48,7 +48,7 @@
     padding: 3px;
     margin-bottom: 5px;
     border-radius: 10px 0 10px 0;
-    color: grey;
+    color: #4169e1;
     background-color: #eeeeee;
     position: center;
 }
@@ -335,7 +335,7 @@
 .animate-android {
     width:280px;
     height:140px;
-    z-index: auto;
+    z-index: 0;
     background:none;
     top: 100px;
     position:fixed;
@@ -374,28 +374,28 @@
 
 @keyframes android
 {
-    0%   {background:none; left:950px; top:550px;}
-    50%  {background:none; left:1000px; top:550px;}
-    100% {background:none; left:950px; top:550px;}
+    0%   {background:none; left:1180px; top:250px;}
+    50%  {background:none; left:1200px; top:250px;}
+    100% {background:none; left:1180px; top:250px;}
 }
 
 @-moz-keyframes android /* Firefox */
 {
-    0%   {background:none; left:950px; top:550px;}
-    50%  {background:none; left:1000px; top:550px;}
-    100% {background:none; left:950px; top:550px;}
+    0%   {background:none; left:1180px; top:250px;}
+    50%  {background:none; left:1200px; top:250px;}
+    100% {background:none; left:1180px; top:250px;}
 }
 
 @-webkit-keyframes android /* Safari and Chrome */
 {
-    0%   {background:none; left:950px; top:550px;}
-    50%  {background:none; left:1000px; top:550px;}
-    100% {background:none; left:950px; top:550px;}
+    0%   {background:none; left:1180px; top:250px;}
+    50%  {background:none; left:1200px; top:250px;}
+    100% {background:none; left:1180px; top:250px;}
 }
 
 @-o-keyframes android /* Opera */
 {
-    0%   {background:none; left:950px; top:550px;}
-    50%  {background:none; left:1000px; top:550px;}
-    100% {background:none; left:950px; top:550px;}
+    0%   {background:none; left:1180px; top:250px;}
+    50%  {background:none; left:1200px; top:250px;}
+    100% {background:none; left:1180px; top:250px;}
 }
