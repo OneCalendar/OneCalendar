@@ -16,11 +16,7 @@ $(document).ready(function hello(){
         function toDateDisplayed(event) {
             var begin = moment(event.begin);
             var end = moment(event.end);
-            if (end.diff(begin,"days") === 0) {
-                return begin.format("DD/MM/YYYY HH:mm") + " - " + end.format("HH:mm");
-            } else {
-                return begin.format("DD/MM/YYYY HH:mm") + " - " + end.format("DD/MM/YYYY HH:mm");
-            }
+            return begin.format("DD/MM/YYYY  HH:mm") + " - " + end.format("HH:mm");
         }
 
         $("#rows").append(TEMPLATE_EVENT

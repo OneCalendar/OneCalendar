@@ -30,11 +30,19 @@
 
     <script type="text/javascript" src='@routes.Assets.at("javascripts/devoxx/devoxxshow.js")'></script>
     <script type="text/template" id="event">
-        <li class="span3 event">
+        <li class="event span3">
             <div class="thumbnail">
-                <h3>$location</h3>
-                <h6>$date</h6>
-                <h5>$title</h5>
+               <div class="title">
+                    <h5>$title</h5>
+               </div>
+               <div class="row">
+                    <div class="span3">
+                        <h4>$location</h4>
+                    </div>
+                    <div class="span2">
+                        <h5>$date</h5>
+                    </div>
+               </div>
             </div>
         </li>
     </script>

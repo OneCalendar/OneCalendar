@@ -58,6 +58,15 @@
     color:#000000;
 }
 
+.event .thumbnail {
+    min-height: 200px;
+}
+
+.event .title{
+    min-height: 80px;
+    color: #00008b;
+}
+
 .events .footer{
     margin-left: 1040px;
 }
