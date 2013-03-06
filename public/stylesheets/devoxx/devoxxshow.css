@@ -30,12 +30,15 @@
     margin: 40px 40px 40px 40px;
 }
 
-.logo {
-    background: url("../../images/devoxx/devox-logo.png") no-repeat top center;
-                /*url("../../images/OneCalendar.png") no-repeat top bottom; */
-    min-height: 80px;
-    min-width: 280px;
+.header {
+    width: 100%;
+    text-align: center;
 }
+
+.header img {
+    margin-right: 100px;
+}
+
 
 /* -----------Event---------- */
 .events {
@@ -383,28 +386,28 @@
 
 @keyframes android
 {
-    0%   {background:none; left:1180px; top:250px;}
-    50%  {background:none; left:1200px; top:250px;}
-    100% {background:none; left:1180px; top:250px;}
+    0%   {background:none; right:0px; top:100px;}
+    50%  {background:none; right:50px; top:100px;}
+    100% {background:none; right:0px; top:100px;}
 }
 
 @-moz-keyframes android /* Firefox */
 {
-    0%   {background:none; left:1180px; top:250px;}
-    50%  {background:none; left:1200px; top:250px;}
-    100% {background:none; left:1180px; top:250px;}
+    0%   {background:none; right:0px; top:100px;}
+    50%  {background:none; right:50px; top:100px;}
+    100% {background:none; right:0px; top:100px;}
 }
 
 @-webkit-keyframes android /* Safari and Chrome */
 {
-    0%   {background:none; left:1180px; top:250px;}
-    50%  {background:none; left:1200px; top:250px;}
-    100% {background:none; left:1180px; top:250px;}
+    0%   {background:none; right:0px; top:100px;}
+    50%  {background:none; right:50px; top:100px;}
+    100% {background:none; right:0px; top:100px;}
 }
 
 @-o-keyframes android /* Opera */
 {
-    0%   {background:none; left:1180px; top:250px;}
-    50%  {background:none; left:1200px; top:250px;}
-    100% {background:none; left:1180px; top:250px;}
+    0%   {background:none; right:0px; top:100px;}
+    50%  {background:none; right:50px; top:100px;}
+    100% {background:none; right:0px; top:100px;}
 }
