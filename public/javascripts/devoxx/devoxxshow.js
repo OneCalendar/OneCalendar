@@ -2,9 +2,6 @@ $(document).ready(function hello(){
     "use strict";
 
     var TEMPLATE_EVENT = $("#event").text();
-    var timeout = {
-        lastTimeout:null,lastId:""
-    };
 
     var reload;
 
@@ -26,23 +23,6 @@ $(document).ready(function hello(){
         );
 
     }
-    var DELAY = 5000;
-
-    function launchAnim() {
-        var current = $(".event.highlight");
-
-        var next = current.next();
-        if (current.length === 0 || next.length === 0) {
-            current = $("#rows").find(".event").first();
-            next = current;
-        }
-        current.removeClass("highlight");
-        $("html,body").animate({
-            scrollTop:$(next).offset().top
-        });
-        $(next).addClass("highlight");
-        timeout.lastTimeout = setTimeout(launchAnim,DELAY);
-    }
 
     function success(data) {
         data = data || [];
@@ -54,9 +34,6 @@ $(document).ready(function hello(){
         $("#rows").empty();
         data.sort(sortEvent).forEach(templateThisEvent);
 
-        /*---Animation inactive. To be changed ---*/
-        //launchAnim();
-
         reload = setTimeout(function () {
             load();
         },30*60*1000);
@@ -65,7 +42,6 @@ $(document).ready(function hello(){
 
     function load() {
         clearTimeout(reload);
-        clearTimeout(timeout.lastTimeout);
         $.ajax({action:"devoxxshow",contentType:"application/ajax",success:success});
     }
     load();
