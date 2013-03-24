@@ -16,7 +16,7 @@
 }
 
 .earth {
-    background: url("../../images/devoxx/earth.png") no-repeat bottom left;
+    background: url("../../images/devoxx/earth.png") no-repeat bottom center;
     height: 1100px;
     width: 100%;
     top: 1780px;
