@@ -1,6 +1,7 @@
 /* ----- Background ----- */
 .body{
     min-height: 2000px;
+    background-color: #000000;
 }
 .space {
     background: url("../../images/devoxx/bg.jpg") no-repeat top center;
@@ -17,7 +18,7 @@
 
 .earth {
     background: url("../../images/devoxx/earth.png") no-repeat bottom center;
-    height: 1100px;
+    height: 1265px;
     width: 100%;
     top: 1780px;
     bottom: 0px;
