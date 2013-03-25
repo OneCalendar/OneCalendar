@@ -14,12 +14,12 @@ object VEvent {
               location: String = null, 
               url: String = null, 
               description: String = null): VEvent = {
-        
+
         val fVevent = new net.fortuna.ical4j.model.component.VEvent()
 
         if(uid != null) fVevent.getProperties.add(new Uid(uid))
-        if(startDate != null) fVevent.getProperties.add(new DtStart(new net.fortuna.ical4j.model.DateTime(startDate.getMillis)))
-        if(endDate != null) fVevent.getProperties.add(new DtEnd(new net.fortuna.ical4j.model.DateTime(endDate.getMillis)))
+        if(startDate != null) fVevent.getProperties.add(new DtStart(new net.fortuna.ical4j.model.DateTime(startDate.getMillis),true))
+        if(endDate != null) fVevent.getProperties.add(new DtEnd(new net.fortuna.ical4j.model.DateTime(endDate.getMillis),true))
         if(summary != null) fVevent.getProperties.add(new Summary(summary))
         if(description != null) fVevent.getProperties.add(new Description(description))
         if(location != null) fVevent.getProperties.add(new Location(location))
