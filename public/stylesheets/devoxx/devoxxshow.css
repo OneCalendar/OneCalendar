@@ -5,6 +5,7 @@
 }
 .space {
     background: url("../../images/devoxx/bg.jpg") no-repeat top center;
+    background-size: cover;
     position: fixed;
     background-attachment: fixed;
     height: 2000px;
@@ -17,13 +18,10 @@
 }
 
 .earth {
-    background: url("../../images/devoxx/earth.png") no-repeat bottom center;
+    background: url("../../images/devoxx/earth.png") no-repeat top center;
+    background-size: cover;
     height: 1265px;
-    width: 100%;
-    top: 1780px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
+    top: 2500px;
     z-index: -10;
 }
 
@@ -45,6 +43,7 @@
 .events {
     margin: 170px 0 0 80px;
     min-height: 400px;
+    position: center;
 }
 
 .event {
