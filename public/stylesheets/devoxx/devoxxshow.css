@@ -18,12 +18,15 @@
 }
 
 .earth {
-    background: url("../../images/devoxx/earth.png") no-repeat top center;
-    background-size: cover;
-    height: 1265px;
-    top: 2500px;
+    min-height:100%;
+    position:relative;
+    overflow-x: scroll;
+    background: url("../../images/devoxx/earth.png") no-repeat bottom center;
+    background-size: 100%, 1265px;
+    min-height: 1265px;
     z-index: -10;
 }
+
 
 .space .header{
     margin: 40px 40px 40px 40px;
@@ -65,8 +68,12 @@
     min-height: 200px;
 }
 
+.thumbnails li{
+    background: rgba(250,250,250,0.6);
+}
+
 .event .title{
-    min-height: 80px;
+    min-height: 160px;
     color: #00008b;
 }
 
