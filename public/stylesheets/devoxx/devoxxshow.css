@@ -23,7 +23,7 @@
     overflow-x: scroll;
     background: url("../../images/devoxx/earth.png") no-repeat bottom center;
     background-size: 100%, 1265px;
-    min-height: 1265px;
+    min-height: 1439px;
     z-index: -10;
 }
 
@@ -65,7 +65,7 @@
 }
 
 .event .thumbnail {
-    min-height: 200px;
+    min-height: 260px;
 }
 
 .thumbnails li{
@@ -73,11 +73,12 @@
 }
 
 .event .title{
-    min-height: 160px;
+    min-height: 140px;
     color: #00008b;
 }
 
 .events .footer{
+    min-height: 100px;
     margin-left: 1040px;
 }
 
