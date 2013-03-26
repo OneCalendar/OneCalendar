@@ -36,8 +36,9 @@ object LoadDevoxx extends Json with NowEventInjection {
         val events: Seq[DevoxxEvents] = parseUrl[Seq[DevoxxEvents]](devoxxEvents)
 
         events
-            .map(event => "https://cfp.devoxx.com/rest/v1/events/%s/schedule".format(event.id))
-            .foreach(load)
+           //.map(event => "https://cfp.devoxx.com/rest/v1/events/%s/schedule".format(event.id))
+          .map(event => "https://cfp.devoxx.com/rest/v1/events/8/schedule".format(event.id))
+          .foreach(load)
     }
 
     def load(devoxxUrl: String)(implicit dbName: MongoDbName) {
