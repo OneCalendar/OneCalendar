@@ -87,9 +87,9 @@
     width:100px;
     height:100px;
     background:none;
-    top: 2300px;
-    position:relative;
-    z-index: 0;
+    position: relative;
+    margin-bottom:300px;
+    z-index: -1;
     animation-name:walvis;
     animation-duration:10s;
     animation-timing-function:linear;
