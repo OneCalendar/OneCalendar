@@ -349,7 +349,7 @@
     height:140px;
     z-index: 0;
     background:none;
-    top: 100px;
+    top: 60px;
     position:fixed;
     animation-name:android;
     animation-duration:5s;
@@ -386,28 +386,28 @@
 
 @keyframes android
 {
-    0%   {background:none; right:0px; top:100px;}
-    50%  {background:none; right:50px; top:100px;}
-    100% {background:none; right:0px; top:100px;}
+    0%   {background:none; right:0px;}
+    50%  {background:none; right:50px;}
+    100% {background:none; right:0px;}
 }
 
 @-moz-keyframes android /* Firefox */
 {
-    0%   {background:none; right:0px; top:100px;}
-    50%  {background:none; right:50px; top:100px;}
-    100% {background:none; right:0px; top:100px;}
+    0%   {background:none; right:0px;}
+    50%  {background:none; right:50px;}
+    100% {background:none; right:0px;}
 }
 
 @-webkit-keyframes android /* Safari and Chrome */
 {
-    0%   {background:none; right:0px; top:100px;}
-    50%  {background:none; right:50px; top:100px;}
-    100% {background:none; right:0px; top:100px;}
+    0%   {background:none; right:0px;}
+    50%  {background:none; right:50px;}
+    100% {background:none; right:0px;}
 }
 
 @-o-keyframes android /* Opera */
 {
-    0%   {background:none; right:0px; top:100px;}
-    50%  {background:none; right:50px; top:100px;}
-    100% {background:none; right:0px; top:100px;}
+    0%   {background:none; right:0px;}
+    50%  {background:none; right:50px;}
+    100% {background:none; right:0px;}
 }
