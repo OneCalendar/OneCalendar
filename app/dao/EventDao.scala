@@ -89,7 +89,7 @@ object EventDao extends CollectionsUtils
      * @return
      */
     def closestEvents(offset: Int = 5, afterset : Int = 2, tags:List[String]= List.empty)(implicit dbName: MongoDbName, now: () => Long): List[Event] = {
-        import akka.util.duration._
+        import scala.concurrent.duration._
 
         val offsetMillis: Long = (offset minutes).toMillis
         val aftersetMillis: Long = (afterset hours).toMillis

@@ -159,7 +159,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with DaoCleaner {
     }
 
     test("current events or next ones") {
-        import akka.util.duration._
+        import scala.concurrent.duration._
         implicit val now : () => Long = () => new DateTime(2012,4,21,15,00).getMillis
 
         initFourData
@@ -170,7 +170,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with DaoCleaner {
     }
 
     test("current events or next ones with tag 'devoxx'"){
-      import akka.util.duration._
+      import scala.concurrent.duration._
       implicit val now : () => Long = () => new DateTime(2012,4,20,10,00).getMillis
 
       initFourData
