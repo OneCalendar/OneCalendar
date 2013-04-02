@@ -17,12 +17,11 @@
 package controllers
 
 import org.scalatest.FunSuite
-import com.codahale.jerkson.Json
 import org.scalatest.matchers.ShouldMatchers
 import models._
 import service.LoadDevoxx
 
-class DevoxxLoadTest extends FunSuite with Json with ShouldMatchers {
+class DevoxxLoadTest extends FunSuite with ShouldMatchers {
 
     /*test("load rest url presentation") {
         val presentations: Seq[DevoxxPresentation] = LoadDevoxx.parseUrl[Seq[DevoxxPresentation]]("https://cfp.devoxx.com/rest/v1/events/7/presentations")
@@ -39,7 +38,7 @@ class DevoxxLoadTest extends FunSuite with Json with ShouldMatchers {
         schedules.size should be > 0
     }*/
 
-    test("load json of devoxx") {
+    /*test("load json of devoxx") {
         val devoxxJson: String = """{
             "tags":[{"name":"DevOps"},{"name":"Versioning"}],
             "summary":"Nous sommes amenÃ©s quotidiennement Ã  modifier et partager du code:\r\n\r\n    * refactoring et tests afin d\u2019en amÃ©liorer la qualitÃ©,\r\n    * versioning afin de conserver et tracer ces changements.\r\n\r\nQu\u2019en est-il cÃ´tÃ© base de donnÃ©es ? En Ãªtes-vous encore Ã  envoyer vos scripts SQL directement Ã  l\u2019exploitation ? Les avez-vous testÃ©s ?\r\n\r\nDirectement inspirÃ© du livre \u201cRefactoring Databases: Evolutionary Database Design\u201d, Liquibase est un outil open-source qui permet de rÃ©pondre Ã  ces besoins essentiels.\r\n\r\nCette prÃ©sentation se veut Ãªtre une dÃ©monstration des forces de cet outil, de la crÃ©ation de structures de donnÃ©es Ã  leur livraison sur plusieurs environnements en passant par les tests.",
@@ -93,5 +92,5 @@ class DevoxxLoadTest extends FunSuite with Json with ShouldMatchers {
             """)
         devoxxSchedule.id.get should be(565)
         devoxxSchedule.speakerUri.get should be("http://cfp.devoxx.com/rest/v1/events/speakers/1420")
-    }
+    }*/
 }

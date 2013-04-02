@@ -17,18 +17,20 @@
 package controllers
 
 import api.icalendar.ICalendar
-/*import com.codahale.jerkson.Json*/
 import dao._
 import models.mapping.Event$VEventMapping
 import models._
 import org.joda.time.DateTime
 import play.api.mvc._
+import play.api.libs.json._
+import play.api.libs.functional._
+import play.api.libs.functional.syntax._
+import play.api.libs.json.Writes._
 
-case class PreviewTuple(date:String, title:String, location:String)
-case class PreviewEvent(event:PreviewTuple)
-case class Preview (size: Long, eventList:Seq[PreviewEvent])
+case class PreviewEvent(date: String, title: String, location: String)
+case class Preview (size: Long, eventList: Seq[PreviewEvent])
 
-object Application extends OneCalendarController /*with Json*/ with Event$VEventMapping {
+object Application extends OneCalendarController with Event$VEventMapping {
 
     def index = Action {
         Ok(views.html.index())
@@ -39,30 +41,26 @@ object Application extends OneCalendarController /*with Json*/ with Event$VEvent
         renderEvents(EventDao.findByTag(tags))
     }
 
-    /*def findPreviewByTags(keyWords: String)(implicit dao: EventDaoTrait = EventDao, now: () => Long = () => DateTime.now.getMillis) = Action {
+    def findPreviewByTags(keyWords: String)(implicit dao: EventDaoTrait = EventDao, now: () => Long = () => DateTime.now.getMillis) = Action {
         val tags: List[String] = keyWords.split(" ").toList
         val searchPreview: SearchPreview = dao.findPreviewByTag(tags)
 
         val previewEvents = searchPreview.previewEvents.map(
-            e => PreviewEvent(PreviewTuple(date = e.begin.toString(),title = e.title,location = e.location))
+            e => PreviewEvent(date = e.begin.toString(),title = e.title,location = e.location)
         )
 
-        val previewJson: String = generate(Option(searchPreview).map(
-            p => Preview(size = p.totalEventNumber, eventList= previewEvents))
-        )
-        if ( searchPreview.totalEventNumber > 0 ) {
-            Ok(previewJson).as("application/json")
-        }
-        else NotFound
-    }*/
-
-    def about = Action {
-        Ok(views.html.about())
+        Option(searchPreview)
+            .map( p => Preview(size = p.totalEventNumber, eventList= previewEvents))
+            .filter( preview => preview.size > 0 )
+            .map( preview => Ok(Json.toJson(preview)).as("application/json") )
+            .getOrElse(NotFound)
     }
 
-    /*def fetchCloudOfTags(implicit now: () => Long = () => DateTime.now.getMillis) = Action {
-        Ok(generate(EventDao.listTags())).as("application/json")
-    }*/
+    def about = Action { Ok(views.html.about()) }
+
+    def fetchCloudOfTags(implicit now: () => Long = () => DateTime.now.getMillis) = Action {
+        Ok(Json.toJson(EventDao.listTags())).as("application/json")
+    }
     
     def eventCount(implicit now: () => Long = () => DateTime.now.getMillis) = Action {
         Ok("""{"eventNumber":"%s"}""".format(EventDao.countFutureEvents)).as("application/json")
@@ -74,4 +72,15 @@ object Application extends OneCalendarController /*with Json*/ with Event$VEvent
             case _ => Ok(ICalendar.buildCalendar(events)).as("text/calendar; charset=utf-8")
         }
     }
+
+    private implicit val previewEventWriter: Writes[PreviewEvent] = (
+        (__ \ "date").write[String] and
+        (__ \ "title").write[String] and
+        (__ \ "location").write[String]
+        )(unlift(PreviewEvent.unapply))
+
+    private implicit val previewWriter: Writes[Preview] = (
+        (__ \ "size").write[Long] and
+            (__ \ "eventList").write(Writes.seq[PreviewEvent])
+        )(unlift(Preview.unapply))
 }
