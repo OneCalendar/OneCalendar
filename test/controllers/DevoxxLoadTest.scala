@@ -24,7 +24,7 @@ import service.LoadDevoxx
 
 class DevoxxLoadTest extends FunSuite with Json with ShouldMatchers {
 
-    test("load rest url presentation") {
+    /*test("load rest url presentation") {
         val presentations: Seq[DevoxxPresentation] = LoadDevoxx.parseUrl[Seq[DevoxxPresentation]]("https://cfp.devoxx.com/rest/v1/events/7/presentations")
         presentations.size should be > 0
     }
@@ -37,7 +37,7 @@ class DevoxxLoadTest extends FunSuite with Json with ShouldMatchers {
     test("load rest url schedule") {
         val schedules: Seq[DevoxxSchedule] = LoadDevoxx.parseUrl[Seq[DevoxxSchedule]]("https://cfp.devoxx.com/rest/v1/events/7/schedule")
         schedules.size should be > 0
-    }
+    }*/
 
     test("load json of devoxx") {
         val devoxxJson: String = """{

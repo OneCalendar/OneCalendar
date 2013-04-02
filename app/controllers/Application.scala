@@ -17,7 +17,7 @@
 package controllers
 
 import api.icalendar.ICalendar
-import com.codahale.jerkson.Json
+/*import com.codahale.jerkson.Json*/
 import dao._
 import models.mapping.Event$VEventMapping
 import models._
@@ -28,7 +28,7 @@ case class PreviewTuple(date:String, title:String, location:String)
 case class PreviewEvent(event:PreviewTuple)
 case class Preview (size: Long, eventList:Seq[PreviewEvent])
 
-object Application extends OneCalendarController with Json with Event$VEventMapping {
+object Application extends OneCalendarController /*with Json*/ with Event$VEventMapping {
 
     def index = Action {
         Ok(views.html.index())
@@ -39,7 +39,7 @@ object Application extends OneCalendarController with Json with Event$VEventMapp
         renderEvents(EventDao.findByTag(tags))
     }
 
-    def findPreviewByTags(keyWords: String)(implicit dao: EventDaoTrait = EventDao, now: () => Long = () => DateTime.now.getMillis) = Action {
+    /*def findPreviewByTags(keyWords: String)(implicit dao: EventDaoTrait = EventDao, now: () => Long = () => DateTime.now.getMillis) = Action {
         val tags: List[String] = keyWords.split(" ").toList
         val searchPreview: SearchPreview = dao.findPreviewByTag(tags)
 
@@ -54,15 +54,15 @@ object Application extends OneCalendarController with Json with Event$VEventMapp
             Ok(previewJson).as("application/json")
         }
         else NotFound
-    }
+    }*/
 
     def about = Action {
         Ok(views.html.about())
     }
 
-    def fetchCloudOfTags(implicit now: () => Long = () => DateTime.now.getMillis) = Action {
+    /*def fetchCloudOfTags(implicit now: () => Long = () => DateTime.now.getMillis) = Action {
         Ok(generate(EventDao.listTags())).as("application/json")
-    }
+    }*/
     
     def eventCount(implicit now: () => Long = () => DateTime.now.getMillis) = Action {
         Ok("""{"eventNumber":"%s"}""".format(EventDao.countFutureEvents)).as("application/json")

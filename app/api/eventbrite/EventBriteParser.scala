@@ -18,13 +18,13 @@ package api.eventbrite
 
 import java.lang.IllegalArgumentException
 import org.codehaus.jackson.annotate.JsonIgnoreProperties
-import com.codahale.jerkson.Json
+//import com.codahale.jerkson.Json
 
 
-object EventBriteParser extends Json {
+object EventBriteParser /*extends Json*/ {
 
     def parseEvents(json: String): Seq[EventbriteEvent] = {
-        parse[EventbriteResponse](json) match {
+        /*parse[EventbriteResponse](json) match {
             case EventbriteResponse(None, Some(eventbriteError)) =>
                 throw new IllegalArgumentException(eventbriteError.error_type.get + " : " + eventbriteError.error_message.get)
             case EventbriteResponse(Some(events), _) => {
@@ -33,7 +33,8 @@ object EventBriteParser extends Json {
                     .map(_.event.get)
             }
             case unknownResponse => throw new IllegalStateException("unknown response from eventbrite : " + json)
-        }
+        }*/
+        Nil
     }
 }
 

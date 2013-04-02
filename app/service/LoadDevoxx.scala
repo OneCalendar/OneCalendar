@@ -16,7 +16,7 @@
 
 package service
 
-import com.codahale.jerkson.Json
+/*import com.codahale.jerkson.Json*/
 import dao._
 import dao.configuration.injection.MongoProp.MongoDbName
 import java.net._
@@ -24,7 +24,7 @@ import models._
 import org.joda.time.format.{DateTimeFormatter, DateTimeFormat}
 import play.api.Logger
 
-object LoadDevoxx extends Json with NowEventInjection {
+object LoadDevoxx /*extends Json with*/extends NowEventInjection {
 
     val log = Logger("EventDao")
     val pattern: DateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.S")
@@ -33,22 +33,22 @@ object LoadDevoxx extends Json with NowEventInjection {
     def parseLoad()(implicit dbName: MongoDbName) {
         val devoxxEvents = "https://cfp.devoxx.com/rest/v1/events/"
 
-        val events: Seq[DevoxxEvents] = parseUrl[Seq[DevoxxEvents]](devoxxEvents)
+        /*val events: Seq[DevoxxEvents] = parseUrl[Seq[DevoxxEvents]](devoxxEvents)
 
         events
            //.map(event => "https://cfp.devoxx.com/rest/v1/events/%s/schedule".format(event.id))
           .map(event => "https://cfp.devoxx.com/rest/v1/events/8/schedule".format(event.id))
-          .foreach(load)
+          .foreach(load)*/
     }
 
     def load(devoxxUrl: String)(implicit dbName: MongoDbName) {
         EventDao.deleteByOriginalStream(devoxxUrl)
 
-        val schedules: Seq[DevoxxSchedule] = parseUrl[Seq[DevoxxSchedule]](devoxxUrl)
+        //val schedules: Seq[DevoxxSchedule] = parseUrl[Seq[DevoxxSchedule]](devoxxUrl)
 
-        val shedulesSet = Set(schedules.toArray: _*)
+        //val shedulesSet = Set(schedules.toArray: _*)
 
-        shedulesSet.foreach(schedule => {
+        /*shedulesSet.foreach(schedule => {
             if ( schedule.presentationUri.isDefined ) {
                 try {
                     val presentation: DevoxxPresentation = parseUrl[DevoxxPresentation](schedule.presentationUri.get.replace("http://", "https://"))
@@ -73,8 +73,8 @@ object LoadDevoxx extends Json with NowEventInjection {
                 }
             }
 
-        })
+        })*/
     }
 
-    def parseUrl[A](url: String)(implicit mf: Manifest[A]): A = parse[A](new URL(url).openStream())
+    //private def parseUrl[A](url: String)(implicit mf: Manifest[A]): A = parse[A](new URL(url).openStream())
 }

@@ -31,7 +31,7 @@ trait MongoOperations {
         coll(tc.collectionName).remove(query)
 
     def count[T](implicit tc: MongoDbModel[T], coll: MongoCollectionName => MongoCollection): Long =
-        coll(tc.collectionName).count
+        coll(tc.collectionName).count()
 
     def count[T](query: DBObject)(implicit tc: MongoDbModel[T], coll: MongoCollectionName => MongoCollection): Long =
         coll(tc.collectionName).count(query)

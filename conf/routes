@@ -14,7 +14,7 @@
 ## See the License for the specific language governing permissions and
 ## limitations under the License.
 ##
- 
+
 # Routes
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
@@ -22,8 +22,8 @@
 # Home page
 GET     /                           controllers.Application.index
 GET     /events/*keyWords           controllers.Application.findByTags(keyWords)
-GET     /event/tags/*keyWords       controllers.Application.findPreviewByTags(keyWords)
-GET     /tags                       controllers.Application.fetchCloudOfTags
+#GET     /event/tags/*keyWords       controllers.Application.findPreviewByTags(keyWords)
+#GET     /tags                       controllers.Application.fetchCloudOfTags
 GET     /event/count                controllers.Application.eventCount
 
 # About
