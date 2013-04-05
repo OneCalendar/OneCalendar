@@ -8,10 +8,8 @@ object ApplicationBuild extends Build {
     val appName = "OneCalendar"
     val appVersion = "1.0-SNAPSHOT"
 
-    resolvers += "Jerkson repo" at "http://repo.codahale.com"
-
     val appDependencies = Seq(
-        "org.mongodb" % "casbah_2.10" % "2.5.1",
+        "org.mongodb" %% "casbah" % "2.5.1",
         "org.mnode.ical4j" % "ical4j" % "1.0.3" excludeAll(
             ExclusionRule(organization = "org.slf4j"),
             ExclusionRule(organization = "commons-logging")

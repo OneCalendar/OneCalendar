@@ -28,11 +28,15 @@ object Eventbrite  {
     type JsonResponse = String
 
     /** @param countryCode @see http://www.iso.org/iso/country_codes/iso_3166_code_lists/country_names_and_code_elements **/
-    def request(keyWord: String, countryCode: Option[String] = None, defaultTags: List[String], originalStream: String, licenseKey: String = "2Z5MEY5C4CD7D3FXUA"):  Seq[Event] = {
+    def request(keyWord: String, countryCode: Option[String] = None, defaultTags: List[String],
+                originalStream: String, licenseKey: String = "2Z5MEY5C4CD7D3FXUA"):  Seq[Event] = {
+
         val countryParam: String = countryCode match {
             case Some(code) => "&country=" + code
             case _ => ""
         }
+
+        // TODO utiliser une lib pour requeter WS de play ou Finagle !!!!!!!!!
         val url = "https://www.eventbrite.com/json/event_search" +
             "?app_key=" + licenseKey +
             "&keywords=" + keyWord +
@@ -59,7 +63,6 @@ object Eventbrite  {
     def cleanHtml(content:String):String = {
         new Regex("""<.*?>""").replaceAllIn(content,"")
     }
-
 
     val venueToLocation: (Option[Venue]) => String = { opVenue =>
         opVenue match {
@@ -89,7 +92,4 @@ object Eventbrite  {
             case (Some(date),Some(timeZone)) => DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss'GMT'Z").withOffsetParsed().parseDateTime(date + timeZone)
         }
     }
-
 }
-
-

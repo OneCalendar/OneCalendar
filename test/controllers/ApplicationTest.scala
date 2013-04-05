@@ -88,10 +88,10 @@ class ApplicationTest extends FunSuite with ShouldMatchers with Mockito with Col
         (__ \ "date").read[String] and
             (__ \ "title").read[String] and
             (__ \ "location").read[String]
-        )(PreviewEvent)
+    )(PreviewEvent)
 
     implicit val previewReader: Reads[Preview] = (
         (__ \ "size").read[Long] and
             (__ \ "eventList").read(Reads.seq[PreviewEvent])
-        )(Preview)
+    )(Preview)
 }

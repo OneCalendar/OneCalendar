@@ -16,7 +16,6 @@
 
 package service
 
-/*import com.codahale.jerkson.Json*/
 import dao._
 import dao.configuration.injection.MongoProp.MongoDbName
 import java.net._

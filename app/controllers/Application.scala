@@ -81,6 +81,6 @@ object Application extends OneCalendarController with Event$VEventMapping {
 
     private implicit val previewWriter: Writes[Preview] = (
         (__ \ "size").write[Long] and
-            (__ \ "eventList").write(Writes.seq[PreviewEvent])
+        (__ \ "eventList").write(Writes.seq[PreviewEvent])
         )(unlift(Preview.unapply))
 }

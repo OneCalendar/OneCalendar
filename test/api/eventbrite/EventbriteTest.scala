@@ -23,16 +23,19 @@ import java.lang.IllegalArgumentException
 class EventbriteTest extends FunSuite with ShouldMatchers {
 
     test("should parse real eventbrite stream without exception") {
-        Eventbrite.request("scala", defaultTags = Nil, originalStream = "originalStream")
+        val response = Eventbrite.request("scala", defaultTags = Nil, originalStream = "originalStream")
+        response should not be ('empty)
     }
 
     test("request with country filter should not throw exception") {
-        Eventbrite.request("java", Some("FR"), defaultTags = Nil, originalStream = "originalStream")
+        val response = Eventbrite.request("java", Some("FR"), defaultTags = Nil, originalStream = "originalStream")
+        response should not be ('empty)
     }
 
     test("request with bad license key should throw IllegalArgumentException") {
         val thrown = evaluating {
-            Eventbrite.request(keyWord = "toto", defaultTags = Nil, licenseKey = "invalidLicenceKey", originalStream = "originalStream")
+            val result = Eventbrite.request(keyWord = "toto", defaultTags = Nil, licenseKey = "invalidLicenceKey", originalStream = "originalStream")
+            println("toto : " + result)
         } should produce [IllegalArgumentException]
         thrown.getMessage should (include("application key") and include ("not valid"))
     }
@@ -40,5 +43,4 @@ class EventbriteTest extends FunSuite with ShouldMatchers {
     test("a content with html is sanytize") {
         Eventbrite.cleanHtml("""<a href="something">a text</a>""") should be ("a text")
     }
-
 }

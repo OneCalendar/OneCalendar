@@ -110,6 +110,4 @@ class Eventbrite2EventMapperTest extends FunSuite with ShouldMatchers {
         val event: Event = toEvent(eb, Nil, "keyword")
         event.originalStream should be (Some("keyword"))
     }
-
-
 }
