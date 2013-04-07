@@ -28,7 +28,7 @@ class EventbriteParserTest extends FunSuite with ShouldMatchers {
         events.head.id should be(Option("4737033595"))
     }
 
-    ignore("should understand no event found") {
+    test("should understand no event found") {
         val response = parseEvents("""{"events": [], "error": {"error_type": "Not Found", "error_message": "No events found matching the following criteria. [organizer=pppppppppppppp,  ]"}}""")
         response should be (Nil)
     }

@@ -26,9 +26,9 @@ object EventBriteParser extends EventbriteJsonReader {
 
         eventbriteResponseReader.reads(Json.parse(json)) match {
             case JsSuccess(events, _) =>
-                val result = events.asOpt.getOrElse(Nil)
-                if(result.isEmpty) throw new IllegalArgumentException("unknown response from eventbrite : " + json)
-                else result
+                events.asOpt.getOrElse(Nil)
+                //if(result.isEmpty) throw new IllegalArgumentException("unknown response from eventbrite : " + json)
+                //else result
             case JsError(errors) => throw new IllegalArgumentException("unknown response from eventbrite : " + errors)
             case _ => throw new IllegalStateException("unknown response from eventbrite : " + json)
         }

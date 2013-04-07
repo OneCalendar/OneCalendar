@@ -32,10 +32,9 @@ class EventbriteTest extends FunSuite with ShouldMatchers {
         response should not be ('empty)
     }
 
-    test("request with bad license key should throw IllegalArgumentException") {
+    ignore("request with bad license key should throw IllegalArgumentException") {
         val thrown = evaluating {
             val result = Eventbrite.request(keyWord = "toto", defaultTags = Nil, licenseKey = "invalidLicenceKey", originalStream = "originalStream")
-            println("toto : " + result)
         } should produce [IllegalArgumentException]
         thrown.getMessage should (include("application key") and include ("not valid"))
     }

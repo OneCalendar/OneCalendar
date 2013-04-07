@@ -23,14 +23,12 @@ import models._
 import org.joda.time.DateTime
 import play.api.mvc._
 import play.api.libs.json._
-import play.api.libs.functional._
-import play.api.libs.functional.syntax._
 import play.api.libs.json.Writes._
 
 case class PreviewEvent(date: String, title: String, location: String)
 case class Preview (size: Long, eventList: Seq[PreviewEvent])
 
-object Application extends OneCalendarController with Event$VEventMapping {
+object Application extends OneCalendarController with Event$VEventMapping with PreviewJsonWriter {
 
     def index = Action {
         Ok(views.html.index())
@@ -72,15 +70,4 @@ object Application extends OneCalendarController with Event$VEventMapping {
             case _ => Ok(ICalendar.buildCalendar(events)).as("text/calendar; charset=utf-8")
         }
     }
-
-    private implicit val previewEventWriter: Writes[PreviewEvent] = (
-        (__ \ "date").write[String] and
-        (__ \ "title").write[String] and
-        (__ \ "location").write[String]
-        )(unlift(PreviewEvent.unapply))
-
-    private implicit val previewWriter: Writes[Preview] = (
-        (__ \ "size").write[Long] and
-        (__ \ "eventList").write(Writes.seq[PreviewEvent])
-        )(unlift(Preview.unapply))
 }

@@ -17,7 +17,7 @@ import play.api.libs.json._
 import play.api.libs.functional.syntax._
 import play.api.libs.json.Reads
 
-class ApplicationTest extends FunSuite with ShouldMatchers with Mockito with CollectionsUtils {
+class ApplicationTest extends FunSuite with ShouldMatchers with Mockito with CollectionsUtils with PreviewJsonWriter {
 
     test("should find Nothing") {
         val now = () => new DateTime(2009, 1, 1, 1, 1).getMillis
@@ -84,14 +84,10 @@ class ApplicationTest extends FunSuite with ShouldMatchers with Mockito with Col
         }
     }
 
-    implicit val previewEventReader: Reads[PreviewEvent] = (
-        (__ \ "date").read[String] and
-            (__ \ "title").read[String] and
-            (__ \ "location").read[String]
-    )(PreviewEvent)
-
+    implicit val previewEventReader: Reads[PreviewEvent] = Json.reads[PreviewEvent]
+    implicit val previewEventReaderWithEventTag = (__ \ "event").read(previewEventReader)
     implicit val previewReader: Reads[Preview] = (
         (__ \ "size").read[Long] and
-            (__ \ "eventList").read(Reads.seq[PreviewEvent])
+            (__ \ "eventList").read(Reads.seq(previewEventReaderWithEventTag))
     )(Preview)
 }

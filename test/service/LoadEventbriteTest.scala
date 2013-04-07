@@ -24,13 +24,12 @@ import models.Event
 import dao.EventDao._
 
 class LoadEventbriteTest extends FunSuite with ShouldMatchers with DaoCleaner {
-    ignore("should parse scala stream") {
+    test("should parse scala stream") {
         implicit val now = () => new DateTime().withDate(2012,4,1).getMillis
 
         LoadEventbrite.parseLoad("scala")
 
         val events: List[Event] = findByTag(List("scala"))
-        //events.foreach(println(_))
         events.size should be > 0
     }
 }
