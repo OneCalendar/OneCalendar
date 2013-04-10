@@ -23,7 +23,6 @@
 section {
     width: 580px;
     margin: auto;
-    font-family: arial,sans-serif;
     font-size: 15px;
 }
 
@@ -79,7 +78,7 @@ section#devox img {
 *************************/
 
 #search {
-    margin-top: 40px;
+    margin-top: 40px; margin-bottom:40px;
 }
 
 #events input[type=submit] {

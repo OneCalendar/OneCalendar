@@ -2,24 +2,20 @@ header {
     background-color: black;
     width: 100%;
     color: white;
-    padding: 5px;
-    font-family: arial,serif;
-    font-size: 15px;
+    padding:.2em 1em;
     position: fixed;
     top: 0;
     left: 0;
-}
-
-body {
-    margin: 0;
+    font-weight: bold;
 }
 
 header a {
     color: white;
-    text-decoration: none;
+    text-decoration: none; padding:0 .5em;
+    letter-spacing: .2px;
 }
 
 header a:hover {
     color: #eeeeee;
-    text-decoration: none;
+    text-decoration: underline;
 }
