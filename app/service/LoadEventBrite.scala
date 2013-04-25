@@ -45,5 +45,4 @@ object LoadEventbrite extends NowEventInjection {
     private def reportNotLoadedEvents(notLoadedEvent: Seq[Event], url:String)(implicit now: () => Long) {
         if ( !notLoadedEvent.isEmpty ) Logger.info("%d already ended events not loaded from %s".format(notLoadedEvent.length, url))
     }
-
 }

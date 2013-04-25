@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import akka.util.duration._
+import scala.concurrent.duration._
 import controllers.OneCalendarController
 import org.joda.time.DateTime
 import play.api.Play.current
@@ -24,6 +24,7 @@ import models.ICalStream
 import dao.ICalStreamDao
 import play.api.libs.concurrent._
 import service.{LoadDevoxx, LoadICalStream}
+import scala.concurrent.ExecutionContext.Implicits.global
 
 object Global extends GlobalSettings with OneCalendarController {
 

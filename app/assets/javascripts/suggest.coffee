@@ -49,6 +49,8 @@
   displayPreviewResult : (data) ->
      $( "#callbackNoResult" ).hide()
 
+     console.log data
+
      if data.size > 3
        $("#resultSize").html("#{data.size - 3} autres évènements trouvés")
      else

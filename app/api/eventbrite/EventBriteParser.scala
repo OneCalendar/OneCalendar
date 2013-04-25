@@ -17,14 +17,23 @@
 package api.eventbrite
 
 import java.lang.IllegalArgumentException
-import org.codehaus.jackson.annotate.JsonIgnoreProperties
-import com.codahale.jerkson.Json
+import play.api.libs.json._
 
 
-object EventBriteParser extends Json {
+object EventBriteParser extends EventbriteJsonReader {
 
     def parseEvents(json: String): Seq[EventbriteEvent] = {
-        parse[EventbriteResponse](json) match {
+
+        eventbriteResponseReader.reads(Json.parse(json)) match {
+            case JsSuccess(events, _) =>
+                events.asOpt.getOrElse(Nil)
+                //if(result.isEmpty) throw new IllegalArgumentException("unknown response from eventbrite : " + json)
+                //else result
+            case JsError(errors) => throw new IllegalArgumentException("unknown response from eventbrite : " + errors)
+            case _ => throw new IllegalStateException("unknown response from eventbrite : " + json)
+        }
+
+        /*parse[EventbriteResponse](json) match {
             case EventbriteResponse(None, Some(eventbriteError)) =>
                 throw new IllegalArgumentException(eventbriteError.error_type.get + " : " + eventbriteError.error_message.get)
             case EventbriteResponse(Some(events), _) => {
@@ -33,28 +42,26 @@ object EventBriteParser extends Json {
                     .map(_.event.get)
             }
             case unknownResponse => throw new IllegalStateException("unknown response from eventbrite : " + json)
-        }
+        }*/
     }
 }
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-case class EventbriteResponse(events: Option[Seq[EventOrSummary]], error: Option[EventBriteError])
+//case class EventbriteResponse(events: Option[Seq[EventOrSummary]], error: Option[EventBriteError])
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-case class EventOrSummary(event: Option[EventbriteEvent], summary: Option[Any])
+//case class EventbriteResponse(events: Seq[EventbriteEvent])
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+//case class EventOrSummary(event: Option[EventbriteEvent], summary: Option[Any])
+
 case class EventbriteEvent(id: Option[String] = None,
-                 title: Option[String] = None,
-                 start_date: Option[String] = None,
-                 description: Option[String] = None,
-                 end_date: Option[String] = None,
-                 tags: Option[String] = None,
-                 timezone_offset: Option[String] = None,
-                 url: Option[String] = None,
-                 venue: Option[Venue] = None)
+                           title: Option[String] = None,
+                           start_date: Option[String] = None,
+                           description: Option[String] = None,
+                           end_date: Option[String] = None,
+                           tags: Option[String] = None,
+                           timezone_offset: Option[String] = None,
+                           url: Option[String] = None,
+                           venue: Option[Venue] = None)
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 case class Venue(address: Option[String] = None,
                  address_2: Option[String] = None,
                  city: Option[String] = None,
@@ -62,5 +69,4 @@ case class Venue(address: Option[String] = None,
                  country: Option[String] = None,
                  postal_code: Option[String] = None)
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-case class EventBriteError(error_type: Option[String], error_message: Option[String])
+//case class EventBriteError(error_type: Option[String], error_message: Option[String])

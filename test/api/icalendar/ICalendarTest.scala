@@ -79,8 +79,8 @@ class ICalendarTest extends FunSuite with ShouldMatchers with BeforeAndAfter wit
             ))
         )
 
-        event should include ( "DTSTART:20100101T120000" )
-        event should include ( "DTEND:20100101T140000" )
+        event should include ( "DTSTART:20100101T110000" )
+        event should include ( "DTEND:20100101T130000" )
         event should include ( "DESCRIPTION:super java conf" )
         event should include ( "LOCATION:place1" )
         event should include ( "UID:0" )

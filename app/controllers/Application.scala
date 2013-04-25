@@ -17,18 +17,18 @@
 package controllers
 
 import api.icalendar.ICalendar
-import com.codahale.jerkson.Json
 import dao._
 import models.mapping.Event$VEventMapping
 import models._
 import org.joda.time.DateTime
 import play.api.mvc._
+import play.api.libs.json._
+import play.api.libs.json.Writes._
 
-case class PreviewTuple(date:String, title:String, location:String)
-case class PreviewEvent(event:PreviewTuple)
-case class Preview (size: Long, eventList:Seq[PreviewEvent])
+case class PreviewEvent(date: String, title: String, location: String)
+case class Preview (size: Long, eventList: Seq[PreviewEvent])
 
-object Application extends OneCalendarController with Json with Event$VEventMapping {
+object Application extends OneCalendarController with Event$VEventMapping with PreviewJsonWriter {
 
     def index = Action {
         Ok(views.html.index())
@@ -44,24 +44,20 @@ object Application extends OneCalendarController with Json with Event$VEventMapp
         val searchPreview: SearchPreview = dao.findPreviewByTag(tags)
 
         val previewEvents = searchPreview.previewEvents.map(
-            e => PreviewEvent(PreviewTuple(date = e.begin.toString(),title = e.title,location = e.location))
+            e => PreviewEvent(date = e.begin.toString(),title = e.title,location = e.location)
         )
 
-        val previewJson: String = generate(Option(searchPreview).map(
-            p => Preview(size = p.totalEventNumber, eventList= previewEvents))
-        )
-        if ( searchPreview.totalEventNumber > 0 ) {
-            Ok(previewJson).as("application/json")
-        }
-        else NotFound
+        Option(searchPreview)
+            .map( p => Preview(size = p.totalEventNumber, eventList= previewEvents))
+            .filter( preview => preview.size > 0 )
+            .map( preview => Ok(Json.toJson(preview)).as("application/json") )
+            .getOrElse(NotFound)
     }
 
-    def about = Action {
-        Ok(views.html.about())
-    }
+    def about = Action { Ok(views.html.about()) }
 
     def fetchCloudOfTags(implicit now: () => Long = () => DateTime.now.getMillis) = Action {
-        Ok(generate(EventDao.listTags())).as("application/json")
+        Ok(Json.toJson(EventDao.listTags())).as("application/json")
     }
     
     def eventCount(implicit now: () => Long = () => DateTime.now.getMillis) = Action {
