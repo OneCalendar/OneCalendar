@@ -48,15 +48,12 @@ launch a browser on
 `test/front/jasmine/SpecRunner.html`
 
 ### To launch the application
-* Have play2 (2.0.2) installed somewhere
+* Have play2 (2.1.1) installed somewhere
 * Have it in your path
-* Have mongo2 (2.0.6) started
+* Have mongo2 (2.0.6) started (only for run command)
     * create a folder named "data" where the following command is started
     * `mkdir data`
     * `mongod --dbpath ./data --noprealloc --smallfiles --nojournal --rest`
-* Initialize the database
-    * connect to mongo and load the datas
-    * `mongo OneCalendar test/data/icalstreams.js`
 * Launch the application, as any play app
     * `play`
     * `$ compile`

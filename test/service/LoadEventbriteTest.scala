@@ -16,14 +16,20 @@
 
 package service
 
-import org.scalatest.FunSuite
+import org.scalatest.{BeforeAndAfterAll, FunSuite}
 import org.scalatest.matchers.ShouldMatchers
 import dao.DaoCleaner
 import org.joda.time.DateTime
 import models.Event
 import dao.EventDao._
+import com.github.simplyscala.{MongodProps, MongoEmbedDatabase}
 
-class LoadEventbriteTest extends FunSuite with ShouldMatchers with DaoCleaner {
+class LoadEventbriteTest extends FunSuite with ShouldMatchers with DaoCleaner with MongoEmbedDatabase with BeforeAndAfterAll {
+
+    var mongoProps: MongodProps = null
+    override def beforeAll() { mongoProps = mongoStart(27017) }
+    override def afterAll() { mongoStop(mongoProps) }
+
     test("should parse scala stream") {
         implicit val now = () => new DateTime().withDate(2012,4,1).getMillis
 
