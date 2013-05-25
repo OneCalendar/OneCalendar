@@ -59,7 +59,7 @@ class Eventbrite2EventMapperTest extends FunSuite with ShouldMatchers {
             timezone_offset = Some("GMT-0500")
         )
         val event: Event = toEvent(eb, Nil, "")
-        event.begin should be (new DateTime(2013, 01, 28, 9, 4, 5, 0, DateTimeZone.forOffsetHours(-5) ))
+        event.begin should be (new DateTime(2013, 1, 28, 9, 4, 5, 0, DateTimeZone.forOffsetHours(-5) ))
     }
 
     test("should map end") {
@@ -69,7 +69,7 @@ class Eventbrite2EventMapperTest extends FunSuite with ShouldMatchers {
             timezone_offset = Some("GMT-0500")
         )
         val event: Event = toEvent(eb, Nil, "")
-        event.end should be (new DateTime(2013, 01, 28, 9, 2, 1, 0, DateTimeZone.forOffsetHours(-5) ))
+        event.end should be (new DateTime(2013, 1, 28, 9, 2, 1, 0, DateTimeZone.forOffsetHours(-5) ))
     }
 
     test("should map filled location") {
