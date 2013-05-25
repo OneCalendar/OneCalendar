@@ -17,6 +17,7 @@ import dao.configuration.injection.MongoProp.MongoDbPort
 import play.api.libs.json._
 import play.api.libs.functional.syntax._
 import play.api.libs.json.Reads
+import java.net.URLEncoder
 
 class ApplicationTest extends FunSuite with ShouldMatchers with Mockito with CollectionsUtils with PreviewJsonWriter {
 
@@ -37,7 +38,7 @@ class ApplicationTest extends FunSuite with ShouldMatchers with Mockito with Col
             Event(uid = "Z", title = "title1", begin = new DateTime(2010, 1, 1, 1, 1), end = new DateTime(2010, 1, 2, 1, 1), location = "location1"),
             Event(uid = "W", title = "title2", begin = new DateTime(2011, 1, 1, 1, 1), end = new DateTime(2011, 1, 2, 1, 1), location = "location2")
         )))
-        val tags = Application.findPreviewByTags("with match")(dao, now)(FakeRequest())
+        val tags = Application.findPreviewByTags(URLEncoder.encode( "with match","UTF-8"))(dao, now)(FakeRequest())
         status(tags) should be(OK)
 
         val result = previewReader.reads(Json.parse(contentAsString(tags)))

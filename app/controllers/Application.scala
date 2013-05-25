@@ -24,6 +24,7 @@ import org.joda.time.DateTime
 import play.api.mvc._
 import play.api.libs.json._
 import play.api.libs.json.Writes._
+import java.net.URLDecoder
 
 case class PreviewEvent(date: String, title: String, location: String)
 case class Preview (size: Long, eventList: Seq[PreviewEvent])
@@ -40,7 +41,7 @@ object Application extends OneCalendarController with Event$VEventMapping with P
     }
 
     def findPreviewByTags(keyWords: String)(implicit dao: EventDaoTrait = EventDao, now: () => Long = () => DateTime.now.getMillis) = Action {
-        val tags: List[String] = keyWords.split(" ").toList
+        val tags: List[String] = URLDecoder.decode(keyWords,"UTF-8").split(" ").toList
         val searchPreview: SearchPreview = dao.findPreviewByTag(tags)
 
         val previewEvents = searchPreview.previewEvents.map(
