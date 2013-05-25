@@ -15,7 +15,8 @@ object ApplicationBuild extends Build {
             ExclusionRule(organization = "commons-logging")
         ),
         "org.scalatest" %% "scalatest" % "1.9.1" % "test",
-        "org.mockito" % "mockito-all" % "1.9.0" % "test"
+        "org.mockito" % "mockito-all" % "1.9.0" % "test",
+        "com.github.simplyscala" %% "scalatest-embedmongo" % "0.2.1" % "test"
     )
                                                                 //, mainLang = SCALA
     val main = play.Project(appName, appVersion, appDependencies).settings(

@@ -19,11 +19,15 @@ package service
 import org.scalatest.matchers.ShouldMatchers
 import models.Event
 import org.joda.time.DateTime
-import dao.EventDao._
-import org.scalatest.FunSuite
-import dao.DaoCleaner
+import org.scalatest.{BeforeAndAfterAll, FunSuite}
+import dao.{EventDao, DaoCleaner}
+import com.github.simplyscala.{MongoEmbedDatabase, MongodProps}
 
-class LoadICalStreamTest extends FunSuite with ShouldMatchers with DaoCleaner {
+class LoadICalStreamTest extends FunSuite with ShouldMatchers with BeforeAndAfterAll with DaoCleaner with MongoEmbedDatabase {
+
+    var mongoProps: MongodProps = null
+    override def beforeAll() { mongoProps = mongoStart(27017) }
+    override def afterAll() { mongoStop(mongoProps) }
 
     val url : String = "https://www.google.com/calendar/ical/cs98tardtttjejg93tpcb71ol6nvachq%40import.calendar.google.com/public/basic.ics"
 
@@ -33,7 +37,7 @@ class LoadICalStreamTest extends FunSuite with ShouldMatchers with DaoCleaner {
         val iCalService : LoadICalStream = new LoadICalStream()
         iCalService.parseLoad( url, List("DEVOXX") )
 
-        val events: List[Event] = findAll
+        val events: List[Event] = EventDao.findAll()
         val count: Int = events.size
 
         count should be > 50
@@ -48,7 +52,7 @@ class LoadICalStreamTest extends FunSuite with ShouldMatchers with DaoCleaner {
         val iCalService : LoadICalStream = new LoadICalStream()
         iCalService.parseLoad( url, List("DEVOXX","TEST") )
 
-        val events: List[Event] = findAll()
+        val events: List[Event] = EventDao.findAll()
         val count: Int = events.size
 
         count should be > 50

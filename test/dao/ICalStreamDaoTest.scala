@@ -16,12 +16,17 @@
 
 package dao
 
-import org.scalatest.{BeforeAndAfter, FunSuite}
+import org.scalatest.{BeforeAndAfterAll, FunSuite}
 import org.scalatest.matchers.ShouldMatchers
 import ICalStreamDao._
 import models.ICalStream
+import com.github.simplyscala.{MongodProps, MongoEmbedDatabase}
 
-class ICalStreamDaoTest  extends FunSuite with ShouldMatchers with DaoCleaner {
+class ICalStreamDaoTest  extends FunSuite with ShouldMatchers with DaoCleaner with MongoEmbedDatabase with BeforeAndAfterAll {
+
+    var mongoProps: MongodProps = null
+    override def beforeAll() { mongoProps = mongoStart(27017) }
+    override def afterAll() { mongoStop(mongoProps) }
 
     test("find ical streams to load") {
         findAll() should have size 0
