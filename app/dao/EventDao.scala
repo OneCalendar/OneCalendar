@@ -81,11 +81,6 @@ object EventDao extends CollectionsUtils
      * >            offset  afterset
      * Time
      * >-------------|xxxx$xxx|-------->
-     * @param offset
-     * @param afterset
-     * @param dbName
-     * @param now
-     * @return
      */
     def closestEvents(offset: Int = 5, afterset : Int = 2, tags:List[String]= List.empty)
                      (implicit dbName: MongoDbName, port: MongoDbPort = 27017, now: () => Long): List[Event] = {
