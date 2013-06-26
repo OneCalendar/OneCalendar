@@ -15,7 +15,7 @@
  */
 
 import scala.concurrent.duration._
-import controllers.OneCalendarController
+import controllers.MongoDBProdContext
 import org.joda.time.DateTime
 import play.api.Play.current
 import play.api._
@@ -26,7 +26,7 @@ import play.api.libs.concurrent._
 import service.{LoadDevoxx, LoadICalStream}
 import scala.concurrent.ExecutionContext.Implicits.global
 
-object Global extends GlobalSettings with OneCalendarController {
+object Global extends GlobalSettings with MongoDBProdContext {
 
     val loader: LoadICalStream = new LoadICalStream()
 

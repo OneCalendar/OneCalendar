@@ -23,7 +23,7 @@ import play.api.data.Forms._
 import play.api.data._
 import play.api.mvc._
 
-object EventsController extends OneCalendarController {
+object EventsController extends Controller with MongoDBProdContext {
     implicit val now = () => DateTime.now.getMillis
 
     def addEvents = Action( Ok( views.html.addEvents() ) )

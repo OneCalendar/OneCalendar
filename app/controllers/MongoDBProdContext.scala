@@ -18,10 +18,9 @@ package controllers
 
 import com.mongodb.casbah._
 import dao.configuration.injection.MongoPoolProperties.MongoDbName
-import play.api.mvc.Controller
 import dao.configuration.connection.MongoPoolForProd
 
-trait OneCalendarController extends Controller {
+trait MongoDBProdContext { // TODO mettre ces 2 trucs dans un seul objet ?
     implicit val mongoDbName: MongoDbName = "OneCalendar"
     implicit val mongoPool: MongoDB = MongoPoolForProd()
 }
