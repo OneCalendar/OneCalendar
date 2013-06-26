@@ -4,7 +4,7 @@ import org.scalatest.FunSuite
 import com.mongodb.casbah.Imports._
 import com.mongodb.{ServerAddress, MongoOptions}
 import dao.MongoPoolTest._
-import models.EventTypeClass
+import models.EventMongoMapper
 
 
 /**
@@ -40,7 +40,7 @@ object MongoPoolTest {
     }
 }
 
-object MyEventDao extends MongoOperationsTest with MongoConnectionPoolTest with EventTypeClass {
+object MyEventDao extends MongoOperationsTest with MongoConnectionPoolTest with EventMongoMapper {
 
     def toto()(implicit dbName: MongoDbName) {
         print()

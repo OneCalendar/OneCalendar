@@ -18,16 +18,16 @@ package dao
 
 import com.mongodb.casbah.Imports._
 import configuration.injection.MongoConnectionPool
-import configuration.injection.MongoProp._
+import configuration.injection.MongoPoolProperties._
 import fr.scala.util.collection.CollectionsUtils
-import models.{ICalStreamTypeClass, ICalStream}
+import models.{ICalStreamMongoMapper, ICalStream}
 
 object ICalStreamDao extends CollectionsUtils
         with MongoOperations
-        with ICalStreamTypeClass
+        with ICalStreamMongoMapper
         with MongoConnectionPool {
 
-    def findAll()(implicit dbName: MongoDbName): List[ICalStream] = find[ICalStream](MongoDBObject())
+    def findAll()(implicit dbName: MongoDbName,  pool: MongoDB): List[ICalStream] = find[ICalStream](MongoDBObject())
 
-    def saveICalStream(stream: ICalStream)(implicit dbName: MongoDbName) = save(stream)
+    def saveICalStream(stream: ICalStream)(implicit dbName: MongoDbName,  pool: MongoDB) = save(stream)
 }

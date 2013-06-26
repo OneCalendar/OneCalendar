@@ -48,12 +48,8 @@ object Global extends GlobalSettings with OneCalendarController {
             Logger.trace("reload")
         }
 
-        Akka.system.scheduler.schedule(10 seconds, 2 hours) {
-            LoadDevoxx.parseLoad()
-        }
+        //Akka.system.scheduler.schedule(10 seconds, 2 hours) { LoadDevoxx.parseLoad() }
 
-        Akka.system.scheduler.schedule(5 seconds, 1 day) {
-            LoadEventbrite.parseLoad("scala")
-        }
+        Akka.system.scheduler.schedule(5 seconds, 1 day) { LoadEventbrite.parseLoad("scala") }
     }
 }

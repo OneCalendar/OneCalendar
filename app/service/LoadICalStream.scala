@@ -18,17 +18,18 @@ package service
 
 import api.icalendar._
 import dao.EventDao._
-import dao.configuration.injection.MongoProp.MongoDbName
+import dao.configuration.injection.MongoPoolProperties.MongoDbName
 import java.net.URL
 import models.Event
 import models.Event._
 import play.api.Logger
 import scala.Left
 import scala.Right
+import com.mongodb.casbah.MongoDB
 
 class LoadICalStream {
 
-    def parseLoad(url: String, streamTags: List[String] = Nil)(implicit now: () => Long, dbName: MongoDbName) {
+    def parseLoad(url: String, streamTags: List[String] = Nil)(implicit now: () => Long, dbName: MongoDbName,  pool: MongoDB) {
 
         ICalendar.retrieveVEvents(new URL(url).openStream) match {
             case Right(vevents) =>
@@ -59,15 +60,14 @@ class LoadICalStream {
         )
     }
 
-    private def saveEvents(toSave: List[Event], url: String)(implicit now: () => Long, dbName: MongoDbName) {
+    private def saveEvents(toSave: List[Event], url: String)(implicit now: () => Long, dbName: MongoDbName,  pool: MongoDB) {
         toSave foreach ( saveEvent )
         Logger.info("%d events loaded from %s".format(toSave.length, url))
     }
 
-    private def reportNotLoadedEvents(notLoadedEvent: List[Event], url:String)(implicit now: () => Long) {
-        if ( !notLoadedEvent.isEmpty ) Logger.info("%d already ended events not loaded from %s".format(notLoadedEvent.length, url))
-    }
+    private def reportNotLoadedEvents(notLoadedEvent: List[Event], url:String)(implicit now: () => Long) =
+        if( !notLoadedEvent.isEmpty ) Logger.info("%d already ended events not loaded from %s".format(notLoadedEvent.length, url))
 
     private def extractTagsFromStreamTags(streamTags: List[String]): String =
-        if ( streamTags.isEmpty ) "" else " #" + streamTags.mkString("#")
+        if( streamTags.isEmpty ) "" else " #" + streamTags.mkString("#")
 }

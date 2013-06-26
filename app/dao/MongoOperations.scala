@@ -1,7 +1,7 @@
 package dao
 
 import com.mongodb.casbah.Imports._
-import dao.configuration.injection.MongoProp._
+import dao.configuration.injection.MongoPoolProperties._
 
 trait MongoDbModel[T] {
     def collectionName: String

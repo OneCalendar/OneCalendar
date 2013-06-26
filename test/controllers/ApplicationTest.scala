@@ -12,19 +12,19 @@ import org.specs2.mock.Mockito
 import org.mockito.Matchers
 import fr.scala.util.collection.CollectionsUtils
 import org.joda.time.DateTime
-import dao.configuration.injection.MongoProp.MongoDbName
-import dao.configuration.injection.MongoProp.MongoDbPort
+import dao.configuration.injection.MongoPoolProperties.MongoDbName
 import play.api.libs.json._
 import play.api.libs.functional.syntax._
 import play.api.libs.json.Reads
 import java.net.URLEncoder
+import com.mongodb.casbah.MongoDB
 
 class ApplicationTest extends FunSuite with ShouldMatchers with Mockito with CollectionsUtils with PreviewJsonWriter {
 
     test("should find Nothing") {
         val now = () => new DateTime(2009, 1, 1, 1, 1).getMillis
         val dao = mock[EventDaoTrait]
-        when(dao.findPreviewByTag(Matchers.anyListOf(classOf[String]))(any[MongoDbName], any[MongoDbPort], any[() => Long])).thenReturn(SearchPreview(0, Seq()))
+        when(dao.findPreviewByTag(Matchers.anyListOf(classOf[String]))(any[MongoDbName], any[MongoDB], any[() => Long])).thenReturn(SearchPreview(0, Seq()))
         val tags = Application.findPreviewByTags("no match")(dao, now)(FakeRequest())
         status(tags) should be(NOT_FOUND)
     }
@@ -33,7 +33,7 @@ class ApplicationTest extends FunSuite with ShouldMatchers with Mockito with Col
         val now = () => new DateTime(2009, 1, 1, 1, 1).getMillis
         val dao = mock[EventDaoTrait]
         val size: Int = 2
-        when(dao.findPreviewByTag(Matchers.anyListOf(classOf[String]))(any[MongoDbName], any[MongoDbPort], any[() => Long]))
+        when(dao.findPreviewByTag(Matchers.anyListOf(classOf[String]))(any[MongoDbName], any[MongoDB], any[() => Long]))
             .thenReturn(SearchPreview(size, Seq(
             Event(uid = "Z", title = "title1", begin = new DateTime(2010, 1, 1, 1, 1), end = new DateTime(2010, 1, 2, 1, 1), location = "location1"),
             Event(uid = "W", title = "title2", begin = new DateTime(2011, 1, 1, 1, 1), end = new DateTime(2011, 1, 2, 1, 1), location = "location2")
@@ -58,7 +58,7 @@ class ApplicationTest extends FunSuite with ShouldMatchers with Mockito with Col
         val now = () => new DateTime(2009, 1, 1, 1, 1).getMillis
         val dao = mock[EventDaoTrait]
         val size: Int = 5
-        when(dao.findPreviewByTag(Matchers.anyListOf(classOf[String]))(any[MongoDbName], any[MongoDbPort], any[() => Long]))
+        when(dao.findPreviewByTag(Matchers.anyListOf(classOf[String]))(any[MongoDbName], any[MongoDB], any[() => Long]))
             .thenReturn(SearchPreview(size, Seq(
             Event(uid = "Z", title = "title1", begin = new DateTime(2010, 1, 1, 1, 1), end = new DateTime(2010, 1, 2, 1, 1), location = "location1"),
             Event(uid = "W", title = "title2", begin = new DateTime(2011, 1, 1, 1, 1), end = new DateTime(2011, 1, 2, 1, 1), location = "location2"),

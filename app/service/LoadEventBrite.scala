@@ -16,33 +16,36 @@
 
 package service
 
-import dao.configuration.injection.MongoProp._
+import dao.configuration.injection.MongoPoolProperties._
 import api.eventbrite.Eventbrite
 import models.Event
-import dao.EventDao._
 import play.api.Logger
+import dao.EventDao
+import com.mongodb.casbah.MongoDB
 
 object LoadEventbrite extends NowEventInjection {
 
-    def parseLoad(keyWord: String)(implicit dbName: MongoDbName) {
+    def parseLoad(keyWord: String)(implicit dbName: MongoDbName, pool: MongoDB) {
         val originalStream = "eventbrite-" + keyWord
 
         val events: Seq[Event] = Eventbrite.request(keyWord = keyWord, defaultTags = List(keyWord), originalStream = originalStream)
 
         val (toSave, passed) = events.partition(event => event.end.isAfter(now()))
 
-        deleteByOriginalStream(originalStream)
+        EventDao.deleteByOriginalStream(originalStream)
 
         saveEvents(toSave, originalStream)
         reportNotLoadedEvents(passed, originalStream)
     }
 
-    private def saveEvents(toSave: Seq[Event], url: String)(implicit now: () => Long, dbName: MongoDbName) {
-        toSave foreach ( saveEvent )
+    private def saveEvents(toSave: Seq[Event], url: String)
+                          (implicit now: () => Long, dbName: MongoDbName, pool: MongoDB) {
+        toSave foreach ( EventDao.saveEvent )
         Logger.info("%d events loaded from %s".format(toSave.length, url))
     }
 
     private def reportNotLoadedEvents(notLoadedEvent: Seq[Event], url:String)(implicit now: () => Long) {
-        if ( !notLoadedEvent.isEmpty ) Logger.info("%d already ended events not loaded from %s".format(notLoadedEvent.length, url))
+        if ( !notLoadedEvent.isEmpty )
+            Logger.info("%d already ended events not loaded from %s".format(notLoadedEvent.length, url))
     }
 }

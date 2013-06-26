@@ -21,7 +21,7 @@ import dao.MongoDbModel
 
 case class ICalStream (url: String, streamTags: List[String])
 
-trait ICalStreamTypeClass {
+trait ICalStreamMongoMapper {
     implicit object ICalStreamMongoModel extends MongoDbModel[ICalStream] {
         def collectionName: String = "icalstreams"
 

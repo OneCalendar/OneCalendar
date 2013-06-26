@@ -1,30 +1,25 @@
 package dao.configuration.injection
 
 import com.mongodb.casbah.Imports._
-import com.mongodb.{ServerAddress, MongoOptions}
 
-object MongoProp {
+object MongoPoolProperties {
     type MongoDbName = String
     type MongoCollectionName = String
-    type MongoDbPort = Int
+
+    private var props: MongoPoolProps = null
+
+    def apply(properties: MongoPoolProps) = if(props == null) props = properties
+
+    def getHost: String = if(props != null) props.host else "127.0.0.1"
+    def getPort: Int =  if(props != null) props.port else 27017
 }
 
 trait MongoConnectionPool {
+    import MongoPoolProperties._
 
-    import MongoProp._
-
-    implicit def retrieveMongoCollection(collectionName: MongoCollectionName)(implicit dbName: MongoDbName, port: MongoDbPort = 27017): MongoCollection = {
-        val pool: MongoDB = MongoPool()
+    implicit def retrieveMongoCollection(collectionName: MongoCollectionName)
+                                        (implicit dbName: MongoDbName, /*en fait connection tout court*/pool: MongoDB): MongoCollection =
         pool(collectionName)
-    }
-
-    private object MongoPool {
-        def apply()(implicit dbName: MongoDbName, port: MongoDbPort): MongoDB = connection(port)(dbName)
-
-        private val connection: MongoDbPort => MongoConnection = {
-            val options: MongoOptions = new MongoOptions()
-            options.setConnectionsPerHost(100)
-            (port: MongoDbPort) => MongoConnection(new ServerAddress("127.0.0.1", port), options)
-        }
-    }
 }
+
+case class MongoPoolProps(host: String = "127.0.0.1", port: Int = 27017)

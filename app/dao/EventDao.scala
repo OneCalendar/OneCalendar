@@ -18,8 +18,7 @@ package dao
 
 import com.mongodb.casbah.Imports._
 import configuration.injection.MongoConnectionPool
-import configuration.injection.MongoProp.MongoDbName
-import configuration.injection.MongoProp.MongoDbPort
+import configuration.injection.MongoPoolProperties.MongoDbName
 import fr.scala.util.collection.CollectionsUtils
 import models._
 import play.api.Logger
@@ -28,26 +27,27 @@ import models.SearchPreview
 object EventDao extends CollectionsUtils
         with EventDaoTrait
         with MongoOperations
-        with EventTypeClass
+        with EventMongoMapper
         with MongoConnectionPool {
 
     private val log = Logger("EventDao")
 
     private val PREVIEW_SIZE = 3
 
-    def deleteByOriginalStream(originalStream: String)(implicit dbName: MongoDbName, port: MongoDbPort = 27017, now: () => Long) = {
+    def deleteByOriginalStream(originalStream: String)
+                              (implicit dbName: MongoDbName, pool: MongoDB, now: () => Long) =
         delete(DBObject("originalStream" -> originalStream))
-    }
 
-    def saveEvent(event: Event)(implicit dbName: MongoDbName, port: MongoDbPort = 27017) = save(event)
+    def saveEvent(event: Event)(implicit dbName: MongoDbName, pool: MongoDB) = save(event)
 
-    def findByTag(tags: List[String])(implicit dbName: MongoDbName, port: MongoDbPort = 27017): List[Event] = {
+    def findByTag(tags: List[String])(implicit dbName: MongoDbName, pool: MongoDB): List[Event] = {
         val query = "tags" $in tags.map(_.toUpperCase)
         log.debug("query find by tag %s".format(query))
         find[Event](query)
     }
 
-    def findPreviewByTag(tags: List[String])(implicit dbName: MongoDbName, port: MongoDbPort = 27017, now: () => Long): SearchPreview = {
+    def findPreviewByTag(tags: List[String])
+                        (implicit dbName: MongoDbName, pool: MongoDB, now: () => Long): SearchPreview = {
         val query = ( "tags" $in tags.map(_.toUpperCase) ) ++ ( "begin" $gt now() )
         val c = count[Event](query)
 
@@ -56,19 +56,19 @@ object EventDao extends CollectionsUtils
         SearchPreview(c, find[Event](query, sortByBeginDate, PREVIEW_SIZE))
     }
 
-    def findAll()(implicit dbName: MongoDbName, port: MongoDbPort = 27017): List[Event] = find[Event](MongoDBObject())
+    def findAll()(implicit dbName: MongoDbName, pool: MongoDB): List[Event] = find[Event](MongoDBObject())
 
-    def findAllFromNow()(implicit dbName: MongoDbName, port: MongoDbPort = 27017, now: () => Long) = {
+    def findAllFromNow()(implicit dbName: MongoDbName, pool: MongoDB, now: () => Long) = {
         val query = "begin" $gt now()
         find[Event](query)
     }
 
-    def listTags()(implicit dbName: MongoDbName, port: MongoDbPort = 27017, now: () => Long): List[String] = {
+    def listTags()(implicit dbName: MongoDbName, pool: MongoDB, now: () => Long): List[String] = {
         val query = "begin" $gt now()
         retrieveMongoCollection(EventMongoModel.collectionName).distinct("tags", query).toList.asInstanceOf[List[String]]
     }
 
-    def countFutureEvents()(implicit dbName: MongoDbName, port: MongoDbPort = 27017, now: () => Long): Long = {
+    def countFutureEvents()(implicit dbName: MongoDbName, pool: MongoDB, now: () => Long): Long = {
         val query = "begin" $gt now()
         count(query)
     }
@@ -88,7 +88,7 @@ object EventDao extends CollectionsUtils
      * @return
      */
     def closestEvents(offset: Int = 5, afterset : Int = 2, tags:List[String]= List.empty)
-                     (implicit dbName: MongoDbName, port: MongoDbPort = 27017, now: () => Long): List[Event] = {
+                     (implicit dbName: MongoDbName, pool: MongoDB, now: () => Long): List[Event] = {
         import scala.concurrent.duration._
 
         val offsetMillis: Long = (offset minutes).toMillis

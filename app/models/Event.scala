@@ -45,7 +45,7 @@ case class Event( uid: String = "",
                   url:Option[String] = None
                  )
 
-trait EventTypeClass {
+trait EventMongoMapper {
     implicit object EventMongoModel extends MongoDbModel[Event] {
         def collectionName: String = "events"
 
