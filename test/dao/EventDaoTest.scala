@@ -16,9 +16,9 @@
 
 package dao
 
-import framework.{MongoConnectionProperties, MongoConnectionPool, MongoOperations}
+import framework.MongoConnectionProperties
 import MongoConnectionProperties._
-import framework.{MongoConnectionPool, MongoOperations}
+import framework.MongoOperations
 import org.joda.time.DateTime
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.{BeforeAndAfter, BeforeAndAfterAll, FunSuite}
@@ -36,16 +36,14 @@ class EventDaoTest extends FunSuite with ShouldMatchers with MongoEmbedDatabase 
     override def beforeAll() { mongoProps = mongoStart(27018) }
     override def afterAll() { mongoStop(mongoProps) }
 
-    before {
-        EventDaoCleaner.drop()
-    }
+    before { EventDaoCleaner.drop() }
 
-    object EventDaoCleaner extends MongoOperations with EventMongoMapper with MongoConnectionPool {
-        def drop()(implicit dbName: MongoDbName, pool: MongoDB) = delete(MongoDBObject())
+    object EventDaoCleaner extends MongoOperations with EventMongoMapper {
+        def drop()(implicit dbName: MongoDbName, connection: MongoDB) = delete(MongoDBObject())
     }
 
     implicit val dbName: MongoDbName = "test"
-    implicit val pool: MongoDB = {
+    implicit val connection: MongoDB = {
         val connection: MongoConnection = {
             val options: MongoOptions = new MongoOptions()
             options.setConnectionsPerHost(2)

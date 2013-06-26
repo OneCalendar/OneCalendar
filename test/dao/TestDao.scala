@@ -9,7 +9,7 @@ import models.EventMongoMapper
 
 
 /**
- * Exemple de l'utilisation de type class en définissant le pool de connection au niveau du dao grace au trait MongoConnectionPool
+ * Exemple de l'utilisation de type class en définissant le pool de connection au niveau du dao grace au trait MongoFrameworkCollection
  */
 
 

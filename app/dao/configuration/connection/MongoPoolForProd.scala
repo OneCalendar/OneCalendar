@@ -5,6 +5,7 @@ import com.mongodb.{ServerAddress, MongoOptions}
 import dao.framework.MongoConnectionProperties
 import MongoConnectionProperties._
 
+// TODO refactor - rendre plus clair l'intention (pool de connection singleton mais configurable)
 object MongoPoolForProd {
 
     private var props: MongoPoolProps = null
@@ -22,8 +23,8 @@ object MongoPoolForProd {
         connection(dbName)
     }
 
-    def getHost: String = if(props != null) props.host else "127.0.0.1"
-    def getPort: Int =  if(props != null) props.port else 27017
+    private def getHost: String = if(props != null) props.host else "127.0.0.1"
+    private def getPort: Int =  if(props != null) props.port else 27017
 }
 
 case class MongoPoolProps(host: String = "127.0.0.1", port: Int = 27017)

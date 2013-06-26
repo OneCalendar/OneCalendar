@@ -17,16 +17,13 @@
 package dao
 
 import com.mongodb.casbah.Imports._
-import framework.{MongoConnectionProperties, MongoConnectionPool, MongoOperations}
+import framework.MongoConnectionProperties
 import MongoConnectionProperties._
 import fr.scala.util.collection.CollectionsUtils
-import framework.{MongoConnectionPool, MongoOperations}
+import framework.MongoOperations
 import models.{ICalStreamMongoMapper, ICalStream}
 
-object ICalStreamDao extends CollectionsUtils
-        with MongoOperations
-        with ICalStreamMongoMapper
-        with MongoConnectionPool {
+object ICalStreamDao extends CollectionsUtils with MongoOperations with ICalStreamMongoMapper {
 
     def findAll()(implicit dbName: MongoDbName,  pool: MongoDB): List[ICalStream] = find[ICalStream](MongoDBObject())
 

@@ -7,10 +7,10 @@ object MongoConnectionProperties {
     type MongoCollectionName = String
 }
 
-trait MongoConnectionPool {
+trait MongoFrameworkCollection {
     import MongoConnectionProperties._
 
     implicit def retrieveMongoCollection(collectionName: MongoCollectionName)
-                                        (implicit dbName: MongoDbName, /*en fait connection tout court*/pool: MongoDB): MongoCollection =
-        pool(collectionName)
+                                        (implicit connection: MongoDB): MongoCollection =
+        connection(collectionName)
 }
