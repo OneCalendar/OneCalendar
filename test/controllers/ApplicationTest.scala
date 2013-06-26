@@ -12,7 +12,8 @@ import org.specs2.mock.Mockito
 import org.mockito.Matchers
 import fr.scala.util.collection.CollectionsUtils
 import org.joda.time.DateTime
-import dao.configuration.injection.MongoPoolProperties.MongoDbName
+import dao.framework.MongoConnectionProperties
+import MongoConnectionProperties.MongoDbName
 import play.api.libs.json._
 import play.api.libs.functional.syntax._
 import play.api.libs.json.Reads

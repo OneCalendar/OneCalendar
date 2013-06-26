@@ -16,8 +16,9 @@
 
 package dao
 
-import configuration.injection.MongoPoolProperties._
-import configuration.injection.MongoConnectionPool
+import framework.{MongoConnectionProperties, MongoConnectionPool, MongoOperations}
+import MongoConnectionProperties._
+import framework.{MongoConnectionPool, MongoOperations}
 import org.joda.time.DateTime
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.{BeforeAndAfter, BeforeAndAfterAll, FunSuite}

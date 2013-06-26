@@ -17,7 +17,8 @@
 package service
 
 import dao._
-import dao.configuration.injection.MongoPoolProperties.MongoDbName
+import framework.MongoConnectionProperties
+import MongoConnectionProperties.MongoDbName
 import java.net._
 import models._
 import org.joda.time.format.{DateTimeFormatter, DateTimeFormat}

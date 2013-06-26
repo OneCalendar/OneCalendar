@@ -1,5 +1,6 @@
 package dao
 
+import framework.MongoDbModel
 import org.scalatest.FunSuite
 import com.mongodb.casbah.Imports._
 import com.mongodb.{ServerAddress, MongoOptions}

@@ -18,7 +18,8 @@ package service
 
 import api.icalendar._
 import dao.EventDao._
-import dao.configuration.injection.MongoPoolProperties.MongoDbName
+import dao.framework.MongoConnectionProperties
+import MongoConnectionProperties.MongoDbName
 import java.net.URL
 import models.Event
 import models.Event._

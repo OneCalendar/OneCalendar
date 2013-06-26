@@ -17,9 +17,10 @@
 package dao
 
 import com.mongodb.casbah.Imports._
-import configuration.injection.MongoConnectionPool
-import configuration.injection.MongoPoolProperties._
+import framework.{MongoConnectionProperties, MongoConnectionPool, MongoOperations}
+import MongoConnectionProperties._
 import fr.scala.util.collection.CollectionsUtils
+import framework.{MongoConnectionPool, MongoOperations}
 import models.{ICalStreamMongoMapper, ICalStream}
 
 object ICalStreamDao extends CollectionsUtils

@@ -24,7 +24,8 @@ import dao.EventDao._
 import com.github.simplyscala.MongoEmbedDatabase
 import com.mongodb.casbah.{MongoConnection, MongoDB}
 import com.mongodb.{ServerAddress, MongoOptions}
-import dao.configuration.injection.MongoPoolProperties._
+import dao.framework.MongoConnectionProperties
+import MongoConnectionProperties._
 import com.github.simplyscala.MongodProps
 
 class LoadEventbriteTest extends FunSuite with ShouldMatchers with MongoEmbedDatabase with BeforeAndAfterAll {

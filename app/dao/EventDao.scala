@@ -17,19 +17,15 @@
 package dao
 
 import com.mongodb.casbah.Imports._
-import configuration.injection.MongoConnectionPool
-import configuration.injection.MongoPoolProperties.MongoDbName
+import framework.{MongoConnectionProperties, MongoOperations}
+import MongoConnectionProperties.MongoDbName
 import fr.scala.util.collection.CollectionsUtils
+import framework.MongoOperations
 import models._
 import play.api.Logger
 import models.SearchPreview
 
-object EventDao extends CollectionsUtils
-        with EventDaoTrait
-        with MongoOperations
-        with EventMongoMapper
-        with MongoConnectionPool {
-
+object EventDao extends CollectionsUtils with EventDaoTrait with MongoOperations with EventMongoMapper {
     private val log = Logger("EventDao")
 
     private val PREVIEW_SIZE = 3

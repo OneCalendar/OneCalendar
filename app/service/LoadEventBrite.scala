@@ -16,7 +16,8 @@
 
 package service
 
-import dao.configuration.injection.MongoPoolProperties._
+import dao.framework.MongoConnectionProperties
+import MongoConnectionProperties._
 import api.eventbrite.Eventbrite
 import models.Event
 import play.api.Logger

@@ -17,9 +17,9 @@
 package models
 
 import com.mongodb.casbah.Imports._
-import dao.MongoDbModel
 import org.joda.time.DateTime
 import util.matching.Regex
+import dao.framework.MongoDbModel
 
 object Event {
     //TODO explicit regex

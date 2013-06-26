@@ -17,7 +17,8 @@
 package controllers
 
 import com.mongodb.casbah._
-import dao.configuration.injection.MongoPoolProperties.MongoDbName
+import dao.framework.MongoConnectionProperties
+import MongoConnectionProperties.MongoDbName
 import dao.configuration.connection.MongoPoolForProd
 
 trait MongoDBProdContext { // TODO mettre ces 2 trucs dans un seul objet ?

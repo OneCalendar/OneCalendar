@@ -16,7 +16,8 @@
 
 package dao
 
-import configuration.injection.MongoPoolProperties._
+import framework.MongoConnectionProperties
+import MongoConnectionProperties._
 import org.scalatest.{BeforeAndAfterAll, FunSuite}
 import org.scalatest.matchers.ShouldMatchers
 import ICalStreamDao._

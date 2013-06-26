@@ -1,6 +1,7 @@
 package dao
 
-import configuration.injection.MongoPoolProperties._
+import framework.MongoConnectionProperties
+import MongoConnectionProperties._
 import models.Event
 import models.SearchPreview
 import com.mongodb.casbah.MongoDB
