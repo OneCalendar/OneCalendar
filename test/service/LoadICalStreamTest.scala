@@ -20,14 +20,30 @@ import org.scalatest.matchers.ShouldMatchers
 import models.Event
 import org.joda.time.DateTime
 import org.scalatest.{BeforeAndAfterAll, FunSuite}
-import dao.{EventDao, DaoCleaner}
-import com.github.simplyscala.{MongoEmbedDatabase, MongodProps}
+import dao.EventDao
+import com.github.simplyscala.MongoEmbedDatabase
+import com.mongodb.casbah.{MongoConnection, MongoDB}
+import com.mongodb.{ServerAddress, MongoOptions}
+import dao.framework.MongoConnectionProperties
+import MongoConnectionProperties._
+import com.github.simplyscala.MongodProps
 
-class LoadICalStreamTest extends FunSuite with ShouldMatchers with BeforeAndAfterAll with DaoCleaner with MongoEmbedDatabase {
+class LoadICalStreamTest extends FunSuite with ShouldMatchers with BeforeAndAfterAll with MongoEmbedDatabase {
 
     var mongoProps: MongodProps = null
-    override def beforeAll() { mongoProps = mongoStart(27017) }
+    override def beforeAll() { mongoProps = mongoStart(27020) }
     override def afterAll() { mongoStop(mongoProps) }
+
+    implicit val dbName: MongoDbName = "test"
+    implicit val pool: MongoDB = {
+        val connection: MongoConnection = {
+            val options: MongoOptions = new MongoOptions()
+            options.setConnectionsPerHost(2)
+            MongoConnection(new ServerAddress("127.0.0.1", 27020), options)
+        }
+
+        connection(dbName)
+    }
 
     val url : String = "https://www.google.com/calendar/ical/cs98tardtttjejg93tpcb71ol6nvachq%40import.calendar.google.com/public/basic.ics"
 
