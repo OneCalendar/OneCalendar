@@ -16,18 +16,42 @@
 
 package dao
 
+import framework.MongoConnectionProperties
+import MongoConnectionProperties._
+import framework.MongoOperations
 import org.joda.time.DateTime
 import org.scalatest.matchers.ShouldMatchers
-import org.scalatest.{BeforeAndAfterAll, FunSuite}
-import models.Event
+import org.scalatest.{BeforeAndAfter, BeforeAndAfterAll, FunSuite}
+import models.{EventMongoMapper, Event}
 import dao.EventRepository._
-import com.github.simplyscala.{MongodProps, MongoEmbedDatabase}
+import com.github.simplyscala.MongoEmbedDatabase
+import com.mongodb.casbah.Imports._
+import com.mongodb.ServerAddress
+import com.mongodb.casbah.TypeImports.MongoOptions
+import com.github.simplyscala.MongodProps
 
-class EventDaoTest extends FunSuite with ShouldMatchers with MongoEmbedDatabase with BeforeAndAfterAll with DaoCleaner {
+class EventDaoTest extends FunSuite with ShouldMatchers with MongoEmbedDatabase with BeforeAndAfterAll with BeforeAndAfter {
 
     var mongoProps: MongodProps = null
-    override def beforeAll() { mongoProps = mongoStart(27017) }
+    override def beforeAll() { mongoProps = mongoStart(27018) }
     override def afterAll() { mongoStop(mongoProps) }
+
+    before { EventDaoCleaner.drop() }
+
+    object EventDaoCleaner extends MongoOperations with EventMongoMapper {
+        def drop()(implicit dbName: MongoDbName, connection: MongoDB) = delete(MongoDBObject())
+    }
+
+    implicit val dbName: MongoDbName = "test"
+    implicit val connection: MongoDB = {
+        val connection: MongoConnection = {
+            val options: MongoOptions = new MongoOptions()
+            options.setConnectionsPerHost(2)
+            MongoConnection(new ServerAddress("127.0.0.1", 27018), options)
+        }
+
+        connection(dbName)
+    }
 
     test("saving a new event") {
         val event: Event = Event(

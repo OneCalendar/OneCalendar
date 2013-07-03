@@ -17,11 +17,11 @@
 package models
 
 import com.mongodb.casbah.Imports._
-import dao.MongoDbModel
+import dao.framework.MongoDbModel
 
 case class ICalStream (url: String, streamTags: List[String])
 
-trait ICalStreamTypeClass {
+trait ICalStreamMongoMapper {
     implicit object ICalStreamMongoModel extends MongoDbModel[ICalStream] {
         def collectionName: String = "icalstreams"
 

@@ -29,7 +29,7 @@ import java.net.URLDecoder
 case class PreviewEvent(date: String, title: String, location: String)
 case class Preview (size: Long, eventList: Seq[PreviewEvent])
 
-object Application extends OneCalendarController with Event$VEventMapping with PreviewJsonWriter {
+object Application extends Controller with MongoDBProdContext with Event$VEventMapping with PreviewJsonWriter {
 
     def index = Action {
         Ok(views.html.index())

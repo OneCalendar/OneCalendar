@@ -1,7 +1,7 @@
-package dao
+package dao.framework
 
 import com.mongodb.casbah.Imports._
-import dao.configuration.injection.MongoProp._
+import MongoConnectionProperties._
 
 trait MongoDbModel[T] {
     def collectionName: String
@@ -11,7 +11,7 @@ trait MongoDbModel[T] {
     def read(dbo: DBObject): T
 }
 
-trait MongoOperations {
+trait MongoOperations extends MongoFrameworkCollection {
     def save[T](t: T)(implicit tc: MongoDbModel[T], coll: MongoCollectionName => MongoCollection): Unit =
         coll(tc.collectionName).insert(tc.write(t))
 
