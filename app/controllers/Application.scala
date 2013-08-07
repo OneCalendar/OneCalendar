@@ -35,14 +35,16 @@ object Application extends Controller with MongoDBProdContext with Event$VEventM
         Ok(views.html.index())
     }
 
+    def splitTags(keyWords: String) = {
+      URLDecoder.decode(keyWords,"UTF-8").split(" ").toList
+    }
+
     def findByTags(keyWords: String) = Action {
-        val tags: List[String] = keyWords.split(" ").toList
-        renderEvents(EventDao.findByTag(tags))
+        renderEvents(EventDao.findByTag(splitTags(keyWords)))
     }
 
     def findPreviewByTags(keyWords: String)(implicit dao: EventDaoTrait = EventDao, now: () => Long = () => DateTime.now.getMillis) = Action {
-        val tags: List[String] = URLDecoder.decode(keyWords,"UTF-8").split(" ").toList
-        val searchPreview: SearchPreview = dao.findPreviewByTag(tags)
+        val searchPreview: SearchPreview = dao.findPreviewByTag(splitTags(keyWords))
 
         val previewEvents = searchPreview.previewEvents.map(
             e => PreviewEvent(date = e.begin.toString(),title = e.title,location = e.location)
