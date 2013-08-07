@@ -57,8 +57,8 @@ class EventDaoTest extends FunSuite with ShouldMatchers with MongoEmbedDatabase 
         val event: Event = Event(
             uid = "1",
             title = "BOF",
-            begin = new DateTime(2012, 04, 19, 0, 0, 0, 0),
-            end = new DateTime(2012, 04, 19, 0, 0, 0, 0),
+            begin = new DateTime(2012, 4, 19, 0, 0, 0, 0),
+            end = new DateTime(2012, 4, 19, 0, 0, 0, 0),
             description = "",
             location = "",
             tags = List("JAVA", "DEVOXX")
@@ -187,7 +187,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with MongoEmbedDatabase 
 
     test("current events or next ones") {
         import scala.concurrent.duration._
-        implicit val now: () => Long = () => new DateTime(2012, 4, 21, 15, 00).getMillis
+        implicit val now: () => Long = () => new DateTime(2012, 4, 21, 15, 0).getMillis
 
 
         initFourData()
@@ -199,7 +199,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with MongoEmbedDatabase 
 
     test("current events or next ones with tag 'devoxx'") {
         import scala.concurrent.duration._
-        implicit val now: () => Long = () => new DateTime(2012, 4, 20, 10, 00).getMillis
+        implicit val now: () => Long = () => new DateTime(2012, 4, 20, 10, 0).getMillis
 
 
         initFourData()
@@ -234,40 +234,40 @@ object EventRepository {
     val eventDevoxx: Event = Event(
         uid = "1",
         title = "BOF",
-        begin = new DateTime(2012, 04, 20, 10, 0, 0, 0),
-        end = new DateTime(2012, 04, 20, 11, 0, 0, 0),
+        begin = new DateTime(2012, 4, 20, 10, 0, 0, 0),
+        end = new DateTime(2012, 4, 20, 11, 0, 0, 0),
         tags = List("DEVOXX")
     )
 
     val eventJava: Event = Event(
         uid = "2",
         title = "BOF",
-        begin = new DateTime(2012, 04, 19, 10, 0, 0, 0),
-        end = new DateTime(2012, 04, 19, 11, 0, 0, 0),
+        begin = new DateTime(2012, 4, 19, 10, 0, 0, 0),
+        end = new DateTime(2012, 4, 19, 11, 0, 0, 0),
         tags = List("JAVA")
     )
 
     val eventOther: Event = Event(
         uid = "3",
         title = "BOF",
-        begin = new DateTime(2012, 04, 21, 15, 0, 0, 0),
-        end = new DateTime(2012, 04, 21, 16, 0, 0, 0),
+        begin = new DateTime(2012, 4, 21, 15, 0, 0, 0),
+        end = new DateTime(2012, 4, 21, 16, 0, 0, 0),
         tags = List("OTHER")
     )
 
     val event4: Event = Event(
         uid = "4",
         title = "BOF",
-        begin = new DateTime(2012, 04, 21, 15, 0, 0, 0),
-        end = new DateTime(2012, 04, 21, 16, 0, 0, 0),
+        begin = new DateTime(2012, 4, 21, 15, 0, 0, 0),
+        end = new DateTime(2012, 4, 21, 16, 0, 0, 0),
         tags = List("4", "OTHER")
     )
 
     val oldEvent: Event = Event(
         uid = "4",
         title = "BOF",
-        begin = new DateTime(2012, 04, 21, 15, 0, 0, 0),
-        end = new DateTime(2012, 04, 21, 16, 0, 0, 0),
+        begin = new DateTime(2012, 4, 21, 15, 0, 0, 0),
+        end = new DateTime(2012, 4, 21, 16, 0, 0, 0),
         tags = List("4", "OTHER")
     )
 

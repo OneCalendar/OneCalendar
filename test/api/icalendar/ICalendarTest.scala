@@ -71,8 +71,8 @@ class ICalendarTest extends FunSuite with ShouldMatchers with BeforeAndAfter wit
             List( Event(
                 uid = "0",
                 title = "Event1",
-                begin = new DateTime( 2010, 01, 01, 12, 0, 0 ),
-                end = new DateTime( 2010, 01, 01, 14, 0, 0 ),
+                begin = new DateTime( 2010, 1, 1, 12, 0, 0 ),
+                end = new DateTime( 2010, 1, 1, 14, 0, 0 ),
                 location = "place1",
                 description = "super java conf",
                 tags = List("java")
