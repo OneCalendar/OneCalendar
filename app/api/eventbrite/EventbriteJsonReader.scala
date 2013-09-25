@@ -28,7 +28,7 @@ trait EventbriteJsonReader {
             tupled
         ).map( event => EventbriteEvent(event._1.map(_.toString), event._2,event._3,event._4,event._5,event._6,event._7,event._8,event._9) )
 
-    // lire tous les event dans tes events     TODO si a la fin de la classe test play lance expcetion !!!!!!
+    // lire tous les event dans tes events     TODO si a la fin de la classe test play lance exepcetion !!!!!!
     private val eventsReader = Reads[List[JsValue]]{ js => JsSuccess((__ \ "events" \\ "event")(js)) }
 
     // Ensuite tu vas transformer en Reads[List[EventbriteEvent]] en mixant un Reads.map et un List.foldLeft

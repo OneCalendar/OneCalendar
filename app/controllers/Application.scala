@@ -36,7 +36,7 @@ object Application extends Controller with MongoDBProdContext with Event$VEventM
     }
 
     def splitTags(keyWords: String) = {
-      URLDecoder.decode(keyWords,"UTF-8").split(" ").toList
+        URLDecoder.decode(keyWords,"UTF-8").split(" ").toList
     }
 
     def findByTags(keyWords: String) = Action {
