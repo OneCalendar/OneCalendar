@@ -1,4 +1,4 @@
-package actor
+package arch.storage.actor
 
 import akka.actor.Actor
 

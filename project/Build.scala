@@ -16,16 +16,17 @@ object ApplicationBuild extends Build {
         ),
         "org.scalatest" %% "scalatest" % "1.9.1" % "test",
         "org.mockito" % "mockito-all" % "1.9.0" % "test",
-        "com.github.simplyscala" %% "scalatest-embedmongo" % "0.2.1" % "test"
+        "com.github.simplyscala" %% "scalatest-embedmongo" % "0.2.1" % "test",
+        "com.typesafe.akka" %% "akka-testkit" % "2.2.1" % "test"
     )
-                                                                //, mainLang = SCALA
+
     val main = play.Project(appName, appVersion, appDependencies).settings(
 
-        testOptions in Test := Nil, //to run scalatest in play2 console arghhhh!!!
+        /*testOptions in Test := Nil, //to run scalatest in play2 console arghhhh!!!
 
         // available test resources in play2 classpath
         unmanagedClasspath in Test <+= ( baseDirectory ) map {
             bd => Attributed.blank(bd / "test")
-        }
+        }*/
     )
 }
