@@ -12,6 +12,6 @@ class CommandActor extends Actor with ActorLogging {
 
     def receive = {
         case AddEvent(event, timestamp) => persistenceActor ! new EventAdded(event, timestamp)
-        case _ => log.warning("unknown message received !")
+        case message => log.warning(s"unknown message received ! : $message")
     }
 }
