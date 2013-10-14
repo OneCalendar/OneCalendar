@@ -3,8 +3,9 @@ OneCalendar with Foundation
 
 This piece of design has been produced with [yeoman]. You will need nodejs and yeoman.
 
-    sudo npm install -g yeoman
-    bower install
+    sudo npm install -g yeoman # install yeoman globally
+    npm install # donwload local node dev dependencies
+    bower install # download local js front dependencies
 
 Run
 ---
