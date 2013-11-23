@@ -27,3 +27,6 @@ public/bower_components/
 
 /* mongodb datadir */
 data/
+
+/* bower dependencies */
+public/bower_components/
