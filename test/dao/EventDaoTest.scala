@@ -69,16 +69,19 @@ class EventDaoTest extends FunSuite with ShouldMatchers with MongoEmbedDatabase 
     }
 
     test("should find event by tag 'devoxx'") {
-        initData()
+		implicit val now: () => Long = () => new DateTime(2010, 1, 1, 1, 1).getMillis
+		initData()
         EventDao.findByTag(List("devoxx")) should be(List(eventDevoxx))
     }
 
     test("should find events by tags 'devoxx' or 'java' ") {
+		implicit val now: () => Long = () => new DateTime(2010, 1, 1, 1, 1).getMillis
         initData()
         EventDao.findByTag(List("devoxx", "java")).map(_.tags).flatten.sorted should be(List("JAVA", "DEVOXX").sorted)
     }
 
     test("should find event even if it have not originalStream and url") {
+		implicit val now: () => Long = () => new DateTime(2010, 1, 1, 1, 1).getMillis
         val eventWithNoOrigStreamAndUrl =
             Event("uid", "title", DateTime.now().plusDays(1), DateTime.now().plusDays(2), "location", "description", tags = List("TEST"))
 
@@ -88,8 +91,9 @@ class EventDaoTest extends FunSuite with ShouldMatchers with MongoEmbedDatabase 
         EventDao.findAll() should be(List(eventWithNoOrigStreamAndUrl))
     }
 
-    test("should not find event without uid but which is in database") {
-        val now: DateTime = DateTime.now
+    test("should not fail when event found without uid but which is in database") {
+        val now: DateTime = new DateTime(2012, 1, 1, 1, 1)
+		implicit val fnow: () => Long = () => new DateTime(2010, 1, 1, 1, 1).getMillis
 
         EventDao.saveEvent(Event(uid = null, tags = List("NO_UID"), begin = now, end = now))
 
@@ -217,6 +221,16 @@ class EventDaoTest extends FunSuite with ShouldMatchers with MongoEmbedDatabase 
         EventDao.countFutureEvents should be(1)
     }
 
+	test("should find events by tags or event id") {
+		implicit val now: () => Long = () => new DateTime(2011, 5, 1, 1, 1).getMillis
+
+		val tags = List("OTHER", "JAVA")
+		val ids = List("NEW")
+		initFiveData()
+
+		EventDao.findByIdsAndTags(ids, tags).map(e => (e.uid, e.tags)) should be(List(newEvent, eventJava, eventOther, event4).map(e => (e.uid, e.tags)))
+	}
+
     private def initData() {
         EventDao.saveEvent(eventDevoxx)
         EventDao.saveEvent(eventJava)
@@ -227,6 +241,14 @@ class EventDaoTest extends FunSuite with ShouldMatchers with MongoEmbedDatabase 
         EventDao.saveEvent(eventJava)
         EventDao.saveEvent(eventOther)
         EventDao.saveEvent(event4)
+    }
+
+    private def initFiveData() {
+        EventDao.saveEvent(eventDevoxx)
+        EventDao.saveEvent(eventJava)
+        EventDao.saveEvent(eventOther)
+        EventDao.saveEvent(event4)
+        EventDao.saveEvent(newEvent)
     }
 }
 

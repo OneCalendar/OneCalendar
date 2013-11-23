@@ -31,6 +31,24 @@ case class Preview (size: Long, eventList: Seq[PreviewEvent])
 
 object Application extends Controller with MongoDBProdContext with Event$VEventMapping with PreviewJsonWriter {
 
+	implicit val implicitJSonWrites = new Writes[List[Event]] {
+		def writes(events: List[Event]): JsValue = {
+			Json.arr(events.map (e =>
+				Json.obj(
+					"uid" -> e.uid,
+					"title" -> e.title,
+					"begin" -> e.begin,
+					"end" -> e.end,
+					"location" -> e.location,
+					"description" -> e.description,
+					"tags" -> e.tags,
+					"originalStream" -> e.originalStream,
+					"url" -> e.url
+				)
+			))
+		}
+	}
+
     def index = Action {
         Ok(views.html.index(Nil))
     }
@@ -39,7 +57,7 @@ object Application extends Controller with MongoDBProdContext with Event$VEventM
       URLDecoder.decode(keyWords,"UTF-8").split(" ").toList
     }
 
-    def findByTags(keyWords: String) = Action {
+    def findByTags(keyWords: String)(implicit now: () => Long = () => DateTime.now.getMillis) = Action {
         renderEvents(EventDao.findByTag(splitTags(keyWords)))
     }
     def findWithoutTags() = Action {
@@ -70,7 +88,15 @@ object Application extends Controller with MongoDBProdContext with Event$VEventM
         Ok("""{"eventNumber":"%s"}""".format(EventDao.countFutureEvents)).as("application/json")
     }
 
-    private def renderEvents(events: List[Event]) = {
+
+	def findByIdsAndTags(ids: String, tags: String)(implicit dao: EventDaoTrait = EventDao, now: () => Long = () => DateTime.now.getMillis) = Action {
+		request =>
+			request.headers.get("Accept") match {
+				case _ => Ok(Json.toJson(dao.findByIdsAndTags(splitTags(ids), splitTags(tags))))
+			}
+	}
+
+	private def renderEvents(events: List[Event]) = {
         events match {
             case Nil => NotFound("Aucun évènement pour la recherche")
             case _ => Ok(ICalendar.buildCalendar(events)).as("text/calendar; charset=utf-8")
