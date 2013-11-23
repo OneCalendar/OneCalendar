@@ -24,20 +24,24 @@ import framework.MongoOperations
 import models._
 import play.api.Logger
 import models.SearchPreview
+import org.joda.time.DateTime
 
 object EventDao extends CollectionsUtils with EventDaoTrait with MongoOperations with EventMongoMapper {
-    private val log = Logger("EventDao")
+
+	private val log = Logger("EventDao")
 
     private val PREVIEW_SIZE = 4
 
-    def deleteByOriginalStream(originalStream: String)
+	val EVENT_ID = "uid"
+
+	def deleteByOriginalStream(originalStream: String)
                               (implicit dbName: MongoDbName, connection: MongoDB, now: () => Long) =
         delete(DBObject("originalStream" -> originalStream))
 
     def saveEvent(event: Event)(implicit dbName: MongoDbName, connection: MongoDB) = save(event)
 
-    def findByTag(tags: List[String])(implicit dbName: MongoDbName, connection: MongoDB): List[Event] = {
-        val query = "tags" $in tags.map(_.toUpperCase)
+    def findByTag(tags: List[String])(implicit dbName: MongoDbName, connection: MongoDB, now: () => Long): List[Event] = {
+        val query = ("tags" $in tags.map(_.toUpperCase)) ++ ( "begin" $gt now() )
         log.debug("query find by tag %s".format(query))
         find[Event](query)
     }
@@ -68,6 +72,11 @@ object EventDao extends CollectionsUtils with EventDaoTrait with MongoOperations
         val query = "begin" $gt now()
         count(query)
     }
+
+	def findByIdsAndTags(ids: List[String], tags: List[String])(implicit dbName: MongoDbName, connection: MongoDB, now: () => Long): List[Event] = {
+		val query = EVENT_ID $in ids
+		EventDao.find(query) ++ EventDao.findByTag(tags)
+	}
 
     /**
      * Find events that has not already finished without almost those
