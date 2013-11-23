@@ -100,13 +100,13 @@ class EventDaoTest extends FunSuite with ShouldMatchers with MongoEmbedDatabase 
         EventDao.findByTag(List("NO_UID")) should be(List(Event(uid = "", tags = List("NO_UID"), begin = now, end = now)))
     }
 
-    test("should find 3 first events by tags 'devoxx', 'java' or other ") {
+    test("should find 4 first events by tags 'devoxx', 'java' or other ") {
         implicit val now: () => Long = () => new DateTime(2010, 1, 1, 1, 1).getMillis
 
-        initFourData()
+        initFiveData()
 
-        EventDao.findPreviewByTag(List("devoxx", "java", "other")).previewEvents should have size 3
-        EventDao.findPreviewByTag(List("devoxx", "java", "other")).previewEvents should be(List(eventJava, eventDevoxx, eventOther))
+        EventDao.findPreviewByTag(List("devoxx", "java", "other")).previewEvents should have size 4
+        EventDao.findPreviewByTag(List("devoxx", "java", "other")).previewEvents should be(List(eventJava, eventDevoxx, eventOther, event4))
     }
 
     test("should not return past events") {
