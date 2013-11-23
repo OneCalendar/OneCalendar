@@ -1,6 +1,4 @@
-# One Calendar To Meet Them All
-
-You can view it for real on the site : [onecalendar.fr](http://onecalendar.fr)
+[![OneCalendar Logo](./public/images/onecalendar-beta.png "One Calendar To Meet Them All")](http://onecalendar.fr)
 
 ## The problem we solve
 
