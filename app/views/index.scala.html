@@ -1,4 +1,4 @@
-@()
+@(events: List[Event])
 <!DOCTYPE html>
 
 @**************************************************************************
@@ -16,6 +16,11 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 **************************************************************************@
+
+
+@import helper._
+@import org.joda.time.format._
+
 <html lang="fr">
 <head>
     <title>One Calendar!</title>
@@ -31,16 +36,6 @@
     <link rel="stylesheet" href='@routes.Assets.at("stylesheets/main.css")'>
     <link rel="stylesheet" type="text/css" href='@routes.Assets.at("bower_components/normalize-css/normalize.css")'>
     <link rel="stylesheet" type="text/css" href='@routes.Assets.at("bower_components/components-foundation/css/foundation.css")'>
-    <!-- endbuild -->
-    <!--<link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/mobile.css")'>-->
-    <!--<link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/suggest.css")'>-->
-    <!--<link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/banner.css")'>-->
-    <!--<script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>-->
-    <!--<script src='@routes.Assets.at("javascripts/suggest.min.js")' type="text/javascript"></script>-->
-    <!--<script src='@routes.Assets.at("javascripts/loader.min.js")' type="text/javascript"></script>-->
-    <!--<script src='@routes.Assets.at("javascripts/cloudTags.min.js")' type="text/javascript"></script>-->
-    <!--<script src='@routes.Assets.at("javascripts/iconHelp.min.js")' type="text/javascript"></script>-->
-    <!--<link href='@routes.Assets.at("images/favicon.ico")' rel="shortcut icon">-->
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=1, user-scalable=no" >
     <script type="text/javascript">
 
@@ -98,42 +93,21 @@
         <hr />
         <h3>Upcoming...</h3>
         <ul class="large-block-grid-2">
+
+            @events.map { event =>
             <li>
                 <ul class="pricing-table">
-                    <li class="title">Du 11/10/2013 08:30 au 11/10/2013 12:00</li>
-                    <li class="price">Lean Startup Workshop #9</li>
+                    <li class="title">Du @DateTimeFormat.forPattern("dd/MM/yyyy HH:mm").print(event.begin)
+                        au @DateTimeFormat.forPattern("dd/MM/yyyy HH:mm").print(event.end)</li>
+                    <li class="price">@event.title</li>
                     <li class="description">
                         <ul class="inline-list">
-                            <li class="radius secondary label">9</li>
-                            <li class="radius secondary label">Lsworkshop</li>
-                            <li class="radius secondary label">Internet</li>
+                            @for(tag <- event.tags.map( _.toLowerCase.capitalize )) {
+                            <li class="radius secondary label">@tag</li>
+                            }
                         </ul>
                     </li>
-                    <li class="description">Lean Startup Workshop
-                        Friday, October 11 at 8:30 AM
-
-                        Lean Startup Workshop #9 Sur Twitter :    #lsworkshop    @@goleanfr Sujet : Séances de travail sur les projets en mode Lean Startup, découverte du Lean...
-
-                        Details: http://www.meetup.com/Lean-Startup-User-Group/events/139449792/</li>
-                </ul>
-            </li><!-- end event 1 -->
-            <li>
-                <ul class="pricing-table">
-                    <li class="title">Du 11/10/2013 08:30 au 11/10/2013 12:00</li>
-                    <li class="price">Lean Startup Workshop #9</li>
-                    <li class="description">
-                        <ul class="inline-list">
-                            <li class="radius secondary label">Professionals</li>
-                            <li class="radius secondary label">Web</li>
-                            <li class="radius secondary label">Technology</li>
-                        </ul>
-                    </li>
-                    <li class="description">Lean Startup Workshop
-                        Friday, October 11 at 8:30 AM
-
-                        Lean Startup Workshop #9 Sur Twitter :    #lsworkshop    @@oleanfr Sujet : Séances de travail sur les projets en mode Lean Startup, découverte du Lean...
-
-                        Details: http://www.meetup.com/Lean-Startup-User-Group/events/139449792/</li>
+                    <li class="description">@event.description</li>
                     <li class="cta-button">
                         <a href="#" data-dropdown="drop1" class="button dropdown">J'y vais !</a>
                         <ul id="drop1" class="f-dropdown">
@@ -145,26 +119,8 @@
                         </ul>
                     </li>
                 </ul>
-            </li><!-- end event 3 -->
-            <li>
-                <ul class="pricing-table">
-                    <li class="title">Du 11/10/2013 08:30 au 11/10/2013 12:00</li>
-                    <li class="price">Lean Startup Workshop #9</li>
-                    <li class="description">
-                        <ul class="inline-list">
-                            <li class="radius secondary label">Lean</li>
-                            <li class="radius secondary label">Startup</li>
-                            <li class="radius secondary label">Startups</li>
-                        </ul>
-                    </li>
-                    <li class="description">Lean Startup Workshop
-                        Friday, October 11 at 8:30 AM
-
-                        Lean Startup Workshop #9 Sur Twitter :    #lsworkshop    @@oleanfr Sujet : Séances de travail sur les projets en mode Lean Startup, découverte du Lean...
-
-                        Details: http://www.meetup.com/Lean-Startup-User-Group/events/139449792/</li>
-                </ul>
-            </li><!-- end event 3 -->
+            </li>
+            }
         </ul><!-- end large block grid 2 -->
     </div>
 </div>
