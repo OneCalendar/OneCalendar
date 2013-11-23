@@ -28,7 +28,7 @@ import models.SearchPreview
 object EventDao extends CollectionsUtils with EventDaoTrait with MongoOperations with EventMongoMapper {
     private val log = Logger("EventDao")
 
-    private val PREVIEW_SIZE = 3
+    private val PREVIEW_SIZE = 4
 
     def deleteByOriginalStream(originalStream: String)
                               (implicit dbName: MongoDbName, connection: MongoDB, now: () => Long) =
