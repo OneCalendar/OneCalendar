@@ -16,20 +16,31 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 **************************************************************************@
-
 <html lang="fr">
 <head>
     <title>One Calendar!</title>
-    <meta charset="utf-8"/>
-    <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/mobile.css")'>
-    <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/suggest.css")'>
-    <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/banner.css")'>
-    <script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>
-    <script src='@routes.Assets.at("javascripts/suggest.min.js")' type="text/javascript"></script>
-    <script src='@routes.Assets.at("javascripts/loader.min.js")' type="text/javascript"></script>
-    <script src='@routes.Assets.at("javascripts/cloudTags.min.js")' type="text/javascript"></script>
-    <script src='@routes.Assets.at("javascripts/iconHelp.min.js")' type="text/javascript"></script>
-    <link href='@routes.Assets.at("images/favicon.ico")' rel="shortcut icon">
+    <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+    <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+    <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+    <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href='@routes.Assets.at("stylesheets/main.css")'>
+    <link rel="stylesheet" type="text/css" href='@routes.Assets.at("bower_components/normalize-css/normalize.css")'>
+    <link rel="stylesheet" type="text/css" href='@routes.Assets.at("bower_components/components-foundation/css/foundation.css")'>
+    <!-- endbuild -->
+    <!--<link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/mobile.css")'>-->
+    <!--<link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/suggest.css")'>-->
+    <!--<link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/banner.css")'>-->
+    <!--<script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>-->
+    <!--<script src='@routes.Assets.at("javascripts/suggest.min.js")' type="text/javascript"></script>-->
+    <!--<script src='@routes.Assets.at("javascripts/loader.min.js")' type="text/javascript"></script>-->
+    <!--<script src='@routes.Assets.at("javascripts/cloudTags.min.js")' type="text/javascript"></script>-->
+    <!--<script src='@routes.Assets.at("javascripts/iconHelp.min.js")' type="text/javascript"></script>-->
+    <!--<link href='@routes.Assets.at("images/favicon.ico")' rel="shortcut icon">-->
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=1, user-scalable=no" >
     <script type="text/javascript">
 
@@ -48,61 +59,145 @@
 </head>
 
 <body>
+<!--[if lt IE 10]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<nav class="top-bar">
+    <ul class="title-area">
+        <ul class="title-area">
+            <li class="name">
+                <h1>
+                    <a href="#"></a>
+                </h1>
+            </li>
+            <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+        </ul>
+        <section class="top-bar-section">
+            <ul class="left">
+                <li><a href="#">Ajouter un événement</a></li>
+                <li class="divider"></li>
+                <li><a href="#">À propos</a></li>
+            </ul>
+        </section>
+</nav>
+<div class="row">
+    <div class="small-centered large-5 columns">
+        <p><img src='@routes.Assets.at("images/onecalendar-beta.png")' /></p>
+    </div>
+</div>
+<div class="row">
+    <div class="large-offset-3 large-6 small-9 columns">
+        <input type="text" class="" placeholder="javascript, mongodb, nodejs..." />
+    </div>
+    <div class="large-2 columns small-3 left">
+        <button class="small button expand">Search</button>
+    </div>
+</div>
+<div class="row">
+    <div class="large-12 columns">
+        <hr />
+        <h3>Upcoming...</h3>
+        <ul class="large-block-grid-2">
+            <li>
+                <ul class="pricing-table">
+                    <li class="title">Du 11/10/2013 08:30 au 11/10/2013 12:00</li>
+                    <li class="price">Lean Startup Workshop #9</li>
+                    <li class="description">
+                        <ul class="inline-list">
+                            <li class="radius secondary label">9</li>
+                            <li class="radius secondary label">Lsworkshop</li>
+                            <li class="radius secondary label">Internet</li>
+                        </ul>
+                    </li>
+                    <li class="description">Lean Startup Workshop
+                        Friday, October 11 at 8:30 AM
 
-<header>
-    <a href="@routes.EventsController.addEvents()">Ajouter un évènement</a> |
-    <a href="@routes.Slideshow.slideshow()">En cours ou à venir</a> |
-    <a href="@routes.EventsController.allEvents()" title="afficher tous les évènements"><span id="eventNumber">N/A</span> évènements à venir</a>
-</header>
+                        Lean Startup Workshop #9 Sur Twitter :    #lsworkshop    @@goleanfr Sujet : Séances de travail sur les projets en mode Lean Startup, découverte du Lean...
 
-<section id="title">
-    <img src='@routes.Assets.at("images/onecalendar-beta.png")' alt="One caledar to meet them all (bêta)"
-           title="One caledar to meet them all (bêta)" />
-</section>
+                        Details: http://www.meetup.com/Lean-Startup-User-Group/events/139449792/</li>
+                </ul>
+            </li><!-- end event 1 -->
+            <li>
+                <ul class="pricing-table">
+                    <li class="title">Du 11/10/2013 08:30 au 11/10/2013 12:00</li>
+                    <li class="price">Lean Startup Workshop #9</li>
+                    <li class="description">
+                        <ul class="inline-list">
+                            <li class="radius secondary label">Professionals</li>
+                            <li class="radius secondary label">Web</li>
+                            <li class="radius secondary label">Technology</li>
+                        </ul>
+                    </li>
+                    <li class="description">Lean Startup Workshop
+                        Friday, October 11 at 8:30 AM
 
-<section id="search">
-    <form method="get" action="/events" id="events">
-        <input type="text" id="suggest"  autocomplete="off" placeholder="Saisissez vos mots clefs pour obtenir votre agenda" />
-        <input type="submit" value="" />
-    </form>
-</section>
-<section>
-    <div class="legend">
-        <img src='@routes.Assets.at("images/idee-ampoule-gestion-pouvoir-preferences-systeme-icone-4536-48.png")'/>
-        <img src='@routes.Assets.at("images/ampoule-idee-lumiere-icone-5095-48.png")' style="display:none"/>
-        <span>Nuage de tags</span></div>
-    <div id="cloudtags"/>
-</section>
-<div class="clear"></div>
+                        Lean Startup Workshop #9 Sur Twitter :    #lsworkshop    @@oleanfr Sujet : Séances de travail sur les projets en mode Lean Startup, découverte du Lean...
 
-<section id="subscription">
-    <span>Les prochains évenements</span>
-    <p class="preview"><span></span><span></span><span></span></p>
-    <p class="preview"></p>
-    <p class="preview"></p>
-    <p id="resultSize"></p>
-    <fieldset>
-        <legend>S'abonner aux résultats de cette recherche</legend>
+                        Details: http://www.meetup.com/Lean-Startup-User-Group/events/139449792/</li>
+                    <li class="cta-button">
+                        <a href="#" data-dropdown="drop1" class="button dropdown">J'y vais !</a>
+                        <ul id="drop1" class="f-dropdown">
+                            <li><a href="#">juste cette fois</a></li>
+                            <li><a href="#">à tous les 9</a></li>
+                            <li><a href="#">à tous les <span class="radius secondary label">Professionals</span></a></li>
+                            <li><a href="#">à tous les <span class="radius secondary label">Web</span></a></li>
+                            <li><a href="#">à tous les <span class="radius secondary label">Technology</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li><!-- end event 3 -->
+            <li>
+                <ul class="pricing-table">
+                    <li class="title">Du 11/10/2013 08:30 au 11/10/2013 12:00</li>
+                    <li class="price">Lean Startup Workshop #9</li>
+                    <li class="description">
+                        <ul class="inline-list">
+                            <li class="radius secondary label">Lean</li>
+                            <li class="radius secondary label">Startup</li>
+                            <li class="radius secondary label">Startups</li>
+                        </ul>
+                    </li>
+                    <li class="description">Lean Startup Workshop
+                        Friday, October 11 at 8:30 AM
 
-        <div class="center">
-            <a class="ical"><img alt="flux texte" title="flux texte" src="/assets/images/text.png"/></a>
-            <a class="gcal">
-                <img alt="flux google agenda" title="flux google agenda"
-                     src="http://www.google.com/calendar/images/ext/gc_button6_fr.gif"/>
-            </a>
-            <a class="webcal"><img alt="flux ical apple" title="flux ical apple"
-                                   src="/assets/images/iCal_Icon.jpeg"/></a>
-            <div class="help"></div>
+                        Lean Startup Workshop #9 Sur Twitter :    #lsworkshop    @@oleanfr Sujet : Séances de travail sur les projets en mode Lean Startup, découverte du Lean...
+
+                        Details: http://www.meetup.com/Lean-Startup-User-Group/events/139449792/</li>
+                </ul>
+            </li><!-- end event 3 -->
+        </ul><!-- end large block grid 2 -->
+    </div>
+</div>
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-12 columns">
+                <ul class="inline-list right">
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
         </div>
-    </fieldset>
-</section>
-<div class="clear"></div>
+    </div>
+</footer>
 
-<section id="callbackNoResult"></section>
+<script src='@routes.Assets.at("bower_components/jquery/jquery.js")'></script>
+<script src='@routes.Assets.at("bower_components/components-foundation/js/vendor/custom.modernizr.js")'></script>
+<script src='@routes.Assets.at("bower_components/components-foundation/js/foundation/foundation.js")'></script>
+<script src='@routes.Assets.at("bower_components/components-foundation/js/foundation/foundation.dropdown.js")'></script>
+<script src='@routes.Assets.at("bower_components/components-foundation/js/foundation/foundation.topbar.js")'></script>
 
-<section id="footer">
-    <a href="/about">A propos</a>
-</section>
-
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script>
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-XXXXX-X');ga('send','pageview');
+</script>
+<script>
+    $(document).foundation();
+</script>
 </body>
 </html>
