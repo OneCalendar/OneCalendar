@@ -21,3 +21,6 @@ test/front/javascripts/
 
 /* mongodb datadir */
 data/
+
+/* bower dependencies */
+public/bower_components/
