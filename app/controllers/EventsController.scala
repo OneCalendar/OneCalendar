@@ -39,7 +39,7 @@ object EventsController extends Controller with MongoDBProdContext {
             .map( event => event.copy(tags = event.tags.distinct) )  // TODO régler le problème à la source <=> mettre un Set sur tags et supprimé les doublons à l'écriture
             .sortWith { (e1,e2) => e1.begin.compareTo(e2.begin) < 0 }
 
-        Ok( views.html.allEvents(events) )
+        Ok( views.html.index(events) )
     }
 
     // TODO tous les champs sont obligatoires sauf description

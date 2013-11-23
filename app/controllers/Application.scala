@@ -32,7 +32,7 @@ case class Preview (size: Long, eventList: Seq[PreviewEvent])
 object Application extends Controller with MongoDBProdContext with Event$VEventMapping with PreviewJsonWriter {
 
     def index = Action {
-        Ok(views.html.index())
+        Ok(views.html.index(Nil))
     }
 
     def splitTags(keyWords: String) = {
