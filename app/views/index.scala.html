@@ -3,30 +3,6 @@
 @import org.joda.time.format._
 
 @layout("Home") {
-<body>
-<!--[if lt IE 10]>
-<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
-<nav class="top-bar">
-    <ul class="title-area">
-        <ul class="title-area">
-            <li class="name">
-                <h1>
-                    <a href="#"></a>
-                </h1>
-            </li>
-            <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
-        </ul>
-        <section class="top-bar-section">
-            <ul class="left">
-                <li><a href="@routes.EventsController.addEvents()">Ajouter un événement</a></li>
-                <li><a href="@routes.EventsController.allEvents()" title="afficher tous les événements"><span id="eventNumber">N/A</span> événements à venir</a></li>
-                <li class="divider"></li>
-                <li><a href="about">À propos</a></li>
-            </ul>
-        </section>
-      </ul>
-</nav>
 <div class="row">
     <div class="small-centered large-5 columns">
         <p><img src='@routes.Assets.at("images/onecalendar-beta.png")' /></p>
@@ -68,34 +44,9 @@
     </div>
 </div>
 <div class="row">
-    <div class="large-12 columns" id="resultSize">
-    </div>
+    <div class="large-12 columns" id="resultSize"></div>
 </div>
-
 <div class="row">
-    <div class="large-12 columns" id="callbackNoResult">
-    </div>
+    <div class="large-12 columns" id="callbackNoResult"></div>
 </div>
-<footer class="row">
-    <div class="large-12 columns">
-        <hr />
-        <div class="row">
-            <div class="large-12 columns">
-                <ul class="inline-list right">
-                    <li><a href="about">About</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<script src='@routes.Assets.at("bower_components/components-foundation/js/vendor/custom.modernizr.js")'></script>
-<script src='@routes.Assets.at("bower_components/components-foundation/js/foundation/foundation.js")'></script>
-<script src='@routes.Assets.at("bower_components/components-foundation/js/foundation/foundation.dropdown.js")'></script>
-<script src='@routes.Assets.at("bower_components/components-foundation/js/foundation/foundation.topbar.js")'></script>
-
-<script>
-    $(document).foundation();
-</script>
-</body>
 }
