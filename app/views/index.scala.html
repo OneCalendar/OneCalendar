@@ -3,50 +3,50 @@
 @import org.joda.time.format._
 
 @layout("Home") {
-<div class="row">
-    <div class="small-centered large-5 columns">
-        <p><img src='@routes.Assets.at("images/onecalendar-beta.png")' /></p>
-    </div>
-</div>
-<div class="row">
-    <form method="get" action="/events" id="events">
-        <div class="large-offset-3 large-6 small-9 columns">
-            <input type="text" id="suggest" autocomplete="off" placeholder="Saisissez vos mots clefs pour obtenir votre agenda" />
+        <div class="row">
+            <div class="small-centered large-5 columns">
+                <p><img src='@routes.Assets.at("images/onecalendar-beta.png")' /></p>
+            </div>
         </div>
-        <div class="large-2 columns small-3 left">
-            <input class="small button expand" type="submit" value="Search"/>
+        <div class="row">
+            <form method="get" action="/events" id="events">
+                <div class="large-offset-3 large-6 small-9 columns">
+                    <input type="text" id="suggest" autocomplete="off" placeholder="Saisissez vos mots clefs pour obtenir votre agenda" />
+                </div>
+                <div class="large-2 columns small-3 left">
+                    <input class="small button expand" type="submit" value="Search"/>
+                </div>
+            </form>
         </div>
-    </form>
-</div>
-<div class="row">
-    <div class="large-12 columns">
-        <hr />
-        <h3>Upcoming...</h3>
-        <ul class="large-block-grid-2" id="previewEvents">
+        <div class="row">
+            <div class="large-12 columns">
+                <hr />
+                <h3>Upcoming...</h3>
+                <ul class="large-block-grid-2" id="previewEvents">
 
-            @events.map { event =>
-            <li>
-                <ul class="pricing-table">
-                    <li class="title">Du @DateTimeFormat.forPattern("dd/MM/yyyy HH:mm").print(event.begin)
-                        au @DateTimeFormat.forPattern("dd/MM/yyyy HH:mm").print(event.end)</li>
-                    <li class="price">@event.title</li>
-                    <li class="description">
-                        <ul class="inline-list">
-                            @for(tag <- event.tags.map( _.toLowerCase.capitalize )) {
-                            <li class="radius secondary label">@tag</li>
-                            }
+                    @events.map { event =>
+                    <li>
+                        <ul class="pricing-table">
+                            <li class="title">Du @DateTimeFormat.forPattern("dd/MM/yyyy HH:mm").print(event.begin)
+                                au @DateTimeFormat.forPattern("dd/MM/yyyy HH:mm").print(event.end)</li>
+                            <li class="price">@event.title</li>
+                            <li class="description">
+                                <ul class="inline-list">
+                                    @for(tag <- event.tags.map( _.toLowerCase.capitalize )) {
+                                    <li class="radius secondary label">@tag</li>
+                                    }
+                                </ul>
+                            </li>
                         </ul>
                     </li>
-                </ul>
-            </li>
-            }
-        </ul><!-- end large block grid 2 -->
-    </div>
-</div>
-<div class="row">
-    <div class="large-12 columns" id="resultSize"></div>
-</div>
-<div class="row">
-    <div class="large-12 columns" id="callbackNoResult"></div>
-</div>
+                    }
+                </ul><!-- end large block grid 2 -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns" id="resultSize"></div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns" id="callbackNoResult"></div>
+        </div>
 }
