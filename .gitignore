@@ -19,14 +19,8 @@ ical4j-1.0.3-sources.jar
 /*js test file generated*/
 test/front/javascripts/
 
-/* mongodb datadir */
-data/
-
 /* bower dependencies */
 public/bower_components/
 
 /* mongodb datadir */
 data/
-
-/* bower dependencies */
-public/bower_components/
