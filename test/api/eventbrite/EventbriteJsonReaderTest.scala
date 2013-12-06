@@ -3,7 +3,7 @@ package api.eventbrite
 import org.scalatest.FunSuite
 import org.scalatest.matchers.ShouldMatchers
 import play.api.libs.json._
-import org.codehaus.jackson.JsonParseException
+import com.fasterxml.jackson.core.JsonParseException
 
 class EventbriteJsonReaderTest extends FunSuite with ShouldMatchers with EventbriteJsonReader {
 
