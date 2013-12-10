@@ -58,25 +58,23 @@
         <!--[if lt IE 10]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <nav class="top-bar">
+        <nav class="top-bar" data-topbar>
             <ul class="title-area">
-                <ul class="title-area">
-                    <li class="name">
-                        <h1>
-                            <a href="/">OneCalendar !</a>
-                        </h1>
-                    </li>
-                    <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
-                </ul>
-                <section class="top-bar-section">
-                    <ul class="left">
-                        <li><a href="@routes.EventsController.addEvents()">Ajouter un événement</a></li>
-                        <li><a href="@routes.EventsController.allEvents()" title="afficher tous les événements"><span id="eventNumber">N/A</span> événements à venir</a></li>
-                        <li class="divider"></li>
-                        <li><a href="about">À propos</a></li>
-                    </ul>
-                </section>
+                <li class="name">
+                    <h1>
+                        <a href="/">OneCalendar !</a>
+                    </h1>
+                </li>
+                <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
             </ul>
+            <section class="top-bar-section">
+                <ul class="left">
+                    <li><a href="@routes.EventsController.addEvents()">Ajouter un événement</a></li>
+                    <li><a href="@routes.EventsController.allEvents()" title="afficher tous les événements"><span id="eventNumber">N/A</span> événements à venir</a></li>
+                    <li class="divider"></li>
+                    <li><a href="about">À propos</a></li>
+                </ul>
+            </section>
         </nav>
         @body
         <footer class="row">
