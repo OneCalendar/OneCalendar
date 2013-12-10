@@ -23,3 +23,7 @@ body {
     cursor: pointer;
     margin: 3px;
 }
+
+#events .button {
+    height: 38px;
+}
