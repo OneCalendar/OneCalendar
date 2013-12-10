@@ -62,36 +62,35 @@
      for i in [0..4]
        if events[i] != undefined
          previewElement.append( "
-          <li>
+           <li>
              <ul class='pricing-table'>
-                <li class='title'>#{SUGGEST.formatIcalDate events[i].event.date}</li>
-                <li class='price'>#{events[i].event.title}</li>
-                <li class='description'>#{events[i].event.location}</li>
-                <li class='cta-button'>
-                             <div class='row'>
-                           <ul id='subscription' class='button-group'>
-                      <div class='large-4 columns'>
-                        <li><a href='#' class='left ical'><img alt='flux texte' title='flux texte' src='/assets/images/text.png' class='large-centered'/></a></li>
-                      </div>
-                      <div class='large-4 columns'>
-                        <li><a href='#' class='centered gcal'><img alt='flux google agenda' title='flux google agenda'
-                                             src='http://www.google.com/calendar/images/ext/gc_button6_fr.gif' class='large-centered'/></a></li>
-                      </div>
-                      <div class='large-4 columns'>
-                        <li><a href='#' class='right webcal'><img alt='flux ical apple' title='flux ical apple'
-                                           src='/assets/images/iCal_Icon.jpeg' class='large-centered'/></a></li>
-                      </div>
-                           </ul>
-                             </div>
-                </li>
-            </ul>
-         </li>" )
+               <li class='title'>#{SUGGEST.formatIcalDate events[i].event.date}</li>
+               <li class='price'>#{events[i].event.title}</li>
+               <li class='description'>#{events[i].event.location}</li>
+               <li class='cta-button'>
+                 <div class='row'>
+                   <ul id='subscription' class='button-group'>
+                     <div class='large-4 columns'>
+                       <li><a href='#' class='left ical'><img alt='flux texte' title='flux texte' src='/assets/images/text.png' class='large-centered'/></a></li>
+                     </div>
+                     <div class='large-4 columns'>
+                       <li><a href='#' class='centered gcal'><img alt='flux google agenda' title='flux google agenda'
+                                 src='http://www.google.com/calendar/images/ext/gc_button6_fr.gif' class='large-centered'/></a></li>
+                     </div>
+                     <div class='large-4 columns'>
+                       <li><a href='#' class='right webcal'><img alt='flux ical apple' title='flux ical apple'
+                               src='/assets/images/iCal_Icon.jpeg' class='large-centered'/></a></li>
+                     </div>
+                   </ul>
+                 </div>
+               </li>
+             </ul>
+           </li>" )
        else
          previewElement.append( "
-                         <span class='title'></span>
-                         <span class='date'></span>
-                         <span class='location'></span>
-                          " )
+           <span class='title'></span>
+           <span class='date'></span>
+           <span class='location'></span>" )
 
   displayNoResult : (searchWord) ->
     $('#previewEvents').empty()
