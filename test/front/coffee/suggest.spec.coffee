@@ -194,7 +194,7 @@ describe 'google suggest like', ->
 
     SUGGEST.displayPreviewResult callbackResponse
 
-    expect( $('#resultSize') ).toHaveText( "2 autres évènements trouvés" )
+    expect( $('#resultSize') ).toHaveText( "1 autres évènements trouvés" )
 
     expect( $('#callbackNoResult').css('display') ).toEqual('none')
 
