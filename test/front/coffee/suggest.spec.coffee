@@ -159,16 +159,32 @@ describe 'google suggest like', ->
 
   it "10. should display preview", ->
     setFixtures '''
-          <div id="subscription"">
-            <p id="resultSize"></p>
-            <p class="preview"></p>
-            <p class="preview"></p>
-            <p class="preview"></p>
-            <a class="ical"></a>
-            <a class="gcal"></a>
-            <a class="webcal"></a>
-          </div>
-          <div id="callbackNoResult"></div>
+      <div class="row">
+        <div class="large-12 columns">
+          <hr />
+          <h3>Upcoming...</h3>
+          <ul class="large-block-grid-2" id="previewEvents">
+            <li>
+              <ul class='pricing-table'>
+                <li class='title'></li>
+                <li class='price'></li>
+                <li class='description'></li>
+                <li class='cta-button'>
+                  <div class='row'>
+                    <ul id='subscription' class='button-group'></ul>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns" id="resultSize"></div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns" id="callbackNoResult"></div>
+      </div>
       '''
 
     callbackResponse = {
@@ -198,19 +214,19 @@ describe 'google suggest like', ->
 
     expect( $('#callbackNoResult').css('display') ).toEqual('none')
 
-    previewElement = $( '#subscription .preview' )
+    previewElement = $('#previewEvents .pricing-table')
 
-    expect( $( previewElement[0] ).text() ).toContain( "title 1")
-    expect( $( previewElement[0] ).text() ).toContain( "19 04 2012 - 15:35")
-    expect( $( previewElement[0] ).text() ).toContain( "location 1")
+    expect( $( previewElement[0] ).find(".price").text() ).toContain( "title 1")
+    expect( $( previewElement[0] ).find(".title").text() ).toContain( "19 04 2012 - 15:35")
+    expect( $( previewElement[0] ).find(".description").text() ).toContain( "location 1")
 
-    expect( $( previewElement[1] ).text() ).toContain( "title 2")
-    expect( $( previewElement[1] ).text() ).toContain( "19 04 2012 - 15:35")
-    expect( $( previewElement[1] ).text() ).toContain( "location 2")
+    expect( $( previewElement[1] ).find(".price").text() ).toContain( "title 2")
+    expect( $( previewElement[1] ).find(".title").text() ).toContain( "19 04 2012 - 15:35")
+    expect( $( previewElement[1] ).find(".description").text() ).toContain( "location 2")
 
-    expect( $( previewElement[2] ).text() ).toContain( "title 3")
-    expect( $( previewElement[2] ).text() ).toContain( "19 04 2012 - 15:35")
-    expect( $( previewElement[2] ).text() ).toContain( "location 3")
+    expect( $( previewElement[2] ).find(".price").text() ).toContain( "title 3")
+    expect( $( previewElement[2] ).find(".title").text() ).toContain( "19 04 2012 - 15:35")
+    expect( $( previewElement[2] ).find(".description").text() ).toContain( "location 3")
 
   it "11. should display fail", ->
     setFixtures '<div style="display:none;" id="callbackNoResult"></div>'
