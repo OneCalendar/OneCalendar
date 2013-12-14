@@ -9,15 +9,6 @@ describe "handle the cloud of tags", ->
     expect($(".clickTag")).toHaveText("Tag1")
     expect($(".clickTag")).toHandle("click")
 
-  it "when multiple tags, each are separated by space", ->
-      setFixtures "<div id='cloudtags'/>"
-      data = ["tag1","tag2"]
-      document.cloudThis(data)
-      expect($("#cloudtags")).toContain "span.clickTag"
-      expect($("#cloudtags span.clickTag")).not.toBeVisible
-      expect($("#cloudtags span.clickTag").length).toBe 2
-      expect($("#cloudtags").html()).toMatch("span> <span")
-
   it "the cloud is visible on click on legend, test falsy green", ->
     setFixtures "<div class='legend'> +
      <img class='on' style='display:none'> +
