@@ -48,6 +48,7 @@
 
   displayPreviewResult : (data) ->
      $('#previewEvents').empty()
+     $( "#callbackNoResult" ).hide()
 
      console.log data
 
