@@ -1,14 +1,15 @@
 package dao
 
+import framework.MongoDbModel
 import org.scalatest.FunSuite
 import com.mongodb.casbah.Imports._
 import com.mongodb.{ServerAddress, MongoOptions}
 import dao.MongoPoolTest._
-import models.EventTypeClass
+import models.EventMongoMapper
 
 
 /**
- * Exemple de l'utilisation de type class en définissant le pool de connection au niveau du dao grace au trait MongoConnectionPool
+ * Exemple de l'utilisation de type class en définissant le pool de connection au niveau du dao grace au trait MongoFrameworkCollection
  */
 
 
@@ -40,7 +41,7 @@ object MongoPoolTest {
     }
 }
 
-object MyEventDao extends MongoOperationsTest with MongoConnectionPoolTest with EventTypeClass {
+object MyEventDao extends MongoOperationsTest with MongoConnectionPoolTest with EventMongoMapper {
 
     def toto()(implicit dbName: MongoDbName) {
         print()

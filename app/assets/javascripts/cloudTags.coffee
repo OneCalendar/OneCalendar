@@ -3,7 +3,7 @@ $(document).ready ->
   @cloudThis = (data) ->
     for tag, i in data
       tag = tag.charAt(0).toUpperCase() + tag.substr(1).toLowerCase()
-      $("#cloudtags").append("<span class='clickTag'>" + tag + "</div>")
+      $("#cloudtags").append("<span class='clickTag round label'>" + tag + "</span>\n")
       $(".clickTag").hide()
       $("#cloudtags").append(" ") if i != data.length - 1
 

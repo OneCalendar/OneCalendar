@@ -1,0 +1,99 @@
+@(title: String)(body: Html)
+<!doctype html>
+
+@**************************************************************************
+* Copyright 2012 OneCalendar
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+**************************************************************************@
+
+
+@import helper._
+@import org.joda.time.format._
+
+<html lang="fr">
+    <head>
+        <title>One Calendar! - @title</title>
+        <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+        <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+        <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+        <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="OneCalendar To meet them all !">
+        <meta name="viewport" content="width=device-width">
+        <link href='@routes.Assets.at("images/favicon.ico")' rel="shortcut icon">
+        <link rel="stylesheet" href='@routes.Assets.at("stylesheets/main.css")'>
+        <link rel="stylesheet" type="text/css" href='@routes.Assets.at("bower_components/normalize-css/normalize.css")'>
+        <link rel="stylesheet" type="text/css" href='@routes.Assets.at("bower_components/components-foundation/css/foundation.css")'>
+        <script src='@routes.Assets.at("bower_components/jquery/jquery.js")'></script>
+        <script src='@routes.Assets.at("javascripts/suggest.min.js")' type="text/javascript"></script>
+        <script src='@routes.Assets.at("javascripts/loader.min.js")' type="text/javascript"></script>
+        <script src='@routes.Assets.at("javascripts/cloudTags.min.js")' type="text/javascript"></script>
+        <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-31089999-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+
+        </script>
+    </head>
+    <body>
+        <!--[if lt IE 10]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <nav class="top-bar" data-topbar>
+            <ul class="title-area">
+                <li class="name">
+                    <h1>
+                        <a href="/">OneCalendar !</a>
+                    </h1>
+                </li>
+                <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+            </ul>
+            <section class="top-bar-section">
+                <ul class="left">
+                    <li><a href="@routes.EventsController.addEvents()">Ajouter un événement</a></li>
+                    <li><a href="@routes.EventsController.allEvents()" title="afficher tous les événements"><span id="eventNumber">N/A</span> événements à venir</a></li>
+                    <li class="divider"></li>
+                    <li><a href="about">À propos</a></li>
+                </ul>
+            </section>
+        </nav>
+        @body
+        <footer class="row">
+            <div class="large-12 columns">
+                <hr />
+                <div class="row">
+                    <div class="large-12 columns">
+                        <ul class="inline-list right">
+                            <li><a href="about">À propos</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src='@routes.Assets.at("bower_components/components-foundation/js/vendor/custom.modernizr.js")'></script>
+        <script src='@routes.Assets.at("bower_components/components-foundation/js/foundation/foundation.js")'></script>
+        <script src='@routes.Assets.at("bower_components/components-foundation/js/foundation/foundation.topbar.js")'></script>
+        <script>
+            $(document).foundation();
+        </script>
+    </body>
+</html>

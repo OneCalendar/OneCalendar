@@ -1,6 +1,4 @@
-# One Calendar To Meet Them All
-
-You can view it for real on the site : [onecalendar.fr](http://onecalendar.fr)
+[![OneCalendar Logo](./public/images/onecalendar-beta.png "One Calendar To Meet Them All")](http://onecalendar.fr)
 
 ## The problem we solve
 
@@ -48,12 +46,13 @@ launch a browser on
 `test/front/jasmine/SpecRunner.html`
 
 ### To launch the application
-* Have play2 (2.1.1) installed somewhere
-* Have it in your path
+* Have play2 (2.1.1) installed somewhere and add it to your path
 * Have mongo2 (2.0.6) started (only for run command)
     * create a folder named "data" where the following command is started
     * `mkdir data`
     * `mongod --dbpath ./data --noprealloc --smallfiles --nojournal --rest`
+* Have bower (1.2.7) installed and in your path
+    * Retrieve front dependencies with `bower install`
 * Launch the application, as any play app
     * `play`
     * `$ compile`

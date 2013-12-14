@@ -1,0 +1,11 @@
+{
+  "name": "newdesign",
+  "version": "0.0.0",
+  "dependencies": {},
+  "devDependencies": {
+      "bower": "1.2.7"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  }
+}

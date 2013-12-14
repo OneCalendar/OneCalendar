@@ -20,11 +20,13 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index
+GET     /                           controllers.EventsController.allEvents
 GET     /events/*keyWords           controllers.Application.findByTags(keyWords)
+GET     /events/                    controllers.Application.findWithoutTags()
 GET     /event/tags/*keyWords       controllers.Application.findPreviewByTags(keyWords)
 GET     /tags                       controllers.Application.fetchCloudOfTags
 GET     /event/count                controllers.Application.eventCount
+GET     /event/test/*ids/*tags      controllers.Application.findByIdsAndTags(ids, tags)
 
 # About
 GET     /about                      controllers.Application.about
@@ -32,7 +34,6 @@ GET     /about                      controllers.Application.about
 # Events Calendar
 GET     /event                      controllers.EventsController.addEvents
 POST    /event                      controllers.EventsController.addSingleEvent
-GET     /event/all                  controllers.EventsController.allEvents
 GET     /slideshow                  controllers.Slideshow.slideshow
 GET     /devoxxshow                 controllers.Slideshow.devoxxshow
 

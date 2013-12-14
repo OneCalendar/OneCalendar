@@ -29,20 +29,43 @@ import java.net.URLDecoder
 case class PreviewEvent(date: String, title: String, location: String)
 case class Preview (size: Long, eventList: Seq[PreviewEvent])
 
-object Application extends OneCalendarController with Event$VEventMapping with PreviewJsonWriter {
+object Application extends Controller with MongoDBProdContext with Event$VEventMapping with PreviewJsonWriter {
+
+	implicit val implicitJSonWrites = new Writes[List[Event]] {
+		def writes(events: List[Event]): JsValue = {
+			Json.arr(events.map (e =>
+				Json.obj(
+					"uid" -> e.uid,
+					"title" -> e.title,
+					"begin" -> e.begin,
+					"end" -> e.end,
+					"location" -> e.location,
+					"description" -> e.description,
+					"tags" -> e.tags,
+					"originalStream" -> e.originalStream,
+					"url" -> e.url
+				)
+			))
+		}
+	}
 
     def index = Action {
-        Ok(views.html.index())
+        Ok(views.html.index(Nil))
     }
 
-    def findByTags(keyWords: String) = Action {
-        val tags: List[String] = keyWords.split(" ").toList
-        renderEvents(EventDao.findByTag(tags))
+    def splitTags(keyWords: String) = {
+      URLDecoder.decode(keyWords,"UTF-8").split(" ").toList
+    }
+
+    def findByTags(keyWords: String)(implicit now: () => Long = () => DateTime.now.getMillis) = Action {
+        renderEvents(EventDao.findByTag(splitTags(keyWords)))
+    }
+    def findWithoutTags() = Action {
+        renderEvents(EventDao.findAll())
     }
 
     def findPreviewByTags(keyWords: String)(implicit dao: EventDaoTrait = EventDao, now: () => Long = () => DateTime.now.getMillis) = Action {
-        val tags: List[String] = URLDecoder.decode(keyWords,"UTF-8").split(" ").toList
-        val searchPreview: SearchPreview = dao.findPreviewByTag(tags)
+        val searchPreview: SearchPreview = dao.findPreviewByTag(splitTags(keyWords))
 
         val previewEvents = searchPreview.previewEvents.map(
             e => PreviewEvent(date = e.begin.toString(),title = e.title,location = e.location)
@@ -65,7 +88,15 @@ object Application extends OneCalendarController with Event$VEventMapping with P
         Ok("""{"eventNumber":"%s"}""".format(EventDao.countFutureEvents)).as("application/json")
     }
 
-    private def renderEvents(events: List[Event]) = {
+
+	def findByIdsAndTags(ids: String, tags: String)(implicit dao: EventDaoTrait = EventDao, now: () => Long = () => DateTime.now.getMillis) = Action {
+		request =>
+			request.headers.get("Accept") match {
+				case _ => Ok(Json.toJson(dao.findByIdsAndTags(splitTags(ids), splitTags(tags))))
+			}
+	}
+
+	private def renderEvents(events: List[Event]) = {
         events match {
             case Nil => NotFound("Aucun évènement pour la recherche")
             case _ => Ok(ICalendar.buildCalendar(events)).as("text/calendar; charset=utf-8")

@@ -1,118 +1,78 @@
 @()
-<!DOCTYPE html>
 
-@**************************************************************************
- * Copyright 2012 OneCalendar
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
-**************************************************************************@
-<html>
-<head>
-    <title>One Calendar! &Agrave; propos</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/mobile.css")'>
-    <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/about.css")'>
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=1, user-scalable=no" >
-    <link href='@routes.Assets.at("images/favicon.ico")' rel="shortcut icon">
-    <script type="text/javascript">
-
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-31089999-1']);
-        _gaq.push(['_trackPageview']);
-
-        (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-
-    </script>
-</head>
-<body>
-	<header>
-        <h1>À propos de</h1>
-        <a href="/">
-            <img src="/assets/images/OneCalendar.png" alt="OneCalendar!" title="OneCalendar!">
-        </a>
-	</header>
-    <div class="clear"></div>
-
-    <section class="leftSection">
-        <section id="contact" class="leftSubSection">
-            <h5>Nous contacter</h5>
-            <p><a href="mailto:onecalendartomeetthemall@@gmail.com" ><img src="/assets/images/gmail.png"></a></p>
-            <p><a href="https://github.com/OneCalendar/OneCalendar"><img src="/assets/images/github_32.png"></a></p>
-            <p><a href="https://twitter.com/intent/tweet?screen_name=OneCalendar_" class="twitter-mention-button" data-lang="fr">Tweet to @@OneCalendar_</a>
-                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-            </p>
-        </section>
-
-        <section id="valtech" class="leftSubSection">
-            <img src="/assets/images/Valtech_Logo_Black.png"/>
-            <p>
-                <a href="http://www.valtech.fr">Valtech</a> participe au projet OneCalendar! en mettant à
-                disposition de ses consultants du temps et une infrastructure.
-            </p>
-        </section>
-    </section>
-
-    <section id="mainSection">
-        <section id="why" class="gstyle">
-            <h1>Pourquoi One Calendar! To Meet Them All ?</h1>
-            <p>
-                Vous avez probablement cherché un moyen de trouver un ensemble d'événements sur un sujet donné ?
-                Vous avez dû vous rendre compte qu'il existait beaucoup de sources d'informations diverses, pas
-                forcément structurées, et surtout rarement consultables directement depuis votre agenda.
-                Nous pensons par exemple à <a href="http://www.agendadulibre.org/">l'Agenda du Libre</a>,
-                des <a href="http://www.agenda-agile.org/">Agilistes</a>, les meetups, l'agenda
-                <a href="https://sites.google.com/site/duchessfr/calendrier-conferences">JDuchess</a> ...
-                et pour d'autres communautés il en existe sûrement plein d'autres.
-            </p>
-            <p>
-                Il est complexe et chronophage de se tenir à jour de tous ces événements,
-                et d'être prévenus, toujours trop tard pour s'inscrire. Pour les initiatives qui tentent d'agréger
-                toutes les informations, c'est également très lourd à maintenir.
-            </p>
-            <p>
-                L'idée est donc de simplifier tout ça en proposant un agrégateur d'agendas, qui va les "taguer", les stocker
-                dans une structure afin de pouvoir les consulter, les filtrer et en faire des extractions.
-                Pour commencer, sous la forme de flux <a href="http://fr.wikipedia.org/wiki/ICalendar">iCalendar</a>,
-                standard de facto selon nous, pour les agendas.
-            </p>
-        </section>
-
-        <section id="fun" class="gstyle">
-            <h1>Un projet "fun"</h1>
-            <div class="clear"></div>
-            <div class="techno">
-                <a href="http://validator.w3.org/check?uri=http%3A%2F%2Fonecalendar.valtech.fr%2F">
-                    <img src="http://www.w3.org/html/logo/badge/html5-badge-h-css3-semantics.png" alt="HTML5 Powered with CSS3 / Styling, and Semantics"
-                         title="HTML5 Powered with CSS3 / Styling, and Semantics"/>
-                </a>
-                <a href="http://www.scala-lang.org/">
-                    <img src="/assets/images/scala-logo.png" alt="scala language" title="scala language" />
-                </a>
-                <a href="http://www.playframework.org/">
-                    <img src="/assets/images/play_logo.png" alt="playframework 2" title="playframework 2" />
-                </a>
-                <a href="http://www.mongodb.org/">
-                    <img src="/assets/images/mongodb_logo.PNG" alt="mongodb NoSQL database" title="mongodb NoSQL database" />
-                </a>
-                <a href="http://coffeescript.org/">
-                    <img src="/assets/images/coffeescript_logo.png" alt="coffescript for javascript" title="coffescript for javascript" />
-                </a>
+@layout("À Propos") {
+        <div class="row">
+            <div class="large-3 columns">
+                <div id="contact" class="panel">
+                    <h5>Nous contacter</h5>
+                    <ul class="side-nav">
+                        <li><a href="mailto:onecalendartomeetthemall@@gmail.com" ><img src="/assets/images/gmail.png"></a></li>
+                        <li><a href="https://github.com/OneCalendar/OneCalendar"><img src="/assets/images/github_32.png"></a></li>
+                        <li><a href="https://twitter.com/intent/tweet?screen_name=OneCalendar_" class="twitter-mention-button" data-lang="fr">Tweet to @@OneCalendar_</a>
+                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                        </li>
+                    </ul>
+                </div>
+                <div id="valtech" class="panel">
+                    <img src="/assets/images/Valtech_Logo_Black.png"/>
+                    <p>
+                        <a href="http://www.valtech.fr">Valtech</a> participe au projet OneCalendar! en mettant à
+                        disposition de ses consultants du temps et une infrastructure.
+                    </p>
+                </div>
             </div>
-            <div class="fun-text">
+            <div class="large-9 columns">
+                <h3>Pourquoi One Calendar! To Meet Them All ?</h3>
+                <p>
+                    Vous avez probablement cherché un moyen de trouver un ensemble d'événements sur un sujet donné ?
+                    Vous avez dû vous rendre compte qu'il existait beaucoup de sources d'informations diverses, pas
+                    forcément structurées, et surtout rarement consultables directement depuis votre agenda.
+                    Nous pensons par exemple à <a href="http://www.agendadulibre.org/">l'Agenda du Libre</a>,
+                    des <a href="http://www.agenda-agile.org/">Agilistes</a>, les meetups, l'agenda
+                    <a href="https://sites.google.com/site/duchessfr/calendrier-conferences">JDuchess</a> ...
+                    et pour d'autres communautés il en existe sûrement plein d'autres.
+                </p>
+                <p>
+                    Il est complexe et chronophage de se tenir à jour de tous ces événements,
+                    et d'être prévenus, toujours trop tard pour s'inscrire. Pour les initiatives qui tentent d'agréger
+                    toutes les informations, c'est également très lourd à maintenir.
+                </p>
+                <p>
+                    L'idée est donc de simplifier tout ça en proposant un agrégateur d'agendas, qui va les "taguer", les stocker
+                    dans une structure afin de pouvoir les consulter, les filtrer et en faire des extractions.
+                    Pour commencer, sous la forme de flux <a href="http://fr.wikipedia.org/wiki/ICalendar">iCalendar</a>,
+                    standard de facto selon nous, pour les agendas.
+                </p>
+                <hr>
+                <h3>Un projet "fun"</h3>
+                <ul class="small-block-grid-2 large-block-grid-4">
+                    <li>
+                        <a href="http://coffeescript.org/">
+                            <img class="th" src="/assets/images/coffeescript_logo.png" alt="coffescript for javascript" title="coffescript for javascript" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.scala-lang.org/">
+                            <img class="th" src="/assets/images/scala-logo.png" alt="scala language" title="scala language" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.mongodb.org/">
+                            <img class="th" src="/assets/images/mongodb_logo.PNG" alt="mongodb NoSQL database" title="mongodb NoSQL database" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.playframework.org/">
+                            <img class="th" src="/assets/images/play_logo.png" alt="playframework 2" title="playframework 2" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://validator.w3.org/check?uri=http%3A%2F%2Fonecalendar.valtech.fr%2F">
+                            <img class="th" src="http://www.w3.org/html/logo/badge/html5-badge-h-css3-semantics.png" alt="HTML5 Powered with CSS3 / Styling, and Semantics"
+                                 title="HTML5 Powered with CSS3 / Styling, and Semantics"/>
+                        </a>
+                    </li>
+                </ul>
                 <p>
                     Tout un objectif en soi.
                     Nous avons voulu démontrer, à travers l'application One Calendar!, qu'avec des technos "fun" les équipes restent très productives et même plus productives
@@ -133,12 +93,15 @@
                     Un projet "fun" avec une équipe "agile", des professionnels passionés, une liberté d'agir, un cocktail qui nous semble particulièrement adapaté aux contraintes du métier de
                     créateur d'application informatique.
                 </p>
+                <hr>
+                <h3>Réalisé avec</h3>
+                <ul class="inline-list">
+                    <li><a href="http://www.scala-lang.org/">scala</a></li>
+                    <li><a href="http://www.playframework.org/">playframework</a></li>
+                    <li><a href="http://www.mongodb.org/">mongodb</a></li>
+                    <li><a href="http://coffeescript.org/">coffescript</a></li>
+                    <li><a href="http://validator.w3.org/check?uri=http%3A%2F%2Fonecalendar.valtech.fr%2F">html5/css3</a></li>
+                </ul>
             </div>
-        </section>
-    <div class="clear"></div>
-    </section>
-
-    <section id="footer">design with scala | playframework | mongodb | coffescript | html5/css3</section>
-
-</body>
-</html>
+        </div>
+}

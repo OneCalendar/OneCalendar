@@ -7,7 +7,7 @@ import org.joda.time.DateTime
 import io.Source._
 import models.Event
 
-object Slideshow extends OneCalendarController /*with Json*/ {
+object Slideshow extends Controller with MongoDBProdContext /*with Json*/ {
 
     def slideshow()(implicit now: () => Long = () => DateTime.now.getMillis) = Action {
         request =>

@@ -15,7 +15,7 @@
  */
 
 import scala.concurrent.duration._
-import controllers.OneCalendarController
+import controllers.MongoDBProdContext
 import org.joda.time.DateTime
 import play.api.Play.current
 import play.api._
@@ -26,7 +26,7 @@ import play.api.libs.concurrent._
 import service.{LoadDevoxx, LoadICalStream}
 import scala.concurrent.ExecutionContext.Implicits.global
 
-object Global extends GlobalSettings with OneCalendarController {
+object Global extends GlobalSettings with MongoDBProdContext {
 
     val loader: LoadICalStream = new LoadICalStream()
 
@@ -48,12 +48,8 @@ object Global extends GlobalSettings with OneCalendarController {
             Logger.trace("reload")
         }
 
-        Akka.system.scheduler.schedule(10 seconds, 2 hours) {
-            LoadDevoxx.parseLoad()
-        }
+        //Akka.system.scheduler.schedule(10 seconds, 2 hours) { LoadDevoxx.parseLoad() }
 
-        Akka.system.scheduler.schedule(5 seconds, 1 day) {
-            LoadEventbrite.parseLoad("scala")
-        }
+        Akka.system.scheduler.schedule(5 seconds, 1 day) { LoadEventbrite.parseLoad("scala") }
     }
 }
