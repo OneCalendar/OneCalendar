@@ -3,7 +3,8 @@ package api.eventbrite
 import org.scalatest.FunSuite
 import org.scalatest.matchers.ShouldMatchers
 import play.api.libs.json._
-import org.codehaus.jackson.JsonParseException
+import java.io.FileNotFoundException
+import com.fasterxml.jackson.core.JsonParseException
 
 class EventbriteJsonReaderTest extends FunSuite with ShouldMatchers with EventbriteJsonReader {
 
@@ -149,9 +150,7 @@ class EventbriteJsonReaderTest extends FunSuite with ShouldMatchers with Eventbr
     }
 
     test("should throw exception when stream is invalid") {
-        evaluating {
-            eventbriteEventReader.reads(Json.parse("""{toto}}}"""))
-        } should produce[JsonParseException]
+        evaluating { eventbriteEventReader.reads(Json.parse("""{toto}}}""")) } should produce[JsonParseException]
     }
 
     test("eventbriteResponseReader less summary") {
