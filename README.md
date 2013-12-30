@@ -36,25 +36,33 @@ It's a classical web layered application.
 
 # For developers
 
-### Tests js
-The js tests doesn't compile by themself [for now](http://github.com/ValtechTechno/OneCalendar/issues/53), so to transpile those scripts
+## To prepare the application
 
-`coffee -o test/front/javascripts/ -w -c test/front/coffee/`
-
-launch a browser on
-
-`test/front/jasmine/SpecRunner.html`
-
-### To launch the application
-* Have play2 (2.1.1) installed somewhere and add it to your path
+* Have node (> 0.8) installed
+* Have play2 (2.2.1) installed somewhere and add it to your path
 * Have mongo2 (2.0.6) started (only for run command)
     * create a folder named "data" where the following command is started
     * `mkdir data`
     * `mongod --dbpath ./data --noprealloc --smallfiles --nojournal --rest`
-* Have bower (1.2.7) installed and in your path
-    * Retrieve front dependencies with `bower install`
+* Retrieve front dependencies with `npm install` (and bower install build-in)
+
+## To prepare tests
+
+### To run front tests
+The js tests doesn't compile by themself [for now](http://github.com/ValtechTechno/OneCalendar/issues/53), so to transpile those scripts
+
+* `npm test`
+
+launch a browser on
+
+* `test/front/jasmine/SpecRunner.html`
+
+### To run play test
+
+* `play test`
+
+## To launch the application
 * Launch the application, as any play app
     * `play`
     * `$ compile`
-    * `$ test`
     * `$ run`

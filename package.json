@@ -3,9 +3,14 @@
   "version": "0.0.0",
   "dependencies": {},
   "devDependencies": {
-      "bower": "1.2.7"
+      "bower": "1.2.7",
+      "coffee-script" : "*"
   },
   "engines": {
     "node": ">=0.8.0"
+  },
+  "scripts" : {
+    "install" : "node_modules/.bin/bower install",
+    "test" : "node_modules/.bin/coffee -o test/front/javascripts/ -c test/front/coffee/"
   }
 }
