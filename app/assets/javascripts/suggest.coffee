@@ -134,12 +134,9 @@
       false
 
   formatIcalDate: (date) ->
-    dateT = date .split "T"
-    dateDay = dateT[0].split "-"
-    dateHour = dateT[1].split ":"
-    dateGmt = dateT[1].split("+")[1].split(":")[0]
+    begin = moment date
+    begin.format("DD/MM/YYYY à HH[h]mm")
 
-    "#{dateDay[2]} #{dateDay[1]} #{dateDay[0]} - #{dateHour[0]}:#{dateHour[1]}"
 
   retrieveEventNumber: ({url}) ->
     $.ajax(

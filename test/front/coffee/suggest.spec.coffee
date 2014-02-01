@@ -217,15 +217,15 @@ describe 'google suggest like', ->
     previewElement = $('#previewEvents .pricing-table')
 
     expect( $( previewElement[0] ).find(".price").text() ).toContain( "title 1")
-    expect( $( previewElement[0] ).find(".title").text() ).toContain( "19 04 2012 - 15:35")
+    expect( $( previewElement[0] ).find(".title").text() ).toContain( "19/04/2012 à 15h35")
     expect( $( previewElement[0] ).find(".description").text() ).toContain( "location 1")
 
     expect( $( previewElement[1] ).find(".price").text() ).toContain( "title 2")
-    expect( $( previewElement[1] ).find(".title").text() ).toContain( "19 04 2012 - 15:35")
+    expect( $( previewElement[1] ).find(".title").text() ).toContain( "19/04/2012 à 15h35")
     expect( $( previewElement[1] ).find(".description").text() ).toContain( "location 2")
 
     expect( $( previewElement[2] ).find(".price").text() ).toContain( "title 3")
-    expect( $( previewElement[2] ).find(".title").text() ).toContain( "19 04 2012 - 15:35")
+    expect( $( previewElement[2] ).find(".title").text() ).toContain( "19/04/2012 à 15h35")
     expect( $( previewElement[2] ).find(".description").text() ).toContain( "location 3")
 
   it "11. should display fail", ->
@@ -262,7 +262,7 @@ describe 'google suggest like', ->
     expect( $( "#callbackNoResult" ).css( 'display' ) ).toEqual( "none" )
 
   it "14. shoud format icalendar date format", ->
-    expect( SUGGEST.formatIcalDate "2012-04-19T14:30:00.000+02:00" ).toEqual( "19 04 2012 - 14:30" )
+    expect( SUGGEST.formatIcalDate "2012-04-19T14:30:00.000+02:00" ).toEqual( "19/04/2012 à 14h30" )
 
   it "15. should display events number", ->
     setFixtures '<span id="eventNumber"></span>'
