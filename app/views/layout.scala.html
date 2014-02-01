@@ -70,7 +70,7 @@
             <section class="top-bar-section">
                 <ul class="left">
                     <li><a href="@routes.EventsController.addEvents()">Ajouter un événement</a></li>
-                    <li><a href="@routes.EventsController.allEvents()" title="afficher tous les événements"><span id="eventNumber">N/A</span> événements à venir</a></li>
+                    <li><a href="@routes.Application.index()" title="afficher tous les événements"><span id="eventNumber">N/A</span> événements à venir</a></li>
                     <li class="divider"></li>
                     <li><a href="about">À propos</a></li>
                 </ul>
@@ -92,6 +92,7 @@
         <script src='@routes.Assets.at("bower_components/components-foundation/js/vendor/custom.modernizr.js")'></script>
         <script src='@routes.Assets.at("bower_components/components-foundation/js/foundation/foundation.js")'></script>
         <script src='@routes.Assets.at("bower_components/components-foundation/js/foundation/foundation.topbar.js")'></script>
+        <script src='@routes.Assets.at("bower_components/momentjs/moment.js")'></script>
         <script>
             $(document).foundation();
         </script>

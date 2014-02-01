@@ -30,7 +30,7 @@ import models.ICalStream
 class ICalStreamDaoTest  extends FunSuite with ShouldMatchers with MongoEmbedDatabase with BeforeAndAfterAll {
 
     var mongoProps: MongodProps = null
-    override def beforeAll() { mongoProps = mongoStart(27017) }
+    override def beforeAll() { mongoProps = mongoStart(27018) }
     override def afterAll() { mongoStop(mongoProps) }
 
     implicit val dbName: MongoDbName = "test"
@@ -38,7 +38,7 @@ class ICalStreamDaoTest  extends FunSuite with ShouldMatchers with MongoEmbedDat
         val connection: MongoConnection = {
             val options: MongoOptions = new MongoOptions()
             options.setConnectionsPerHost(2)
-            MongoConnection(new ServerAddress("127.0.0.1", 27017), options)
+            MongoConnection(new ServerAddress("127.0.0.1", 27018), options)
         }
 
         connection(dbName)

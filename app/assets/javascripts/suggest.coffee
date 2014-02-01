@@ -93,6 +93,53 @@
            <span class='date'></span>
            <span class='location'></span>" )
 
+  displayAllEvents : (data) ->
+     $('#previewEvents').empty()
+     $( "#callbackNoResult" ).hide()
+
+     console.log data
+
+     if data.size > 4
+       $("#resultSize").html("#{data.size - 4} autres évènements trouvés")
+     else
+       $("#resultSize").html("&nbsp;")
+
+     previewElement = $('#previewEvents')
+     events = data[0]
+
+     for i in [0..4]
+       if events[i] != undefined
+         previewElement.append( "
+           <li>
+             <ul class='pricing-table'>
+               <li class='title'>#{SUGGEST.formatIcalDate events[i].begin}</li>
+               <li class='price'>#{events[i].title}</li>
+               <li class='description'>#{events[i].location}</li>
+               <li class='cta-button'>
+                 <div class='row'>
+                   <ul id='subscription' class='button-group'>
+                     <div class='large-4 columns'>
+                       <li><a href='#' class='left ical'><img alt='flux texte' title='flux texte' src='/assets/images/text.png' class='large-centered'/></a></li>
+                     </div>
+                     <div class='large-4 columns'>
+                       <li><a href='#' class='centered gcal'><img alt='flux google agenda' title='flux google agenda'
+                                 src='http://www.google.com/calendar/images/ext/gc_button6_fr.gif' class='large-centered'/></a></li>
+                     </div>
+                     <div class='large-4 columns'>
+                       <li><a href='#' class='right webcal'><img alt='flux ical apple' title='flux ical apple'
+                               src='/assets/images/iCal_Icon.jpeg' class='large-centered'/></a></li>
+                     </div>
+                   </ul>
+                 </div>
+               </li>
+             </ul>
+           </li>" )
+       else
+         previewElement.append( "
+           <span class='title'></span>
+           <span class='date'></span>
+           <span class='location'></span>" )
+
   displayNoResult : (searchWord) ->
     $('#previewEvents').empty()
     $( '#subscription' ).hide()
@@ -110,6 +157,19 @@
     $('#devoxx a.gcal').attr('href', googleCalendarLinkPrefix + applicationBaseUrl + googleCalendarLinkSuffix)
     $('#devoxx a.webcal').attr('href', "webcal://#{applicationBaseUrl_withoutHttp}/events/AGILEFRANCE")
 
+  retrieveAllEvents: ({url}) ->
+    $.ajax(
+    {
+      type: 'GET'
+      url: "#{url}/events",
+      dataType: "json"
+      success: (data) ->
+        SUGGEST.displayAllEvents data
+      error: (data) ->
+        SUGGEST.displayNoResult $('#suggest').val()
+    }
+  )
+    
   retrievePreviewResults: ->
     $("#events").submit ->
       userSearch = $('#suggest').val().toUpperCase()
@@ -134,12 +194,12 @@
       false
 
   formatIcalDate: (date) ->
-    dateT = date .split "T"
-    dateDay = dateT[0].split "-"
-    dateHour = dateT[1].split ":"
-    dateGmt = dateT[1].split("+")[1].split(":")[0]
+    begin = moment date
+    if begin.minutes() == 0
+      begin.format("DD/MM/YYYY à HH[h]")
+    else
+      begin.format("DD/MM/YYYY à HH[h]mm")
 
-    "#{dateDay[2]} #{dateDay[1]} #{dateDay[0]} - #{dateHour[0]}:#{dateHour[1]}"
 
   retrieveEventNumber: ->
     $.ajax(
