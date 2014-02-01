@@ -19,6 +19,10 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+# TEST
+GET     /event/countSSE             controllers.EventsController.eventCountSSE
+GET     /event/add/:number          controllers.EventsController.addEvent(number: Int)
+
 # Home page
 GET     /                           controllers.EventsController.allEvents
 GET     /events/*keyWords           controllers.Application.findByTags(keyWords)

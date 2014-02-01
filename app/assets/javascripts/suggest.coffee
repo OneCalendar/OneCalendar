@@ -142,7 +142,7 @@
     "#{dateDay[2]} #{dateDay[1]} #{dateDay[0]} - #{dateHour[0]}:#{dateHour[1]}"
 
   retrieveEventNumber: ({url}) ->
-    $.ajax(
+    ###$.ajax(
       {
         type: 'GET',
         url: "#{url}/event/count",
@@ -152,7 +152,17 @@
         error: (data) ->
           SUGGEST.displayEventNumber {'eventNumber':'N/A'}
       }
-    )
+    )###
+
+    if (!!window.EventSource)
+      source = new EventSource('/event/countSSE')
+
+      source.onmessage = (event) ->
+        #console.log JSON.parse(event.data)
+        SUGGEST.displayEventNumber JSON.parse(event.data)
+
+      ###source.addEventListener 'projectCloned', (e) ->
+        $("#projectCloned").show()###
 
   displayEventNumber: (data) ->
     $("#eventNumber").text(data.eventNumber)

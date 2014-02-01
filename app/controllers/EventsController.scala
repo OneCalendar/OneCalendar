@@ -23,14 +23,46 @@ import play.api.data.Forms._
 import play.api.data._
 import play.api.mvc._
 
+import play.api.libs.iteratee.{Concurrent, Enumerator}
+import play.api.libs.iteratee.Concurrent.Channel
+import play.api.libs.json.{Json, JsValue}
+import play.api.libs.concurrent.Akka
+import akka.actor.{Props, Actor}
+import play.api.libs.EventSource.EventNameExtractor
+import play.api.libs.EventSource
+import play.api.Play.current
+
+object EventProducer {
+    def apply[T](playProducer: (Enumerator[T], Channel[T])) = new EventProducer(playProducer)
+}
+
+class EventProducer[T](playProducer: (Enumerator[T], Channel[T])) {
+    def enumerator: Enumerator[T] = playProducer._1
+    def channel: Channel[T] = playProducer._2
+}
+
+class TestActor(eventProcuder: EventProducer[JsValue]) extends Actor {
+    def receive = {
+        case ICalEventAdded(event) => eventProcuder.channel.push(Json.toJson(Map("eventNumber" -> event)))
+    }
+}
+
+case class ICalEventAdded(eventNumber: Int)
+
 object EventsController extends Controller with MongoDBProdContext {
+
+    val buildEventProducer = EventProducer(Concurrent.broadcast[JsValue])
+
+    val testActor = Akka.system.actorOf(Props(new TestActor(buildEventProducer)), "testActor")
+
     implicit val now = () => DateTime.now.getMillis
 
     def addEvents = Action( Ok( views.html.addEvents() ) )
 
     def addSingleEvent = Action { implicit request =>
-        val event:Event = eventForm.bindFromRequest.get
+        val event = eventForm.bindFromRequest.get
         EventDao.saveEvent(event)
+
         Ok( "évènement " + event + " ajouté dans la base 'OneCalendar'" )
     }
 
@@ -40,6 +72,20 @@ object EventsController extends Controller with MongoDBProdContext {
             .sortWith { (e1,e2) => e1.begin.compareTo(e2.begin) < 0 }
 
         Ok( views.html.index(events) )
+    }
+
+    def eventCountSSE(implicit now: () => Long = () => DateTime.now.getMillis) = Action {
+        implicit val eventNameExtractor = EventNameExtractor[JsValue]( (event) => event.\("event").asOpt[String] )
+
+        //val eventNumber = Json.toJson(Map("eventNumber" -> EventDao.countFutureEvents))
+
+        //Ok.feed(Enumerator.apply(eventNumber) &> EventSource()).as("text/event-stream")
+        Ok.feed(buildEventProducer.enumerator &> EventSource()).as("text/event-stream")
+    }
+
+    def addEvent(eventNumber: Int) = Action {
+        testActor ! ICalEventAdded(eventNumber)
+        Ok("cool raoul !")
     }
 
     // TODO tous les champs sont obligatoires sauf description

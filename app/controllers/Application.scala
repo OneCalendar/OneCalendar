@@ -25,6 +25,9 @@ import play.api.mvc._
 import play.api.libs.json._
 import play.api.libs.json.Writes._
 import java.net.URLDecoder
+import play.api.libs.EventSource.EventNameExtractor
+import play.api.libs.EventSource
+import play.api.libs.iteratee.Enumerator
 
 case class PreviewEvent(date: String, title: String, location: String)
 case class Preview (size: Long, eventList: Seq[PreviewEvent])
@@ -87,7 +90,6 @@ object Application extends Controller with MongoDBProdContext with Event$VEventM
     def eventCount(implicit now: () => Long = () => DateTime.now.getMillis) = Action {
         Ok("""{"eventNumber":"%s"}""".format(EventDao.countFutureEvents)).as("application/json")
     }
-
 
 	def findByIdsAndTags(ids: String, tags: String)(implicit dao: EventDaoTrait = EventDao, now: () => Long = () => DateTime.now.getMillis) = Action {
 		request =>
