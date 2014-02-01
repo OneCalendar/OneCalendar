@@ -148,8 +148,7 @@
     $( '#callbackNoResult' ).show()
 
   retrieveAllEvents: ({url}) ->
-    $.ajax(
-    {
+    $.ajax({
       type: 'GET'
       url: "#{url}/events",
       dataType: "json"
@@ -157,8 +156,7 @@
         SUGGEST.displayAllEvents data
       error: (data) ->
         SUGGEST.displayNoResult $('#suggest').val()
-    }
-  )
+    })
     
   retrievePreviewResults: ->
     $("#events").submit ->
