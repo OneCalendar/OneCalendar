@@ -16,6 +16,5 @@
 ##
 
 $(document).ready ->
-  SUGGEST.loadUrlDevoxxSection()
   SUGGEST.retrievePreviewResults()
   SUGGEST.retrieveEventNumber()

@@ -147,16 +147,6 @@
     $( '#callbackNoResult' ).text( "Le mot clé '#{searchWord}' ne donne aucun résultat dans la base OneCalendar" )
     $( '#callbackNoResult' ).show()
 
-  loadUrlDevoxxSection : ->
-    applicationBaseUrl = $(location).attr('href').substr(0, $(location).attr('href').length - "agilefrance".length - 1)
-    applicationBaseUrl_withoutHttp = applicationBaseUrl.split("//")[1]
-
-    googleCalendarLinkPrefix = "http://www.google.com/calendar/render?cid="
-    googleCalendarLinkSuffix = "%2Fevents%2FAGILEFRANCE"
-
-    $('#devoxx a.gcal').attr('href', googleCalendarLinkPrefix + applicationBaseUrl + googleCalendarLinkSuffix)
-    $('#devoxx a.webcal').attr('href', "webcal://#{applicationBaseUrl_withoutHttp}/events/AGILEFRANCE")
-
   retrieveAllEvents: ({url}) ->
     $.ajax(
     {
