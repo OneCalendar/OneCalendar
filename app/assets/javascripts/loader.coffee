@@ -20,3 +20,4 @@ $(document).ready ->
   SUGGEST.loadUrlDevoxxSection()
   SUGGEST.retrievePreviewResults url: url
   SUGGEST.retrieveEventNumber url: url
+  SUGGEST.retrieveAllEvents url: url
