@@ -22,7 +22,6 @@
 # Home page
 GET     /                           controllers.Application.index
 GET     /events/*keyWords           controllers.Application.findByTags(keyWords)
-GET     /events/                    controllers.Application.findWithoutTags()
 GET     /event/tags/*keyWords       controllers.Application.findPreviewByTags(keyWords)
 GET     /tags                       controllers.Application.fetchCloudOfTags
 GET     /event/count                controllers.Application.eventCount

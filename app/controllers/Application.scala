@@ -60,9 +60,6 @@ object Application extends Controller with MongoDBProdContext with Event$VEventM
     def findByTags(keyWords: String)(implicit now: () => Long = () => DateTime.now.getMillis) = Action {
         eventsAsIcs(EventDao.findByTag(splitTags(keyWords)))
     }
-    def findWithoutTags() = Action {
-        eventsAsIcs(EventDao.findAll())
-    }
 
     def findPreviewByTags(keyWords: String)(implicit dao: EventDaoTrait = EventDao, now: () => Long = () => DateTime.now.getMillis) = Action {
         val searchPreview: SearchPreview = dao.findPreviewByTag(splitTags(keyWords))
