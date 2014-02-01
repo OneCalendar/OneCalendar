@@ -110,7 +110,7 @@
     $('#devoxx a.gcal').attr('href', googleCalendarLinkPrefix + applicationBaseUrl + googleCalendarLinkSuffix)
     $('#devoxx a.webcal').attr('href', "webcal://#{applicationBaseUrl_withoutHttp}/events/AGILEFRANCE")
 
-  retrievePreviewResults: ({url}) ->
+  retrievePreviewResults: ->
     $("#events").submit ->
       userSearch = $('#suggest').val().toUpperCase()
 
@@ -118,7 +118,7 @@
         $.ajax(
           {
             type: 'GET'
-            url: "#{url}/event/tags/#{userSearch}",
+            url: "/event/tags/#{userSearch}",
             dataType: "json"
             success: (data) ->
               SUGGEST.displayPreviewResult data
@@ -141,11 +141,11 @@
 
     "#{dateDay[2]} #{dateDay[1]} #{dateDay[0]} - #{dateHour[0]}:#{dateHour[1]}"
 
-  retrieveEventNumber: ({url}) ->
+  retrieveEventNumber: ->
     $.ajax(
       {
         type: 'GET',
-        url: "#{url}/event/count",
+        url: "/event/count",
         dataType: "json",
         success: (data) ->
           SUGGEST.displayEventNumber data
