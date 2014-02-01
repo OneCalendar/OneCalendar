@@ -135,7 +135,10 @@
 
   formatIcalDate: (date) ->
     begin = moment date
-    begin.format("DD/MM/YYYY à HH[h]mm")
+    if begin.minutes() == 0
+      begin.format("DD/MM/YYYY à HH[h]")
+    else
+      begin.format("DD/MM/YYYY à HH[h]mm")
 
 
   retrieveEventNumber: ({url}) ->

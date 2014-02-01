@@ -263,6 +263,7 @@ describe 'google suggest like', ->
 
   it "14. shoud format icalendar date format", ->
     expect( SUGGEST.formatIcalDate "2012-04-19T14:30:00.000+02:00" ).toEqual( "19/04/2012 à 14h30" )
+    expect( SUGGEST.formatIcalDate "2012-04-19T14:00:00.000+02:00" ).toEqual( "19/04/2012 à 14h" )
 
   it "15. should display events number", ->
     setFixtures '<span id="eventNumber"></span>'
