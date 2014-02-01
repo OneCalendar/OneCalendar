@@ -16,8 +16,6 @@
 ##
 
 $(document).ready ->
-  ###SUGGEST.suggest()
-  SUGGEST.deleteSuggest()###
   url = $(location).attr('href').substr(0, $(location).attr('href').length - 1)
   SUGGEST.loadUrlDevoxxSection()
   SUGGEST.retrievePreviewResults url: url
