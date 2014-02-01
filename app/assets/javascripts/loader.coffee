@@ -18,3 +18,4 @@
 $(document).ready ->
   SUGGEST.retrievePreviewResults()
   SUGGEST.retrieveEventNumber()
+  SUGGEST.retrieveAllEvents()

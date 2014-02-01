@@ -147,10 +147,10 @@
     $( '#callbackNoResult' ).text( "Le mot clé '#{searchWord}' ne donne aucun résultat dans la base OneCalendar" )
     $( '#callbackNoResult' ).show()
 
-  retrieveAllEvents: ({url}) ->
+  retrieveAllEvents: ->
     $.ajax({
       type: 'GET'
-      url: "#{url}/events",
+      url: "/events",
       dataType: "json"
       success: (data) ->
         SUGGEST.displayAllEvents data
