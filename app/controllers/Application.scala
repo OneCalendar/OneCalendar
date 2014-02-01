@@ -58,10 +58,10 @@ object Application extends Controller with MongoDBProdContext with Event$VEventM
     }
 
     def findByTags(keyWords: String)(implicit now: () => Long = () => DateTime.now.getMillis) = Action {
-        renderEvents(EventDao.findByTag(splitTags(keyWords)))
+        eventsAsIcs(EventDao.findByTag(splitTags(keyWords)))
     }
     def findWithoutTags() = Action {
-        renderEvents(EventDao.findAll())
+        eventsAsIcs(EventDao.findAll())
     }
 
     def findPreviewByTags(keyWords: String)(implicit dao: EventDaoTrait = EventDao, now: () => Long = () => DateTime.now.getMillis) = Action {
@@ -96,7 +96,7 @@ object Application extends Controller with MongoDBProdContext with Event$VEventM
 			}
 	}
 
-	private def renderEvents(events: List[Event]) = {
+	private def eventsAsIcs(events: List[Event]) = {
         events match {
             case Nil => NotFound("Aucun évènement pour la recherche")
             case _ => Ok(ICalendar.buildCalendar(events)).as("text/calendar; charset=utf-8")
