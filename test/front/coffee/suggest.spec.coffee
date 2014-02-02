@@ -89,21 +89,7 @@ describe 'google suggest like', ->
 
     expect( $('#subscription').css('display') ).toEqual('none')
 
-  it "7. should add devoxx url in link for devoxx section", ->
-    setFixtures '''
-      <div id="devoxx">
-        <a class="ical"></a>
-        <a class="gcal"></a>
-        <a class="webcal"></a>
-      </div>
-    '''
-
-    SUGGEST.loadUrlDevoxxSection()
-
-    expect( $("#devoxx a.gcal").attr("href") ).toContain('%2Fevents%2FAGILEFRANCE')
-    expect( $("#devoxx a.webcal").attr("href") ).toContain('/events/AGILEFRANCE')
-
-  it "8. should call rest controller to retrieve preview result when user click on search", ->
+  it "7. should call rest controller to retrieve preview result when user click on search", ->
     setFixtures '''
             <form method="get" id="events" >
               <input type="text" id="suggest" value="a" />
@@ -131,7 +117,7 @@ describe 'google suggest like', ->
     expect(SUGGEST.displayPreviewResult).toHaveBeenCalled()
     expect(SUGGEST.displaySubscription).toHaveBeenCalledWith('A')
 
-  it "9. should call displayNoResult method when callback is error", ->
+  it "8. should call displayNoResult method when callback is error", ->
     setFixtures '''
             <form method="get" id="events" >
               <input type="text" id="suggest" value="a" />
@@ -157,7 +143,7 @@ describe 'google suggest like', ->
     expect($.ajax).toHaveBeenCalled()
     expect(SUGGEST.displayNoResult).toHaveBeenCalledWith('a')
 
-  it "10. should display preview", ->
+  it "9. should display preview", ->
     setFixtures '''
       <div class="row">
         <div class="large-12 columns">
@@ -228,7 +214,7 @@ describe 'google suggest like', ->
     expect( $( previewElement[2] ).find(".title").text() ).toContain( "19/04/2012 à 15h35")
     expect( $( previewElement[2] ).find(".description").text() ).toContain( "location 3")
 
-  it "11. should display fail", ->
+  it "10. should display fail", ->
     setFixtures '<div style="display:none;" id="callbackNoResult"></div>'
 
     SUGGEST.displayNoResult "toto"
@@ -236,13 +222,13 @@ describe 'google suggest like', ->
     expect( $('#callbackNoResult').css('display') ).toEqual('block')
     expect( $('#callbackNoResult') ).toHaveText( "Le mot clé 'toto' ne donne aucun résultat dans la base OneCalendar" )
 
-  it "12. should hide subscription div", ->
+  it "11. should hide subscription div", ->
     setFixtures '<div id="subscription"></div>'
 
     SUGGEST.displayNoResult "toto"
     expect( $('#subscription').css('display') ).toEqual('none')
 
-  it "13. should hide subscription & callbackNoResult div if user dont write anything when he click", ->
+  it "12. should hide subscription & callbackNoResult div if user dont write anything when he click", ->
     setFixtures '''
                 <form method="get" id="events" >
                   <input type="text" id="suggest" value="" />
@@ -261,11 +247,11 @@ describe 'google suggest like', ->
     expect( $( "#subscription" ).css( 'display' ) ).toEqual( "none" )
     expect( $( "#callbackNoResult" ).css( 'display' ) ).toEqual( "none" )
 
-  it "14. shoud format icalendar date format", ->
+  it "13. shoud format icalendar date format", ->
     expect( SUGGEST.formatIcalDate "2012-04-19T14:30:00.000+02:00" ).toEqual( "19/04/2012 à 14h30" )
     expect( SUGGEST.formatIcalDate "2012-04-19T14:00:00.000+02:00" ).toEqual( "19/04/2012 à 14h" )
 
-  it "15. should display events number", ->
+  it "14. should display events number", ->
     setFixtures '<span id="eventNumber"></span>'
 
     SUGGEST.displayEventNumber({eventNumber:0})
