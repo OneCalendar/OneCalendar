@@ -21,6 +21,8 @@ import java.net.URLEncoder
 import com.mongodb.casbah.MongoDB
 import play.api.libs.json.JsSuccess
 import models.SearchPreview
+import api.icalendar.ICalendar
+import java.io.ByteArrayInputStream
 
 class ApplicationTest extends FunSuite with ShouldMatchers with Mockito with CollectionsUtils with PreviewJsonWriter {
 
@@ -106,6 +108,35 @@ class ApplicationTest extends FunSuite with ShouldMatchers with Mockito with Col
         l.filter(uid => uid.validate[String].getOrElse(Nil) == "Z") should have size (1)
         l.filter(uid => uid.validate[String].getOrElse(Nil) == "W") should have size (1)
         l.filter(uid => uid.validate[String].getOrElse(Nil) == "y") should have size (1)
+    }
+
+    test("should find events by tags with ICAL format") {
+        val now = () => new DateTime(2009, 1, 1, 1, 1).getMillis
+        val dao = mock[EventDaoTrait]
+        when(dao.findByTag(Matchers.anyListOf(classOf[String]))(any[MongoDbName], any[MongoDB], any[() => Long]))
+            .thenReturn(List(
+            Event(uid = "Z", title = "title1", begin = new DateTime(2010, 1, 1, 1, 1), end = new DateTime(2010, 1, 2, 1, 1), location = "location1"),
+            Event(uid = "W", title = "title2", begin = new DateTime(2011, 1, 1, 1, 1), end = new DateTime(2011, 1, 2, 1, 1), location = "location2"),
+            Event(uid = "y", title = "title3", begin = new DateTime(2012, 1, 1, 1, 1), end = new DateTime(2012, 1, 2, 1, 1), location = "location3")
+        ))
+
+        val eventsResult = Application.findByTags("fake fake")(dao, now)(FakeRequest())
+
+        status(eventsResult) should be(OK)
+        val parsedFromICal = ICalendar.retrieveVEvents(new ByteArrayInputStream(contentAsBytes(eventsResult)))
+        parsedFromICal match {
+            case Left(cause) => fail(cause.e)
+            case Right(events) => {
+              events should have size (3)
+                val firstEvent = events.head
+                firstEvent.uid should be (Some("Z"))
+                firstEvent.summary should be (Some("title1"))
+                firstEvent.startDate should be (Some(new DateTime(2010, 1, 1, 1, 1)))
+                firstEvent.endDate should be (Some(new DateTime(2010, 1, 2, 1, 1)))
+                firstEvent.location should be (Some("location1"))
+                firstEvent.url should be (None)
+            }
+        }
     }
 
     implicit val previewEventReader: Reads[PreviewEvent] = Json.reads[PreviewEvent]

@@ -57,8 +57,8 @@ object Application extends Controller with MongoDBProdContext with Event$VEventM
         URLDecoder.decode(keyWords,"UTF-8").split(" ").toList
     }
 
-    def findByTags(keyWords: String)(implicit now: () => Long = () => DateTime.now.getMillis) = Action {
-        eventsAsIcs(EventDao.findByTag(splitTags(keyWords)))
+    def findByTags(keyWords: String)(implicit dao: EventDaoTrait = EventDao, now: () => Long = () => DateTime.now.getMillis) = Action {
+        eventsAsIcs(dao.findByTag(splitTags(keyWords)))
     }
 
     def findPreviewByTags(keyWords: String)(implicit dao: EventDaoTrait = EventDao, now: () => Long = () => DateTime.now.getMillis) = Action {
