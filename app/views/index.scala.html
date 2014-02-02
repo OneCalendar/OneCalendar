@@ -1,7 +1,5 @@
 @(events: List[Event])
 
-@import org.joda.time.format._
-
 @layout("Home") {
         <div class="row">
             <div class="small-centered large-5 columns">
@@ -34,24 +32,7 @@
             <div class="large-12 columns">
                 <hr />
                 <h3>Upcoming...</h3>
-                <ul class="large-block-grid-2" id="previewEvents">
-                    @events.map { event =>
-                    <li>
-                        <ul class="pricing-table">
-                            <li class="title">Du @DateTimeFormat.forPattern("dd/MM/yyyy HH:mm").print(event.begin)
-                                au @DateTimeFormat.forPattern("dd/MM/yyyy HH:mm").print(event.end)</li>
-                            <li class="price">@event.title</li>
-                            <li class="description">
-                                <ul class="inline-list">
-                                    @for(tag <- event.tags.map( _.toLowerCase.capitalize )) {
-                                    <li class="radius secondary label">@tag</li>
-                                    }
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    }
-                </ul><!-- end large block grid 2 -->
+                <ul class="large-block-grid-2" id="previewEvents"></ul>
             </div>
         </div>
         <div class="row">
