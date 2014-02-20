@@ -47,98 +47,10 @@
         $('#devoxx').hide()
 
   displayPreviewResult : (data) ->
-     $('#previewEvents').empty()
-     $( "#callbackNoResult" ).hide()
-
-     console.log data
-
-     if data.size > 4
-       $("#resultSize").html("#{data.size - 4} autres évènements trouvés")
-     else
-       $("#resultSize").html("&nbsp;")
-
-     previewElement = $('#previewEvents')
-     events = data.eventList
-
-     for i in [0..4]
-       if events[i] != undefined
-         previewElement.append( "
-           <li>
-             <ul class='pricing-table'>
-               <li class='title'>#{SUGGEST.formatIcalDate events[i].event.date}</li>
-               <li class='price'>#{events[i].event.title}</li>
-               <li class='description'>#{events[i].event.location}</li>
-               <li class='cta-button'>
-                 <div class='row'>
-                   <ul id='subscription' class='button-group'>
-                     <div class='large-4 columns'>
-                       <li><a href='#' class='left ical'><img alt='flux texte' title='flux texte' src='/assets/images/text.png' class='large-centered'/></a></li>
-                     </div>
-                     <div class='large-4 columns'>
-                       <li><a href='#' class='centered gcal'><img alt='flux google agenda' title='flux google agenda'
-                                 src='http://www.google.com/calendar/images/ext/gc_button6_fr.gif' class='large-centered'/></a></li>
-                     </div>
-                     <div class='large-4 columns'>
-                       <li><a href='#' class='right webcal'><img alt='flux ical apple' title='flux ical apple'
-                               src='/assets/images/iCal_Icon.jpeg' class='large-centered'/></a></li>
-                     </div>
-                   </ul>
-                 </div>
-               </li>
-             </ul>
-           </li>" )
-       else
-         previewElement.append( "
-           <span class='title'></span>
-           <span class='date'></span>
-           <span class='location'></span>" )
+     display(data.eventList,preview2display,data.size)
 
   displayAllEvents : (data) ->
-     $('#previewEvents').empty()
-     $( "#callbackNoResult" ).hide()
-
-     console.log data
-
-     if data.size > 4
-       $("#resultSize").html("#{data.size - 4} autres évènements trouvés")
-     else
-       $("#resultSize").html("&nbsp;")
-
-     previewElement = $('#previewEvents')
-     events = data[0]
-
-     for i in [0..4]
-       if events[i] != undefined
-         previewElement.append( "
-           <li>
-             <ul class='pricing-table'>
-               <li class='title'>#{SUGGEST.formatIcalDate events[i].begin}</li>
-               <li class='price'>#{events[i].title}</li>
-               <li class='description'>#{events[i].location}</li>
-               <li class='cta-button'>
-                 <div class='row'>
-                   <ul id='subscription' class='button-group'>
-                     <div class='large-4 columns'>
-                       <li><a href='#' class='left ical'><img alt='flux texte' title='flux texte' src='/assets/images/text.png' class='large-centered'/></a></li>
-                     </div>
-                     <div class='large-4 columns'>
-                       <li><a href='#' class='centered gcal'><img alt='flux google agenda' title='flux google agenda'
-                                 src='http://www.google.com/calendar/images/ext/gc_button6_fr.gif' class='large-centered'/></a></li>
-                     </div>
-                     <div class='large-4 columns'>
-                       <li><a href='#' class='right webcal'><img alt='flux ical apple' title='flux ical apple'
-                               src='/assets/images/iCal_Icon.jpeg' class='large-centered'/></a></li>
-                     </div>
-                   </ul>
-                 </div>
-               </li>
-             </ul>
-           </li>" )
-       else
-         previewElement.append( "
-           <span class='title'></span>
-           <span class='date'></span>
-           <span class='location'></span>" )
+    display(data[0],allEvent2display,data[0].length)
 
   displayNoResult : (searchWord) ->
     $('#previewEvents').empty()
@@ -154,7 +66,7 @@
       dataType: "json"
       success: (data) ->
         SUGGEST.displayAllEvents data
-      error: (data) ->
+      error: () ->
         SUGGEST.displayNoResult $('#suggest').val()
     })
     
@@ -205,3 +117,60 @@
   displayEventNumber: (data) ->
     $("#eventNumber").text(data.eventNumber)
 
+
+preview2display = (event) ->
+  date: SUGGEST.formatIcalDate event.event.date
+  title: event.event.title
+  location: event.event.location
+
+allEvent2display = (event) ->
+  date: SUGGEST.formatIcalDate event.date
+  title: event.title
+  location: event.location
+
+
+display = (events,transformer,sizeForAll) ->
+  $('#previewEvents').empty()
+  $( "#callbackNoResult" ).hide()
+
+  if sizeForAll > 4
+    $("#resultSize").html("#{sizeForAll - 4} autres évènements trouvés")
+  else
+    $("#resultSize").html("&nbsp;")
+
+  previewElement = $('#previewEvents')
+
+  for i in [0..4]
+    if events[i] != undefined
+
+      event = transformer(events[i])
+      previewElement.append( "
+                         <li>
+                           <ul class='pricing-table'>
+                             <li class='title'>#{event.date}</li>
+                             <li class='price'>#{event.title}</li>
+                             <li class='description'>#{event.location}</li>
+                             <li class='cta-button'>
+                               <div class='row'>
+                                 <ul id='subscription' class='button-group'>
+                                   <div class='large-4 columns'>
+                                     <li><a href='#' class='left ical'><img alt='flux texte' title='flux texte' src='/assets/images/text.png' class='large-centered'/></a></li>
+                                   </div>
+                                   <div class='large-4 columns'>
+                                     <li><a href='#' class='centered gcal'><img alt='flux google agenda' title='flux google agenda'
+                                               src='http://www.google.com/calendar/images/ext/gc_button6_fr.gif' class='large-centered'/></a></li>
+                                   </div>
+                                   <div class='large-4 columns'>
+                                     <li><a href='#' class='right webcal'><img alt='flux ical apple' title='flux ical apple'
+                                             src='/assets/images/iCal_Icon.jpeg' class='large-centered'/></a></li>
+                                   </div>
+                                 </ul>
+                               </div>
+                             </li>
+                           </ul>
+                         </li>" )
+    else
+      previewElement.append( "
+                         <span class='title'></span>
+                         <span class='date'></span>
+                         <span class='location'></span>" )
