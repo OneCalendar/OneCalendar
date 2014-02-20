@@ -42,8 +42,6 @@
         $('#subscription a.webcal').attr('href', "webcal://#{applicationBaseUrl_withoutHttp}/events/#{userSearch}")
 
         $('#subscription').show()
-        $('#cloudtags').hide()
-        $(".legend").hide()
         $('#devoxx').hide()
 
   displayPreviewResult : (data) ->
