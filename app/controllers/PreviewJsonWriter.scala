@@ -9,7 +9,6 @@ trait PreviewJsonWriter {
 
     implicit val eventWriter = new Writes[Event] {
         def writes(e: Event): JsValue = {
-            println("event")
             Json.obj(
                 "uid" -> e.uid,
                 "title" -> e.title,

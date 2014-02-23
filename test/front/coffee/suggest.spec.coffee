@@ -177,17 +177,17 @@ describe 'google suggest like', ->
     "size":"5",
     "eventList": [
       {"event":{
-      "date":"2012-04-19T15:35:00.000+02:00",
+      "begin":new Date(2012,3,19,15,35).getTime(),
       "title":"title 1",
       "location":"location 1"
       }},
       {"event":{
-      "date":"2012-04-19T15:35:00.000+02:00",
+      "begin":new Date(2012,3,19,15,35).getTime(),
       "title":"title 2",
       "location":"location 2"
       }},
       {"event":{
-      "date":"2012-04-19T15:35:00.000+02:00",
+      "begin":new Date(2012,3,19,15,35).getTime(),
       "title":"title 3",
       "location":"location 3"
       }}
@@ -195,6 +195,72 @@ describe 'google suggest like', ->
     }
 
     SUGGEST.displayPreviewResult callbackResponse
+
+    expect( $('#resultSize') ).toHaveText( "1 autres évènements trouvés" )
+
+    expect( $('#callbackNoResult').css('display') ).toEqual('none')
+
+    previewElement = $('#previewEvents .pricing-table')
+
+    expect( $( previewElement[0] ).find(".price").text() ).toContain( "title 1")
+    expect( $( previewElement[0] ).find(".title").text() ).toContain( "19/04/2012 à 15h35")
+    expect( $( previewElement[0] ).find(".description").text() ).toContain( "location 1")
+
+    expect( $( previewElement[1] ).find(".price").text() ).toContain( "title 2")
+    expect( $( previewElement[1] ).find(".title").text() ).toContain( "19/04/2012 à 15h35")
+    expect( $( previewElement[1] ).find(".description").text() ).toContain( "location 2")
+
+    expect( $( previewElement[2] ).find(".price").text() ).toContain( "title 3")
+    expect( $( previewElement[2] ).find(".title").text() ).toContain( "19/04/2012 à 15h35")
+    expect( $( previewElement[2] ).find(".description").text() ).toContain( "location 3")
+
+  it "9.2 should display upcoming", ->
+    setFixtures '''
+      <div class="row">
+        <div class="large-12 columns">
+          <hr />
+          <h3>Upcoming...</h3>
+          <ul class="large-block-grid-2" id="previewEvents">
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns" id="resultSize"></div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns" id="callbackNoResult"></div>
+      </div>
+      '''
+
+    callbackResponse = [
+      {
+      "begin":new Date(2012,3,19,15,35).getTime(),
+      "title":"title 1",
+      "location":"location 1"
+      },
+      {
+      "begin":new Date(2012,3,19,15,35).getTime(),
+      "title":"title 2",
+      "location":"location 2"
+      },
+      {
+      "begin":new Date(2012,3,19,15,35).getTime(),
+      "title":"title 3",
+      "location":"location 3"
+      },
+      {
+      "begin":new Date(2012,3,19,15,35).getTime(),
+      "title":"title 4",
+      "location":"location 4"
+      },
+      {
+      "begin":new Date(2012,3,19,15,35).getTime(),
+      "title":"title 5",
+      "location":"location 5"
+      }
+    ]
+
+    SUGGEST.displayAllEvents callbackResponse
 
     expect( $('#resultSize') ).toHaveText( "1 autres évènements trouvés" )
 

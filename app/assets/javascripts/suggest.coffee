@@ -48,7 +48,7 @@
      display(data.eventList,preview2display,data.size)
 
   displayAllEvents : (data) ->
-    display(data[0],allEvent2display,data[0].length)
+    display(data,allEvent2display,data.length)
 
   displayNoResult : (searchWord) ->
     $('#previewEvents').empty()
@@ -117,12 +117,12 @@
 
 
 preview2display = (event) ->
-  date: SUGGEST.formatIcalDate event.event.date
+  date: SUGGEST.formatIcalDate event.event.begin
   title: event.event.title
   location: event.event.location
 
 allEvent2display = (event) ->
-  date: SUGGEST.formatIcalDate event.date
+  date: SUGGEST.formatIcalDate event.begin
   title: event.title
   location: event.location
 

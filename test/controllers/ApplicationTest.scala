@@ -109,10 +109,8 @@ class ApplicationTest extends FunSuite with ShouldMatchers with Mockito with Col
 
         val tags = Application.findByIdsAndTags("fake", "fake")(dao, now)(FakeRequest())
         status(tags) should be(OK)
-        println(tags)
 
         val l = Json.parse(contentAsString(tags)) \\ "uid"
-        println(l)
         l.filter(uid => uid.validate[String].getOrElse(Nil) == "Z") should have size 1
         l.filter(uid => uid.validate[String].getOrElse(Nil) == "W") should have size 1
         l.filter(uid => uid.validate[String].getOrElse(Nil) == "y") should have size 1
