@@ -27,3 +27,7 @@ body {
 #events .button {
     height: 38px;
 }
+
+i.oc-icon {
+    font-size: 25px;
+}

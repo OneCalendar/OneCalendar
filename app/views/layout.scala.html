@@ -36,6 +36,7 @@
         <link rel="stylesheet" href='@routes.Assets.at("stylesheets/main.css")'>
         <link rel="stylesheet" type="text/css" href='@routes.Assets.at("bower_components/normalize-css/normalize.css")'>
         <link rel="stylesheet" type="text/css" href='@routes.Assets.at("bower_components/components-foundation/css/foundation.css")'>
+        <link rel="stylesheet" type="text/css" href='@routes.Assets.at("foundation-icons/foundation-icons.css")'>
         <script src='@routes.Assets.at("bower_components/jquery/jquery.js")'></script>
         <script src='@routes.Assets.at("javascripts/suggest.min.js")' type="text/javascript"></script>
         <script src='@routes.Assets.at("javascripts/loader.min.js")' type="text/javascript"></script>
@@ -74,7 +75,34 @@
                     <li class="divider"></li>
                     <li><a href="about">À propos</a></li>
                 </ul>
+                <ul class="right">
+                    <li class="has-dropdown not-click">
+                        <a href="#"><i class="fi-shopping-cart oc-icon"></i> (3)</a>
+                        <ul id="panier" class="dropdown">
+                            <li>
+                                <label>Flux :</label>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="row">
+                                        <div class="small-4 columns"><i class="fi-social-apple oc-icon"> </i></div>
+                                        <div class="small-4 columns"><i class="fi-calendar oc-icon"> </i></div>
+                                        <div class="small-4 columns"><i class="fi-clipboard-notes oc-icon"> </i></div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><label>Tags :</label></li>
+                            <li><label><span class="round secondary label">Java</span></label></li>
+                            <li><label><span class="round secondary label">Sql</span></label></li>
+                            <li><label><span class="round secondary label">Supercomputing</span></label></li>
+                            <li><label><span class="round secondary label">Development</span></label></li>
+                            <li><label><span class="round secondary label">Agile</span></label></li>
+                        </ul>
+                    </li>
+                </ul>
             </section>
+
         </nav>
         @body
         <footer class="row">
