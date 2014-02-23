@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "dependencies": {
         "modernizr": "~2.6.2",
-        "foundation-icons": "master",
+        "foundation-icon-fonts": "d596a3cfb3c0b8b46e56879ce9b4514efff4a60b",
         "components-foundation": "~5.0.2",
         "momentjs": "~2.5.1"
     },
