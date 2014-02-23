@@ -120,6 +120,7 @@ preview2display = (event) ->
   date: SUGGEST.formatIcalDate event.event.begin
   title: event.event.title
   location: event.event.location
+  description: event.event.description
   tags:tagsToCamel(event.event.tags)
 
 toCamel = (tag) ->
@@ -132,6 +133,7 @@ allEvent2display = (event) ->
   date: SUGGEST.formatIcalDate event.begin
   title: event.title
   location: event.location
+  description: event.description
   tags:tagsToCamel(event.tags)
 
 
@@ -159,6 +161,7 @@ display = (events,transformer,sizeForAll) ->
                              <li class='title'>#{event.date}</li>
                              <li class='price'>#{event.title}</li>
                              <li class='description'>#{event.location}</li>
+                             <li class='description oc-description oc-collapse'>#{event.description}</li>
                              <li class='text-center'> #{tagsContent} </li>
                            </ul>
                          </li>" )
@@ -167,3 +170,14 @@ display = (events,transformer,sizeForAll) ->
                          <span class='title'></span>
                          <span class='date'></span>
                          <span class='location'></span>" )
+
+    $("#previewEvents .pricing-table .oc-description").mouseenter(() ->
+      $(this).removeClass("oc-collapse",400,"easeOutBounce")
+      return
+    ).mouseleave(() ->
+      $(this).addClass("oc-collapse",400,"easeOutBounce")
+      return
+    ).click(() ->
+      $(this).toggleClass("oc-collapse",400,"easeOutBounce")
+      return
+    )

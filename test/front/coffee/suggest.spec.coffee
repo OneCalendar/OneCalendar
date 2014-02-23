@@ -238,6 +238,7 @@ describe 'google suggest like', ->
       "title":"title 1"
       "location":"location 1"
       "tags":["MYTAG","MYTAG2"]
+      "description":"lorem"
       },
       {
       "begin":new Date(2012,3,19,15,35).getTime()
@@ -273,7 +274,8 @@ describe 'google suggest like', ->
 
     expect( $( previewElement[0] ).find(".price").text() ).toContain( "title 1")
     expect( $( previewElement[0] ).find(".title").text() ).toContain( "19/04/2012 à 15h35")
-    expect( $( previewElement[0] ).find(".description").text() ).toContain( "location 1")
+    expect( $( previewElement[0] ).find(".description").first().text() ).toContain( "location 1")
+    expect( $( previewElement[0] ).find(".description").next().text() ).toContain( "lorem")
     expect( $( previewElement[0] ).find(".round.label").length ).toEqual( 2)
     expect( $( previewElement[0] ).find(".round.label").first().text() ).toEqual( "Mytag")
     expect( $( previewElement[0] ).find(".round.label").next().text() ).toEqual( "Mytag2")

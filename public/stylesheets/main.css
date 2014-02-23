@@ -31,3 +31,8 @@ body {
 i.oc-icon {
     font-size: 25px;
 }
+.oc-collapse {
+    max-height: 2.3em;
+    overflow: hidden;
+}
+
