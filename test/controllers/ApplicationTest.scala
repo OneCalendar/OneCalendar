@@ -43,20 +43,22 @@ class ApplicationTest extends FunSuite with ShouldMatchers with Mockito with Col
             Event(uid = "Z", title = "title1", begin = new DateTime(2010, 1, 1, 1, 1), end = new DateTime(2010, 1, 2, 1, 1), location = "location1"),
             Event(uid = "W", title = "title2", begin = new DateTime(2011, 1, 1, 1, 1), end = new DateTime(2011, 1, 2, 1, 1), location = "location2")
         )))
-        val tags = Application.findPreviewByTags(URLEncoder.encode( "with match","UTF-8"))(dao, now)(FakeRequest())
-        status(tags) should be(OK)
+        val events = Application.findPreviewByTags(URLEncoder.encode( "with match","UTF-8"))(dao, now)(FakeRequest())
+        status(events) should be(OK)
 
-        val result = previewReader.reads(Json.parse(contentAsString(tags)))
+        val result = eventListReader.reads(Json.parse(contentAsString(events)))
 
         result match {
             case JsSuccess(preview, _) => {
                 preview.size should be (size)
                 val event1 = preview.eventList.head
                 event1.title should be ("title1")
-                event1.date should be ("2010-01-01T01:01:00.000+01:00")
+                event1.begin should be (new DateTime(2010, 1, 1, 1, 1))
             }
             case JsError(errors) => fail("json n'est pas valide : " + errors)
         }
+
+
     }
 
     test("should find something with more than 3 elements and sort is not changed") {
@@ -73,7 +75,11 @@ class ApplicationTest extends FunSuite with ShouldMatchers with Mockito with Col
 
         status(tags) should be(OK)
 
-        val result = previewReader.reads(Json.parse(contentAsString(tags)))
+        val result = eventListReader.reads(Json.parse(contentAsString(tags)))
+
+        implicit val jodaOrdering = new Ordering[DateTime] {
+            def compare(x: DateTime, y: DateTime): Int = x.compareTo(y)
+        }
 
         result match {
             case JsSuccess(preview, _) => {
@@ -82,9 +88,9 @@ class ApplicationTest extends FunSuite with ShouldMatchers with Mockito with Col
 
                 val event1 = preview.eventList.head
                 event1.title should be ("title1")
-                event1.date should be ("2010-01-01T01:01:00.000+01:00")
+                event1.begin should be (new DateTime(2010, 1, 1, 1, 1))
 
-                val dates = preview.eventList.map(previewEvent => previewEvent.date)
+                val dates = preview.eventList.map(previewEvent => previewEvent.begin)
                 dates should be (dates.sorted)
             }
             case JsError(errors) => fail("json n'est pas valide : " + errors)
@@ -103,11 +109,13 @@ class ApplicationTest extends FunSuite with ShouldMatchers with Mockito with Col
 
         val tags = Application.findByIdsAndTags("fake", "fake")(dao, now)(FakeRequest())
         status(tags) should be(OK)
+        println(tags)
 
-        val l = Json.parse(contentAsString(tags)).apply(0) \\ "uid"
-        l.filter(uid => uid.validate[String].getOrElse(Nil) == "Z") should have size (1)
-        l.filter(uid => uid.validate[String].getOrElse(Nil) == "W") should have size (1)
-        l.filter(uid => uid.validate[String].getOrElse(Nil) == "y") should have size (1)
+        val l = Json.parse(contentAsString(tags)) \\ "uid"
+        println(l)
+        l.filter(uid => uid.validate[String].getOrElse(Nil) == "Z") should have size 1
+        l.filter(uid => uid.validate[String].getOrElse(Nil) == "W") should have size 1
+        l.filter(uid => uid.validate[String].getOrElse(Nil) == "y") should have size 1
     }
 
     test("should find events by tags with ICAL format") {
@@ -139,11 +147,11 @@ class ApplicationTest extends FunSuite with ShouldMatchers with Mockito with Col
         }
     }
 
-    implicit val previewEventReader: Reads[PreviewEvent] = Json.reads[PreviewEvent]
-    implicit val previewEventReaderWithEventTag = (__ \ "event").read(previewEventReader)
-    implicit val previewReader: Reads[Preview] = (
+    implicit val eventReader: Reads[Event] = Json.reads[Event]
+    implicit val eventReaderWithEventAttribute = (__ \ "event").read(eventReader)
+    implicit val eventListReader: Reads[SearchPreview] = (
         (__ \ "size").read[Long] and
-            (__ \ "eventList").read(Reads.seq(previewEventReaderWithEventTag))
-    )(Preview)
+            (__ \ "eventList").read(Reads.seq(eventReaderWithEventAttribute))
+    )(SearchPreview)
 
 }

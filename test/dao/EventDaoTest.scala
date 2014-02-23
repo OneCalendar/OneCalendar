@@ -105,8 +105,8 @@ class EventDaoTest extends FunSuite with ShouldMatchers with MongoEmbedDatabase 
 
         initFiveData()
 
-        EventDao.findPreviewByTag(List("devoxx", "java", "other")).previewEvents should have size 4
-        EventDao.findPreviewByTag(List("devoxx", "java", "other")).previewEvents should be(List(eventJava, eventDevoxx, eventOther, event4))
+        EventDao.findPreviewByTag(List("devoxx", "java", "other")).eventList should have size 4
+        EventDao.findPreviewByTag(List("devoxx", "java", "other")).eventList should be(List(eventJava, eventDevoxx, eventOther, event4))
     }
 
     test("should not return past events") {
@@ -114,8 +114,8 @@ class EventDaoTest extends FunSuite with ShouldMatchers with MongoEmbedDatabase 
 
         initFourData()
 
-        EventDao.findPreviewByTag(List("devoxx", "java", "other")).previewEvents should have size 3
-        EventDao.findPreviewByTag(List("devoxx", "java", "other")).previewEvents.map(_.begin.getMillis).foreach(_ should be >= (now()))
+        EventDao.findPreviewByTag(List("devoxx", "java", "other")).eventList should have size 3
+        EventDao.findPreviewByTag(List("devoxx", "java", "other")).eventList.map(_.begin.getMillis).foreach(_ should be >= (now()))
     }
 
     test("should find everything") {

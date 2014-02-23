@@ -37,7 +37,7 @@ object EventsController extends Controller with MongoDBProdContext {
     }
 
     def allEvents = Action { implicit request =>
-        import Application.implicitJSonWrites
+        import Application.eventWriter
 
         val events = EventDao.findAllFromNow()
             .map( event => event.copy(tags = event.tags.distinct) )  // TODO régler le problème à la source <=> mettre un Set sur tags et supprimé les doublons à l'écriture
