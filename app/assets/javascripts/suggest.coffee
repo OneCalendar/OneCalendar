@@ -120,11 +120,19 @@ preview2display = (event) ->
   date: SUGGEST.formatIcalDate event.event.begin
   title: event.event.title
   location: event.event.location
+  tags:tagsToCamel(event.event.tags)
+
+toCamel = (tag) ->
+  return tag.charAt(0).toUpperCase() + tag.substr(1).toLowerCase()
+
+tagsToCamel = (tags) ->
+  if tags != undefined then (toCamel tag for tag in tags) else []
 
 allEvent2display = (event) ->
   date: SUGGEST.formatIcalDate event.begin
   title: event.title
   location: event.location
+  tags:tagsToCamel(event.tags)
 
 
 display = (events,transformer,sizeForAll) ->
@@ -142,15 +150,16 @@ display = (events,transformer,sizeForAll) ->
     if events[i] != undefined
 
       event = transformer(events[i])
+
+      tagsContent = if event.tags != undefined then ("<span class='round label'>#{tag}</span>" for tag in event.tags when tag != undefined ).join(" ") else ""
+
       previewElement.append( "
                          <li>
                            <ul class='pricing-table'>
                              <li class='title'>#{event.date}</li>
                              <li class='price'>#{event.title}</li>
                              <li class='description'>#{event.location}</li>
-                             <li class='cta-button'>
-
-                             </li>
+                             <li class='text-center'> #{tagsContent} </li>
                            </ul>
                          </li>" )
     else
