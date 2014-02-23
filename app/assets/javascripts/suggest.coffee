@@ -153,7 +153,7 @@ display = (events,transformer,sizeForAll) ->
 
       event = transformer(events[i])
 
-      tagsContent = if event.tags != undefined then ("<span class='round label'>#{tag}</span>" for tag in event.tags when tag != undefined ).join(" ") else ""
+      tagsContent = if event.tags != undefined then ("<span class='round label secondary'>#{tag}</span>" for tag in event.tags when tag != undefined ).join(" ") else ""
 
       previewElement.append( "
                          <li>
@@ -163,6 +163,22 @@ display = (events,transformer,sizeForAll) ->
                              <li class='description'>#{event.location}</li>
                              <li class='description oc-description oc-collapse'>#{event.description}</li>
                              <li class='text-center'> #{tagsContent} </li>
+
+                                   <li class='cta-button'>
+                                     <div class='row'>
+                                       <ul id='subscription' class='button-group'>
+                                         <div class='large-4 columns'>
+                                           <li><a href='#' class='left ical button secondary'><i class='fi-clipboard-notes oc-icon'/> To&nbsp;copy </a></li>
+                                         </div>
+                                         <div class='large-4 columns'>
+                                           <li><a href='#' class='centered gcal button secondary'><i class='fi-calendar oc-icon'/> Google </a></li>
+                                         </div>
+                                         <div class='large-4 columns'>
+                                           <li><a href='#' class='right webcal button secondary'><i class='fi-social-apple oc-icon'/> Apple </a></li>
+                                         </div>
+                                       </ul>
+                                     </div>
+                                    </li>
                            </ul>
                          </li>" )
     else
