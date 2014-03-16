@@ -5,32 +5,32 @@ describe "handle the cloud of tags", ->
     data = ["tag1"]
     document.cloudThis(data)
     expect($("#cloudtags")).toContain "span.clickTag"
-    expect($("#cloudtags span.clickTag")).not.toBeVisible()
+    expect($("#cloudtags span.clickTag")).toBeHidden()
     expect($(".clickTag")).toHaveText("Tag1")
-    expect($(".clickTag")).toHandle("click")
 
   it "the cloud is visible on click on legend, test falsy green", ->
-    setFixtures "<div class='legend'> +
-     <img class='on' style='display:none'> +
-     <img class='off'>  +
-     </div>  +
+    setFixtures "<div class='legend'>
+     <img class='on' style='display:none' width='10' height='10'>
+     <img class='off' width='10' height='10'>
+     </div>
      <div id='cloudtags'/>"
 
     data = ["anyTag"]
     document.cloudThis(data)
     expect($(".legend")).toHandle "click"
     expect($(".legend img.off")).toBeVisible()
-    expect($(".legend img.on")).not.toBeVisible()
+    expect($(".legend img.on")).toBeHidden()
     $(".legend").trigger("click")
     expect($(".clickTag")).toBeVisible()
-    expect($(".legend img.off")).not.toBeVisible()
+    expect($(".legend img.off")).toBeHidden()
     expect($(".legend img.on")).toBeVisible()
+
 
   it "when a tag is clicked, it is added to input field", ->
     setFixtures "<input id='suggest' type='text'><div class='legend'/><div id='cloudtags'/>"
     data = ["tag1"]
     document.cloudThis(data)
-    expect($(".clickTag:first")).not.toBeVisible()
+    expect($(".clickTag:first")).toBeHidden()
     $(".legend").trigger("click")
     expect($("span.clickTag").length).toBe 1
     expect($(".clickTag:first")).toBeVisible()
