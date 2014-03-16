@@ -3,14 +3,20 @@
   "version": "0.0.0",
   "dependencies": {},
   "devDependencies": {
-      "bower": "1.2.7",
-      "coffee-script" : "*"
+    "bower": "1.2.7",
+    "coffee-script": "*",
+    "karma": "~0.10",
+    "karma-jasmine": "~0.1.0",
+    "phantomjs": "*",
+    "karma-phantomjs-launcher": "*",
+    "karma-coffee-preprocessor": "~0.2.1"
   },
   "engines": {
     "node": ">=0.8.0"
   },
-  "scripts" : {
-    "install" : "node_modules/.bin/bower install",
-    "test" : "node_modules/.bin/coffee -o test/front/javascripts/ -c test/front/coffee/"
+  "scripts": {
+    "test": "node_modules/karma/bin/karma start karma.conf.js --single-run --browsers PhantomJS",
+    "install": "node_modules/.bin/bower install",
+    "compile-tests": "mkdir -p target/scala-2.10/classes/public/javascripts/ && node_modules/.bin/coffee --output test/front/javascripts/ --compile test/front/coffee/ && node_modules/.bin/coffee --output target/scala-2.10/classes/public/javascripts/ --compile app/assets/javascripts/"
   }
 }
