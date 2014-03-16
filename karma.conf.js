@@ -15,9 +15,7 @@ module.exports = function(config) {
         // list of files / patterns to load in the browser
         files: [
             'public/bower_components/jquery/dist/jquery.min.js',
-            'public/bower_components/jquery/dist/jquery.min.map',
-            'public/bower_components/jquery/dist/jquery.js',
-            'public/bower_components/jasmine-jquery/lib/jasmine-jquery.js',
+            'https://github.com/downloads/velesin/jasmine-jquery/jasmine-jquery-1.3.2.js',
             'public/bower_components/momentjs/min/moment.min.js',
             'app/assets/javascripts/*.coffee',
             'test/front/coffee/*.spec.coffee'
@@ -78,8 +76,7 @@ module.exports = function(config) {
         coffeePreprocessor: {
             // options passed to the coffee compiler
             options: {
-                bare: true,
-                sourceMap: false
+                bare: true
             },
             // transforming the filenames
             transformPath: function(path) {

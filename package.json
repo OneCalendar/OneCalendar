@@ -5,14 +5,11 @@
   "devDependencies": {
     "bower": "1.2.7",
     "coffee-script": "*",
-    "karma": "~0.10",
-    "karma-jasmine": "~0.1.0",
+    "karma": "~0.12",
+    "karma-jasmine": "~0.1",
     "phantomjs": "*",
     "karma-phantomjs-launcher": "*",
-    "karma-coffee-preprocessor": "~0.2.1"
-  },
-  "engines": {
-    "node": ">=0.8.0"
+    "karma-coffee-preprocessor": "*"
   },
   "scripts": {
     "test": "node_modules/karma/bin/karma start karma.conf.js --single-run --browsers PhantomJS",
