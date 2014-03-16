@@ -11,6 +11,5 @@ $(document).ready ->
       $("#suggest").val(($("#suggest").val().trim() + " " + $(this).text().trim()).trim())
 
     $(".legend").click ->
-      $(".clickTag").toggle()
-      $(".legend img").toggle()
+      $(".clickTag,.legend img").toggle()
   $.ajax "/tags", success : document.cloudThis
