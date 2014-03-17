@@ -8,7 +8,7 @@ describe "handle the cloud of tags", ->
     expect($("#cloudtags span.clickTag")).toBeHidden()
     expect($(".clickTag")).toHaveText("Tag1")
 
-  it "the cloud is visible on click on legend, test falsy green", ->
+  it "the cloud is visible on click on legend", ->
     setFixtures "<div class='legend'>
      <img class='on' style='display:none' width='10' height='10'>
      <img class='off' width='10' height='10'>
