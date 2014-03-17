@@ -14,7 +14,7 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
-            'public/bower_components/jquery/dist/jquery.min.js',
+            'http://code.jquery.com/jquery-1.7.2.min.js',
             'node_modules/jasmine-jquery/lib/jasmine-jquery.js',
             'public/bower_components/momentjs/min/moment.min.js',
             'app/assets/javascripts/*.coffee',
