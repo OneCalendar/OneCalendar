@@ -177,17 +177,17 @@ describe 'google suggest like', ->
     "size":"5",
     "eventList": [
       {"event":{
-      "begin":new Date(2012,3,19,15,35).getTime(),
+      "begin":new Date("19 Apr 2012 15:35:00 +0200").getTime(),
       "title":"title 1",
       "location":"location 1"
       }},
       {"event":{
-      "begin":new Date(2012,3,19,15,35).getTime(),
+      "begin":new Date("19 Apr 2012 15:35:00 +0200").getTime(),
       "title":"title 2",
       "location":"location 2"
       }},
       {"event":{
-      "begin":new Date(2012,3,19,15,35).getTime(),
+      "begin":new Date("19 Apr 2012 15:35:00 +0200").getTime(),
       "title":"title 3",
       "location":"location 3"
       }}
@@ -234,31 +234,31 @@ describe 'google suggest like', ->
 
     callbackResponse = [
       {
-      "begin":new Date("Thu, 19 Avr 2012 15:35:00 +0200").getTime()
+      "begin":new Date("19 Apr 2012 15:35:00 +0200").getTime()
       "title":"title 1"
       "location":"location 1"
       "tags":["MYTAG","MYTAG2"]
       "description":"lorem"
       },
       {
-      "begin":new Date("Thu, 19 Avr 2012 15:35:00 +0200").getTime()
+      "begin":new Date("19 Apr 2012 15:35:00 +0200").getTime()
       "title":"title 2"
       "location":"location 2"
       "tags":["MYTAG2"]
       },
       {
-      "begin":new Date("Thu, 19 Avr 2012 15:35:00 +0200").getTime()
+      "begin":new Date("19 Apr 2012 15:35:00 +0200").getTime()
       "title":"title 3"
       "location":"location 3"
       "tags":["MYTAG"]
       },
       {
-      "begin":new Date("Thu, 19 Avr 2012 15:35:00 +0200").getTime()
+      "begin":new Date("19 Apr 2012 15:35:00 +0200").getTime()
       "title":"title 4"
       "location":"location 4"
       },
       {
-      "begin":new Date("Thu, 19 Avr 2012 15:35:00 +0200").getTime()
+      "begin":new Date("19 Apr 2012 15:35:00 +0200").getTime()
       "title":"title 5"
       "location":"location 5"
       }
