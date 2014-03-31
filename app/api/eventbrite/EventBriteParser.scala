@@ -27,30 +27,12 @@ object EventBriteParser extends EventbriteJsonReader {
         eventbriteResponseReader.reads(Json.parse(json)) match {
             case JsSuccess(events, _) =>
                 events.asOpt.getOrElse(Nil)
-                //if(result.isEmpty) throw new IllegalArgumentException("unknown response from eventbrite : " + json)
-                //else result
             case JsError(errors) => throw new IllegalArgumentException("unknown response from eventbrite : " + errors)
             case _ => throw new IllegalStateException("unknown response from eventbrite : " + json)
         }
 
-        /*parse[EventbriteResponse](json) match {
-            case EventbriteResponse(None, Some(eventbriteError)) =>
-                throw new IllegalArgumentException(eventbriteError.error_type.get + " : " + eventbriteError.error_message.get)
-            case EventbriteResponse(Some(events), _) => {
-                events
-                    .filter(_.event.isDefined)
-                    .map(_.event.get)
-            }
-            case unknownResponse => throw new IllegalStateException("unknown response from eventbrite : " + json)
-        }*/
     }
 }
-
-//case class EventbriteResponse(events: Option[Seq[EventOrSummary]], error: Option[EventBriteError])
-
-//case class EventbriteResponse(events: Seq[EventbriteEvent])
-
-//case class EventOrSummary(event: Option[EventbriteEvent], summary: Option[Any])
 
 case class EventbriteEvent(id: Option[String] = None,
                            title: Option[String] = None,
@@ -68,5 +50,3 @@ case class Venue(address: Option[String] = None,
                  region: Option[String] = None,
                  country: Option[String] = None,
                  postal_code: Option[String] = None)
-
-//case class EventBriteError(error_type: Option[String], error_message: Option[String])

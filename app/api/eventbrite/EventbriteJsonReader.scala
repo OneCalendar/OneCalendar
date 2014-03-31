@@ -15,7 +15,7 @@ trait EventbriteJsonReader {
     )(Venue)
 
     implicit val eventbriteEventReader: Reads[EventbriteEvent] =
-        /*(__ \ "event").read*/(
+        (
             (__ \ "id").readNullable[Long] and
             (__ \ "title").readNullable[String] and
             (__ \ "start_date").readNullable[String] and

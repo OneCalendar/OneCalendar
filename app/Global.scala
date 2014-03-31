@@ -23,7 +23,7 @@ import service._
 import models.ICalStream
 import dao.ICalStreamDao
 import play.api.libs.concurrent._
-import service.{LoadDevoxx, LoadICalStream}
+import service.{LoadICalStream}
 import scala.concurrent.ExecutionContext.Implicits.global
 
 object Global extends GlobalSettings with MongoDBProdContext {
@@ -47,8 +47,6 @@ object Global extends GlobalSettings with MongoDBProdContext {
 
             Logger.trace("reload")
         }
-
-        //Akka.system.scheduler.schedule(10 seconds, 2 hours) { LoadDevoxx.parseLoad() }
 
         Akka.system.scheduler.schedule(5 seconds, 1 day) { LoadEventbrite.parseLoad("scala") }
     }
