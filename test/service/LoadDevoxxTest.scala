@@ -3,9 +3,9 @@ package service
 import org.scalatest.FunSuite
 import org.scalatest.matchers.ClassicMatchers
 import play.api.libs.ws.{Response, WS}
-import scala.concurrent.{Await, Future}
-import scala.concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration._
+import scala.concurrent.{Await, Future}
 
 class LoadDevoxxTest extends FunSuite with ClassicMatchers {
     test("devoxx 2014") {
