@@ -48,6 +48,11 @@ object Global extends GlobalSettings with MongoDBProdContext {
             Logger.trace("reload")
         }
 
+        Akka.system.scheduler.schedule(30 seconds, 1 day) {
+            implicit val now = () => DateTime.now.getMillis
+            LoadDevoxx.load
+        }
+
         Akka.system.scheduler.schedule(5 seconds, 1 day) { LoadEventbrite.parseLoad("scala") }
     }
 }
