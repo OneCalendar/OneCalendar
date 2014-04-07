@@ -39,7 +39,6 @@ object LoadDevoxx {
     def load(implicit now: () => Long, dbName: MongoDbName,  pool: MongoDB) = {
         val devoxxUrl: String = "http://cfp.devoxx.fr/api/conferences/devoxxFR2014/schedules/"
 
-        deleteByOriginalStream(devoxxUrl)
 
         val future: Future[Set[Slot]] = WS.url(devoxxUrl).get()
             .map { resp => resp.json}
@@ -52,10 +51,11 @@ object LoadDevoxx {
                 slotsSet => slotsSet.flatMap { slots => slots.slots}
             }
 
-        val result: Set[Slot] = Await.result(future, 1 second)
+        val result: Set[Slot] = Await.result(future, 10 second)
 
         val events: Set[Event] = result.filter(_.talk.isDefined).map(slot2event(_, devoxxUrl))
         Logger.info("Chargement de %s events de devoxx".format(events.size))
+        deleteByOriginalStream(devoxxUrl)
         events.foreach(saveEvent)
     }
 
