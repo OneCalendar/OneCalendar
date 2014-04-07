@@ -41,7 +41,7 @@ object Global extends GlobalSettings with MongoDBProdContext {
                         implicit val now = () => DateTime.now.getMillis
                         loader.parseLoad(stream.url, stream.streamTags)
                     } catch {
-                        case e: Exception => Logger.error("something wrong with %s : ".format(stream.url) + e.getMessage)
+                        case e: Exception => Logger.error("something wrong with %s : ".format(stream.url), e)
                     }
             }
 
@@ -49,8 +49,14 @@ object Global extends GlobalSettings with MongoDBProdContext {
         }
 
         Akka.system.scheduler.schedule(30 seconds, 1 day) {
+            Logger.info("Chargement devoxx")
             implicit val now = () => DateTime.now.getMillis
-            LoadDevoxx.load
+
+            try {
+                LoadDevoxx.load
+            } catch {
+                case e: Exception => Logger.error("something wrong with load devoxx : ", e)
+            }
         }
 
         Akka.system.scheduler.schedule(5 seconds, 1 day) { LoadEventbrite.parseLoad("scala") }
