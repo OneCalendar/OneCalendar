@@ -9,19 +9,19 @@ object ApplicationBuild extends Build {
     val appVersion = "1.0-SNAPSHOT"
 
     val appDependencies = Seq(
-        "org.mongodb" %% "casbah" % "2.5.1",
-        "org.mnode.ical4j" % "ical4j" % "1.0.3" excludeAll(
+        "org.mongodb"               %% "casbah"                 % "2.5.1",
+        "org.mnode.ical4j"          %  "ical4j"                 % "1.0.3"       excludeAll(
             ExclusionRule(organization = "org.slf4j"),
             ExclusionRule(organization = "commons-logging")
         ),
-        "org.scalatest" %% "scalatest" % "1.9.1" % "test",
-        "org.mockito" % "mockito-all" % "1.9.0" % "test",
-        "com.github.simplyscala" %% "scalatest-embedmongo" % "0.2.1" % "test"
-    )
-                                                                //, mainLang = SCALA
-    val main = play.Project(appName, appVersion, appDependencies).settings(
+        "org.reactivemongo"         %% "reactivemongo"          % "0.10.0",
+        "org.reactivemongo"         %% "play2-reactivemongo"    % "0.10.2",
 
-        testOptions in Test := Nil, //to run scalatest in play2 console arghhhh!!!
+        "org.scalatest"             %% "scalatest"              % "2.1.0"       % "test",
+        "org.mockito"               % "mockito-all"             % "1.9.0"       % "test",
+        "com.github.simplyscala"    %% "scalatest-embedmongo"   % "0.2.1"       % "test"
+    )
+    val main = play.Project(appName, appVersion, appDependencies).settings(
 
         // available test resources in play2 classpath
         unmanagedClasspath in Test <+= ( baseDirectory ) map {

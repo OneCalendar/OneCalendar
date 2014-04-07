@@ -20,6 +20,7 @@ import com.mongodb.casbah.Imports._
 import org.joda.time.DateTime
 import util.matching.Regex
 import dao.framework.MongoDbModel
+import play.api.libs.json.Json
 
 object Event {
     //TODO explicit regex
@@ -44,6 +45,10 @@ case class Event( uid: String = "",
                   originalStream: Option[String] = None,
                   url:Option[String] = None
                  )
+
+object EventJsonFormatter {
+    implicit val eventFormat = Json.format[Event]
+}
 
 trait EventMongoMapper {
     implicit object EventMongoModel extends MongoDbModel[Event] {

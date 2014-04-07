@@ -1,48 +1,39 @@
-/*
- * Copyright 2012 OneCalendar
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package dao
 
-import framework.MongoConnectionProperties
-import MongoConnectionProperties._
-import framework.MongoOperations
-import org.joda.time.DateTime
-import org.scalatest.matchers.ShouldMatchers
-import org.scalatest.{BeforeAndAfter, BeforeAndAfterAll, FunSuite}
-import models.{EventMongoMapper, Event}
-import dao.EventRepository._
-import com.github.simplyscala.MongoEmbedDatabase
+import dao.framework.MongoOperations
+import models.{Event, EventMongoMapper}
+import dao.framework.MongoConnectionProperties._
 import com.mongodb.casbah.Imports._
+import com.mongodb.casbah.TypeImports._
+import com.github.simplyscala.{MongoEmbedDatabase, MongodProps}
 import com.mongodb.ServerAddress
 import com.mongodb.casbah.TypeImports.MongoOptions
-import com.github.simplyscala.MongodProps
+import org.joda.time.DateTime
+import org.scalatest.{BeforeAndAfter, BeforeAndAfterAll, FunSuite, Matchers}
+import EventRepository._
+import reactivemongo.api.{DB, DefaultDB, MongoDriver}
+import play.modules.reactivemongo.json.collection.JSONCollection
+import play.api.libs.json.Json
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.{Future, Await}
+import scala.concurrent.duration._
+import models.EventJsonFormatter._
 
-class EventDaoTest extends FunSuite with ShouldMatchers with MongoEmbedDatabase with BeforeAndAfterAll with BeforeAndAfter {
+class EventDaoBisTest extends FunSuite with Matchers with BeforeAndAfterAll with BeforeAndAfter
+    with MongoEmbedDatabase with DatabaseUtils {
 
     var mongoProps: MongodProps = null
     override def beforeAll() { mongoProps = mongoStart(27018) }
     override def afterAll() { mongoStop(mongoProps) }
 
-    before { EventDaoCleaner.drop() }
+    before { drop() }
+    //before { EventDaoCleaner.drop() }
 
-    object EventDaoCleaner extends MongoOperations with EventMongoMapper {
+    /*object EventDaoCleaner extends MongoOperations with EventMongoMapper {
         def drop()(implicit dbName: MongoDbName, connection: MongoDB) = delete(MongoDBObject())
-    }
+    }*/
 
-    implicit val dbName: MongoDbName = "test"
+    /*implicit val dbName: MongoDbName = "test"
     implicit val connection: MongoDB = {
         val connection: MongoConnection = {
             val options: MongoOptions = new MongoOptions()
@@ -51,7 +42,16 @@ class EventDaoTest extends FunSuite with ShouldMatchers with MongoEmbedDatabase 
         }
 
         connection(dbName)
+    }*/
+
+    implicit val connection: DB = {
+
+        val driver = new MongoDriver
+        val connection = driver.connection(List("localhost:27018"))
+        connection("test")
     }
+
+    implicit val eventsColl = connection[JSONCollection]("events")
 
     test("saving a new event") {
         val event: Event = Event(
@@ -64,59 +64,58 @@ class EventDaoTest extends FunSuite with ShouldMatchers with MongoEmbedDatabase 
             tags = List("JAVA", "DEVOXX")
         )
 
-        EventDao.saveEvent(event)
-        EventDao.findAll should be(List(event))
+        // When
+        Await.ready(EventDaoBis.saveEvent(event), 2 seconds)
+
+        // Then
+        val result = eventsColl.find(Json.obj()).cursor[Event].collect[List]()
+        Await.result(result, 2 seconds) shouldBe List(event)
     }
 
     test("should find event by tag 'devoxx'") {
-		implicit val now: () => Long = () => new DateTime(2010, 1, 1, 1, 1).getMillis
-		initData()
-        EventDao.findByTag(List("devoxx")) should be(List(eventDevoxx))
+        initData(eventDevoxx, eventJava)
+
+        // When
+        val result = EventDaoBis.findByTags(Set("devoxx"))
+
+        // Then
+        Await.result(result, 2 seconds) shouldBe Set(eventDevoxx)
     }
 
     test("should find events by tags 'devoxx' or 'java' ") {
-		implicit val now: () => Long = () => new DateTime(2010, 1, 1, 1, 1).getMillis
-        initData()
-        EventDao.findByTag(List("devoxx", "java")).map(_.tags).flatten.sorted should be(List("JAVA", "DEVOXX").sorted)
+        initData(eventDevoxx, eventJava)
+
+        // When
+        val result = EventDaoBis.findByTags(Set("devoxx", "java"))
+
+        // Then
+        Await.result(result, 2 seconds) shouldBe Set(eventDevoxx, eventJava)
     }
 
-    test("should find event even if it have not originalStream and url") {
-		implicit val now: () => Long = () => new DateTime(2010, 1, 1, 1, 1).getMillis
+    // TODO WHY THIS TEST ? for tstting option mapping ???
+    ignore("should find event even if it have not originalStream and url") {
+        /*implicit val now: () => Long = () => new DateTime(2010, 1, 1, 1, 1).getMillis
         val eventWithNoOrigStreamAndUrl =
             Event("uid", "title", DateTime.now().plusDays(1), DateTime.now().plusDays(2), "location", "description", tags = List("TEST"))
 
         EventDao.saveEvent(eventWithNoOrigStreamAndUrl)
 
         EventDao.findByTag(List("test")) should be(List(eventWithNoOrigStreamAndUrl))
-        EventDao.findAll() should be(List(eventWithNoOrigStreamAndUrl))
+        EventDao.findAll() should be(List(eventWithNoOrigStreamAndUrl))*/
     }
 
-    test("should not fail when event found without uid but which is in database") {
-        val now: DateTime = new DateTime(2012, 1, 1, 1, 1)
-		implicit val fnow: () => Long = () => new DateTime(2010, 1, 1, 1, 1).getMillis
+
+    // TODO pass only by EventDao to store Event case class, then uid = null it is not possible, or uis become Option[String] instead of String
+    ignore("should not fail when event found without uid but which is in database") {
+        /*val now: DateTime = new DateTime(2012, 1, 1, 1, 1)
+        //implicit val fnow: () => Long = () => new DateTime(2010, 1, 1, 1, 1).getMillis
 
         EventDao.saveEvent(Event(uid = null, tags = List("NO_UID"), begin = now, end = now))
 
-        EventDao.findByTag(List("NO_UID")) should be(List(Event(uid = "", tags = List("NO_UID"), begin = now, end = now)))
+        EventDao.findByTag(List("NO_UID")) should be(List(Event(uid = "", tags = List("NO_UID"), begin = now, end = now)))*/
     }
 
-    test("should find 4 first events by tags 'devoxx', 'java' or other ") {
-        implicit val now: () => Long = () => new DateTime(2010, 1, 1, 1, 1).getMillis
-
-        initFiveData()
-
-        EventDao.findPreviewByTag(List("devoxx", "java", "other")).eventList should have size 4
-        EventDao.findPreviewByTag(List("devoxx", "java", "other")).eventList should be(List(eventJava, eventDevoxx, eventOther, event4))
-    }
-
-    test("should not return past events") {
-        implicit val now: () => Long = () => new DateTime(2012, 4, 20, 0, 0, 0, 0).getMillis
-
-        initFourData()
-
-        EventDao.findPreviewByTag(List("devoxx", "java", "other")).eventList should have size 3
-        EventDao.findPreviewByTag(List("devoxx", "java", "other")).eventList.map(_.begin.getMillis).foreach(_ should be >= (now()))
-    }
+    /*
 
     test("should find everything") {
         (1 to 50).foreach(
@@ -221,17 +220,17 @@ class EventDaoTest extends FunSuite with ShouldMatchers with MongoEmbedDatabase 
         EventDao.countFutureEvents should be(1)
     }
 
-	test("should find events by tags or event id") {
-		implicit val now: () => Long = () => new DateTime(2011, 5, 1, 1, 1).getMillis
+    test("should find events by tags or event id") {
+        implicit val now: () => Long = () => new DateTime(2011, 5, 1, 1, 1).getMillis
 
-		val tags = List("OTHER", "JAVA")
-		val ids = List("NEW")
-		initFiveData()
+        val tags = List("OTHER", "JAVA")
+        val ids = List("NEW")
+        initFiveData()
 
-		EventDao.findByIdsAndTags(ids, tags).map(e => (e.uid, e.tags)) should be(List(newEvent, eventJava, eventOther, event4).map(e => (e.uid, e.tags)))
-	}
+        EventDao.findByIdsAndTags(ids, tags).map(e => (e.uid, e.tags)) should be(List(newEvent, eventJava, eventOther, event4).map(e => (e.uid, e.tags)))
+    }*/
 
-    private def initData() {
+    /*private def initData() {
         EventDao.saveEvent(eventDevoxx)
         EventDao.saveEvent(eventJava)
     }
@@ -249,10 +248,16 @@ class EventDaoTest extends FunSuite with ShouldMatchers with MongoEmbedDatabase 
         EventDao.saveEvent(eventOther)
         EventDao.saveEvent(event4)
         EventDao.saveEvent(newEvent)
-    }
+    }*/
 }
 
-object EventRepositoryBis {
+trait DatabaseUtils {
+    def drop()(implicit eventsColl: JSONCollection) = Await.ready(eventsColl.drop(), 2 seconds)
+    def initData(events: Event*)(implicit eventsColl: JSONCollection) =
+        events.foreach { event => Await.ready(eventsColl.save(event), 2 seconds) }
+}
+
+object EventRepository {
     val eventDevoxx: Event = Event(
         uid = "1",
         title = "BOF",
