@@ -24,7 +24,7 @@ import framework.MongoOperations
 import models._
 import play.api.Logger
 import models.SearchPreview
-import org.joda.time.DateTime
+import scala.deprecated
 
 object EventDao extends CollectionsUtils with EventDaoTrait with MongoOperations with EventMongoMapper {
 
@@ -34,18 +34,22 @@ object EventDao extends CollectionsUtils with EventDaoTrait with MongoOperations
 
 	val EVENT_ID = "uid"
 
+    @deprecated("replaced in EventDaoBis")
 	def deleteByOriginalStream(originalStream: String)
                               (implicit dbName: MongoDbName, connection: MongoDB, now: () => Long) =
         delete(DBObject("originalStream" -> originalStream))
 
+    @deprecated("replaced in EventDaoBis")
     def saveEvent(event: Event)(implicit dbName: MongoDbName, connection: MongoDB) = save(event)
 
+    @deprecated("replaced in EventDaoBis")
     def findByTag(tags: List[String])(implicit dbName: MongoDbName, connection: MongoDB, now: () => Long): List[Event] = {
         val query = ("tags" $in tags.map(_.toUpperCase)) ++ ( "begin" $gt now() )
         log.debug("query find by tag %s".format(query))
         find[Event](query)
     }
 
+    @deprecated("replaced in EventDaoBis")
     def findPreviewByTag(tags: List[String])
                         (implicit dbName: MongoDbName, connection: MongoDB, now: () => Long): SearchPreview = {
         val query = ( "tags" $in tags.map(_.toUpperCase) ) ++ ( "begin" $gt now() )
@@ -56,8 +60,10 @@ object EventDao extends CollectionsUtils with EventDaoTrait with MongoOperations
         SearchPreview(c, find[Event](query, sortByBeginDate, PREVIEW_SIZE))
     }
 
+    @deprecated("use only in test code")
     def findAll()(implicit dbName: MongoDbName, connection: MongoDB): List[Event] = find[Event](MongoDBObject())
 
+    @deprecated("replaced in EventDaoBis")
     def findAllFromNow()(implicit dbName: MongoDbName, connection: MongoDB, now: () => Long) = {
         val query = "begin" $gt now()
         find[Event](query)
@@ -68,11 +74,13 @@ object EventDao extends CollectionsUtils with EventDaoTrait with MongoOperations
         retrieveMongoCollection(EventMongoModel.collectionName).distinct("tags", query).toList.asInstanceOf[List[String]]
     }
 
+    @deprecated("replaced in EventDaoBis")
     def countFutureEvents()(implicit dbName: MongoDbName, connection: MongoDB, now: () => Long): Long = {
         val query = "begin" $gt now()
         count(query)
     }
 
+    @deprecated("It is not clear what this method exist")
 	def findByIdsAndTags(ids: List[String], tags: List[String])(implicit dbName: MongoDbName, connection: MongoDB, now: () => Long): List[Event] = {
 		val query = EVENT_ID $in ids
 		EventDao.find(query) ++ EventDao.findByTag(tags)
@@ -87,6 +95,7 @@ object EventDao extends CollectionsUtils with EventDaoTrait with MongoOperations
      * Time
      * >-------------|xxxx$xxx|-------->
      */
+    @deprecated("use only in test code")
     def closestEvents(offset: Int = 5, afterset : Int = 2, tags:List[String]= List.empty)
                      (implicit dbName: MongoDbName, connection: MongoDB, now: () => Long): List[Event] = {
         import scala.concurrent.duration._
