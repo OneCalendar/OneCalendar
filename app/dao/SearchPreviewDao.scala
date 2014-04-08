@@ -15,9 +15,9 @@ import org.joda.time.DateTime
 object SearchPreviewDao {
     private val PREVIEW_SIZE = 4
 
-    def findPreviewByTag(tags: Set[String])(implicit db: DB, now: DateTime): Future[SearchPreview] = {
-        val bsonQuery = BSONDocument("tags" -> BSONDocument("$in" -> tags.map(_.toUpperCase))) ++ BSONDocument("begin" -> BSONDocument("$gt" -> now.getMillis))
-        val jsonQuery = Json.obj("tags" -> Json.obj("$in" -> tags.map(_.toUpperCase))) ++ Json.obj("begin" -> Json.obj("$gt" -> now.getMillis))
+    def findPreviewByTag(tags: Set[String], sinceDate: DateTime = DateTime.now())(implicit db: DB): Future[SearchPreview] = {
+        val bsonQuery = BSONDocument("tags" -> BSONDocument("$in" -> tags.map(_.toUpperCase))) ++ BSONDocument("begin" -> BSONDocument("$gt" -> sinceDate.getMillis))
+        val jsonQuery = Json.obj("tags" -> Json.obj("$in" -> tags.map(_.toUpperCase))) ++ Json.obj("begin" -> Json.obj("$gt" -> sinceDate.getMillis))
 
         for {
             events <- db[JSONCollection]("events").find(jsonQuery)

@@ -16,4 +16,4 @@
 
 package models
 
-case class SearchPreview( size: Long, eventList: Seq[Event] )
+case class SearchPreview( size: Long, eventList: Seq[Event] )  // TODO use Set

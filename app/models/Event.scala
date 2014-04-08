@@ -41,7 +41,7 @@ case class Event( uid: String = "",
                   end: DateTime,
                   location: String = "",
                   description: String = "",
-                  tags: List[String] = Nil,
+                  tags: List[String] = Nil,  // TODO use Set
                   originalStream: Option[String] = None,
                   url:Option[String] = None
                  )

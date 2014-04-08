@@ -69,6 +69,7 @@ object EventDao extends CollectionsUtils with EventDaoTrait with MongoOperations
         find[Event](query)
     }
 
+    @deprecated("replaced in EventDaoBis")
     def listTags()(implicit dbName: MongoDbName, connection: MongoDB, now: () => Long): List[String] = {
         val query = "begin" $gt now()
         retrieveMongoCollection(EventMongoModel.collectionName).distinct("tags", query).toList.asInstanceOf[List[String]]
@@ -80,7 +81,7 @@ object EventDao extends CollectionsUtils with EventDaoTrait with MongoOperations
         count(query)
     }
 
-    @deprecated("It is not clear what this method exist")
+    @deprecated("It is not clear why this method exist")
 	def findByIdsAndTags(ids: List[String], tags: List[String])(implicit dbName: MongoDbName, connection: MongoDB, now: () => Long): List[Event] = {
 		val query = EVENT_ID $in ids
 		EventDao.find(query) ++ EventDao.findByTag(tags)

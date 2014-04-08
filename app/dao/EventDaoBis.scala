@@ -9,7 +9,6 @@ import scala.concurrent.Future
 import play.api.libs.json.Json
 import org.joda.time.DateTime
 import reactivemongo.core.commands.{RawCommand, Count}
-import reactivemongo.api.collections.default.BSONCollection
 import reactivemongo.bson.BSONDocument
 
 object EventDaoBis {
@@ -29,20 +28,14 @@ object EventDaoBis {
             .collect[Set]()
     }
 
-    /*def listTags()(implicit db: DB): Future[Set[String]] = {
-        //        retrieveMongoCollection(EventMongoModel.collectionName).distinct("tags", query).toList.asInstanceOf[List[String]]
+    def listTags(sinceDate: DateTime = DateTime.now())(implicit db: DB): Future[Set[String]] = {
+        val command = RawCommand(BSONDocument("distinct" -> "events",
+                                              "key" -> "tags",
+                                              "query" -> BSONDocument(
+                                                  "begin" -> BSONDocument("$gt" -> sinceDate.getMillis))))
 
-        //db.command(Count("events", Option(bsonQuery)))
-        //db[BSONCollection]("events").find("tags").cursor[String].collect[Set]()
-        val command = BSONDocument("aggregate" -> "orders",
-            "$distinct" -> "tags"
-        )
-
-        db.command(RawCommand(command)).map { bson =>
-            println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ : " + bson)
-            Set()
-        }
-    }*/
+        db.command(command).map { bson => bson.getAs[Set[String]]("values").getOrElse(Set()) }
+    }
 
     def countFutureEvents(sinceDate: DateTime = DateTime.now())(implicit db: DB): Future[Int] = {
         val bsonQuery = BSONDocument("begin" -> BSONDocument("$gt" -> sinceDate.getMillis))

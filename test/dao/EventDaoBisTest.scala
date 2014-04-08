@@ -4,7 +4,7 @@ import models.Event
 import com.github.simplyscala.{MongoEmbedDatabase, MongodProps}
 import org.joda.time.DateTime
 import org.scalatest.{BeforeAndAfter, BeforeAndAfterAll, FunSuite, Matchers}
-import EventRepository._
+import EventRepositoryBis._
 import reactivemongo.api.{DB, MongoDriver}
 import play.modules.reactivemongo.json.collection.JSONCollection
 import play.api.libs.json.Json
@@ -75,10 +75,22 @@ class EventDaoBisTest extends FunSuite with Matchers with BeforeAndAfterAll with
         Await.result(EventDaoBis.findAllFromNow(), 2 seconds) shouldBe Set(newEvent)
     }
 
-    test("count futur events") {
+    test("count future events") {
         initData(oldEvent, newEvent)
 
-        Await.result(EventDaoBis.countFutureEvents(new DateTime(2012, 5, 1, 1, 1)), 2 seconds) shouldBe 1
+        Await.result(EventDaoBis.countFutureEvents(), 2 seconds) shouldBe 1
+    }
+
+    test("should list tags") {
+        initData(eventDevoxx, eventJava)
+
+        Await.result(EventDaoBis.listTags(), 2 seconds) shouldBe Set("DEVOXX", "JAVA")
+    }
+
+    test("should not list old tags") {
+        initData(oldEvent, newEvent)
+
+        Await.result(EventDaoBis.listTags(), 2 seconds) shouldBe Set("NEW")
     }
 
     test("delete by originalStream will drop all") {
@@ -143,18 +155,6 @@ class EventDaoBisTest extends FunSuite with Matchers with BeforeAndAfterAll with
 
         EventDao.findByTag(List("NO_UID")) should be(List(Event(uid = "", tags = List("NO_UID"), begin = now, end = now)))*/
     }
-
-    /*
-    test("should not list old tags") {
-        implicit val now: () => Long = () => new DateTime(2012, 5, 1, 1, 1).getMillis
-
-        initData(oldEvent, newEvent)
-
-        Await.result(EventDaoBis.listTags(), 2 seconds) shouldBe Set("NEW")
-        //val tags: List[String] = EventDao.listTags()
-        //tags should be(List("NEW"))
-    }
-    */
 }
 
 trait DatabaseUtils {
@@ -163,20 +163,20 @@ trait DatabaseUtils {
         events.foreach { event => Await.ready(eventsColl.save(event), 2 seconds) }
 }
 
-object EventRepository {
+object EventRepositoryBis {
     val eventDevoxx: Event = Event(
         uid = "1",
         title = "BOF",
-        begin = new DateTime(2012, 4, 20, 10, 0, 0, 0),
-        end = new DateTime(2012, 4, 20, 11, 0, 0, 0),
+        begin = DateTime.now().plusDays(1),
+        end = DateTime.now().plusDays(2),
         tags = List("DEVOXX")
     )
 
     val eventJava: Event = Event(
         uid = "2",
         title = "BOF",
-        begin = new DateTime(2012, 4, 19, 10, 0, 0, 0),
-        end = new DateTime(2012, 4, 19, 11, 0, 0, 0),
+        begin = DateTime.now().plusDays(1),
+        end = DateTime.now().plusDays(2),
         tags = List("JAVA")
     )
 
@@ -199,16 +199,16 @@ object EventRepository {
     val oldEvent: Event = Event(
         uid = "4",
         title = "BOF",
-        begin = new DateTime(2012, 4, 21, 15, 0, 0, 0),
-        end = new DateTime(2012, 4, 21, 16, 0, 0, 0),
+        begin = new DateTime().minusDays(2),
+        end = new DateTime().minusDays(2),
         tags = List("4", "OTHER")
     )
 
     val newEvent: Event = Event(
         uid = "NEW",
         title = "NEW",
-        begin = new DateTime().plusDays(10),
-        end = new DateTime().plusDays(10),
+        begin = new DateTime().plusDays(1),
+        end = new DateTime().plusDays(1),
         tags = List("NEW")
     )
 }

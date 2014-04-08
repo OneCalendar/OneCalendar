@@ -2,7 +2,7 @@ package dao
 
 import org.scalatest.{BeforeAndAfter, BeforeAndAfterAll, Matchers, FunSuite}
 import com.github.simplyscala.{MongodProps, MongoEmbedDatabase}
-import dao.EventRepository._
+import dao.EventRepositoryBis._
 import reactivemongo.api.{MongoDriver, DB}
 import play.modules.reactivemongo.json.collection.JSONCollection
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -30,33 +30,33 @@ class SearchPreviewDaoTest extends FunSuite with Matchers with BeforeAndAfterAll
     implicit val eventsColl = connection[JSONCollection]("events")
 
     test("should find 4 first events by tags 'devoxx', 'java' or other ") {
-        implicit val now = new DateTime(2010, 1, 1, 1, 1)
+        val sinceDate = new DateTime(2010, 1, 1, 1, 1)
 
         initData(eventDevoxx, eventJava, eventOther, event4, newEvent)
 
         // When
-        val fResult = SearchPreviewDao.findPreviewByTag(Set("devoxx", "java", "other"))
+        val fResult = SearchPreviewDao.findPreviewByTag(Set("devoxx", "java", "other"), sinceDate)
 
         // Then
         val result = Await.result(fResult, 2 seconds)
 
         result should have size 4
-        result.eventList shouldBe List(eventJava, eventDevoxx, eventOther, event4)
+        result.eventList.foreach { List(eventJava, eventDevoxx, eventOther, event4) should contain (_) }
     }
 
     test("should not return past events") {
-        implicit val now = new DateTime(2012, 4, 20, 0, 0, 0, 0)
-
-        initData(eventDevoxx, eventJava, eventOther, event4)
+        val sinceDate = DateTime.now()
+        initData(newEvent, oldEvent)
 
         // When
-        val fResult = SearchPreviewDao.findPreviewByTag(Set("devoxx", "java", "other"))
+        val fResult = SearchPreviewDao.findPreviewByTag(Set("new", "4", "other"), sinceDate)
 
         // Then
         val result = Await.result(fResult, 2 seconds)
 
-        result.size shouldBe 3
-        result.eventList should have size 3
-        result.eventList.foreach( _.begin.compareTo(now) should be >= 1 )
+        result.size shouldBe 1
+        result.eventList should have size 1
+        result.eventList.foreach( _.begin.compareTo(sinceDate) should be >= 1 )
+        result.eventList.foreach( _.tags shouldBe List("NEW") )
     }
 }

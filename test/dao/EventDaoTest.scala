@@ -252,7 +252,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with MongoEmbedDatabase 
     }
 }
 
-object EventRepositoryBis {
+object EventRepository {
     val eventDevoxx: Event = Event(
         uid = "1",
         title = "BOF",
