@@ -23,7 +23,7 @@ import service._
 import models.ICalStream
 import dao.ICalStreamDao
 import play.api.libs.concurrent._
-import service.{LoadDevoxx, LoadICalStream}
+import service.{LoadICalStream}
 import scala.concurrent.ExecutionContext.Implicits.global
 
 object Global extends GlobalSettings with MongoDBProdContext {
@@ -41,14 +41,23 @@ object Global extends GlobalSettings with MongoDBProdContext {
                         implicit val now = () => DateTime.now.getMillis
                         loader.parseLoad(stream.url, stream.streamTags)
                     } catch {
-                        case e: Exception => Logger.error("something wrong with %s : ".format(stream.url) + e.getMessage)
+                        case e: Exception => Logger.error("something wrong with %s : ".format(stream.url), e)
                     }
             }
 
             Logger.trace("reload")
         }
 
-        //Akka.system.scheduler.schedule(10 seconds, 2 hours) { LoadDevoxx.parseLoad() }
+        Akka.system.scheduler.schedule(30 seconds, 1 day) {
+            Logger.info("Chargement devoxx")
+            implicit val now = () => DateTime.now.getMillis
+
+            try {
+                LoadDevoxx.load
+            } catch {
+                case e: Exception => Logger.error("something wrong with load devoxx : ", e)
+            }
+        }
 
         Akka.system.scheduler.schedule(5 seconds, 1 day) { LoadEventbrite.parseLoad("scala") }
     }

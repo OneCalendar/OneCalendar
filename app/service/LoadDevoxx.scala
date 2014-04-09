@@ -1,81 +1,66 @@
-/*
- * Copyright 2012 OneCalendar
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package service
 
-import dao._
-import framework.MongoConnectionProperties
-import MongoConnectionProperties.MongoDbName
-import java.net._
-import models._
-import org.joda.time.format.{DateTimeFormatter, DateTimeFormat}
-import play.api.Logger
+import play.api.libs.ws.{Response, WS}
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration._
+import scala.concurrent.{Await, Future}
+import models.Event
+import org.joda.time.DateTime
+import dao.framework.MongoConnectionProperties._
+import scala.Some
+import dao.EventDao._
 import com.mongodb.casbah.MongoDB
+import play.Logger
 
-object LoadDevoxx /*extends Json with*/extends NowEventInjection {
+object LoadDevoxx {
 
-    val log = Logger("EventDao")
-    val pattern: DateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.S")
-    val DB_NAME: String = "OneCalendar"
 
-    def parseLoad()(implicit dbName: MongoDbName,  pool: MongoDB) {
-        val devoxxEvents = "https://cfp.devoxx.com/rest/v1/events/"
+    case class Schedule(links: Set[Link])
+    case class Link(href: String)
 
-        /*val events: Seq[DevoxxEvents] = parseUrl[Seq[DevoxxEvents]](devoxxEvents)
+    case class Slots(slots: Set[Slot])
+    case class Slot(roomId: String, roomName: String, roomCapacity: Int, fromTimeMillis: Long, toTimeMillis: Long, talk: Option[Talk])
+    case class Talk(talkType: String, track: String, summaryAsHtml: String, id: String, speakers: Set[Speaker], title: String, summary: String)
+    case class Speaker(name: String, link: SpeakerLinks)
+    case class SpeakerLinks(rel: String)
 
-        events
-           //.map(event => "https://cfp.devoxx.com/rest/v1/events/%s/schedule".format(event.id))
-          .map(event => "https://cfp.devoxx.com/rest/v1/events/8/schedule".format(event.id))
-          .foreach(load)*/
-    }
 
-    def load(devoxxUrl: String)(implicit dbName: MongoDbName,  pool: MongoDB) {
-        EventDao.deleteByOriginalStream(devoxxUrl)
+    import play.api.libs.json.Json
 
-        //val schedules: Seq[DevoxxSchedule] = parseUrl[Seq[DevoxxSchedule]](devoxxUrl)
+    implicit val linkFormat = Json.format[Link]
+    implicit val priceFormat = Json.format[Schedule]
 
-        //val shedulesSet = Set(schedules.toArray: _*)
+    implicit val speakerLinksFormat = Json.format[SpeakerLinks]
+    implicit val speakerFormat = Json.format[Speaker]
+    implicit val talkFormat = Json.format[Talk]
+    implicit val slotFormat = Json.format[Slot]
+    implicit val slotsFormat = Json.format[Slots]
 
-        /*shedulesSet.foreach(schedule => {
-            if ( schedule.presentationUri.isDefined ) {
-                try {
-                    val presentation: DevoxxPresentation = parseUrl[DevoxxPresentation](schedule.presentationUri.get.replace("http://", "https://"))
+    def load(implicit now: () => Long, dbName: MongoDbName,  pool: MongoDB) = {
+        val devoxxUrl: String = "http://cfp.devoxx.fr/api/conferences/devoxxFR2014/schedules/"
 
-                    var curTags: List[String] = List("DEVOXX")
-                    presentation.tags.foreach(tag => {
-                        curTags = curTags :+ ( tag.name.toUpperCase )
-                    })
-                    val event: Event = Event(
-                        uid = schedule.presentationUri.get,
-                        title = presentation.title,
-                        begin = pattern.parseDateTime(schedule.fromTime.get),
-                        end = pattern.parseDateTime(schedule.toTime.get),
-                        description = presentation.summary,
-                        location = presentation.room.get,
-                        originalStream = Option(devoxxUrl),
-                        tags = curTags
-                    )
-                    EventDao.saveEvent(event)
-                } catch {
-                    case e: Exception => log.warn("the presentation %s can't be load".format(schedule.presentationUri))
-                }
+
+        val future: Future[Set[Slot]] = WS.url(devoxxUrl).get()
+            .map { resp => resp.json}
+            .map { jsvalue => jsvalue.validate[Schedule].get}
+            .flatMap {
+                s =>
+                    Future.sequence(s.links.map(link => WS.url(link.href).get().map { _.json}))
+                        .map { links => links.map { link => link.validate[Slots].get}}
+            }.map {
+                slotsSet => slotsSet.flatMap { slots => slots.slots}
             }
 
-        })*/
+        val result: Set[Slot] = Await.result(future, 10 second)
+
+        val events: Set[Event] = result.filter(_.talk.isDefined).map(slot2event(_, devoxxUrl))
+        Logger.info("Chargement de %s events de devoxx".format(events.size))
+        deleteByOriginalStream(devoxxUrl)
+        events.foreach(saveEvent)
     }
 
-    //private def parseUrl[A](url: String)(implicit mf: Manifest[A]): A = parse[A](new URL(url).openStream())
+    def slot2event(slot:Slot, url:String) = {
+        val talk = slot.talk.get
+        Event(uid = talk.id,title = talk.title,begin=new DateTime(slot.fromTimeMillis), end=new DateTime(slot.toTimeMillis),location = slot.roomName,description=talk.summary,tags=List("DEVOXX"),originalStream=Some(url))
+    }
 }
