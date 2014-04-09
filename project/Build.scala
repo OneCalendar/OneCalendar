@@ -17,15 +17,14 @@ object ApplicationBuild extends Build {
         "org.reactivemongo"         %% "reactivemongo"          % "0.10.0",
         "org.reactivemongo"         %% "play2-reactivemongo"    % "0.10.2",
 
-        "org.scalatest"             %% "scalatest"              % "2.1.0"       % "test",
-        "org.mockito"               % "mockito-all"             % "1.9.0"       % "test",
-        "com.github.simplyscala"    %% "scalatest-embedmongo"   % "0.2.1"       % "test"
+        "org.scalatest"             %% "scalatest"              % "2.1.0"                % "test",
+        "org.mockito"               %  "mockito-all"            % "1.9.0"                % "test",
+        "com.github.simplyscala"    %% "scalatest-embedmongo"   % "0.2.2-SNAPSHOT"       % "test"
     )
     val main = play.Project(appName, appVersion, appDependencies).settings(
+        resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots",
 
         // available test resources in play2 classpath
-        unmanagedClasspath in Test <+= ( baseDirectory ) map {
-            bd => Attributed.blank(bd / "test")
-        }
+        unmanagedClasspath in Test <+= ( baseDirectory ) map { bd => Attributed.blank(bd / "test") }
     )
 }
