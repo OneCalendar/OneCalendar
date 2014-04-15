@@ -48,7 +48,7 @@ object Global extends GlobalSettings with MongoDBProdContext {
             Logger.trace("reload")
         }
 
-        Akka.system.scheduler.schedule(30 seconds, 1 day) {
+        Akka.system.scheduler.schedule(30 seconds, 2 minutes) {
             Logger.info("Chargement devoxx")
             implicit val now = () => DateTime.now.getMillis
 
