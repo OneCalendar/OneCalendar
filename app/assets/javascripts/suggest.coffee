@@ -16,8 +16,6 @@
 ##
 
 class Panier
-
-
   unique = (previous,current,index,array) ->
     previous.push(current) if previous.indexOf(current) == -1
     previous
@@ -32,6 +30,8 @@ class Panier
     content.push(t) for t in newContent
 
   getContent: () -> content
+
+  getContentAsUserSearch: () -> @getContent().map((a) -> a.toUpperCase()).join(" ")
 
 panier = new Panier()
 
@@ -100,6 +100,7 @@ panier = new Panier()
             dataType: "json"
             success: (data) ->
               SUGGEST.displayPreviewResult data
+              # TODO remove because results displayed in basket, but too much tests fails
               SUGGEST.displaySubscription userSearch
             error: (data) ->
               SUGGEST.displayNoResult $('#suggest').val()
@@ -219,5 +220,30 @@ display = (events,transformer,sizeForAll) ->
     $("#panier-nb-item").text(" (" +$("#panier-contenu").siblings("li").find("label span.label").length + ")")
 
   previewElement.find('.round.label').click addTagToBasket
+
+  updateBasket = ->
+
+    setHrefAttr = (href) ->
+      userSearch = panier.getContentAsUserSearch()
+
+      href = if userSearch != "" then "#{href}#{userSearch}" else "#"
+      $("#panier a").attr("href",href)
+
+    renderApple = ->
+      setHrefAttr("webcal://#{location.host}/events/")
+
+    renderGoogle = ->
+      href = "http://www.google.com/calendar/render?cid=#{location.protocol}//#{location.host}%2Fevents%2F"
+      setHrefAttr(href)
+
+    variable = $(@).find(".oc-icon")
+
+    renderer = switch
+      when variable.hasClass("fi-social-apple") then renderApple
+      when variable.hasClass("fi-calendar") then renderGoogle
+
+    renderer() if renderer
+
+  $("#panier .oc-icon").parent().hover updateBasket
 
 
