@@ -15,6 +15,26 @@
 ## along with OneCalendar.  If not, see <http://www.gnu.org/licenses/>.
 ##
 
+class Panier
+
+
+  unique = (previous,current,index,array) ->
+    previous.push(current) if previous.indexOf(current) == -1
+    previous
+
+  content = []
+  constructor: () ->
+
+  addTag: (text) ->
+    content.push(text)
+    newContent = content.reduce( unique ,[])
+    content.length = 0
+    content.push(t) for t in newContent
+
+  getContent: () -> content
+
+panier = new Panier()
+
 @SUGGEST =
 
   suggest : ->
@@ -165,6 +185,7 @@ display = (events,transformer,sizeForAll) ->
                              <li class='text-center'> #{tagsContent} </li>
                            </ul>
                          </li>" )
+
     else
       previewElement.append( "
                          <span class='title'></span>
@@ -181,3 +202,22 @@ display = (events,transformer,sizeForAll) ->
       $(this).toggleClass("oc-collapse",400,"easeOutBounce")
       return
     )
+
+
+
+  addTagToBasket = () ->
+    panier.addTag($(@).text())
+
+    $("#panier-contenu").nextAll().remove()
+
+    addTagInDom = (tag) ->
+      tagBasket = ' <li><label><span class="round secondary label">' + tag+'</span></label></li>'
+      $("#panier").append(tagBasket)
+
+    addTagInDom tag for tag in panier.getContent()
+
+    $("#panier-nb-item").text(" (" +$("#panier-contenu").siblings("li").find("label span.label").length + ")")
+
+  previewElement.find('.round.label').click addTagToBasket
+
+

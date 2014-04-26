@@ -15,6 +15,7 @@
   "scripts": {
     "test": "node_modules/karma/bin/karma start karma.conf.js --single-run --browsers PhantomJS",
     "install": "node_modules/.bin/bower install",
-    "compile-tests": "mkdir -p target/scala-2.10/classes/public/javascripts/ && node_modules/.bin/coffee --output test/front/javascripts/ --compile test/front/coffee/ && node_modules/.bin/coffee --output target/scala-2.10/classes/public/javascripts/ --compile app/assets/javascripts/"
+    "compile-tests": "mkdir -p target/scala-2.10/classes/public/javascripts/ && node_modules/.bin/coffee --output test/front/javascripts/ --compile test/front/coffee/ && node_modules/.bin/coffee --output target/scala-2.10/classes/public/javascripts/ --compile app/assets/javascripts/",
+    "tdd-js" : "mkdir -p target/scala-2.10/classes/public/javascripts/ && node_modules/.bin/coffee -w --output test/front/javascripts/ --compile test/front/coffee/ & node_modules/.bin/coffee --output target/scala-2.10/classes/public/javascripts/ --compile app/assets/javascripts/ & node_modules/karma/bin/karma start karma.conf.js --browsers PhantomJS "
   }
 }

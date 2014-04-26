@@ -76,28 +76,25 @@
                     <li><a href="about">À propos</a></li>
                 </ul>
                 <ul class="right">
-                    <li class="has-dropdown not-click hide">
-                        <a href="#"><i class="fi-shopping-cart oc-icon left"></i> (3)</a>
+                    <li class="has-dropdown not-click">
+                        <a href="#"><i class="fi-shopping-cart oc-icon left"></i> <span id="panier-nb-item"></span></a>
                         <ul id="panier" class="dropdown">
                             <li>
-                                <label>Flux :</label>
+                                <label id="panier-flux">Flux :</label>
                             </li>
                             <li>
                                 <a href="#">
                                     <div class="row">
-                                        <div class="small-4 columns"><i class="fi-social-apple oc-icon"> </i></div>
-                                        <div class="small-4 columns"><i class="fi-calendar oc-icon"> </i></div>
-                                        <div class="small-4 columns"><i class="fi-clipboard-notes oc-icon"> </i></div>
+                                        <nobr>
+                                            <div class="small-4 columns"><i class="fi-social-apple oc-icon"> </i></div>
+                                            <div class="small-4 columns"><i class="fi-calendar oc-icon"> </i></div>
+                                            <div class="small-4 columns"><i class="fi-clipboard-notes oc-icon"> </i></div>
+                                        </nobr>
                                     </div>
                                 </a>
                             </li>
                             <li class="divider"></li>
-                            <li><label>Tags :</label></li>
-                            <li><label><span class="round secondary label">Java</span></label></li>
-                            <li><label><span class="round secondary label">Sql</span></label></li>
-                            <li><label><span class="round secondary label">Supercomputing</span></label></li>
-                            <li><label><span class="round secondary label">Development</span></label></li>
-                            <li><label><span class="round secondary label">Agile</span></label></li>
+                            <li id="panier-contenu"><label>Tags :</label></li>
                         </ul>
                     </li>
                 </ul>
