@@ -2,8 +2,7 @@
     "name": "onecalendar js dependencies",
     "version": "0.0.0",
     "dependencies": {
-        "foundation-icon-fonts": "d596a3cfb3c0b8b46e56879ce9b4514efff4a60b",
-        "momentjs": "~2.5.1"
+        "foundation-icon-fonts": "d596a3cfb3c0b8b46e56879ce9b4514efff4a60b"
     },
     "devDependencies": {
         "components-jasmine": "1.1.0",
