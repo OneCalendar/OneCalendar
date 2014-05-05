@@ -13,6 +13,7 @@ object ApplicationBuild extends Build {
         "org.webjars" %% "webjars-play" % "2.2.0",
         "org.webjars" % "jquery" % "2.1.0-3",
         "org.webjars" % "foundation" % "5.2.2",
+        "org.webjars" % "foundation-icon-fonts" % "d596a3cfb3",
         "org.webjars" % "modernizr" % "2.7.1",
         "org.webjars" % "normalize.css" % "2.1.3",
         "org.webjars" % "momentjs" % "2.6.0",
