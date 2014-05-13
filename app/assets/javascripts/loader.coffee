@@ -16,6 +16,7 @@
 ##
 
 $(document).ready ->
-  SUGGEST.retrievePreviewResults()
-  SUGGEST.retrieveEventNumber()
-  SUGGEST.retrieveAllEvents()
+	SUGGEST.retrievePreviewResults()
+	SUGGEST.retrieveEventNumber()
+	SUGGEST.retrieveAllEvents()
+
