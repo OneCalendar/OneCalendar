@@ -1,5 +1,5 @@
 [![OneCalendar Logo](./public/images/onecalendar-beta.png "One Calendar To Meet Them All")](http://onecalendar.fr)
-
+[![Build Status](https://travis-ci.org/OneCalendar/OneCalendar.png?branch=welcomeimprov)](https://travis-ci.org/OneCalendar/OneCalendar)
 ## The problem we solve
 
 Have ever looked for events on a specific subject ?
@@ -52,10 +52,7 @@ It's a classical web layered application.
 The js tests doesn't compile by themself [for now](http://github.com/ValtechTechno/OneCalendar/issues/53), so to transpile those scripts
 
 * `npm test`
-
-launch a browser on
-
-* `test/front/jasmine/SpecRunner.html`
+* `npm run-sript compile-tests`
 
 ### To run play test
 

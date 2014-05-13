@@ -92,7 +92,7 @@
       false
 
   formatIcalDate: (date) ->
-    begin = moment date
+    begin = moment(date).zone("+0200")
     if begin.minutes() == 0
       begin.format("DD/MM/YYYY à HH[h]")
     else
