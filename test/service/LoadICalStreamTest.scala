@@ -47,7 +47,7 @@ class LoadICalStreamTest extends FunSuite with ShouldMatchers with BeforeAndAfte
 
     val url : String = "https://www.google.com/calendar/ical/cs98tardtttjejg93tpcb71ol6nvachq%40import.calendar.google.com/public/basic.ics"
 
-    test("should parse iCal stream") {
+    ignore("should parse iCal stream") {
         implicit val now = () => new DateTime().withDate(2012,4,1).getMillis
 
         val iCalService : LoadICalStream = new LoadICalStream()
@@ -62,7 +62,7 @@ class LoadICalStreamTest extends FunSuite with ShouldMatchers with BeforeAndAfte
         events.head.tags should contain ("DEVOXX")
     }
 
-    test("should parse iCal stream with two stream tags") {
+    ignore("should parse iCal stream with two stream tags") {
         implicit val now = () => new DateTime().withDate(2012,4,1).getMillis
 
         val iCalService : LoadICalStream = new LoadICalStream()
