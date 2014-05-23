@@ -49,7 +49,7 @@ describe 'google suggest like', ->
 
     expect( $('#suggest + ul').length ).toEqual( 0 )
 
-  it "5. should display links when user write search word", ->
+  it "5. should display links when user write search word and double encoding on query to have simple encoding on onecal server", ->
     setFixtures '''
       <input type="text" id="suggest" value="a" />
       <div id="temp"></div>
@@ -60,15 +60,15 @@ describe 'google suggest like', ->
       </div>
     '''
 
-    SUGGEST.displaySubscription 'A'
+    SUGGEST.displaySubscription 'A B'
 
     expectedGoogleCalendarLinkPrefix = "http://www.google.com/calendar/render?cid="
-    expectedGoogleCalendarLinkSuffix = "%2Fevents%2FA"
+    expectedGoogleCalendarLinkSuffix = "%2Fevents%2FA%2520B"
     expectedWebcalLinkPrefix = "webcal://"
-    expectedWebcalLinkSuffix = "/events/A"
+    expectedWebcalLinkSuffix = "/events/A%20B"
 
     expect( $('#subscription').css('display') ).toEqual('block')
-    expect( $('#subscription a.ical') ).toHaveAttr('href', '/events/A')
+    expect( $('#subscription a.ical') ).toHaveAttr('href', '/events/A B')
     expect( $('#subscription a.gcal').attr('href') ).toContain(expectedGoogleCalendarLinkPrefix)
     expect( $('#subscription a.gcal').attr('href') ).toContain( expectedGoogleCalendarLinkSuffix )
     expect( $('#subscription a.webcal').attr('href') ).toContain( expectedWebcalLinkPrefix )
