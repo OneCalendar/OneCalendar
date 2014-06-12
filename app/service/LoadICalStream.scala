@@ -20,7 +20,7 @@ import java.net.URL
 
 import api.icalendar._
 import com.mongodb.casbah.MongoDB
-import dao.MongoDbEventDaoBis._
+import dao.MongoDbEventDao._
 import dao.framework.MongoConnectionProperties.MongoDbName
 import models.Event
 import models.Event._

@@ -21,7 +21,7 @@ import MongoConnectionProperties._
 import api.eventbrite.Eventbrite
 import models.Event
 import play.api.Logger
-import dao.{MongoDbEventDaoBis, EventDao}
+import dao.{MongoDbEventDao, EventDao}
 import com.mongodb.casbah.MongoDB
 
 object LoadEventbrite extends NowEventInjection {
@@ -33,7 +33,7 @@ object LoadEventbrite extends NowEventInjection {
 
         val (toSave, passed) = events.partition(event => event.end.isAfter(now()))
 
-        MongoDbEventDaoBis.deleteByOriginalStream(originalStream)
+        MongoDbEventDao.deleteByOriginalStream(originalStream)
 
         saveEvents(toSave, originalStream)
         reportNotLoadedEvents(passed, originalStream)
@@ -41,7 +41,7 @@ object LoadEventbrite extends NowEventInjection {
 
     private def saveEvents(toSave: Seq[Event], url: String)
                           (implicit now: () => Long, dbName: MongoDbName, pool: MongoDB) {
-        toSave foreach ( MongoDbEventDaoBis.saveEvent )
+        toSave foreach ( MongoDbEventDao.saveEvent )
         Logger.info("%d events loaded from %s".format(toSave.length, url))
     }
 

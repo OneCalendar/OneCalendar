@@ -13,7 +13,7 @@ import testutils.MongoTestSuite
 import scala.concurrent.Await
 import scala.concurrent.duration._
 
-class MongoDbEventDaoBisTest extends MongoTestSuite {
+class MongoDbEventDaoTest extends MongoTestSuite {
 
     var mongoProps: MongodProps = null
     override def beforeAll() { mongoProps = mongoStart(27033) }
@@ -30,7 +30,7 @@ class MongoDbEventDaoBisTest extends MongoTestSuite {
     val eventsColl = connection[JSONCollection]("events")
 
 	trait TestMongoDbConnection extends MongoDbConnection { val db = connection }
-	object UnderTestDao extends MongoDbEventDaoBis with TestMongoDbConnection
+	object UnderTestDao extends MongoDbEventDao with TestMongoDbConnection
 
     test("saving a new event") {
         val event: Event = Event(

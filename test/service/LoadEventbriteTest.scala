@@ -19,7 +19,7 @@ package service
 import com.github.simplyscala.MongodProps
 import com.mongodb.casbah.{MongoConnection, MongoDB}
 import com.mongodb.{MongoOptions, ServerAddress}
-import dao.MongoDbEventDaoBis._
+import dao.MongoDbEventDao._
 import dao.framework.MongoConnectionProperties._
 import org.joda.time.DateTime
 import testutils.MongoTestSuite

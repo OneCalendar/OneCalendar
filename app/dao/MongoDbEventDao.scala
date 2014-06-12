@@ -10,7 +10,7 @@ import play.modules.reactivemongo.json.collection.JSONCollection
 import reactivemongo.bson.BSONDocument
 import reactivemongo.core.commands.{Count, RawCommand}
 
-trait MongoDbEventDaoBis extends EventDaoBis with MongoDbConnection {
+trait MongoDbEventDao extends EventDao with MongoDbConnection {
 
     def saveEvent(event: Event) = db[JSONCollection]("events").save(event)
 
@@ -46,4 +46,4 @@ trait MongoDbEventDaoBis extends EventDaoBis with MongoDbConnection {
     }
 }
 
-object MongoDbEventDaoBis extends MongoDbEventDaoBis with ProdMongoDbConnection
+object MongoDbEventDao extends MongoDbEventDao with ProdMongoDbConnection

@@ -1,30 +1,25 @@
 package controllers
 
 
+import java.io.ByteArrayInputStream
+import java.net.URLEncoder
+
+import api.icalendar.ICalendar
+import dao.{EventDao, SearchPreviewDao}
+import fr.scala.util.collection.CollectionsUtils
+import models._
+import org.joda.time.DateTime
+import org.mockito.Mockito.when
 import org.scalatest.FunSuite
 import org.scalatest.matchers.ShouldMatchers
-import dao.{EventDaoBis, SearchPreviewDao, EventDaoTrait}
-import org.mockito.Mockito.when
-import models._
+import org.specs2.mock.Mockito
+import play.api.libs.functional.syntax._
+import play.api.libs.json._
 import play.api.test.Helpers._
 import play.api.test._
-import org.specs2.mock.Mockito
-import org.mockito.Matchers
-import fr.scala.util.collection.CollectionsUtils
-import org.joda.time.DateTime
-import dao.framework.MongoConnectionProperties
-import MongoConnectionProperties.MongoDbName
-import play.api.libs.json._
-import play.api.libs.functional.syntax._
-import play.api.libs.json.Reads
-import java.net.URLEncoder
-import com.mongodb.casbah.MongoDB
-import play.api.libs.json.JsSuccess
-import models.SearchPreview
-import api.icalendar.ICalendar
-import java.io.ByteArrayInputStream
-import scala.concurrent.Future
+
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.Future
 
 class ApplicationTest extends FunSuite with ShouldMatchers with Mockito with CollectionsUtils with PreviewJsonWriter {
 
@@ -101,7 +96,7 @@ class ApplicationTest extends FunSuite with ShouldMatchers with Mockito with Col
 
     test("should find events by tags with ICAL format") {
         val now = () => new DateTime(2009, 1, 1, 1, 1).getMillis
-        val dao = mock[EventDaoBis]
+        val dao = mock[EventDao]
         when(dao.findByTags(Set("fake","fake")))
             .thenReturn(Future(Set(
             Event(uid = "Z", title = "title1", begin = new DateTime(2010, 1, 1, 1, 1), end = new DateTime(2010, 1, 2, 1, 1), location = "location1"),

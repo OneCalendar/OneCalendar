@@ -19,7 +19,7 @@ package service
 import com.github.simplyscala.MongodProps
 import com.mongodb.casbah.{MongoConnection, MongoDB}
 import com.mongodb.{MongoOptions, ServerAddress}
-import dao.MongoDbEventDaoBis
+import dao.MongoDbEventDao
 import dao.framework.MongoConnectionProperties._
 import org.joda.time.DateTime
 import testutils.MongoTestSuite
@@ -49,7 +49,7 @@ class LoadICalStreamTest extends MongoTestSuite {
         val iCalService : LoadICalStream = new LoadICalStream()
         iCalService.parseLoad( url, List("DEVOXX") )
 
-        val events = sync(MongoDbEventDaoBis.findAllFromNow())
+        val events = sync(MongoDbEventDao.findAllFromNow())
         val count: Int = events.size
 
         count should be > 50
@@ -64,7 +64,7 @@ class LoadICalStreamTest extends MongoTestSuite {
         val iCalService : LoadICalStream = new LoadICalStream()
         iCalService.parseLoad( url, List("DEVOXX","TEST") )
 
-        val events = sync(MongoDbEventDaoBis.findAllFromNow())
+        val events = sync(MongoDbEventDao.findAllFromNow())
         val count: Int = events.size
 
         count should be > 50

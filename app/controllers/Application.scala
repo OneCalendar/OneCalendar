@@ -32,7 +32,7 @@ object Application extends Controller with MongoDBProdContext with Event$VEventM
 
     def index = Action { Ok(views.html.index(Nil)) }
 
-	def findByTags(keyWords: String)(implicit dao: EventDaoBis = MongoDbEventDaoBis, now: () => Long = () => DateTime.now.getMillis) = Action.async {
+	def findByTags(keyWords: String)(implicit dao: EventDao = MongoDbEventDao, now: () => Long = () => DateTime.now.getMillis) = Action.async {
         dao.findByTags(splitTags(keyWords)).map(eventsAsIcs(_))
     }
 
@@ -49,11 +49,11 @@ object Application extends Controller with MongoDBProdContext with Event$VEventM
     def about = Action { Ok(views.html.about()) }
 
     def fetchCloudOfTags(implicit now: () => Long = () => DateTime.now.getMillis) = Action.async {
-	    MongoDbEventDaoBis.listTags().map { tags => Ok(Json.toJson(tags)).as("application/json") }
+	    MongoDbEventDao.listTags().map { tags => Ok(Json.toJson(tags)).as("application/json") }
     }
     
     def eventCount = Action.async {
-	    MongoDbEventDaoBis.countFutureEvents().map { count => Ok(s"""{"eventNumber":"$count"}""").as("application/json") }
+	    MongoDbEventDao.countFutureEvents().map { count => Ok(s"""{"eventNumber":"$count"}""").as("application/json") }
     }
 
 	private def splitTags(keyWords: String) = URLDecoder.decode(keyWords,"UTF-8").split(" ").toSet

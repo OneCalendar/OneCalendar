@@ -16,7 +16,7 @@
 
 package controllers
 
-import dao.MongoDbEventDaoBis
+import dao.MongoDbEventDao
 import models.Event
 import org.joda.time.DateTime
 import play.api.data.Forms._
@@ -33,14 +33,14 @@ object EventsController extends Controller with MongoDBProdContext {
 
     def addSingleEvent = Action { implicit request =>
         val event:Event = eventForm.bindFromRequest.get
-        MongoDbEventDaoBis.saveEvent(event)
+        MongoDbEventDao.saveEvent(event)
         Ok( "évènement " + event + " ajouté dans la base 'OneCalendar'" )
     }
 
     def allEvents = Action.async {
         import models.EventJsonFormatter._
 
-	    MongoDbEventDaoBis.findAllFromNow()
+	    MongoDbEventDao.findAllFromNow()
             .map { events =>
                 events.toList
 	                  .map { event => event.copy(tags = event.tags.distinct) } // TODO régler le problème à la source <=> mettre un Set sur tags et supprimé les doublons à l'écriture

@@ -6,7 +6,7 @@ import reactivemongo.core.commands.LastError
 
 import scala.concurrent.Future
 
-trait EventDaoBis {
+trait EventDao {
 	def saveEvent(event: Event): Future[LastError]
 
 	def findByTags(tags: Set[String], sinceDate: DateTime = DateTime.now()): Future[Set[Event]]

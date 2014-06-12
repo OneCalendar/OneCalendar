@@ -1,7 +1,7 @@
 package service
 
 import com.mongodb.casbah.MongoDB
-import dao.MongoDbEventDaoBis._
+import dao.MongoDbEventDao._
 import dao.framework.MongoConnectionProperties._
 import models.Event
 import org.joda.time.DateTime
