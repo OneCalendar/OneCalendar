@@ -25,49 +25,47 @@ import play.api.mvc._
 import play.api.libs.json._
 import play.api.libs.json.Writes._
 import java.net.URLDecoder
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+
 
 object Application extends Controller with MongoDBProdContext with Event$VEventMapping with PreviewJsonWriter {
 
-    def index = Action {
-        Ok(views.html.index(Nil))
+    def index = Action { Ok(views.html.index(Nil)) }
+
+	def findByTags(keyWords: String)(implicit dao: EventDaoBis = MongoDbEventDaoBis, now: () => Long = () => DateTime.now.getMillis) = Action.async {
+        dao.findByTags(splitTags(keyWords)).map(eventsAsIcs(_))
     }
 
-    def splitTags(keyWords: String) = {
-        URLDecoder.decode(keyWords,"UTF-8").split(" ").toList
-    }
-
-    def findByTags(keyWords: String)(implicit dao: EventDaoTrait = EventDao, now: () => Long = () => DateTime.now.getMillis) = Action {
-        eventsAsIcs(dao.findByTag(splitTags(keyWords)))
-    }
-
-    def findPreviewByTags(keyWords: String)(implicit dao: EventDaoTrait = EventDao, now: () => Long = () => DateTime.now.getMillis) = Action {
-        val searchPreview: SearchPreview = dao.findPreviewByTag(splitTags(keyWords))
-
-        Option(searchPreview)
-            .filter( preview => preview.size > 0 )
-            .map( preview => Ok(Json.toJson(preview)).as("application/json") )
-            .getOrElse(NotFound)
+    def findPreviewByTags(keyWords: String)(implicit dao: SearchPreviewDao = MongoDbSearchPreviewDao, now: () => Long = () => DateTime.now.getMillis) = Action.async {
+	    println(splitTags(keyWords))
+	    dao.findPreviewByTag(splitTags(keyWords)).map {
+		    Option(_)
+			    .filter( preview => preview.size > 0 )
+			    .map( preview => Ok(Json.toJson(preview)).as("application/json") )
+			    .getOrElse(NotFound)
+	    }
     }
 
     def about = Action { Ok(views.html.about()) }
 
-    def fetchCloudOfTags(implicit now: () => Long = () => DateTime.now.getMillis) = Action {
-        Ok(Json.toJson(EventDao.listTags())).as("application/json")
+    def fetchCloudOfTags(implicit now: () => Long = () => DateTime.now.getMillis) = Action.async {
+	    MongoDbEventDaoBis.listTags().map { tags => Ok(Json.toJson(tags)).as("application/json") }
     }
     
-    def eventCount(implicit now: () => Long = () => DateTime.now.getMillis) = Action {
-        Ok("""{"eventNumber":"%s"}""".format(EventDao.countFutureEvents)).as("application/json")
+    def eventCount = Action.async {
+	    MongoDbEventDaoBis.countFutureEvents().map { count => Ok(s"""{"eventNumber":"$count"}""").as("application/json") }
     }
 
-
 	def findByIdsAndTags(ids: String, tags: String)(implicit dao: EventDaoTrait = EventDao, now: () => Long = () => DateTime.now.getMillis) = Action {
-		Ok(Json.toJson(dao.findByIdsAndTags(splitTags(ids), splitTags(tags))))
+		Ok(Json.toJson(dao.findByIdsAndTags(splitTags(ids).toList, splitTags(tags).toList)))
 	}
 
-	private def eventsAsIcs(events: List[Event]) = {
-        events match {
+	private def splitTags(keyWords: String) = URLDecoder.decode(keyWords,"UTF-8").split(" ").toSet
+
+	private def eventsAsIcs(events: Set[Event]) = {
+        events.toList match {
             case Nil => NotFound("Aucun évènement pour la recherche")
-            case _ => Ok(ICalendar.buildCalendar(events)).as("text/calendar; charset=utf-8")
+            case _ => Ok(ICalendar.buildCalendar(events.toList)).as("text/calendar; charset=utf-8")
         }
     }
 }

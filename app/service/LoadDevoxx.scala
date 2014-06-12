@@ -1,16 +1,16 @@
 package service
 
-import play.api.libs.ws.{Response, WS}
+import com.mongodb.casbah.MongoDB
+import dao.MongoDbEventDaoBis._
+import dao.framework.MongoConnectionProperties._
+import models.Event
+import org.joda.time.DateTime
+import play.Logger
+import play.api.libs.ws.WS
+
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
 import scala.concurrent.{Await, Future}
-import models.Event
-import org.joda.time.DateTime
-import dao.framework.MongoConnectionProperties._
-import scala.Some
-import dao.EventDao._
-import com.mongodb.casbah.MongoDB
-import play.Logger
 
 object LoadDevoxx {
 

@@ -4,6 +4,7 @@ import com.github.simplyscala.MongodProps
 import dao.EventRepositoryBis._
 import dao.connection.MongoDbConnection
 import models.EventJsonFormatter._
+import models.SearchPreview
 import org.joda.time.DateTime
 import play.modules.reactivemongo.json.collection.JSONCollection
 import reactivemongo.api.{DB, MongoDriver}
@@ -39,11 +40,9 @@ class MongoDbSearchPreviewDaoTest extends MongoTestSuite {
         initDataz(eventsColl, eventDevoxx, eventJava, eventOther, event4, newEvent)
 
         // When
-        val fResult = UnderTestDao.findPreviewByTag(Set("devoxx", "java", "other"), sinceDate)
+        val result = sync(UnderTestDao.findPreviewByTag(Set("devoxx", "java", "other"), sinceDate))
 
         // Then
-        val result = Await.result(fResult, 2 seconds)
-
         result should have size 4
         result.eventList.foreach { List(eventJava, eventDevoxx, eventOther, event4) should contain (_) }
     }
@@ -53,14 +52,18 @@ class MongoDbSearchPreviewDaoTest extends MongoTestSuite {
         initDataz(eventsColl, newEvent, oldEvent)
 
         // When
-        val fResult = UnderTestDao.findPreviewByTag(Set("new", "4", "other"), sinceDate)
+        val result = sync(UnderTestDao.findPreviewByTag(Set("new", "4", "other"), sinceDate))
 
-        // Then
-        val result = Await.result(fResult, 2 seconds)
-
+	    // Then
         result.size shouldBe 1
         result.eventList should have size 1
         result.eventList.foreach( _.begin.compareTo(sinceDate) should be >= 1 )
         result.eventList.foreach( _.tags shouldBe List("NEW") )
     }
+
+	test("should return SearchPreview(0, Nil) when tag don't match") {
+		initDataz(eventsColl, newEvent)
+
+		sync(UnderTestDao.findPreviewByTag(Set("notMatching"))) shouldBe SearchPreview(0, Nil)
+	}
 }

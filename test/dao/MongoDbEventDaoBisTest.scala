@@ -16,14 +16,14 @@ import scala.concurrent.duration._
 class MongoDbEventDaoBisTest extends MongoTestSuite {
 
     var mongoProps: MongodProps = null
-    override def beforeAll() { mongoProps = mongoStart(27018) }
+    override def beforeAll() { mongoProps = mongoStart(27033) }
     override def afterAll() { mongoStop(mongoProps) }
 
     before { drop(eventsColl) }
 
     val connection: DB = {
         val driver = new MongoDriver
-        val connection = driver.connection(List("localhost:27018"))
+        val connection = driver.connection(List("localhost:27033"))
         connection("test")
     }
 

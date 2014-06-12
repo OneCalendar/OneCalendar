@@ -33,7 +33,7 @@ import com.github.simplyscala.MongodProps
 class EventDaoTest extends FunSuite with ShouldMatchers with MongoEmbedDatabase with BeforeAndAfterAll with BeforeAndAfter {
 
     var mongoProps: MongodProps = null
-    override def beforeAll() { mongoProps = mongoStart(27018) }
+    override def beforeAll() { mongoProps = mongoStart(27042) }
     override def afterAll() { mongoStop(mongoProps) }
 
     before { EventDaoCleaner.drop() }
@@ -47,7 +47,7 @@ class EventDaoTest extends FunSuite with ShouldMatchers with MongoEmbedDatabase 
         val connection: MongoConnection = {
             val options: MongoOptions = new MongoOptions()
             options.setConnectionsPerHost(2)
-            MongoConnection(new ServerAddress("127.0.0.1", 27018), options)
+            MongoConnection(new ServerAddress("127.0.0.1", 27042), options)
         }
 
         connection(dbName)

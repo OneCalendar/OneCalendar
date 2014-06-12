@@ -16,17 +16,15 @@
 
 package service
 
-import api.icalendar._
-import dao.EventDao._
-import dao.framework.MongoConnectionProperties
-import MongoConnectionProperties.MongoDbName
 import java.net.URL
+
+import api.icalendar._
+import com.mongodb.casbah.MongoDB
+import dao.MongoDbEventDaoBis._
+import dao.framework.MongoConnectionProperties.MongoDbName
 import models.Event
 import models.Event._
 import play.api.Logger
-import scala.Left
-import scala.Right
-import com.mongodb.casbah.MongoDB
 
 class LoadICalStream {
 

@@ -16,14 +16,15 @@
 
 package controllers
 
-import dao.{MongoDbEventDaoBis, EventDao}
+import dao.MongoDbEventDaoBis
 import models.Event
 import org.joda.time.DateTime
 import play.api.data.Forms._
 import play.api.data._
-import play.api.mvc._
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import play.api.libs.json._
-import play.api.libs.json.Writes._
+import play.api.mvc._
+
 
 object EventsController extends Controller with MongoDBProdContext {
     implicit val now = () => DateTime.now.getMillis
@@ -32,18 +33,20 @@ object EventsController extends Controller with MongoDBProdContext {
 
     def addSingleEvent = Action { implicit request =>
         val event:Event = eventForm.bindFromRequest.get
-        EventDao.saveEvent(event)
+        MongoDbEventDaoBis.saveEvent(event)
         Ok( "évènement " + event + " ajouté dans la base 'OneCalendar'" )
     }
 
-    def allEvents = Action { implicit request =>
-        import Application.eventWriter
+    def allEvents = Action.async {
+        import models.EventJsonFormatter._
 
-        val events = EventDao.findAllFromNow()
-            .map( event => event.copy(tags = event.tags.distinct) )  // TODO régler le problème à la source <=> mettre un Set sur tags et supprimé les doublons à l'écriture
-            .sortWith { (e1,e2) => e1.begin.compareTo(e2.begin) < 0 }
-
-        Ok(Json.toJson(events))
+	    MongoDbEventDaoBis.findAllFromNow()
+            .map { events =>
+                events.toList
+	                  .map { event => event.copy(tags = event.tags.distinct) } // TODO régler le problème à la source <=> mettre un Set sur tags et supprimé les doublons à l'écriture
+	                  .sortWith { (e1,e2) => e1.begin.compareTo(e2.begin) < 0 }
+            }
+	        .map { e => Ok(Json.toJson(e)) }
     }
 
     // TODO tous les champs sont obligatoires sauf description

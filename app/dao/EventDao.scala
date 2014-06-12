@@ -49,7 +49,7 @@ object EventDao extends CollectionsUtils with EventDaoTrait with MongoOperations
         find[Event](query)
     }
 
-    @deprecated("replaced in EventDaoBis")
+    @deprecated("replaced in SearchPreviewDao")
     def findPreviewByTag(tags: List[String])
                         (implicit dbName: MongoDbName, connection: MongoDB, now: () => Long): SearchPreview = {
         val query = ( "tags" $in tags.map(_.toUpperCase) ) ++ ( "begin" $gt now() )
