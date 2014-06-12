@@ -1,34 +1,36 @@
 package dao
 
+import com.github.simplyscala.MongodProps
+import dao.EventRepositoryBis._
+import dao.connection.MongoDbConnection
 import models.Event
-import com.github.simplyscala.{MongoEmbedDatabase, MongodProps}
+import models.EventJsonFormatter._
 import org.joda.time.DateTime
-import org.scalatest.{BeforeAndAfter, BeforeAndAfterAll, FunSuite, Matchers}
-import EventRepositoryBis._
-import reactivemongo.api.{DB, MongoDriver}
-import play.modules.reactivemongo.json.collection.JSONCollection
 import play.api.libs.json.Json
-import scala.concurrent.ExecutionContext.Implicits.global
+import play.modules.reactivemongo.json.collection.JSONCollection
+import reactivemongo.api.{DB, MongoDriver}
+import testutils.MongoTestSuite
 import scala.concurrent.Await
 import scala.concurrent.duration._
-import models.EventJsonFormatter._
 
-class EventDaoBisTest extends FunSuite with Matchers with BeforeAndAfterAll with BeforeAndAfter
-    with MongoEmbedDatabase with DatabaseUtils {
+class MongoDbEventDaoBisTest extends MongoTestSuite {
 
     var mongoProps: MongodProps = null
     override def beforeAll() { mongoProps = mongoStart(27018) }
     override def afterAll() { mongoStop(mongoProps) }
 
-    before { drop() }
+    before { drop(eventsColl) }
 
-    implicit val connection: DB = {
+    val connection: DB = {
         val driver = new MongoDriver
         val connection = driver.connection(List("localhost:27018"))
         connection("test")
     }
 
-    implicit val eventsColl = connection[JSONCollection]("events")
+    val eventsColl = connection[JSONCollection]("events")
+
+	trait TestMongoDbConnection extends MongoDbConnection { val db = connection }
+	object UnderTestDao extends MongoDbEventDaoBis with TestMongoDbConnection
 
     test("saving a new event") {
         val event: Event = Event(
@@ -42,7 +44,7 @@ class EventDaoBisTest extends FunSuite with Matchers with BeforeAndAfterAll with
         )
 
         // When
-        Await.ready(EventDaoBis.saveEvent(event), 2 seconds)
+        Await.ready(UnderTestDao.saveEvent(event), 2 seconds)
 
         // Then
         val result = eventsColl.find(Json.obj()).cursor[Event].collect[List]()
@@ -50,47 +52,47 @@ class EventDaoBisTest extends FunSuite with Matchers with BeforeAndAfterAll with
     }
 
     test("should find event by tag 'devoxx'") {
-        initData(eventDevoxx, eventJava)
+        initDataz(eventsColl, eventDevoxx, eventJava)
 
         // When
-        val result = EventDaoBis.findByTags(Set("devoxx"), new DateTime(2010, 1, 1, 1, 1))
+        val result = UnderTestDao.findByTags(Set("devoxx"), new DateTime(2010, 1, 1, 1, 1))
 
         // Then
         Await.result(result, 2 seconds) shouldBe Set(eventDevoxx)
     }
 
     test("should find events by tags 'devoxx' or 'java' ") {
-        initData(eventDevoxx, eventJava)
+        initDataz(eventsColl, eventDevoxx, eventJava)
 
         // When
-        val result = EventDaoBis.findByTags(Set("devoxx", "java"), new DateTime(2010, 1, 1, 1, 1))
+        val result = UnderTestDao.findByTags(Set("devoxx", "java"), new DateTime(2010, 1, 1, 1, 1))
 
         // Then
         Await.result(result, 2 seconds) shouldBe Set(eventDevoxx, eventJava)
     }
 
     test("should find all events from now") {
-        initData(oldEvent, newEvent)
+        initDataz(eventsColl, oldEvent, newEvent)
 
-        Await.result(EventDaoBis.findAllFromNow(), 2 seconds) shouldBe Set(newEvent)
+        Await.result(UnderTestDao.findAllFromNow(), 2 seconds) shouldBe Set(newEvent)
     }
 
     test("count future events") {
-        initData(oldEvent, newEvent)
+        initDataz(eventsColl, oldEvent, newEvent)
 
-        Await.result(EventDaoBis.countFutureEvents(), 2 seconds) shouldBe 1
+        Await.result(UnderTestDao.countFutureEvents(), 2 seconds) shouldBe 1
     }
 
     test("should list tags") {
-        initData(eventDevoxx, eventJava)
+        initDataz(eventsColl, eventDevoxx, eventJava)
 
-        Await.result(EventDaoBis.listTags(), 2 seconds) shouldBe Set("DEVOXX", "JAVA")
+        Await.result(UnderTestDao.listTags(), 2 seconds) shouldBe Set("DEVOXX", "JAVA")
     }
 
     test("should not list old tags") {
-        initData(oldEvent, newEvent)
+        initDataz(eventsColl, oldEvent, newEvent)
 
-        Await.result(EventDaoBis.listTags(), 2 seconds) shouldBe Set("NEW")
+        Await.result(UnderTestDao.listTags(), 2 seconds) shouldBe Set("NEW")
     }
 
     test("delete by originalStream will drop all") {
@@ -121,17 +123,17 @@ class EventDaoBisTest extends FunSuite with Matchers with BeforeAndAfterAll with
             tags = List("tag1", "tag2")
         )
 
-        initData(e1,e2,e3)
-        initData(eventDevoxx, eventJava)
+        initDataz(eventsColl, e1,e2,e3)
+        initDataz(eventsColl, eventDevoxx, eventJava)
 
 
-        Await.result(EventDaoBis.countFutureEvents(new DateTime(2010, 5, 1, 1, 1)), 2 seconds) shouldBe 5
+        Await.result(UnderTestDao.countFutureEvents(new DateTime(2010, 5, 1, 1, 1)), 2 seconds) shouldBe 5
 
         // When
-        EventDaoBis.deleteByOriginalStream("hello")
+        UnderTestDao.deleteByOriginalStream("hello")
 
         // Then
-        Await.result(EventDaoBis.countFutureEvents(new DateTime(2010, 5, 1, 1, 1)), 2 seconds) shouldBe 2
+        Await.result(UnderTestDao.countFutureEvents(new DateTime(2010, 5, 1, 1, 1)), 2 seconds) shouldBe 2
     }
 
     // TODO WHY THIS TEST ? for tstting option mapping ???
@@ -155,12 +157,6 @@ class EventDaoBisTest extends FunSuite with Matchers with BeforeAndAfterAll with
 
         EventDao.findByTag(List("NO_UID")) should be(List(Event(uid = "", tags = List("NO_UID"), begin = now, end = now)))*/
     }
-}
-
-trait DatabaseUtils {
-    def drop()(implicit eventsColl: JSONCollection) = Await.ready(eventsColl.drop(), 2 seconds)
-    def initData(events: Event*)(implicit eventsColl: JSONCollection) =
-        events.foreach { event => Await.ready(eventsColl.save(event), 2 seconds) }
 }
 
 object EventRepositoryBis {

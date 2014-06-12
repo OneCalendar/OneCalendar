@@ -16,7 +16,7 @@
 
 package controllers
 
-import dao.EventDao
+import dao.{MongoDbEventDaoBis, EventDao}
 import models.Event
 import org.joda.time.DateTime
 import play.api.data.Forms._
