@@ -56,10 +56,6 @@ object Application extends Controller with MongoDBProdContext with Event$VEventM
 	    MongoDbEventDaoBis.countFutureEvents().map { count => Ok(s"""{"eventNumber":"$count"}""").as("application/json") }
     }
 
-	def findByIdsAndTags(ids: String, tags: String)(implicit dao: EventDaoTrait = EventDao, now: () => Long = () => DateTime.now.getMillis) = Action {
-		Ok(Json.toJson(dao.findByIdsAndTags(splitTags(ids).toList, splitTags(tags).toList)))
-	}
-
 	private def splitTags(keyWords: String) = URLDecoder.decode(keyWords,"UTF-8").split(" ").toSet
 
 	private def eventsAsIcs(events: Set[Event]) = {

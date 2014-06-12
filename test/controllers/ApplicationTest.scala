@@ -99,25 +99,6 @@ class ApplicationTest extends FunSuite with ShouldMatchers with Mockito with Col
         }
     }
 
-    test("should find events by ids and by tags") {
-        val now = () => new DateTime(2009, 1, 1, 1, 1).getMillis
-        val dao = mock[EventDaoTrait]
-        when(dao.findByIdsAndTags(Matchers.anyListOf(classOf[String]), Matchers.anyListOf(classOf[String]))(any[MongoDbName], any[MongoDB], any[() => Long]))
-            .thenReturn(List(
-            Event(uid = "Z", title = "title1", begin = new DateTime(2010, 1, 1, 1, 1), end = new DateTime(2010, 1, 2, 1, 1), location = "location1"),
-            Event(uid = "W", title = "title2", begin = new DateTime(2011, 1, 1, 1, 1), end = new DateTime(2011, 1, 2, 1, 1), location = "location2"),
-            Event(uid = "y", title = "title3", begin = new DateTime(2012, 1, 1, 1, 1), end = new DateTime(2012, 1, 2, 1, 1), location = "location3")
-        ))
-
-        val tags = Application.findByIdsAndTags("fake", "fake")(dao, now)(FakeRequest())
-        status(tags) should be(OK)
-
-        val l = Json.parse(contentAsString(tags)) \\ "uid"
-        l.filter(uid => uid.validate[String].getOrElse(Nil) == "Z") should have size 1
-        l.filter(uid => uid.validate[String].getOrElse(Nil) == "W") should have size 1
-        l.filter(uid => uid.validate[String].getOrElse(Nil) == "y") should have size 1
-    }
-
     test("should find events by tags with ICAL format") {
         val now = () => new DateTime(2009, 1, 1, 1, 1).getMillis
         val dao = mock[EventDaoBis]

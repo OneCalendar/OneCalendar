@@ -25,7 +25,6 @@ GET     /events/*keyWords           controllers.Application.findByTags(keyWords)
 GET     /event/tags/*keyWords       controllers.Application.findPreviewByTags(keyWords)
 GET     /tags                       controllers.Application.fetchCloudOfTags
 GET     /event/count                controllers.Application.eventCount
-GET     /event/test/*ids/*tags      controllers.Application.findByIdsAndTags(ids, tags)
 
 # About
 GET     /about                      controllers.Application.about

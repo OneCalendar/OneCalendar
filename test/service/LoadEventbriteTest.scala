@@ -16,18 +16,15 @@
 
 package service
 
-import org.scalatest.{BeforeAndAfterAll, FunSuite}
-import org.scalatest.matchers.ShouldMatchers
-import org.joda.time.DateTime
-import dao.EventDao._
-import com.github.simplyscala.MongoEmbedDatabase
-import com.mongodb.casbah.{MongoConnection, MongoDB}
-import com.mongodb.{ServerAddress, MongoOptions}
-import dao.framework.MongoConnectionProperties
-import MongoConnectionProperties._
 import com.github.simplyscala.MongodProps
+import com.mongodb.casbah.{MongoConnection, MongoDB}
+import com.mongodb.{MongoOptions, ServerAddress}
+import dao.MongoDbEventDaoBis._
+import dao.framework.MongoConnectionProperties._
+import org.joda.time.DateTime
+import testutils.MongoTestSuite
 
-class LoadEventbriteTest extends FunSuite with ShouldMatchers with MongoEmbedDatabase with BeforeAndAfterAll {
+class LoadEventbriteTest extends MongoTestSuite {
 
     var mongoProps: MongodProps = null
     override def beforeAll() { mongoProps = mongoStart(27078) }
@@ -50,7 +47,7 @@ class LoadEventbriteTest extends FunSuite with ShouldMatchers with MongoEmbedDat
 
         LoadEventbrite.parseLoad("scala")
 
-        val events = findByTag(List("scala"))
+        val events = sync(findByTags(Set("scala")))
         events.size should be > 0
     }
 }

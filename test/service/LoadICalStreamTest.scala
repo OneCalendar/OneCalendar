@@ -16,19 +16,15 @@
 
 package service
 
-import org.scalatest.matchers.ShouldMatchers
-import models.Event
-import org.joda.time.DateTime
-import org.scalatest.{BeforeAndAfterAll, FunSuite}
-import dao.EventDao
-import com.github.simplyscala.MongoEmbedDatabase
-import com.mongodb.casbah.{MongoConnection, MongoDB}
-import com.mongodb.{ServerAddress, MongoOptions}
-import dao.framework.MongoConnectionProperties
-import MongoConnectionProperties._
 import com.github.simplyscala.MongodProps
+import com.mongodb.casbah.{MongoConnection, MongoDB}
+import com.mongodb.{MongoOptions, ServerAddress}
+import dao.MongoDbEventDaoBis
+import dao.framework.MongoConnectionProperties._
+import org.joda.time.DateTime
+import testutils.MongoTestSuite
 
-class LoadICalStreamTest extends FunSuite with ShouldMatchers with BeforeAndAfterAll with MongoEmbedDatabase {
+class LoadICalStreamTest extends MongoTestSuite {
 
     var mongoProps: MongodProps = null
     override def beforeAll() { mongoProps = mongoStart(27020) }
@@ -53,7 +49,7 @@ class LoadICalStreamTest extends FunSuite with ShouldMatchers with BeforeAndAfte
         val iCalService : LoadICalStream = new LoadICalStream()
         iCalService.parseLoad( url, List("DEVOXX") )
 
-        val events: List[Event] = EventDao.findAll()
+        val events = sync(MongoDbEventDaoBis.findAllFromNow())
         val count: Int = events.size
 
         count should be > 50
@@ -68,7 +64,7 @@ class LoadICalStreamTest extends FunSuite with ShouldMatchers with BeforeAndAfte
         val iCalService : LoadICalStream = new LoadICalStream()
         iCalService.parseLoad( url, List("DEVOXX","TEST") )
 
-        val events: List[Event] = EventDao.findAll()
+        val events = sync(MongoDbEventDaoBis.findAllFromNow())
         val count: Int = events.size
 
         count should be > 50
