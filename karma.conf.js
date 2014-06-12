@@ -17,6 +17,7 @@ module.exports = function(config) {
             'http://code.jquery.com/jquery-1.7.2.min.js',
             'node_modules/jasmine-jquery/lib/jasmine-jquery.js',
             'http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.6.0/moment.min.js',
+            'http://cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.jquery.min.js',
             'app/assets/javascripts/*.coffee',
             'test/front/coffee/*.spec.coffee'
         ],

@@ -30,20 +30,20 @@
 		$('#suggest').on "blur", ->
 			$('#suggest + ul').remove()
 
-  displaySubscription : (userSearch) ->
-      if userSearch != ""
-        googleCalendarLinkPrefix = "http://www.google.com/calendar/render?cid="
-        googleCalendarLinkSuffix = "/events/"+encodeURIComponent(userSearch)
+	displaySubscription : (userSearch) ->
+		if userSearch != ""
+			googleCalendarLinkPrefix = "http://www.google.com/calendar/render?cid="
+			googleCalendarLinkSuffix = "/events/"+encodeURIComponent(userSearch)
 
-		applicationBaseUrl = $(location).attr('href').substr(0, $(location).attr('href').length - 1)
-		applicationBaseUrl_withoutHttp = applicationBaseUrl.split("//")[1]
+			applicationBaseUrl = $(location).attr('href').substr(0, $(location).attr('href').length - 1)
+			applicationBaseUrl_withoutHttp = applicationBaseUrl.split("//")[1]
 
-        $('#subscription a.ical').attr('href', "/events/#{userSearch}")
-        $('#subscription a.gcal').attr('href', googleCalendarLinkPrefix + encodeURIComponent(applicationBaseUrl + googleCalendarLinkSuffix))
-        $('#subscription a.webcal').attr('href', "webcal://#{applicationBaseUrl_withoutHttp}/events/"+encodeURIComponent(userSearch))
+			$('#subscription a.ical').attr('href', "/events/#{userSearch}")
+			$('#subscription a.gcal').attr('href', googleCalendarLinkPrefix + encodeURIComponent(applicationBaseUrl + googleCalendarLinkSuffix))
+			$('#subscription a.webcal').attr('href', "webcal://#{applicationBaseUrl_withoutHttp}/events/"+encodeURIComponent(userSearch))
 
-		$('#subscription').show()
-		$('#devoxx').hide()
+			$('#subscription').show()
+			$('#devoxx').hide()
 
 	displayPreviewResult: (data) ->
 		display(data.eventList, preview2display, data.size)
@@ -73,7 +73,7 @@
 		$("#events").submit ->
 			concat = ""
 			$(".suggest-search .search-choice span").each () -> concat = concat + " " + $(this).text()
-			userSearch = concat.toUpperCase()
+			userSearch = concat.trim().toUpperCase()
 
 			if userSearch != ""
 				$.ajax(
@@ -85,12 +85,12 @@
 							SUGGEST.displayPreviewResult data
 							SUGGEST.displaySubscription userSearch
 						error: (data) ->
-							SUGGEST.displayNoResult $('#suggest').val()
+							SUGGEST.displayNoResult userSearch
 					})
 			else
 				$("#subscription").hide()
 				$("#callbackNoResult").hide()
-
+			false
 
 	formatIcalDate: (date) ->
 		begin = moment(date).zone "+0200"

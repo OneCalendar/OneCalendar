@@ -92,13 +92,10 @@ describe 'google suggest like', ->
   it "7. should call rest controller to retrieve preview result when user click on search", ->
     setFixtures '''
             <form method="get" id="events" >
-              <input type="text" id="suggest" value="a" />
+              <div class="suggest-search">
+                <ul class="chosen-choices"><li class="search-choice"><span>a</span></li></ul>
+              </div>
             </form>
-            <div id="subscription">
-              <a class="ical"></a>
-              <a class="gcal"></a>
-              <a class="webcal"></a>
-            </div>
           '''
     urlServer = 'http://serveur'
     callbackData = {"key":"value"}
@@ -120,17 +117,13 @@ describe 'google suggest like', ->
   it "8. should call displayNoResult method when callback is error", ->
     setFixtures '''
             <form method="get" id="events" >
-              <input type="text" id="suggest" value="a" />
+              <div class="suggest-search">
+                <ul class="chosen-choices"><li class="search-choice"><span>a</span></li></ul>
+              </div>
             </form>
-            <div id="subscription">
-              <a class="ical"></a>
-              <a class="gcal"></a>
-              <a class="webcal"></a>
-            </div>
           '''
 
     urlServer = 'http://serveur'
-    callbackData = {"key":"value"}
 
     SUGGEST.retrievePreviewResults url: urlServer
 
@@ -141,7 +134,7 @@ describe 'google suggest like', ->
     $("#events").submit()
 
     expect($.ajax).toHaveBeenCalled()
-    expect(SUGGEST.displayNoResult).toHaveBeenCalledWith('a')
+    expect(SUGGEST.displayNoResult).toHaveBeenCalledWith('A')
 
   it "9. should display preview", ->
     setFixtures '''
