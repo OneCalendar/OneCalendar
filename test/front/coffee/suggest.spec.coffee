@@ -92,9 +92,9 @@ describe 'google suggest like', ->
   it "7. should call rest controller to retrieve preview result when user click on search", ->
     setFixtures '''
             <form method="get" id="events" >
-              <div class="suggest-search">
-                <ul class="chosen-choices"><li class="search-choice"><span>a</span></li></ul>
-              </div>
+              <select id="suggest" class="suggest-search" tabindex="-1" multiple="">
+                <option value="a" selected="selected">a</option>
+              </select>
             </form>
           '''
     urlServer = 'http://serveur'
@@ -117,9 +117,9 @@ describe 'google suggest like', ->
   it "8. should call displayNoResult method when callback is error", ->
     setFixtures '''
             <form method="get" id="events" >
-              <div class="suggest-search">
-                <ul class="chosen-choices"><li class="search-choice"><span>a</span></li></ul>
-              </div>
+              <select id="suggest" class="suggest-search" tabindex="-1" multiple="">
+                <option value="a" selected="selected">a</option>
+              </select>
             </form>
           '''
 
@@ -298,7 +298,7 @@ describe 'google suggest like', ->
   it "12. should hide subscription & callbackNoResult div if user dont write anything when he click", ->
     setFixtures '''
                 <form method="get" id="events" >
-                  <input type="text" id="suggest" value="" />
+                  <select id="suggest" multiple=""><option>a</option></select>
                 </form>
                 <div id="subscription">
                   <a class="ical"></a>
@@ -311,7 +311,6 @@ describe 'google suggest like', ->
 
     $("#events").submit()
 
-    expect( $( "#subscription" ).css( 'display' ) ).toEqual( "none" )
     expect( $( "#callbackNoResult" ).css( 'display' ) ).toEqual( "none" )
 
   it "13. shoud format icalendar date format", ->

@@ -71,9 +71,8 @@
 
 	retrievePreviewResults: ->
 		$("#events").submit ->
-			concat = ""
-			$(".suggest-search .search-choice span").each () -> concat = concat + " " + $(this).text()
-			userSearch = concat.trim().toUpperCase()
+			suggestVal = $("#suggest").val()
+			userSearch = if (suggestVal) then suggestVal.join(" ").toUpperCase() else ""
 
 			if userSearch != ""
 				$.ajax(
