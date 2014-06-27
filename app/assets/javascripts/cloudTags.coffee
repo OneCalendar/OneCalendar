@@ -12,7 +12,7 @@ $(document).ready ->
 		$(".js-main").addClass("hide")
 
 		$("a.js-use").click ->
-			console.log("hllo")
 			$(".js-wtfioc").addClass("hide")
 			$(".js-main").removeClass("hide")
+			$(window).scrollTop(0)
 	$.ajax "/tags", success: document.cloudThis
