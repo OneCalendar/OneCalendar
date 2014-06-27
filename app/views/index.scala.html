@@ -6,6 +6,8 @@
                 <img id="logo" src='@routes.Assets.at("images/onecalendar-beta.png")' />
             </div>
         </div>
+        @branding()
+        <div class="js-main">
         <div class="row">
             <form method="get" action="/events" id="events">
                 <div class="large-offset-3 large-6 small-9 columns">
@@ -29,5 +31,6 @@
         </div>
         <div class="row">
             <div class="large-12 columns" id="callbackNoResult"></div>
+        </div>
         </div>
 }

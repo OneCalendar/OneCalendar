@@ -1,0 +1,11 @@
+
+.js-wtfioc img{
+    max-width: 300px;
+    max-height: 200px;
+    -moz-box-shadow: 13px 15px 40px -9px #000000;
+    -webkit-box-shadow: 13px 15px 40px -9px #000000;
+    box-shadow: 13px 15px 40px -9px #000000;
+}
+.js-wtfioc p {
+    margin-top: 3em;
+}

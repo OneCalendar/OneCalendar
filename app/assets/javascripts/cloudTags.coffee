@@ -8,4 +8,11 @@ $(document).ready ->
 		$("#suggest").chosen({
 			inherit_select_classes: true
 		})
+
+		$(".js-main").addClass("hide")
+
+		$("a.js-use").click ->
+			console.log("hllo")
+			$(".js-wtfioc").addClass("hide")
+			$(".js-main").removeClass("hide")
 	$.ajax "/tags", success: document.cloudThis
