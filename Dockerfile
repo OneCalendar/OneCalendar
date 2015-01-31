@@ -10,7 +10,7 @@ RUN wget "http://downloads.typesafe.com/play/2.2.3/play-2.2.3.zip" -O /tmp/play.
 RUN unzip /tmp/play.zip -d /
 ENV PATH $PATH:/play-2.2.3
 
-EXPOSE 9000
+EXPOSE 9000 9876
 
 WORKDIR /docker
 
