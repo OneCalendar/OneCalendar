@@ -105,7 +105,7 @@ describe 'google suggest like', ->
     spyOn(SUGGEST, 'displaySubscription').andCallThrough
     spyOn(SUGGEST, 'displayPreviewResult').andCallThrough
 
-    spyOn($, 'ajax').andCallFake (params) ->
+    spyOn($, 'ajax').and.callFake (params) ->
       params.success -> callbackData
 
     $("#events").submit()
@@ -128,7 +128,7 @@ describe 'google suggest like', ->
     SUGGEST.retrievePreviewResults url: urlServer
 
     spyOn(SUGGEST, 'displayNoResult').andCallThrough
-    spyOn($, 'ajax').andCallFake (params) ->
+    spyOn($, 'ajax').and.callFake (params) ->
       params.error -> ""
 
     $("#events").submit()

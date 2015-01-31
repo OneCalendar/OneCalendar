@@ -16,104 +16,106 @@
 ##
 
 
-@SUGGEST =
+( (w) ->
+		w.SUGGEST =
 
-	suggest: ->
-		$('#suggest').on 'keyup', ->
-			ulAddDomElement = "<ul></ul>"
-			$(@).after(ulAddDomElement) if( !$('#suggest + ul').length )
+		suggest: ->
+			$('#suggest').on 'keyup', ->
+				ulAddDomElement = "<ul></ul>"
+				$(@).after(ulAddDomElement) if( !$('#suggest + ul').length )
 
-			liAddDomElement = "<li>#{$(@).val()}</li>"
-			$('#suggest + ul').append(liAddDomElement)
+				liAddDomElement = "<li>#{$(@).val()}</li>"
+				$('#suggest + ul').append(liAddDomElement)
 
-	deleteSuggest: ->
-		$('#suggest').on "blur", ->
-			$('#suggest + ul').remove()
+		deleteSuggest: ->
+			$('#suggest').on "blur", ->
+				$('#suggest + ul').remove()
 
-	displaySubscription : (userSearch) ->
-		if userSearch != ""
-			googleCalendarLinkPrefix = "http://www.google.com/calendar/render?cid="
-			googleCalendarLinkSuffix = "/events/"+encodeURIComponent(userSearch)
-
-			applicationBaseUrl = $(location).attr('href').substr(0, $(location).attr('href').length - 1)
-			applicationBaseUrl_withoutHttp = applicationBaseUrl.split("//")[1]
-
-			$('#subscription a.ical').attr('href', "/events/#{userSearch}")
-			$('#subscription a.gcal').attr('href', googleCalendarLinkPrefix + encodeURIComponent(applicationBaseUrl + googleCalendarLinkSuffix))
-			$('#subscription a.webcal').attr('href', "webcal://#{applicationBaseUrl_withoutHttp}/events/"+encodeURIComponent(userSearch))
-
-			$('#subscription').show()
-			$('#devoxx').hide()
-
-	displayPreviewResult: (data) ->
-		display(data.eventList, preview2display, data.size)
-
-	displayAllEvents: (data) ->
-		display(data, allEvent2display, data.length)
-
-	displayNoResult: (searchWord) ->
-		$('#previewEvents').empty()
-		$('#subscription').hide()
-		$('#resultSize').hide()
-		$('#callbackNoResult').text("Le mot clé '#{searchWord}' ne donne aucun résultat dans la base OneCalendar")
-		$('#callbackNoResult').show()
-
-	retrieveAllEvents: ->
-		$.ajax({
-			type: 'GET'
-			url: "/events",
-			dataType: "json"
-			success: (data) ->
-				SUGGEST.displayAllEvents data
-			error: () ->
-				SUGGEST.displayNoResult $('#suggest').val()
-		})
-
-	retrievePreviewResults: ->
-		$("#events").submit ->
-			suggestVal = $("#suggest").val()
-			userSearch = if (suggestVal) then suggestVal.join(" ").toUpperCase() else ""
-
+		displaySubscription : (userSearch) ->
 			if userSearch != ""
-				$.ajax(
-					{
-						type: 'GET'
-						url: "/event/tags/#{userSearch}",
-						dataType: "json"
-						success: (data) ->
-							SUGGEST.displayPreviewResult data
-							SUGGEST.displaySubscription userSearch
-						error: (data) ->
-							SUGGEST.displayNoResult userSearch
-					})
-			else
-				$("#subscription").hide()
-				$("#callbackNoResult").hide()
-			false
+				googleCalendarLinkPrefix = "http://www.google.com/calendar/render?cid="
+				googleCalendarLinkSuffix = "/events/"+encodeURIComponent(userSearch)
 
-	formatIcalDate: (date) ->
-		begin = moment(date).zone "+0200"
-		if begin.minutes() == 0
-			begin.format "DD/MM/YYYY à HH[h]"
-		else
-			begin.format "DD/MM/YYYY à HH[h]mm"
+				applicationBaseUrl = $(location).attr('href').substr(0, $(location).attr('href').length - 1)
+				applicationBaseUrl_withoutHttp = applicationBaseUrl.split("//")[1]
 
+				$('#subscription a.ical').attr('href', "/events/#{userSearch}")
+				$('#subscription a.gcal').attr('href', googleCalendarLinkPrefix + encodeURIComponent(applicationBaseUrl + googleCalendarLinkSuffix))
+				$('#subscription a.webcal').attr('href', "webcal://#{applicationBaseUrl_withoutHttp}/events/"+encodeURIComponent(userSearch))
 
-	retrieveEventNumber: ->
-		$.ajax(
-			{
-				type: 'GET',
-				url: "/event/count",
-				dataType: "json",
+				$('#subscription').show()
+				$('#devoxx').hide()
+
+		displayPreviewResult: (data) ->
+			display(data.eventList, preview2display, data.size)
+
+		displayAllEvents: (data) ->
+			display(data, allEvent2display, data.length)
+
+		displayNoResult: (searchWord) ->
+			$('#previewEvents').empty()
+			$('#subscription').hide()
+			$('#resultSize').hide()
+			$('#callbackNoResult').text("Le mot clé '#{searchWord}' ne donne aucun résultat dans la base OneCalendar")
+			$('#callbackNoResult').show()
+
+		retrieveAllEvents: ->
+			$.ajax({
+				type: 'GET'
+				url: "/events",
+				dataType: "json"
 				success: (data) ->
-					SUGGEST.displayEventNumber data
-				error: (data) ->
-					SUGGEST.displayEventNumber {'eventNumber': 'N/A'}
-			}
-		)
+					SUGGEST.displayAllEvents data
+				error: () ->
+					SUGGEST.displayNoResult $('#suggest').val()
+			})
 
-	displayEventNumber: (data) ->
-		$("#eventNumber").text(data.eventNumber)
+		retrievePreviewResults: ->
+			$("#events").submit ->
+				suggestVal = $("#suggest").val()
+				userSearch = if (suggestVal) then suggestVal.join(" ").toUpperCase() else ""
+
+				if userSearch != ""
+					$.ajax(
+						{
+							type: 'GET'
+							url: "/event/tags/#{userSearch}",
+							dataType: "json"
+							success: (data) ->
+								SUGGEST.displayPreviewResult data
+								SUGGEST.displaySubscription userSearch
+							error: (data) ->
+								SUGGEST.displayNoResult userSearch
+						})
+				else
+					$("#subscription").hide()
+					$("#callbackNoResult").hide()
+				false
+
+		formatIcalDate: (date) ->
+			begin = moment(date).zone "+0200"
+			if begin.minutes() == 0
+				begin.format "DD/MM/YYYY à HH[h]"
+			else
+				begin.format "DD/MM/YYYY à HH[h]mm"
+
+
+		retrieveEventNumber: ->
+			$.ajax(
+				{
+					type: 'GET',
+					url: "/event/count",
+					dataType: "json",
+					success: (data) ->
+						SUGGEST.displayEventNumber data
+					error: (data) ->
+						SUGGEST.displayEventNumber {'eventNumber': 'N/A'}
+				}
+			)
+
+		displayEventNumber: (data) ->
+			$("#eventNumber").text(data.eventNumber)
+)(window)
 
 
 preview2display = (event) ->
