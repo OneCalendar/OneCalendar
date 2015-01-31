@@ -34,7 +34,7 @@ It's a classical web layered application.
     * DAO
 * Database
 
-# For developers
+# For developers with native dependencies
 
 ## To prepare the application
 
@@ -63,3 +63,22 @@ The js tests doesn't compile by themself [for now](http://github.com/ValtechTech
     * `play`
     * `$ compile`
     * `$ run`
+
+# For developers with Docker
+
+## Prepare dev environment
+
+    `docker build .`
+    `./01-run-mongod.sh`
+    `./02-run-play.sh`
+        then `npm install` to resolve front dependencies
+        then `play` to resolve play dependencies
+        then `compile` to resolve project dependencies
+         
+## Run tests
+
+    in play container: see [To prepare tests](#to-prepare-tests)
+    
+## Launch application
+
+    in play container: see [To launch the application](#to-launch-the-application)

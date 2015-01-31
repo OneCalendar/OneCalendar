@@ -23,8 +23,8 @@ object MongoPoolForProd {
         connection(dbName)
     }
 
-    private def getHost: String = if(props != null) props.host else "127.0.0.1"
-    private def getPort: Int =  if(props != null) props.port else 27017
+    private def getHost: String = if (System.getenv("ONECALENDAR_DB_PORT_28017_TCP_ADDR") != null) System.getenv("ONECALENDAR_DB_PORT_28017_TCP_ADDR") else if(props != null) props.host else "127.0.0.1"
+    private def getPort: Int =  if (System.getenv("ONECALENDAR_DB_PORT_27017_TCP_PORT") != null) System.getenv("ONECALENDAR_DB_PORT_27017_TCP_PORT").toInt else if(props != null) props.port else 27017
 }
 
-case class MongoPoolProps(host: String = "127.0.0.1", port: Int = 27017)
+case class MongoPoolProps(host: String = System.getenv("ONECALENDAR_DB_PORT_28017_TCP_ADDR"), port: Int = if (System.getenv("ONECALENDAR_DB_PORT_27017_TCP_PORT") != null) System.getenv("ONECALENDAR-DB_PORT_27017_TCP_PORT").toInt else 27017)
