@@ -11,7 +11,7 @@ tmp
 *.ipr
 
 /*node_modules_coffee*/
-node_modules/
+//node_modules/
 
 /*oups*/
 ical4j-1.0.3-sources.jar
