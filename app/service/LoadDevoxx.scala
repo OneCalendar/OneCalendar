@@ -51,7 +51,7 @@ object LoadDevoxx {
                 slotsSet => slotsSet.flatMap { slots => slots.slots}
             }
 
-        val result: Set[Slot] = Await.result(future, 10 second)
+        val result: Set[Slot] = Await.result(future, 1 minute)
 
         val events: Set[Event] = result.filter(_.talk.isDefined).map(slot2event(_, devoxxUrl))
         Logger.info("Chargement de %s events de devoxx".format(events.size))
