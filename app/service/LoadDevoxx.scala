@@ -37,7 +37,7 @@ object LoadDevoxx {
     implicit val slotsFormat = Json.format[Slots]
 
     def load(implicit now: () => Long, dbName: MongoDbName,  pool: MongoDB) = {
-        val devoxxUrl: String = "http://cfp.devoxx.fr/api/conferences/devoxxFR2014/schedules/"
+        val devoxxUrl: String = "http://cfp.devoxx.fr/api/conferences/DevoxxFR2015/schedules/"
 
 
         val future: Future[Set[Slot]] = WS.url(devoxxUrl).get()
